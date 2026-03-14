@@ -230,6 +230,13 @@ app.get('/print/:id', async (req, res) => {
   res.sendFile(path.resolve('public/print.html'))
 })
 
+// E2 — Print-Seite für Diff
+app.get('/print-diff/:idA/:idB', async (req, res) => {
+  const [a, b] = await Promise.all([loadReport(req.params.idA), loadReport(req.params.idB)])
+  if (!a || !b) return res.status(404).json({ error: 'Ein oder beide Reports nicht gefunden' })
+  res.sendFile(path.resolve('public/print-diff.html'))
+})
+
 // E1 — PDF-Export via Playwright
 app.get('/export-pdf/:id', async (req, res) => {
   const report = await loadReport(req.params.id)
@@ -251,6 +258,34 @@ app.get('/export-pdf/:id', async (req, res) => {
     res.send(pdf)
   } catch (err) {
     console.error(chalk.red(`[pdf] Fehler: ${err.message}`))
+    res.status(500).json({ error: 'PDF-Generierung fehlgeschlagen' })
+  } finally {
+    await browser?.close()
+  }
+})
+
+// E2 — PDF-Export für Diff via Playwright
+app.get('/export-pdf-diff/:idA/:idB', async (req, res) => {
+  const { idA, idB } = req.params
+  const [a, b] = await Promise.all([loadReport(idA), loadReport(idB)])
+  if (!a || !b) return res.status(404).json({ error: 'Ein oder beide Reports nicht gefunden' })
+
+  let browser
+  try {
+    browser = await chromium.launch({ headless: true })
+    const page = await browser.newPage()
+    await page.goto(`http://localhost:${PORT}/print-diff/${idA}/${idB}`, { waitUntil: 'networkidle' })
+    const pdf = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '1.5cm', bottom: '1.5cm', left: '1.5cm', right: '1.5cm' }
+    })
+    const filename = `website-doctor_diff_${idA}_${idB}.pdf`
+    res.setHeader('Content-Type', 'application/pdf')
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`)
+    res.send(pdf)
+  } catch (err) {
+    console.error(chalk.red(`[pdf-diff] Fehler: ${err.message}`))
     res.status(500).json({ error: 'PDF-Generierung fehlgeschlagen' })
   } finally {
     await browser?.close()
