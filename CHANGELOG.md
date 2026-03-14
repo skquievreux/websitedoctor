@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/skquievreux/websitedoctor/compare/v1.0.0...v1.0.1) (2026-03-14)
+
+
+### Bug Fixes
+
+* resolve CI warnings for Node.js 20 deprecation and unused url param ([4b3f074](https://github.com/skquievreux/websitedoctor/commit/4b3f074de42fd1b477b53038ebb9f5bf956cc65b))
+
 # 1.0.0 (2026-03-14)
 
 
