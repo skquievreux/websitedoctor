@@ -1,5 +1,5 @@
 #!/bin/sh
-# pre-commit: block direct commits on main
+# pre-commit: (1) block direct commits on main, (2) run linter
 
 BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
 
@@ -11,4 +11,18 @@ if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
   echo "      git checkout -b feature/my-feature"
   echo ""
   exit 1
+fi
+
+# Run linter on staged JS files
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js)$')
+if [ -n "$STAGED" ]; then
+  echo "  → Running ESLint…"
+  npm run lint --silent
+  if [ $? -ne 0 ]; then
+    echo ""
+    echo "  ✗ ESLint failed. Fix errors before committing."
+    echo "    Tip: npm run lint:fix"
+    echo ""
+    exit 1
+  fi
 fi

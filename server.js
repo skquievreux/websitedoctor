@@ -5,7 +5,6 @@ import { fork } from 'child_process'
 import path from 'path'
 import chalk from 'chalk'
 import { chromium } from 'playwright'
-import { generateReport } from './scripts/report.js'
 
 const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
 

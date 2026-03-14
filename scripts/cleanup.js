@@ -8,14 +8,12 @@
  */
 
 import { readFile, writeFile, unlink } from 'fs/promises'
-import { existsSync, readdirSync, statSync } from 'fs'
-import path from 'path'
+import { existsSync, readdirSync } from 'fs'
 import chalk from 'chalk'
 
 const DRY_RUN = process.argv.includes('--dry-run')
 const HISTORY_FILE = 'data/history.json'
 const SCREENSHOTS_DIR = 'screenshots'
-const REPORTS_DIR = 'reports'
 const MAX_RUNS_PER_HOST = 3
 
 if (DRY_RUN) console.log(chalk.yellow('[cleanup] DRY-RUN – keine Änderungen werden gespeichert\n'))
