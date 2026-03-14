@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Doctor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #0f0f11; color: #e1e1e6; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ── Header ── */
+    header { padding: 1rem 1.5rem; border-bottom: 1px solid #222; display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: #fff; white-space: nowrap; }
+    .input-row { display: flex; gap: 0.5rem; flex: 1; }
+    .input-row input { flex: 1; padding: 0.6rem 0.9rem; border-radius: 7px; border: 1px solid #333; background: #1a1a1f; color: #e1e1e6; font-size: 0.95rem; outline: none; }
+    .input-row input:focus { border-color: #6c6cff; }
+    .input-row button { padding: 0.6rem 1.2rem; border-radius: 7px; border: none; background: #6c6cff; color: #fff; font-size: 0.95rem; cursor: pointer; font-weight: 600; white-space: nowrap; }
+    .input-row button:hover { background: #5a5ae0; }
+    .input-row button:disabled { background: #444; cursor: not-allowed; }
+
+    /* ── Layout ── */
+    .layout { display: flex; flex: 1; overflow: hidden; }
+
+    /* ── Sidebar ── */
+    aside { width: 240px; border-right: 1px solid #222; overflow-y: auto; flex-shrink: 0; }
+    aside .sidebar-head { padding: 0.75rem 1rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid #1a1a1a; }
+    .history-item { padding: 0.75rem 1rem; border-bottom: 1px solid #1a1a1a; cursor: pointer; transition: background 0.15s; }
+    .history-item:hover { background: #1a1a1f; }
+    .history-item.active { background: #1e1e2e; border-left: 2px solid #6c6cff; }
+    .history-item .h-url { font-size: 0.8rem; font-weight: 600; color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .history-item .h-date { font-size: 0.7rem; color: #666; margin-top: 0.2rem; }
+    .history-item .h-badges { display: flex; gap: 0.35rem; margin-top: 0.35rem; }
+    .h-score { font-size: 0.68rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 700; }
+    .h-score.good { background: #14532d; color: #4ade80; }
+    .h-score.mid  { background: #422006; color: #fb923c; }
+    .h-score.bad  { background: #450a0a; color: #f87171; }
+    .h-pages { font-size: 0.68rem; padding: 0.15rem 0.4rem; border-radius: 3px; background: #1e1b4b; color: #a5b4fc; }
+    aside .empty { padding: 1rem; font-size: 0.8rem; color: #555; text-align: center; }
+
+    /* ── Main ── */
+    main { flex: 1; overflow-y: auto; padding: 1.5rem; }
+
+    /* ── Status ── */
+    #status-box { padding: 1rem 1.25rem; border-radius: 8px; background: #1a1a1f; border: 1px solid #333; display: none; margin-bottom: 1.5rem; }
+    #status-box .label { font-size: 0.8rem; color: #888; margin-bottom: 0.5rem; }
+    #progress-bar-wrap { background: #2a2a2f; border-radius: 4px; height: 6px; overflow: hidden; }
+    #progress-bar { height: 100%; background: #6c6cff; width: 0; transition: width 0.3s; }
+    #status-text { margin-top: 0.5rem; font-size: 0.85rem; color: #aaa; }
+    #error-box { padding: 1rem 1.25rem; border-radius: 8px; background: #1a0a0a; border: 1px solid #450a0a; color: #f87171; display: none; margin-bottom: 1.5rem; }
+
+    /* ── Tabs ── */
+    .tabs { display: flex; gap: 0.25rem; margin-bottom: 1.5rem; border-bottom: 1px solid #222; padding-bottom: 0; }
+    .tab-btn { padding: 0.5rem 1rem; background: none; border: none; color: #666; cursor: pointer; font-size: 0.9rem; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .tab-btn.active { color: #fff; border-bottom-color: #6c6cff; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Score cards ── */
+    .scores-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .score-card { flex: 1; min-width: 140px; text-align: center; padding: 1.25rem; background: #1a1a1f; border-radius: 10px; border: 1px solid #333; }
+    .score-card .val { font-size: 2.8rem; font-weight: 800; }
+    .score-card .lbl { color: #888; font-size: 0.8rem; margin-top: 0.2rem; }
+    .score-good { color: #4ade80; } .score-mid { color: #fb923c; } .score-bad { color: #f87171; }
+
+    /* ── Cards ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+    .card { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #666; margin-bottom: 0.75rem; }
+    .card ul { list-style: none; }
+    .card ul li { padding: 0.3rem 0; font-size: 0.88rem; display: flex; gap: 0.5rem; align-items: flex-start; }
+    .dot-green { color: #4ade80; } .dot-red { color: #f87171; } .dot-blue { color: #60a5fa; }
+
+    /* ── Pages grid ── */
+    .pages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .page-card { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
+    .page-card img { width: 100%; height: 130px; object-fit: cover; object-position: top; display: block; background: #111; }
+    .page-card .no-img { height: 130px; display: flex; align-items: center; justify-content: center; color: #333; font-size: 0.75rem; background: #111; }
+    .page-card .pi { padding: 0.7rem; }
+    .page-card .pi-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: #666; }
+    .page-card .pi-title { font-size: 0.82rem; font-weight: 600; margin: 0.15rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-card .pi-url { font-size: 0.72rem; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-card .pi-meta { display: flex; gap: 0.35rem; margin-top: 0.4rem; flex-wrap: wrap; }
+    .badge { font-size: 0.68rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 600; }
+    .b-ok { background: #14532d; color: #4ade80; } .b-err { background: #450a0a; color: #f87171; }
+    .b-ms { background: #1e1b4b; color: #a5b4fc; } .b-warn { background: #422006; color: #fb923c; }
+
+    /* ── SEO issue list ── */
+    .seo-page { margin-bottom: 0.75rem; padding: 0.75rem 1rem; background: #151518; border-radius: 8px; border: 1px solid #222; }
+    .seo-page-url { font-size: 0.78rem; color: #888; margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .seo-issue { font-size: 0.82rem; padding: 0.2rem 0; display: flex; gap: 0.4rem; }
+    .seo-issue .icon { flex-shrink: 0; }
+
+    /* ── Mobile ── */
+    .mobile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .mobile-card { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
+    .mobile-card img { width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; background: #111; }
+    .mobile-card .mi { padding: 0.6rem; }
+    .mobile-card .mi-title { font-size: 0.78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mobile-card .mi-url { font-size: 0.7rem; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.15rem; }
+
+    #report { display: none; }
+    .welcome { color: #444; text-align: center; margin-top: 4rem; font-size: 0.95rem; line-height: 1.8; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🩺 Website Doctor</h1>
+  <div class="input-row">
+    <input type="url" id="url-input" placeholder="https://example.com" />
+    <button id="check-btn" onclick="startCheck()">Prüfen</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="sidebar-head">Verlauf</div>
+    <div id="history-list"><div class="empty">Noch keine Checks</div></div>
+  </aside>
+
+  <main>
+    <div id="status-box">
+      <div class="label">Crawl läuft…</div>
+      <div id="progress-bar-wrap"><div id="progress-bar"></div></div>
+      <div id="status-text">Initialisiere Browser…</div>
+    </div>
+    <div id="error-box"></div>
+
+    <div id="report">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('overview')">Übersicht</button>
+        <button class="tab-btn" onclick="switchTab('seo')">SEO</button>
+        <button class="tab-btn" onclick="switchTab('mobile')">Mobile</button>
+      </div>
+      <div id="tab-overview" class="tab-panel active"></div>
+      <div id="tab-seo"      class="tab-panel"></div>
+      <div id="tab-mobile"   class="tab-panel"></div>
+    </div>
+
+    <div class="welcome" id="welcome">URL eingeben und auf <strong>Prüfen</strong> klicken<br>oder einen Eintrag aus dem Verlauf wählen</div>
+  </main>
+</div>
+
+<script>
+  let pollInterval = null
+  let activeHistoryId = null
+
+  // ── History ──────────────────────────────────────────
+  async function loadHistory() {
+    const res = await fetch('/history')
+    const list = await res.json()
+    const el = document.getElementById('history-list')
+    if (!list.length) { el.innerHTML = '<div class="empty">Noch keine Checks</div>'; return }
+    el.innerHTML = list.map(h => {
+      const scoreClass = h.score >= 70 ? 'good' : h.score >= 40 ? 'mid' : 'bad'
+      const date = new Date(h.date).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })
+      const domain = (() => { try { return new URL(h.url).hostname } catch { return h.url } })()
+      return `<div class="history-item${h.id === activeHistoryId ? ' active' : ''}" onclick="loadReport('${h.id}')">
+        <div class="h-url">${domain}</div>
+        <div class="h-date">${date}</div>
+        <div class="h-badges">
+          <span class="h-score ${scoreClass}">${h.score}</span>
+          <span class="h-pages">${h.pageCount} Seiten</span>
+        </div>
+      </div>`
+    }).join('')
+  }
+
+  // ── Check starten ────────────────────────────────────
+  async function startCheck() {
+    const url = document.getElementById('url-input').value.trim()
+    if (!url) return
+    document.getElementById('check-btn').disabled = true
+    document.getElementById('report').style.display = 'none'
+    document.getElementById('welcome').style.display = 'none'
+    document.getElementById('error-box').style.display = 'none'
+    showStatus('Crawl startet…', 0)
+    activeHistoryId = null
+
+    const res = await fetch('/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) })
+    if (!res.ok) return showError('Server-Fehler beim Starten')
+    const { id } = await res.json()
+    pollStatus(id)
+  }
+
+  function pollStatus(id) {
+    clearInterval(pollInterval)
+    pollInterval = setInterval(async () => {
+      const res = await fetch(`/status/${id}`)
+      const data = await res.json()
+      if (data.status === 'running' && data.progress) {
+        const pct = Math.round((data.progress.current / data.progress.max) * 100)
+        showStatus(`Seite ${data.progress.current}/${data.progress.max}: ${data.progress.url}`, pct)
+      }
+      if (data.status === 'done') {
+        clearInterval(pollInterval)
+        await loadHistory()
+        await loadReport(id)
+        document.getElementById('check-btn').disabled = false
+      }
+      if (data.status === 'error') {
+        clearInterval(pollInterval)
+        hideStatus()
+        showError(data.error || 'Unbekannter Fehler')
+        document.getElementById('check-btn').disabled = false
+      }
+    }, 800)
+  }
+
+  async function loadReport(id) {
+    const res = await fetch(`/report/${id}`)
+    if (!res.ok) return
+    const report = await res.json()
+    hideStatus()
+    activeHistoryId = id
+    loadHistory()
+    renderReport(report)
+  }
+
+  // ── Tabs ─────────────────────────────────────────────
+  function switchTab(name) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      const names = ['overview', 'seo', 'mobile']
+      b.classList.toggle('active', names[i] === name)
+    })
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'))
+    document.getElementById('tab-' + name).classList.add('active')
+  }
+
+  // ── Render ───────────────────────────────────────────
+  function scoreClass(n) { return n >= 70 ? 'score-good' : n >= 40 ? 'score-mid' : 'score-bad' }
+
+  function renderReport(r) {
+    document.getElementById('welcome').style.display = 'none'
+    renderOverview(r)
+    renderSeo(r)
+    renderMobile(r)
+    document.getElementById('report').style.display = 'block'
+    switchTab('overview')
+  }
+
+  function renderOverview(r) {
+    const seoScore = r.seo?.score ?? '–'
+    const mobileScore = r.mobile?.score ?? '–'
+    const strengths = r.strengths.map(s => `<li><span class="dot-green">✓</span>${s}</li>`).join('') || '<li style="color:#555">–</li>'
+    const weaknesses = r.weaknesses.map(w => `<li><span class="dot-red">✗</span>${w}</li>`).join('') || '<li style="color:#555">–</li>'
+    const actions = r.actions.map(a => `<li><span class="dot-blue">→</span>${a}</li>`).join('') || '<li style="color:#555">Keine Maßnahmen</li>'
+    const pages = r.pages.map(p => {
+      const badge = p.statusCode === 200 ? `<span class="badge b-ok">${p.statusCode}</span>` : `<span class="badge b-err">${p.statusCode ?? '?'}</span>`
+      const ms = p.loadTime ? `<span class="badge b-ms">${p.loadTime}ms</span>` : ''
+      const img = p.screenshotPath
+        ? `<img src="/${p.screenshotPath}" alt="${p.title}" loading="lazy">`
+        : `<div class="no-img">Kein Screenshot</div>`
+      return `<div class="page-card">${img}<div class="pi">
+        <div class="pi-type">${p.type}</div>
+        <div class="pi-title">${p.title || '(kein Titel)'}</div>
+        <div class="pi-url">${p.url}</div>
+        <div class="pi-meta">${badge}${ms}</div>
+      </div></div>`
+    }).join('')
+
+    document.getElementById('tab-overview').innerHTML = `
+      <div class="scores-row">
+        <div class="score-card"><div class="val ${scoreClass(r.score)}">${r.score}</div><div class="lbl">Gesamt · ${r.pageCount} Seiten</div></div>
+        <div class="score-card"><div class="val ${scoreClass(seoScore)}">${seoScore}</div><div class="lbl">SEO-Score</div></div>
+        <div class="score-card"><div class="val ${scoreClass(mobileScore)}">${mobileScore}</div><div class="lbl">Mobile-Score</div></div>
+      </div>
+      <div class="two-col">
+        <div class="card"><h3>Stärken</h3><ul>${strengths}</ul></div>
+        <div class="card"><h3>Schwächen</h3><ul>${weaknesses}</ul></div>
+      </div>
+      <div class="card"><h3>Maßnahmen</h3><ul>${actions}</ul></div>
+      <div class="card"><h3>Gecrawlte Seiten</h3><div class="pages-grid">${pages}</div></div>`
+  }
+
+  function renderSeo(r) {
+    if (!r.seo) {
+      document.getElementById('tab-seo').innerHTML = '<p style="color:#555;padding:1rem">Keine SEO-Daten in diesem Report.</p>'
+      return
+    }
+    const issues = (r.seo.pages || []).map(p => {
+      const items = (p.issues || []).map(i =>
+        `<div class="seo-issue"><span class="icon">${i.pass ? '✅' : '⚠️'}</span><span>${i.label}</span></div>`
+      ).join('')
+      return `<div class="seo-page"><div class="seo-page-url">${p.url}</div>${items}</div>`
+    }).join('')
+    document.getElementById('tab-seo').innerHTML = `
+      <div class="score-card" style="text-align:center;margin-bottom:1.5rem">
+        <div class="val ${scoreClass(r.seo.score)}">${r.seo.score}</div>
+        <div class="lbl">SEO-Score</div>
+      </div>
+      <div class="card"><h3>Checks pro Seite</h3>${issues || '<p style="color:#555">Keine Daten</p>'}</div>`
+  }
+
+  function renderMobile(r) {
+    if (!r.mobile) {
+      document.getElementById('tab-mobile').innerHTML = '<p style="color:#555;padding:1rem">Keine Mobile-Daten in diesem Report.</p>'
+      return
+    }
+    const checks = (r.mobile.checks || []).map(c =>
+      `<li><span class="${c.pass ? 'dot-green' : 'dot-red'}">${c.pass ? '✓' : '✗'}</span>${c.label}</li>`
+    ).join('')
+    const pages = (r.mobile.pages || []).map(p => {
+      const img = p.screenshotPath
+        ? `<img src="/${p.screenshotPath}" alt="${p.title}" loading="lazy">`
+        : `<div class="no-img" style="height:180px">Kein Screenshot</div>`
+      return `<div class="mobile-card">${img}<div class="mi">
+        <div class="mi-title">${p.title || '(kein Titel)'}</div>
+        <div class="mi-url">${p.url}</div>
+      </div></div>`
+    }).join('')
+
+    document.getElementById('tab-mobile').innerHTML = `
+      <div class="score-card" style="text-align:center;margin-bottom:1.5rem">
+        <div class="val ${scoreClass(r.mobile.score)}">${r.mobile.score}</div>
+        <div class="lbl">Mobile-Score</div>
+      </div>
+      <div class="card" style="margin-bottom:1rem"><h3>Mobile Checks</h3><ul>${checks}</ul></div>
+      <div class="card"><h3>Mobile Screenshots</h3><div class="mobile-grid">${pages}</div></div>`
+  }
+
+  function showStatus(text, pct) {
+    document.getElementById('status-box').style.display = 'block'
+    document.getElementById('status-text').textContent = text
+    document.getElementById('progress-bar').style.width = pct + '%'
+  }
+  function hideStatus() { document.getElementById('status-box').style.display = 'none' }
+  function showError(msg) {
+    const el = document.getElementById('error-box')
+    el.textContent = 'Fehler: ' + msg
+    el.style.display = 'block'
+  }
+
+  document.getElementById('url-input').addEventListener('keydown', e => { if (e.key === 'Enter') startCheck() })
+
+  loadHistory()
+</script>
+</body>
+</html>

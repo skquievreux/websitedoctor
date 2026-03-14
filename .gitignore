@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Playwright Browser-Binaries
+/playwright-report/
+/test-results/
+
+# Generierte Artefakte (werden zur Laufzeit erzeugt)
+screenshots/
+crawl_manifest.json
+report_*.json
+
+# History bleibt erhalten (Nutzer-Daten)
+# data/history.json  ← bewusst NICHT ignoriert
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
