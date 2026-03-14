@@ -50,7 +50,7 @@ async function loadReport(id) {
     if (data) return JSON.parse(data)
   }
 
-  const legacyFile = `report_${id}.json`
+  const legacyFile = `reports/legacy/report_${id}.json`
   if (existsSync(legacyFile)) {
     const data = await readFile(legacyFile, 'utf-8').catch(() => null)
     if (data) return JSON.parse(data)

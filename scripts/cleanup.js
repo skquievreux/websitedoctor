@@ -30,7 +30,7 @@ console.log(chalk.cyan(`[cleanup] ${history.length} History-Einträge geladen`))
 
 const activeHistory = history.filter(entry => {
   if (entry.reportPath && existsSync(entry.reportPath)) return true
-  const legacyFile = `report_${entry.id}.json`
+  const legacyFile = `reports/legacy/report_${entry.id}.json`
   if (existsSync(legacyFile)) return true
   console.log(chalk.red(`  ✗ veraltet (kein Report-File): ${entry.id} – ${entry.hostname || entry.url}`))
   return false
@@ -64,7 +64,7 @@ for (const [host, entries] of Object.entries(byHost)) {
     if (entry.reportPath && existsSync(entry.reportPath)) {
       deletedReports.push(entry.reportPath)
     }
-    const legacyFile = `report_${entry.id}.json`
+    const legacyFile = `reports/legacy/report_${entry.id}.json`
     if (existsSync(legacyFile)) deletedReports.push(legacyFile)
   }
 }
@@ -81,7 +81,7 @@ for (const entry of keptHistory) {
     if (entry.reportPath && existsSync(entry.reportPath)) {
       reportData = JSON.parse(await readFile(entry.reportPath, 'utf-8'))
     } else {
-      const legacyFile = `report_${entry.id}.json`
+      const legacyFile = `reports/legacy/report_${entry.id}.json`
       if (existsSync(legacyFile)) {
         reportData = JSON.parse(await readFile(legacyFile, 'utf-8'))
       }
