@@ -181,6 +181,16 @@
     .diff-section h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 0.4rem; }
     .diff-list li { font-size: 0.85rem; padding: 0.2rem 0; display: flex; gap: 0.4rem; }
     .diff-empty { color: #555; font-size: 0.85rem; font-style: italic; }
+
+    /* ── Diff-Selector ── */
+    .diff-selector { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: flex; gap: 0.75rem; align-items: flex-end; flex-wrap: wrap; }
+    .diff-selector label { font-size: 0.75rem; color: #888; display: block; margin-bottom: 0.3rem; }
+    .diff-selector select { padding: 0.45rem 0.7rem; background: #111; border: 1px solid #333; color: #eee; border-radius: 6px; font-size: 0.85rem; min-width: 220px; max-width: 100%; }
+    .diff-selector select:focus { outline: none; border-color: #6c6cff; }
+    .diff-selector .btn-run { padding: 0.45rem 1rem; border-radius: 6px; border: none; background: #6c6cff; color: #fff; font-size: 0.85rem; cursor: pointer; font-weight: 600; white-space: nowrap; }
+    .diff-selector .btn-run:hover { background: #5a5ae0; }
+    .diff-result { display: none; }
+    .diff-result.visible { display: block; }
   </style>
 </head>
 <body>
@@ -203,7 +213,7 @@
   <aside>
     <div class="sidebar-head">Verlauf</div>
     <div id="history-list"><div class="empty">Noch keine Checks</div></div>
-    <button class="compare-btn" id="compare-btn" onclick="openCompareModal()" disabled>Vergleichen</button>
+    <button class="compare-btn" id="compare-btn" onclick="goToCompareTab()" disabled>Vergleichen</button>
   </aside>
 
   <main>
@@ -224,7 +234,7 @@
         <button class="tab-btn active" onclick="switchTab('overview')">Übersicht</button>
         <button class="tab-btn" onclick="switchTab('seo')">SEO</button>
         <button class="tab-btn" onclick="switchTab('mobile')">Mobile</button>
-        <button class="tab-btn" id="tab-btn-diff" onclick="switchTab('diff')" style="display:none">Vergleich</button>
+        <button class="tab-btn" id="tab-btn-diff" onclick="switchTab('diff')">Vergleich</button>
       </div>
       <div id="tab-overview" class="tab-panel active"></div>
       <div id="tab-seo"      class="tab-panel"></div>
@@ -378,29 +388,34 @@
   }
 
   // ── C1 — Diff/Vergleich ───────────────────────────────
-  function openCompareModal() {
-    if (historyList.length < 2) return
-    const opts = historyList.map((h, i) =>
+  let currentDiffIds = { idA: null, idB: null }
+
+  function goToCompareTab() {
+    document.getElementById('report').style.display = 'block'
+    document.getElementById('welcome').style.display = 'none'
+    renderDiffSelector()
+    switchTab('diff')
+  }
+
+  function renderDiffSelector() {
+    const opts = historyList.map(h =>
       `<option value="${escHtml(h.id)}">${escHtml(h.siteTitle || h.hostname || h.url)} – ${new Date(h.date).toLocaleDateString('de-DE')} (${h.score})</option>`
     ).join('')
-    const modal = document.createElement('div')
-    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:2000;display:flex;align-items:center;justify-content:center'
-    modal.innerHTML = `<div style="background:#1a1a1f;border:1px solid #333;border-radius:12px;padding:1.5rem;min-width:340px">
-      <h3 style="font-size:0.9rem;margin-bottom:1rem;color:#fff">Zwei Reports vergleichen</h3>
-      <label style="font-size:0.8rem;color:#888">Report A (älter)</label>
-      <select id="sel-a" style="width:100%;margin:0.3rem 0 0.75rem;padding:0.5rem;background:#111;border:1px solid #333;color:#eee;border-radius:6px">${opts}</select>
-      <label style="font-size:0.8rem;color:#888">Report B (neuer)</label>
-      <select id="sel-b" style="width:100%;margin:0.3rem 0 1rem;padding:0.5rem;background:#111;border:1px solid #333;color:#eee;border-radius:6px">${opts}</select>
-      <div style="display:flex;gap:0.5rem;justify-content:flex-end">
-        <button onclick="this.closest('div[style]').remove()" style="padding:0.45rem 1rem;border-radius:6px;border:1px solid #333;background:none;color:#888;cursor:pointer">Abbrechen</button>
-        <button onclick="runDiff(document.getElementById('sel-a').value,document.getElementById('sel-b').value);this.closest('div[style]').remove()" style="padding:0.45rem 1rem;border-radius:6px;border:none;background:#6c6cff;color:#fff;cursor:pointer;font-weight:600">Vergleichen</button>
+
+    const selA = historyList.length >= 2 ? historyList[1].id : (historyList[0]?.id ?? '')
+    const selB = historyList[0]?.id ?? ''
+
+    document.getElementById('tab-diff').innerHTML = `
+      <div class="diff-selector">
+        <div><label>Report A (älter)</label><select id="sel-a">${opts}</select></div>
+        <div><label>Report B (neuer)</label><select id="sel-b">${opts}</select></div>
+        <button class="btn-run" onclick="runDiff(document.getElementById('sel-a').value, document.getElementById('sel-b').value)">Vergleichen</button>
       </div>
-    </div>`
-    document.body.appendChild(modal)
-    // Vorauswahl: zweiter und erster Eintrag
+      <div id="diff-result" class="diff-result"></div>`
+
     if (historyList.length >= 2) {
-      document.getElementById('sel-a').value = historyList[1].id
-      document.getElementById('sel-b').value = historyList[0].id
+      document.getElementById('sel-a').value = selA
+      document.getElementById('sel-b').value = selB
     }
   }
 
@@ -409,12 +424,11 @@
     const res = await fetch(`/diff/${idA}/${idB}`)
     if (!res.ok) return alert('Diff konnte nicht geladen werden')
     const diff = await res.json()
-    renderDiff(diff)
-    document.getElementById('tab-btn-diff').style.display = ''
-    switchTab('diff')
+    currentDiffIds = { idA, idB }
+    renderDiffResult(diff)
   }
 
-  function renderDiff(d) {
+  function renderDiffResult(d) {
     const sign = n => n > 0 ? `+${n}` : `${n}`
     const cls  = n => n > 0 ? 'diff-pos' : n < 0 ? 'diff-neg' : 'diff-zero'
 
@@ -461,9 +475,14 @@
         </li>`
       ).join('')}</ul></div>` : ''
 
-    document.getElementById('tab-diff').innerHTML = `
+    const result = document.getElementById('diff-result')
+    result.innerHTML = `
+      <div class="export-bar" style="margin-bottom:1rem">
+        <button class="btn-export" id="btn-diff-pdf" onclick="exportDiffPdf()">↓ PDF</button>
+      </div>
       <p style="font-size:0.8rem;color:#555;margin-bottom:1rem">${escHtml(d.urlA)} → ${escHtml(d.urlB)}</p>
       ${scoreHtml}${weakHtml}${pagesHtml}${changesHtml}`
+    result.classList.add('visible')
   }
 
   // ── Render ───────────────────────────────────────────
@@ -472,9 +491,9 @@
     renderOverview(r)
     renderSeo(r)
     renderMobile(r)
+    renderDiffSelector()
     document.getElementById('report').style.display = 'block'
     document.getElementById('export-bar').style.display = 'flex'
-    document.getElementById('tab-btn-diff').style.display = 'none'
     switchTab('overview')
   }
 
@@ -639,6 +658,17 @@
     btn.textContent = '…'
     btn.disabled = true
     window.open(`/export-pdf/${currentReport.id}`, '_blank')
+    setTimeout(() => { btn.textContent = '↓ PDF'; btn.disabled = false }, 2000)
+  }
+
+  // ── E2 — Diff-PDF Export ──────────────────────────────
+  async function exportDiffPdf() {
+    const { idA, idB } = currentDiffIds
+    if (!idA || !idB) return
+    const btn = document.getElementById('btn-diff-pdf')
+    btn.textContent = '…'
+    btn.disabled = true
+    window.open(`/export-pdf-diff/${idA}/${idB}`, '_blank')
     setTimeout(() => { btn.textContent = '↓ PDF'; btn.disabled = false }, 2000)
   }
 
