@@ -1,5 +1,77 @@
 [
   {
+    "id": "1773517283217",
+    "url": "https://www.wind-check.de/",
+    "hostname": "www.wind-check.de",
+    "siteTitle": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+    "siteDescription": null,
+    "date": "2026-03-14T19:42:39.692Z",
+    "score": 70,
+    "pageCount": 20,
+    "reportPath": "reports/www.wind-check.de/1773517283217.json"
+  },
+  {
+    "id": "1773516271070",
+    "url": "https://acidmonk.unlock-your-song.de/",
+    "hostname": "acidmonk.unlock-your-song.de",
+    "siteTitle": "ACID MONK Hook Generator",
+    "siteDescription": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+    "date": "2026-03-14T19:25:18.279Z",
+    "score": 80,
+    "pageCount": 20,
+    "reportPath": "reports/acidmonk.unlock-your-song.de/1773516271070.json"
+  },
+  {
+    "id": "1773515103307",
+    "url": "https://acidmonk.unlock-your-song.de/",
+    "hostname": "acidmonk.unlock-your-song.de",
+    "siteTitle": "ACID MONK Hook Generator",
+    "siteDescription": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+    "date": "2026-03-14T19:06:00.128Z",
+    "score": 60,
+    "pageCount": 20,
+    "reportPath": "reports/acidmonk.unlock-your-song.de/1773515103307.json"
+  },
+  {
+    "id": "1773514773156",
+    "url": "https://acidmonk.unlock-your-song.de/",
+    "hostname": "acidmonk.unlock-your-song.de",
+    "siteTitle": "ACID MONK Hook Generator",
+    "siteDescription": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+    "date": "2026-03-14T19:00:14.381Z",
+    "score": 70,
+    "pageCount": 20,
+    "reportPath": "reports\\acidmonk.unlock-your-song.de\\1773514773156.json"
+  },
+  {
+    "id": "1773513908962",
+    "url": "https://www.wind-check.de/",
+    "date": "2026-03-14T18:46:22.807Z",
+    "score": 70,
+    "pageCount": 20
+  },
+  {
+    "id": "1773513611592",
+    "url": "https://www.wind-check.de/",
+    "date": "2026-03-14T18:41:27.873Z",
+    "score": 90,
+    "pageCount": 20
+  },
+  {
+    "id": "1773513381230",
+    "url": "https://wind-inspector.runitfast.xyz/",
+    "date": "2026-03-14T18:36:23.877Z",
+    "score": 30,
+    "pageCount": 3
+  },
+  {
+    "id": "1773513299227",
+    "url": "https://dreamedit.runitfast.xyz/",
+    "date": "2026-03-14T18:35:03.058Z",
+    "score": 70,
+    "pageCount": 2
+  },
+  {
     "id": "1773512606073",
     "url": "https://dreamedit.runitfast.xyz/",
     "date": "2026-03-14T18:23:30.666Z",
