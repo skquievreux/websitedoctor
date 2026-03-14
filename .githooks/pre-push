@@ -1,0 +1,32 @@
+#!/bin/sh
+# pre-push: warn if a rebase on origin/main is needed before pushing
+
+BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+# Only check feature branches
+if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "master" ]; then
+  exit 0
+fi
+
+# Fetch silently so we have up-to-date remote refs
+git fetch origin main --quiet 2>/dev/null
+
+# Check whether origin/main has commits not yet in this branch
+BEHIND=$(git rev-list --count HEAD..origin/main 2>/dev/null)
+
+if [ "$BEHIND" = "" ]; then
+  # origin/main doesn't exist yet — nothing to rebase on
+  exit 0
+fi
+
+if [ "$BEHIND" -gt 0 ]; then
+  echo ""
+  echo "  ⚠  Branch '$BRANCH' is $BEHIND commit(s) behind origin/main."
+  echo "     Rebase before pushing to keep history clean:"
+  echo ""
+  echo "       git rebase origin/main"
+  echo ""
+  echo "  Push blocked. Rebase first, then push again."
+  echo ""
+  exit 1
+fi

@@ -11,6 +11,7 @@
     /* ── Header ── */
     header { padding: 1rem 1.5rem; border-bottom: 1px solid #222; display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
     header h1 { font-size: 1.2rem; font-weight: 700; color: #fff; white-space: nowrap; }
+    .version-badge { font-size: 0.65rem; color: #444; margin-left: 0.5rem; font-weight: 400; }
     .input-row { display: flex; gap: 0.5rem; flex: 1; }
     .input-row input { flex: 1; padding: 0.6rem 0.9rem; border-radius: 7px; border: 1px solid #333; background: #1a1a1f; color: #e1e1e6; font-size: 0.95rem; outline: none; }
     .input-row input:focus { border-color: #6c6cff; }
@@ -55,6 +56,13 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
+    /* ── Site-Header Card ── */
+    .site-header-card { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; }
+    .site-header-card .sh-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+    .site-header-card .sh-url { font-size: 0.82rem; color: #6c6cff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .site-header-card .sh-url:hover { text-decoration: underline; color: #8a8aff; }
+    .site-header-card .sh-desc { font-size: 0.82rem; color: #888; margin-top: 0.5rem; line-height: 1.5; }
+
     /* ── Score cards ── */
     .scores-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
     .score-card { flex: 1; min-width: 140px; text-align: center; padding: 1.25rem; background: #1a1a1f; border-radius: 10px; border: 1px solid #333; }
@@ -74,39 +82,117 @@
     /* ── Pages grid ── */
     .pages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
     .page-card { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
-    .page-card img { width: 100%; height: 130px; object-fit: cover; object-position: top; display: block; background: #111; }
+    .page-card .thumb-wrap { position: relative; height: 130px; overflow: hidden; background: #111; cursor: zoom-in; }
+    .page-card .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: opacity 0.2s; }
+    .page-card .thumb-wrap:hover img { opacity: 0.85; }
+    .page-card .thumb-wrap .zoom-hint { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; font-size: 1.5rem; transition: opacity 0.2s; }
+    .page-card .thumb-wrap:hover .zoom-hint { opacity: 1; }
     .page-card .no-img { height: 130px; display: flex; align-items: center; justify-content: center; color: #333; font-size: 0.75rem; background: #111; }
     .page-card .pi { padding: 0.7rem; }
     .page-card .pi-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: #666; }
     .page-card .pi-title { font-size: 0.82rem; font-weight: 600; margin: 0.15rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .page-card .pi-url { font-size: 0.72rem; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-card .pi-url a { font-size: 0.72rem; color: #6c6cff; text-decoration: none; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .page-card .pi-url a:hover { text-decoration: underline; }
     .page-card .pi-meta { display: flex; gap: 0.35rem; margin-top: 0.4rem; flex-wrap: wrap; }
     .badge { font-size: 0.68rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 600; }
     .b-ok { background: #14532d; color: #4ade80; } .b-err { background: #450a0a; color: #f87171; }
     .b-ms { background: #1e1b4b; color: #a5b4fc; } .b-warn { background: #422006; color: #fb923c; }
 
+    /* ── Timing bars ── */
+    .timing-bars { margin-top: 0.45rem; }
+    .t-row { display: flex; align-items: center; gap: 0.3rem; font-size: 0.64rem; color: #777; margin-bottom: 0.12rem; }
+    .t-row .t-label { width: 42px; flex-shrink: 0; }
+    .t-row .t-ms { width: 38px; text-align: right; flex-shrink: 0; }
+    .t-bar-wrap { flex: 1; background: #2a2a2f; border-radius: 2px; height: 4px; overflow: hidden; }
+    .t-bar { height: 100%; background: #6c6cff; border-radius: 2px; }
+    .t-bar.slow { background: #fb923c; }
+    .t-bar.bad  { background: #f87171; }
+
     /* ── SEO issue list ── */
-    .seo-page { margin-bottom: 0.75rem; padding: 0.75rem 1rem; background: #151518; border-radius: 8px; border: 1px solid #222; }
-    .seo-page-url { font-size: 0.78rem; color: #888; margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .seo-issue { font-size: 0.82rem; padding: 0.2rem 0; display: flex; gap: 0.4rem; }
-    .seo-issue .icon { flex-shrink: 0; }
+    .seo-page { margin-bottom: 0.75rem; padding: 0.75rem 1rem; background: #151518; border-radius: 8px; border: 1px solid #222; display: flex; gap: 1rem; align-items: flex-start; }
+    .seo-thumb-wrap { flex-shrink: 0; width: 90px; }
+    .seo-thumb { width: 90px; border-radius: 5px; border: 1px solid #333; cursor: zoom-in; display: block; }
+    .seo-thumb:hover { border-color: #6c6cff; }
+    .seo-checks { flex: 1; min-width: 0; }
+    .seo-page-url { font-size: 0.78rem; margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .seo-page-url a { color: #6c6cff; text-decoration: none; }
+    .seo-page-url a:hover { text-decoration: underline; }
+    .seo-issue { font-size: 0.82rem; padding: 0.2rem 0; display: flex; gap: 0.4rem; align-items: flex-start; }
+    .seo-issue .icon { flex-shrink: 0; margin-top: 0.05rem; }
+    .seo-value { display: block; font-size: 0.74rem; color: #666; font-style: italic; margin-top: 0.15rem; }
+    .seo-suggestion { display: block; font-size: 0.74rem; color: #fb923c; font-weight: 600; margin-top: 0.1rem; }
+    .seo-js-errors { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #2a2a2a; }
+    .seo-js-err { font-size: 0.75rem; color: #f87171; padding: 0.15rem 0; display: flex; gap: 0.35rem; }
+    .seo-js-err-type { font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 3px; background: #450a0a; flex-shrink: 0; }
 
     /* ── Mobile ── */
     .mobile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
     .mobile-card { background: #1a1a1f; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
-    .mobile-card img { width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; background: #111; }
+    .mobile-card .thumb-wrap { height: 180px; overflow: hidden; cursor: zoom-in; background: #111; position: relative; }
+    .mobile-card .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: opacity 0.2s; }
+    .mobile-card .thumb-wrap:hover img { opacity: 0.85; }
+    .mobile-card .thumb-wrap .zoom-hint { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; font-size: 1.5rem; transition: opacity 0.2s; }
+    .mobile-card .thumb-wrap:hover .zoom-hint { opacity: 1; }
     .mobile-card .mi { padding: 0.6rem; }
     .mobile-card .mi-title { font-size: 0.78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .mobile-card .mi-url { font-size: 0.7rem; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.15rem; }
 
+    /* ── Lightbox ── */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
+    .lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; color: #888; font-size: 1.8rem; cursor: pointer; line-height: 1; }
+    .lightbox-close:hover { color: #fff; }
+
     #report { display: none; }
     .welcome { color: #444; text-align: center; margin-top: 4rem; font-size: 0.95rem; line-height: 1.8; }
+
+    /* ── Export-Buttons ── */
+    .export-bar { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .btn-export { padding: 0.4rem 0.9rem; border-radius: 6px; border: 1px solid #333; background: #1a1a1f; color: #aaa; font-size: 0.8rem; cursor: pointer; }
+    .btn-export:hover { border-color: #6c6cff; color: #fff; }
+
+    /* ── Print / PDF ── */
+    @media print {
+      aside, header .input-row, .export-bar, .tabs { display: none !important; }
+      body { background: #fff; color: #000; }
+      .score-card, .card { border: 1px solid #ccc; background: #fff; }
+      .score-good { color: #166534; }
+      .score-mid  { color: #92400e; }
+      .score-bad  { color: #991b1b; }
+      main { overflow: visible; }
+      .layout { display: block; }
+      .page-card { break-inside: avoid; }
+    }
+
+    /* ── SEO-Gewichts-Badge ── */
+    .seo-weight { font-size: 0.62rem; padding: 0.1rem 0.3rem; border-radius: 3px; background: #1e1b4b; color: #818cf8; margin-left: 0.3rem; flex-shrink: 0; }
+    .seo-skipped { font-size: 0.74rem; color: #555; font-style: italic; }
+
+    /* ── Sidebar Compare-Button ── */
+    .compare-btn { margin: 0.5rem 0.75rem; padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid #333; background: #1a1a1f; color: #888; font-size: 0.75rem; cursor: pointer; width: calc(100% - 1.5rem); }
+    .compare-btn:hover { border-color: #6c6cff; color: #fff; }
+    .compare-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* ── Diff-Tab ── */
+    .diff-score { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 1.4rem; font-weight: 800; }
+    .diff-pos { color: #4ade80; } .diff-neg { color: #f87171; } .diff-zero { color: #888; }
+    .diff-section { margin-bottom: 1rem; }
+    .diff-section h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 0.4rem; }
+    .diff-list li { font-size: 0.85rem; padding: 0.2rem 0; display: flex; gap: 0.4rem; }
+    .diff-empty { color: #555; font-size: 0.85rem; font-style: italic; }
   </style>
 </head>
 <body>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <header>
-  <h1>🩺 Website Doctor</h1>
+  <h1>🩺 Website Doctor<span class="version-badge" id="ver"></span></h1>
   <div class="input-row">
     <input type="url" id="url-input" placeholder="https://example.com" />
     <button id="check-btn" onclick="startCheck()">Prüfen</button>
@@ -117,6 +203,7 @@
   <aside>
     <div class="sidebar-head">Verlauf</div>
     <div id="history-list"><div class="empty">Noch keine Checks</div></div>
+    <button class="compare-btn" id="compare-btn" onclick="openCompareModal()" disabled>Vergleichen</button>
   </aside>
 
   <main>
@@ -128,14 +215,21 @@
     <div id="error-box"></div>
 
     <div id="report">
+      <div class="export-bar" id="export-bar" style="display:none">
+        <button class="btn-export" onclick="exportJson()">↓ JSON</button>
+        <button class="btn-export" onclick="exportCsv()">↓ CSV</button>
+        <button class="btn-export" id="btn-pdf" onclick="exportPdf()">↓ PDF</button>
+      </div>
       <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('overview')">Übersicht</button>
         <button class="tab-btn" onclick="switchTab('seo')">SEO</button>
         <button class="tab-btn" onclick="switchTab('mobile')">Mobile</button>
+        <button class="tab-btn" id="tab-btn-diff" onclick="switchTab('diff')" style="display:none">Vergleich</button>
       </div>
       <div id="tab-overview" class="tab-panel active"></div>
       <div id="tab-seo"      class="tab-panel"></div>
       <div id="tab-mobile"   class="tab-panel"></div>
+      <div id="tab-diff"     class="tab-panel"></div>
     </div>
 
     <div class="welcome" id="welcome">URL eingeben und auf <strong>Prüfen</strong> klicken<br>oder einen Eintrag aus dem Verlauf wählen</div>
@@ -145,19 +239,34 @@
 <script>
   let pollInterval = null
   let activeHistoryId = null
+  let currentReport = null
+  let historyList = []
+
+  // ── Lightbox ─────────────────────────────────────────
+  function openLightbox(src) {
+    document.getElementById('lb-img').src = src
+    document.getElementById('lightbox').classList.add('open')
+    document.body.style.overflow = 'hidden'
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open')
+    document.body.style.overflow = ''
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox() })
 
   // ── History ──────────────────────────────────────────
   async function loadHistory() {
     const res = await fetch('/history')
-    const list = await res.json()
+    historyList = await res.json()
+    document.getElementById('compare-btn').disabled = historyList.length < 2
     const el = document.getElementById('history-list')
-    if (!list.length) { el.innerHTML = '<div class="empty">Noch keine Checks</div>'; return }
-    el.innerHTML = list.map(h => {
+    if (!historyList.length) { el.innerHTML = '<div class="empty">Noch keine Checks</div>'; return }
+    el.innerHTML = historyList.map(h => {
       const scoreClass = h.score >= 70 ? 'good' : h.score >= 40 ? 'mid' : 'bad'
       const date = new Date(h.date).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })
-      const domain = (() => { try { return new URL(h.url).hostname } catch { return h.url } })()
+      const label = h.siteTitle || h.hostname || (() => { try { return new URL(h.url).hostname } catch { return h.url } })()
       return `<div class="history-item${h.id === activeHistoryId ? ' active' : ''}" onclick="loadReport('${h.id}')">
-        <div class="h-url">${domain}</div>
+        <div class="h-url">${escHtml(label)}</div>
         <div class="h-date">${date}</div>
         <div class="h-badges">
           <span class="h-score ${scoreClass}">${h.score}</span>
@@ -212,6 +321,7 @@
     const res = await fetch(`/report/${id}`)
     if (!res.ok) return
     const report = await res.json()
+    currentReport = report
     hideStatus()
     activeHistoryId = id
     loadHistory()
@@ -220,47 +330,199 @@
 
   // ── Tabs ─────────────────────────────────────────────
   function switchTab(name) {
-    document.querySelectorAll('.tab-btn').forEach((b, i) => {
-      const names = ['overview', 'seo', 'mobile']
-      b.classList.toggle('active', names[i] === name)
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      const id = b.getAttribute('onclick')?.match(/'(\w+)'/)?.[1]
+      b.classList.toggle('active', id === name)
     })
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'))
     document.getElementById('tab-' + name).classList.add('active')
   }
 
-  // ── Render ───────────────────────────────────────────
+  // ── Helpers ──────────────────────────────────────────
   function scoreClass(n) { return n >= 70 ? 'score-good' : n >= 40 ? 'score-mid' : 'score-bad' }
 
+  function escHtml(str) {
+    return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+  }
+
+  function thumbHtml(screenshotPath, height = 130) {
+    if (!screenshotPath) return `<div class="no-img" style="height:${height}px">Kein Screenshot</div>`
+    const src = `/${screenshotPath}`
+    return `<div class="thumb-wrap" style="height:${height}px" onclick="openLightbox('${src}')">
+      <img src="${src}" loading="lazy" alt="">
+      <span class="zoom-hint">🔍</span>
+    </div>`
+  }
+
+  // ── C2 — Export ──────────────────────────────────────
+  function downloadBlob(content, filename, mime) {
+    const blob = new Blob([content], { type: mime })
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: filename })
+    a.click(); URL.revokeObjectURL(a.href)
+  }
+
+  function exportJson() {
+    if (!currentReport) return
+    downloadBlob(JSON.stringify(currentReport, null, 2), `report_${currentReport.id}.json`, 'application/json')
+  }
+
+  function exportCsv() {
+    if (!currentReport) return
+    const rows = [['URL', 'Status', 'Typ', 'Ladezeit (ms)', 'JS-Fehler (first-party)']]
+    currentReport.pages.forEach(p => rows.push([
+      p.url, p.statusCode ?? '', p.type ?? '', p.loadTime ?? '',
+      p.jsErrors?.filter(e => e.firstParty).length ?? 0
+    ]))
+    const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(';')).join('\n')
+    downloadBlob(csv, `report_${currentReport.id}.csv`, 'text/csv')
+  }
+
+  // ── C1 — Diff/Vergleich ───────────────────────────────
+  function openCompareModal() {
+    if (historyList.length < 2) return
+    const opts = historyList.map((h, i) =>
+      `<option value="${escHtml(h.id)}">${escHtml(h.siteTitle || h.hostname || h.url)} – ${new Date(h.date).toLocaleDateString('de-DE')} (${h.score})</option>`
+    ).join('')
+    const modal = document.createElement('div')
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:2000;display:flex;align-items:center;justify-content:center'
+    modal.innerHTML = `<div style="background:#1a1a1f;border:1px solid #333;border-radius:12px;padding:1.5rem;min-width:340px">
+      <h3 style="font-size:0.9rem;margin-bottom:1rem;color:#fff">Zwei Reports vergleichen</h3>
+      <label style="font-size:0.8rem;color:#888">Report A (älter)</label>
+      <select id="sel-a" style="width:100%;margin:0.3rem 0 0.75rem;padding:0.5rem;background:#111;border:1px solid #333;color:#eee;border-radius:6px">${opts}</select>
+      <label style="font-size:0.8rem;color:#888">Report B (neuer)</label>
+      <select id="sel-b" style="width:100%;margin:0.3rem 0 1rem;padding:0.5rem;background:#111;border:1px solid #333;color:#eee;border-radius:6px">${opts}</select>
+      <div style="display:flex;gap:0.5rem;justify-content:flex-end">
+        <button onclick="this.closest('div[style]').remove()" style="padding:0.45rem 1rem;border-radius:6px;border:1px solid #333;background:none;color:#888;cursor:pointer">Abbrechen</button>
+        <button onclick="runDiff(document.getElementById('sel-a').value,document.getElementById('sel-b').value);this.closest('div[style]').remove()" style="padding:0.45rem 1rem;border-radius:6px;border:none;background:#6c6cff;color:#fff;cursor:pointer;font-weight:600">Vergleichen</button>
+      </div>
+    </div>`
+    document.body.appendChild(modal)
+    // Vorauswahl: zweiter und erster Eintrag
+    if (historyList.length >= 2) {
+      document.getElementById('sel-a').value = historyList[1].id
+      document.getElementById('sel-b').value = historyList[0].id
+    }
+  }
+
+  async function runDiff(idA, idB) {
+    if (idA === idB) return alert('Bitte zwei verschiedene Reports wählen')
+    const res = await fetch(`/diff/${idA}/${idB}`)
+    if (!res.ok) return alert('Diff konnte nicht geladen werden')
+    const diff = await res.json()
+    renderDiff(diff)
+    document.getElementById('tab-btn-diff').style.display = ''
+    switchTab('diff')
+  }
+
+  function renderDiff(d) {
+    const sign = n => n > 0 ? `+${n}` : `${n}`
+    const cls  = n => n > 0 ? 'diff-pos' : n < 0 ? 'diff-neg' : 'diff-zero'
+
+    const scoreHtml = `<div class="card" style="margin-bottom:1rem">
+      <h3>Score-Änderung</h3>
+      <div style="display:flex;gap:2rem;flex-wrap:wrap;padding:0.5rem 0">
+        <div><div style="font-size:0.75rem;color:#555;margin-bottom:0.2rem">Gesamt-Score</div>
+          <span class="diff-score ${cls(d.scoreChange)}">${sign(d.scoreChange)}</span></div>
+        <div><div style="font-size:0.75rem;color:#555;margin-bottom:0.2rem">SEO-Score</div>
+          <span class="diff-score ${cls(d.seoScoreChange)}">${sign(d.seoScoreChange)}</span></div>
+      </div>
+    </div>`
+
+    const weakHtml = `<div class="two-col">
+      <div class="card diff-section"><h4>Neue Schwächen</h4>
+        ${d.newWeaknesses.length ? `<ul class="diff-list">${d.newWeaknesses.map(w=>`<li><span class="dot-red">✗</span>${escHtml(w)}</li>`).join('')}</ul>`
+          : '<p class="diff-empty">Keine neuen Schwächen</p>'}
+      </div>
+      <div class="card diff-section"><h4>Behobene Schwächen</h4>
+        ${d.resolvedWeaknesses.length ? `<ul class="diff-list">${d.resolvedWeaknesses.map(w=>`<li><span class="dot-green">✓</span>${escHtml(w)}</li>`).join('')}</ul>`
+          : '<p class="diff-empty">Keine behobenen Schwächen</p>'}
+      </div>
+    </div>`
+
+    const pagesHtml = `<div class="two-col">
+      <div class="card diff-section"><h4>Neue Seiten (${d.newPages.length})</h4>
+        ${d.newPages.length ? `<ul class="diff-list">${d.newPages.map(u=>`<li><span class="dot-green">+</span>${escHtml(u)}</li>`).join('')}</ul>`
+          : '<p class="diff-empty">Keine neuen Seiten</p>'}
+      </div>
+      <div class="card diff-section"><h4>Entfernte Seiten (${d.removedPages.length})</h4>
+        ${d.removedPages.length ? `<ul class="diff-list">${d.removedPages.map(u=>`<li><span class="dot-red">-</span>${escHtml(u)}</li>`).join('')}</ul>`
+          : '<p class="diff-empty">Keine entfernten Seiten</p>'}
+      </div>
+    </div>`
+
+    const changesHtml = d.pageChanges.length ? `<div class="card diff-section"><h4>Seiten-Änderungen</h4>
+      <ul class="diff-list" style="flex-direction:column;gap:0">${d.pageChanges.map(c =>
+        `<li style="flex-direction:column;align-items:flex-start;padding:0.4rem 0;border-bottom:1px solid #1a1a1a">
+          <span style="font-size:0.8rem;color:#aaa">${escHtml(c.url)}</span>
+          <span style="font-size:0.75rem;color:#666;margin-top:0.2rem">
+            Ladezeit: <span class="${cls(c.loadTimeChange)}">${sign(c.loadTimeChange)}ms</span>
+            ${c.jsErrorsChange !== 0 ? `  JS-Fehler: <span class="${cls(c.jsErrorsChange)}">${sign(c.jsErrorsChange)}</span>` : ''}
+          </span>
+        </li>`
+      ).join('')}</ul></div>` : ''
+
+    document.getElementById('tab-diff').innerHTML = `
+      <p style="font-size:0.8rem;color:#555;margin-bottom:1rem">${escHtml(d.urlA)} → ${escHtml(d.urlB)}</p>
+      ${scoreHtml}${weakHtml}${pagesHtml}${changesHtml}`
+  }
+
+  // ── Render ───────────────────────────────────────────
   function renderReport(r) {
     document.getElementById('welcome').style.display = 'none'
     renderOverview(r)
     renderSeo(r)
     renderMobile(r)
     document.getElementById('report').style.display = 'block'
+    document.getElementById('export-bar').style.display = 'flex'
+    document.getElementById('tab-btn-diff').style.display = 'none'
     switchTab('overview')
   }
 
   function renderOverview(r) {
     const seoScore = r.seo?.score ?? '–'
     const mobileScore = r.mobile?.score ?? '–'
-    const strengths = r.strengths.map(s => `<li><span class="dot-green">✓</span>${s}</li>`).join('') || '<li style="color:#555">–</li>'
-    const weaknesses = r.weaknesses.map(w => `<li><span class="dot-red">✗</span>${w}</li>`).join('') || '<li style="color:#555">–</li>'
-    const actions = r.actions.map(a => `<li><span class="dot-blue">→</span>${a}</li>`).join('') || '<li style="color:#555">Keine Maßnahmen</li>'
+
+    // Site-Header
+    const title = escHtml(r.siteTitle || r.hostname || r.url)
+    const desc = r.siteDescription ? `<p class="sh-desc">${escHtml(r.siteDescription)}</p>` : ''
+    const siteHeader = `<div class="site-header-card">
+      <div class="sh-title">${title}</div>
+      <a class="sh-url" href="${escHtml(r.url)}" target="_blank" rel="noopener">🔗 ${escHtml(r.url)}</a>
+      ${desc}
+    </div>`
+
+    const strengths = r.strengths.map(s => `<li><span class="dot-green">✓</span>${escHtml(s)}</li>`).join('') || '<li style="color:#555">–</li>'
+    const weaknesses = r.weaknesses.map(w => `<li><span class="dot-red">✗</span>${escHtml(w)}</li>`).join('') || '<li style="color:#555">–</li>'
+    const actions = r.actions.map(a => `<li><span class="dot-blue">→</span>${escHtml(a)}</li>`).join('') || '<li style="color:#555">Keine Maßnahmen</li>'
+
     const pages = r.pages.map(p => {
       const badge = p.statusCode === 200 ? `<span class="badge b-ok">${p.statusCode}</span>` : `<span class="badge b-err">${p.statusCode ?? '?'}</span>`
       const ms = p.loadTime ? `<span class="badge b-ms">${p.loadTime}ms</span>` : ''
-      const img = p.screenshotPath
-        ? `<img src="/${p.screenshotPath}" alt="${p.title}" loading="lazy">`
-        : `<div class="no-img">Kein Screenshot</div>`
-      return `<div class="page-card">${img}<div class="pi">
-        <div class="pi-type">${p.type}</div>
-        <div class="pi-title">${p.title || '(kein Titel)'}</div>
-        <div class="pi-url">${p.url}</div>
-        <div class="pi-meta">${badge}${ms}</div>
-      </div></div>`
+      const jsErrBadge = p.jsErrors?.some(e => e.firstParty) ? `<span class="badge b-err">JS ⚠ ${p.jsErrors.filter(e=>e.firstParty).length}</span>` : ''
+
+      const timingBars = p.timing ? (() => {
+        const max = Math.max(p.timing.fullyLoaded || 1, 1000)
+        const cls = t => t > 2000 ? 'bad' : t > 800 ? 'slow' : ''
+        const bar = (lbl, val) => val != null
+          ? `<div class="t-row"><span class="t-label">${lbl}</span><div class="t-bar-wrap"><div class="t-bar ${cls(val)}" style="width:${Math.min((val/max)*100,100)}%"></div></div><span class="t-ms">${val}ms</span></div>`
+          : ''
+        return `<div class="timing-bars">${bar('TTFB', p.timing.ttfb)}${bar('DOM', p.timing.domReady)}${bar('Geladen', p.timing.fullyLoaded)}</div>`
+      })() : ''
+
+      return `<div class="page-card">
+        ${thumbHtml(p.screenshotPath, 130)}
+        <div class="pi">
+          <div class="pi-type">${escHtml(p.type)}</div>
+          <div class="pi-title">${escHtml(p.title || '(kein Titel)')}</div>
+          <div class="pi-url"><a href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.url)}</a></div>
+          <div class="pi-meta">${badge}${ms}${jsErrBadge}</div>
+          ${timingBars}
+        </div>
+      </div>`
     }).join('')
 
     document.getElementById('tab-overview').innerHTML = `
+      ${siteHeader}
       <div class="scores-row">
         <div class="score-card"><div class="val ${scoreClass(r.score)}">${r.score}</div><div class="lbl">Gesamt · ${r.pageCount} Seiten</div></div>
         <div class="score-card"><div class="val ${scoreClass(seoScore)}">${seoScore}</div><div class="lbl">SEO-Score</div></div>
@@ -279,18 +541,56 @@
       document.getElementById('tab-seo').innerHTML = '<p style="color:#555;padding:1rem">Keine SEO-Daten in diesem Report.</p>'
       return
     }
-    const issues = (r.seo.pages || []).map(p => {
-      const items = (p.issues || []).map(i =>
-        `<div class="seo-issue"><span class="icon">${i.pass ? '✅' : '⚠️'}</span><span>${i.label}</span></div>`
-      ).join('')
-      return `<div class="seo-page"><div class="seo-page-url">${p.url}</div>${items}</div>`
+
+    const pageBlocks = (r.seo.pages || []).map(p => {
+      const pageData = r.pages?.find(pg => pg.url === p.url)
+      const jsErrors = pageData?.jsErrors ?? []
+      const firstParty = jsErrors.filter(e => e.firstParty)
+      const thirdParty = jsErrors.filter(e => !e.firstParty)
+
+      const thumb = pageData?.screenshotPath
+        ? `<div class="seo-thumb-wrap"><img class="seo-thumb" src="/${pageData.screenshotPath}" loading="lazy" onclick="openLightbox('/${pageData.screenshotPath}')" alt=""></div>`
+        : ''
+
+      const items = (p.issues || []).map(i => {
+        if (i.skipped) {
+          return `<div class="seo-issue"><span class="icon">⏭</span><span class="seo-skipped">${escHtml(i.label)} – übersprungen (nicht indexiert)</span></div>`
+        }
+        const weightBadge = i.weight ? `<span class="seo-weight">[${i.weight}]</span>` : ''
+        const detail = !i.pass
+          ? `${i.value ? `<span class="seo-value">${escHtml(i.value)}</span>` : ''}${i.suggestion ? `<span class="seo-suggestion">→ ${escHtml(i.suggestion)}</span>` : ''}`
+          : ''
+        return `<div class="seo-issue"><span class="icon">${i.pass ? '✅' : '⚠️'}</span><span>${escHtml(i.label)}${weightBadge}${detail}</span></div>`
+      }).join('')
+
+      const jsBlock = jsErrors.length ? `<div class="seo-js-errors">
+        ${firstParty.length ? `<div style="font-size:0.72rem;color:#f87171;font-weight:600;margin-bottom:0.25rem">JS-Fehler – First Party (${firstParty.length})</div>${firstParty.map(e =>
+          `<div class="seo-js-err"><span class="seo-js-err-type">${escHtml(e.type)}</span><span>${escHtml(e.message)}</span></div>`
+        ).join('')}` : ''}
+        ${thirdParty.length ? `<div style="font-size:0.72rem;color:#555;font-weight:600;margin:0.35rem 0 0.2rem">Third Party – ignoriert (${thirdParty.length})</div>${thirdParty.map(e =>
+          `<div class="seo-js-err" style="opacity:0.45"><span class="seo-js-err-type">${escHtml(e.type)}</span><span>${escHtml(e.message)}</span></div>`
+        ).join('')}` : ''}
+      </div>` : ''
+
+      const nonIndexBadge = p.indexable === false
+        ? '<span style="font-size:0.68rem;padding:0.1rem 0.4rem;border-radius:3px;background:#1a1a1a;color:#555;margin-left:0.5rem">nicht indexiert – Checks übersprungen</span>'
+        : ''
+
+      return `<div class="seo-page">
+        ${thumb}
+        <div class="seo-checks">
+          <div class="seo-page-url"><a href="${escHtml(p.url)}" target="_blank" rel="noopener">${escHtml(p.url)}</a>${nonIndexBadge}</div>
+          ${items}${jsBlock}
+        </div>
+      </div>`
     }).join('')
+
     document.getElementById('tab-seo').innerHTML = `
       <div class="score-card" style="text-align:center;margin-bottom:1.5rem">
         <div class="val ${scoreClass(r.seo.score)}">${r.seo.score}</div>
         <div class="lbl">SEO-Score</div>
       </div>
-      <div class="card"><h3>Checks pro Seite</h3>${issues || '<p style="color:#555">Keine Daten</p>'}</div>`
+      <div class="card"><h3>Checks pro Seite</h3>${pageBlocks || '<p style="color:#555">Keine Daten</p>'}</div>`
   }
 
   function renderMobile(r) {
@@ -299,16 +599,16 @@
       return
     }
     const checks = (r.mobile.checks || []).map(c =>
-      `<li><span class="${c.pass ? 'dot-green' : 'dot-red'}">${c.pass ? '✓' : '✗'}</span>${c.label}</li>`
+      `<li><span class="${c.pass ? 'dot-green' : 'dot-red'}">${c.pass ? '✓' : '✗'}</span>${escHtml(c.label)}</li>`
     ).join('')
     const pages = (r.mobile.pages || []).map(p => {
-      const img = p.screenshotPath
-        ? `<img src="/${p.screenshotPath}" alt="${p.title}" loading="lazy">`
-        : `<div class="no-img" style="height:180px">Kein Screenshot</div>`
-      return `<div class="mobile-card">${img}<div class="mi">
-        <div class="mi-title">${p.title || '(kein Titel)'}</div>
-        <div class="mi-url">${p.url}</div>
-      </div></div>`
+      return `<div class="mobile-card">
+        ${thumbHtml(p.screenshotPath, 180)}
+        <div class="mi">
+          <div class="mi-title">${escHtml(p.title || '(kein Titel)')}</div>
+          <div class="mi-url">${escHtml(p.url)}</div>
+        </div>
+      </div>`
     }).join('')
 
     document.getElementById('tab-mobile').innerHTML = `
@@ -332,7 +632,23 @@
     el.style.display = 'block'
   }
 
+  // ── E1 — PDF Export ──────────────────────────────────
+  async function exportPdf() {
+    if (!currentReport) return
+    const btn = document.getElementById('btn-pdf')
+    btn.textContent = '…'
+    btn.disabled = true
+    window.open(`/export-pdf/${currentReport.id}`, '_blank')
+    setTimeout(() => { btn.textContent = '↓ PDF'; btn.disabled = false }, 2000)
+  }
+
   document.getElementById('url-input').addEventListener('keydown', e => { if (e.key === 'Enter') startCheck() })
+
+  fetch('/version').then(r => r.json()).then(({ version }) => {
+    document.getElementById('ver').textContent = `v${version}`
+    console.log(`%c🩺 Website Doctor v${version}`, 'color:#6c6cff;font-weight:bold;font-size:14px')
+    console.log('%cv2.0.0: Gewichteter SEO-Score · Malus-Score · isIndexablePage · Diff · Export · Worker · Webhook', 'color:#888')
+  })
 
   loadHistory()
 </script>

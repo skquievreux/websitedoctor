@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Doctor – Report</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #111; font-size: 11pt; line-height: 1.5; }
+
+    /* ── Header ── */
+    .report-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #111; }
+    .report-header h1 { font-size: 1.4rem; font-weight: 800; }
+    .report-header .meta { font-size: 0.8rem; color: #555; margin-top: 0.2rem; }
+    .report-header .meta a { color: #2563eb; text-decoration: none; }
+    .score-circle { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; flex-shrink: 0; border: 3px solid currentColor; }
+    .score-good { color: #166534; } .score-mid { color: #92400e; } .score-bad { color: #991b1b; }
+
+    /* ── Scores-Row ── */
+    .scores-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .score-tile { flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 0.8rem 1rem; text-align: center; }
+    .score-tile .val { font-size: 2rem; font-weight: 800; }
+    .score-tile .lbl { font-size: 0.72rem; color: #777; margin-top: 0.15rem; }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 1.5rem; break-inside: avoid; }
+    .section h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #777; margin-bottom: 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── Lists ── */
+    ul { list-style: none; }
+    ul li { padding: 0.2rem 0; font-size: 0.88rem; display: flex; gap: 0.4rem; }
+    .dot-green { color: #166534; } .dot-red { color: #991b1b; } .dot-blue { color: #2563eb; }
+
+    /* ── Actions ── */
+    ol { padding-left: 1.2rem; }
+    ol li { padding: 0.2rem 0; font-size: 0.88rem; }
+
+    /* ── SEO Table ── */
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #777; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+    td { padding: 0.3rem 0.5rem; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .pass-yes { color: #166534; font-weight: 700; }
+    .pass-no  { color: #991b1b; font-weight: 700; }
+    .hint-text { font-size: 0.75rem; color: #999; font-style: italic; display: block; }
+    .suggestion-text { font-size: 0.75rem; color: #92400e; display: block; }
+
+    /* ── Pages Table ── */
+    .pages-table td:nth-child(3) { font-size: 0.78rem; color: #555; white-space: nowrap; }
+
+    /* ── Screenshots ── */
+    .screenshot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; }
+    .screenshot-item img { width: 100%; border: 1px solid #ddd; border-radius: 4px; display: block; }
+    .screenshot-item p { font-size: 0.68rem; color: #777; margin-top: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ── Footer ── */
+    .report-footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 1px solid #ddd; font-size: 0.72rem; color: #999; text-align: center; }
+
+    @media print {
+      body { font-size: 10pt; }
+      .section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <p style="color:#999;padding:2rem">Lade Report…</p>
+  </div>
+
+<script>
+  function scoreClass(n) { return n >= 70 ? 'score-good' : n >= 40 ? 'score-mid' : 'score-bad' }
+  function esc(s) { return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
+  const params = new URLSearchParams(location.search)
+  const showScreenshots = params.get('screenshots') === '1'
+
+  async function load() {
+    const id = location.pathname.split('/').pop()
+    const res = await fetch(`/report/${id}`)
+    if (!res.ok) { document.getElementById('content').textContent = 'Report nicht gefunden.'; return }
+    const r = await res.json()
+    render(r)
+  }
+
+  function render(r) {
+    const date = new Date(r.timestamp).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+    const sc = scoreClass(r.score)
+    const seoScore = r.seo?.score ?? '–'
+    const mobileScore = r.mobile?.score ?? '–'
+
+    // Header
+    const header = `<div class="report-header">
+      <div>
+        <h1>${esc(r.siteTitle || r.hostname || r.url)}</h1>
+        <div class="meta"><a href="${esc(r.url)}">${esc(r.url)}</a> &nbsp;·&nbsp; ${date}</div>
+      </div>
+      <div class="score-circle ${sc}">${r.score}</div>
+    </div>`
+
+    // Scores
+    const scores = `<div class="scores-row">
+      <div class="score-tile"><div class="val ${sc}">${r.score}</div><div class="lbl">Gesamt-Score</div></div>
+      <div class="score-tile"><div class="val ${scoreClass(seoScore)}">${seoScore}</div><div class="lbl">SEO-Score</div></div>
+      <div class="score-tile"><div class="val ${scoreClass(mobileScore)}">${mobileScore}</div><div class="lbl">Mobile-Score</div></div>
+      <div class="score-tile"><div class="val">${r.pageCount}</div><div class="lbl">Gecrawlte Seiten</div></div>
+    </div>`
+
+    // Stärken & Schwächen
+    const strengths = r.strengths.map(s => `<li><span class="dot-green">✓</span>${esc(s)}</li>`).join('') || '<li style="color:#999">–</li>'
+    const weaknesses = r.weaknesses.map(w => `<li><span class="dot-red">✗</span>${esc(w)}</li>`).join('') || '<li style="color:#999">–</li>'
+    const swSection = `<div class="section"><h2>Stärken &amp; Schwächen</h2>
+      <div class="two-col">
+        <div><ul>${strengths}</ul></div>
+        <div><ul>${weaknesses}</ul></div>
+      </div>
+    </div>`
+
+    // Maßnahmen
+    const actions = r.actions.map(a => `<li>${esc(a)}</li>`).join('') || '<li style="color:#999">Keine Maßnahmen</li>'
+    const actSection = `<div class="section"><h2>Maßnahmen</h2><ol>${actions}</ol></div>`
+
+    // SEO-Checks Tabelle
+    let seoRows = ''
+    if (r.seo?.pages) {
+      for (const p of r.seo.pages) {
+        for (const i of (p.issues || [])) {
+          if (i.skipped) continue
+          seoRows += `<tr>
+            <td>${esc(p.url)}</td>
+            <td>${esc(i.label)}</td>
+            <td>${i.weight ?? ''}</td>
+            <td class="${i.pass ? 'pass-yes' : 'pass-no'}">${i.pass ? '✓' : '✗'}</td>
+            <td>${i.value ? `<span class="hint-text">${esc(i.value)}</span>` : ''}${i.suggestion ? `<span class="suggestion-text">→ ${esc(i.suggestion)}</span>` : ''}</td>
+          </tr>`
+        }
+      }
+    }
+    const seoSection = seoRows ? `<div class="section"><h2>SEO-Checks</h2>
+      <table><thead><tr><th>URL</th><th>Check</th><th>Gew.</th><th>Status</th><th>Hinweis</th></tr></thead>
+      <tbody>${seoRows}</tbody></table>
+    </div>` : ''
+
+    // Gecrawlte Seiten
+    const pageRows = r.pages.map(p => {
+      const jsCount = p.jsErrors?.filter(e => e.firstParty).length ?? 0
+      return `<tr>
+        <td>${esc(p.url)}</td>
+        <td>${p.statusCode ?? '?'}</td>
+        <td class="pages-table">${p.loadTime ? p.loadTime + ' ms' : '–'}</td>
+        <td>${jsCount > 0 ? jsCount + ' ⚠' : '–'}</td>
+      </tr>`
+    }).join('')
+    const pagesSection = `<div class="section"><h2>Gecrawlte Seiten</h2>
+      <table class="pages-table"><thead><tr><th>URL</th><th>Status</th><th>Ladezeit</th><th>JS-Fehler</th></tr></thead>
+      <tbody>${pageRows}</tbody></table>
+    </div>`
+
+    // Screenshots (optional)
+    let screenshotSection = ''
+    if (showScreenshots) {
+      const imgs = r.pages.filter(p => p.screenshotPath).map(p =>
+        `<div class="screenshot-item"><img src="/${esc(p.screenshotPath)}" alt=""><p>${esc(p.url)}</p></div>`
+      ).join('')
+      if (imgs) {
+        screenshotSection = `<div class="section"><h2>Screenshots</h2><div class="screenshot-grid">${imgs}</div></div>`
+      }
+    }
+
+    const footer = `<div class="report-footer">Erstellt mit Website Doctor &nbsp;·&nbsp; ${date}</div>`
+
+    document.getElementById('content').innerHTML = header + scores + swSection + actSection + seoSection + pagesSection + screenshotSection + footer
+    document.title = `Website Doctor – ${r.siteTitle || r.hostname || r.url}`
+  }
+
+  load()
+</script>
+</body>
+</html>
