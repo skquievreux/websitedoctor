@@ -600,7 +600,7 @@
     if (!res.ok) { pendingDiffFromId = null; return showError('Server-Fehler beim Starten') }
     const { id } = await res.json()
     startQueuePolling()
-    pollStatus(id)
+    setTimeout(() => pollStatus(id), 100)
   }
 
   function pollStatus(id) {
