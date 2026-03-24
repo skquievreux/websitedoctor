@@ -169,6 +169,55 @@
     .seo-weight { font-size: 0.62rem; padding: 0.1rem 0.3rem; border-radius: 3px; background: #1e1b4b; color: #818cf8; margin-left: 0.3rem; flex-shrink: 0; }
     .seo-skipped { font-size: 0.74rem; color: #555; font-style: italic; }
 
+    /* ── Queue Section ── */
+    #queue-section { border-bottom: 1px solid #1a1a1a; }
+    #queue-section .sidebar-head { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+    #queue-section .section-toggle { font-size: 0.8rem; color: #444; }
+    .queue-summary { display: flex; gap: 0.4rem; padding: 0.4rem 1rem; font-size: 0.7rem; color: #666; flex-wrap: wrap; }
+    .qs-run { color: #6c6cff; } .qs-pend { color: #888; } .qs-fail { color: #f87171; }
+    .queue-job { display: flex; align-items: center; gap: 0.4rem; padding: 0.35rem 1rem; font-size: 0.72rem; border-bottom: 1px solid #1a1a1a; border-left: 2px solid #333; }
+    .queue-job.running { border-left-color: #6c6cff; } .queue-job.pending { border-left-color: #333; opacity: 0.7; }
+    .qj-url { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #bbb; }
+    .qj-status { font-size: 0.65rem; color: #555; }
+    .qj-bar-wrap { width: 36px; background: #222; border-radius: 2px; height: 3px; flex-shrink: 0; }
+    .qj-fill { height: 100%; background: #6c6cff; border-radius: 2px; }
+    .qj-cancel { color: #555; cursor: pointer; flex-shrink: 0; font-size: 0.8rem; transition: color 0.15s; }
+    .qj-cancel:hover { color: #f87171; }
+
+    /* ── Sidebar Controls Bar ── */
+    #sidebar-controls { padding: 0.5rem 0.75rem; border-bottom: 1px solid #1a1a1a; }
+    .ctrl-search input { width: 100%; padding: 0.35rem 0.6rem; background: #111; border: 1px solid #2a2a2f; border-radius: 5px; color: #ddd; font-size: 0.78rem; outline: none; margin-bottom: 0.35rem; }
+    .ctrl-search input:focus { border-color: #6c6cff; }
+    .ctrl-row { display: flex; align-items: center; gap: 0.3rem; }
+    .score-pills { display: flex; gap: 0.15rem; flex-shrink: 0; }
+    .sp { padding: 0.2rem 0.35rem; border: 1px solid #2a2a2f; background: #111; color: #666; font-size: 0.65rem; border-radius: 4px; cursor: pointer; transition: all 0.15s; }
+    .sp:hover { border-color: #444; } .sp.active { border-color: #6c6cff; color: #a5b4fc; }
+    .sp.good.active { border-color: #4ade80; color: #4ade80; }
+    .sp.mid.active  { border-color: #fb923c; color: #fb923c; }
+    .sp.bad.active  { border-color: #f87171; color: #f87171; }
+    #sort-select { flex: 1; padding: 0.2rem 0.3rem; background: #111; border: 1px solid #2a2a2f; color: #888; font-size: 0.7rem; border-radius: 4px; min-width: 0; outline: none; }
+    #sort-select:focus { border-color: #6c6cff; }
+    #group-btn { padding: 0.2rem 0.4rem; background: #111; border: 1px solid #2a2a2f; color: #666; font-size: 0.78rem; border-radius: 4px; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
+    #group-btn:hover { border-color: #444; } #group-btn.active { border-color: #6c6cff; color: #a5b4fc; }
+
+    /* ── Group Headers ── */
+    .group-head { display: flex; align-items: center; gap: 0.3rem; padding: 0.4rem 1rem; cursor: pointer; background: #111; border-bottom: 1px solid #1a1a1a; font-size: 0.72rem; transition: background 0.15s; user-select: none; }
+    .group-head:hover { background: #161618; }
+    .group-hostname { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #888; font-weight: 600; }
+    .group-count { font-size: 0.65rem; padding: 0.1rem 0.3rem; background: #222; border-radius: 3px; color: #666; }
+    .group-arrow { color: #444; flex-shrink: 0; }
+
+    /* ── History Item with Checkbox ── */
+    .history-item { position: relative; padding-left: 1.6rem; }
+    .h-check { position: absolute; left: 0.4rem; top: 50%; transform: translateY(-50%); opacity: 0; cursor: pointer; accent-color: #6c6cff; transition: opacity 0.15s; }
+    .history-item:hover .h-check, .history-item.sel-mode .h-check { opacity: 1; }
+    .history-item.selected { background: #16161f !important; }
+
+    /* ── Bulk Delete Bar ── */
+    #bulk-bar { position: sticky; bottom: 0; background: #111; border-top: 1px solid #333; padding: 0.5rem 0.75rem; display: none; z-index: 10; }
+    #bulk-bar button { width: 100%; padding: 0.35rem; border-radius: 6px; border: 1px solid #450a0a; background: #1a0a0a; color: #f87171; font-size: 0.72rem; cursor: pointer; transition: all 0.15s; }
+    #bulk-bar button:hover { background: #2a0a0a; border-color: #f87171; }
+
     /* ── Sidebar Compare-Button ── */
     .compare-btn { margin: 0.5rem 0.75rem; padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid #333; background: #1a1a1f; color: #888; font-size: 0.75rem; cursor: pointer; width: calc(100% - 1.5rem); }
     .compare-btn:hover { border-color: #6c6cff; color: #fff; }
@@ -211,8 +260,41 @@
 
 <div class="layout">
   <aside>
+    <div id="queue-section" style="display:none">
+      <div class="sidebar-head" onclick="toggleSection('queue')">
+        Queue
+        <span class="section-toggle">▾</span>
+      </div>
+      <div id="queue-panel"></div>
+    </div>
+
+    <div id="sidebar-controls">
+      <div class="ctrl-search">
+        <input id="search-input" type="search" placeholder="Filter…" oninput="onSearchInput(this.value)">
+      </div>
+      <div class="ctrl-row">
+        <div class="score-pills">
+          <button class="sp active" onclick="setScoreFilter('all')">All</button>
+          <button class="sp good"   onclick="setScoreFilter('good')">≥70</button>
+          <button class="sp mid"    onclick="setScoreFilter('mid')">40+</button>
+          <button class="sp bad"    onclick="setScoreFilter('bad')">&lt;40</button>
+        </div>
+        <select id="sort-select" onchange="setSort(this.value)">
+          <option value="date-desc">Neu</option>
+          <option value="date-asc">Alt</option>
+          <option value="score-desc">Score↓</option>
+          <option value="score-asc">Score↑</option>
+          <option value="alpha">A–Z</option>
+        </select>
+        <button id="group-btn" onclick="toggleGrouping()" title="Group by hostname">⊞</button>
+      </div>
+    </div>
+
     <div class="sidebar-head">Verlauf</div>
     <div id="history-list"><div class="empty">Noch keine Checks</div></div>
+
+    <div id="bulk-bar"></div>
+
     <button class="compare-btn" id="compare-btn" onclick="goToCompareTab()" disabled>Vergleichen</button>
   </aside>
 
@@ -247,7 +329,18 @@
 </div>
 
 <script>
-  let pollInterval = null
+  // ── Sidebar State ────────────────────────────────────
+  const sidebarState = {
+    search: '',
+    scoreFilter: 'all',
+    sort: 'date-desc',
+    grouped: false,
+    selectedIds: new Set(),
+    queueData: null
+  }
+  const collapsedGroups = new Set()
+
+  let queuePollTimer = null
   let activeHistoryId = null
   let currentReport = null
   let historyList = []
@@ -264,26 +357,200 @@
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox() })
 
-  // ── History ──────────────────────────────────────────
-  async function loadHistory() {
+  // ── Fetch + Render ───────────────────────────────────
+  async function fetchHistory() {
     const res = await fetch('/history')
     historyList = await res.json()
+    renderHistoryList()
     document.getElementById('compare-btn').disabled = historyList.length < 2
-    const el = document.getElementById('history-list')
-    if (!historyList.length) { el.innerHTML = '<div class="empty">Noch keine Checks</div>'; return }
-    el.innerHTML = historyList.map(h => {
-      const scoreClass = h.score >= 70 ? 'good' : h.score >= 40 ? 'mid' : 'bad'
-      const date = new Date(h.date).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })
-      const label = h.siteTitle || h.hostname || (() => { try { return new URL(h.url).hostname } catch { return h.url } })()
-      return `<div class="history-item${h.id === activeHistoryId ? ' active' : ''}" onclick="loadReport('${h.id}')">
-        <div class="h-url">${escHtml(label)}</div>
-        <div class="h-date">${date}</div>
-        <div class="h-badges">
-          <span class="h-score ${scoreClass}">${h.score}</span>
-          <span class="h-pages">${h.pageCount} Seiten</span>
-        </div>
-      </div>`
+  }
+
+  async function fetchQueue() {
+    const res = await fetch('/api/queue')
+    sidebarState.queueData = await res.json()
+    renderQueuePanel()
+  }
+
+  function renderQueuePanel() {
+    const q = sidebarState.queueData
+    if (!q || (q.pending === 0 && q.running === 0)) {
+      document.getElementById('queue-section').style.display = 'none'
+      return
+    }
+    document.getElementById('queue-section').style.display = 'block'
+    const jobs = q.queue || []
+    const summaryHtml = `<div class="queue-summary">
+      <span class="qs-run">⚙ ${q.running}</span>
+      <span class="qs-pend">· ${q.pending} pending</span>
+      ${q.failed > 0 ? `<span class="qs-fail">· ${q.failed} failed</span>` : ''}
+    </div>`
+    const jobsHtml = jobs.map(j => {
+      if (j._type === 'running') {
+        const pct = j.progress ? Math.round((j.progress.current / j.progress.max) * 100) : 0
+        return `<div class="queue-job running">
+          <div class="qj-url">${escHtml(j.url)}</div>
+          <div class="qj-bar-wrap"><div class="qj-fill" style="width:${pct}%"></div></div>
+          <span class="qj-cancel" onclick="cancelJob('${j.id}')">✕</span>
+        </div>`
+      } else {
+        return `<div class="queue-job pending">
+          <div class="qj-url">${escHtml(j.url)}</div>
+          <div class="qj-status">queued</div>
+          <span class="qj-cancel" onclick="cancelJob('${j.id}')">✕</span>
+        </div>`
+      }
     }).join('')
+    document.getElementById('queue-panel').innerHTML = summaryHtml + jobsHtml
+  }
+
+  function applyFilters(list) {
+    let r = [...list]
+    if (sidebarState.search) {
+      const q = sidebarState.search.toLowerCase()
+      r = r.filter(h => (h.hostname || '').toLowerCase().includes(q) || (h.siteTitle || '').toLowerCase().includes(q))
+    }
+    if (sidebarState.scoreFilter === 'good') r = r.filter(h => h.score >= 70)
+    if (sidebarState.scoreFilter === 'mid')  r = r.filter(h => h.score >= 40 && h.score < 70)
+    if (sidebarState.scoreFilter === 'bad')  r = r.filter(h => h.score < 40)
+    const sorts = {
+      'date-desc':  (a,b) => new Date(b.date) - new Date(a.date),
+      'date-asc':   (a,b) => new Date(a.date) - new Date(b.date),
+      'score-desc': (a,b) => b.score - a.score,
+      'score-asc':  (a,b) => a.score - b.score,
+      'alpha':      (a,b) => (a.hostname || '').localeCompare(b.hostname || '')
+    }
+    r.sort(sorts[sidebarState.sort])
+    return r
+  }
+
+  function groupByHostname(list) {
+    const groups = new Map()
+    for (const entry of list) {
+      const key = entry.hostname || entry.url
+      if (!groups.has(key)) groups.set(key, [])
+      groups.get(key).push(entry)
+    }
+    return groups
+  }
+
+  function historyItemHtml(h) {
+    const isSelected = sidebarState.selectedIds.has(h.id)
+    const selClass = sidebarState.selectedIds.size > 0 ? ' sel-mode' : ''
+    const scoreClass = h.score >= 70 ? 'good' : h.score >= 40 ? 'mid' : 'bad'
+    const date = new Date(h.date).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })
+    const label = h.siteTitle || h.hostname || (() => { try { return new URL(h.url).hostname } catch { return h.url } })()
+    return `<div class="history-item${h.id === activeHistoryId ? ' active' : ''}${isSelected ? ' selected' : ''}${selClass}" onclick="loadReport('${h.id}')">
+      <input type="checkbox" class="h-check" ${isSelected ? 'checked' : ''} onclick="event.stopPropagation(); toggleSelect('${h.id}')">
+      <div class="h-url">${escHtml(label)}</div>
+      <div class="h-date">${date}</div>
+      <div class="h-badges">
+        <span class="h-score ${scoreClass}">${h.score}</span>
+        <span class="h-pages">${h.pageCount} Seiten</span>
+      </div>
+    </div>`
+  }
+
+  function renderHistoryList() {
+    const filtered = applyFilters(historyList)
+    const el = document.getElementById('history-list')
+    if (!filtered.length) { el.innerHTML = '<div class="empty">Noch keine Checks</div>'; renderBulkBar(); return }
+
+    let html = ''
+    if (sidebarState.grouped) {
+      const groups = groupByHostname(filtered)
+      html = [...groups.entries()].map(([hostname, entries]) => {
+        const isCollapsed = collapsedGroups.has(hostname)
+        const groupHeader = `<div class="group-head" onclick="event.stopPropagation(); toggleGroup('${escHtml(hostname)}')">
+          <span class="group-hostname">${escHtml(hostname)}</span>
+          <span class="group-count">${entries.length}</span>
+          <span class="group-arrow">${isCollapsed ? '▸' : '▾'}</span>
+        </div>`
+        if (isCollapsed) return groupHeader
+        return groupHeader + entries.map(h => historyItemHtml(h)).join('')
+      }).join('')
+    } else {
+      html = filtered.map(h => historyItemHtml(h)).join('')
+    }
+    el.innerHTML = html
+    renderBulkBar()
+  }
+
+  function renderBulkBar() {
+    const bar = document.getElementById('bulk-bar')
+    if (sidebarState.selectedIds.size === 0) { bar.style.display = 'none'; return }
+    bar.style.display = 'block'
+    bar.innerHTML = `<button onclick="deleteSelected()">✕ ${sidebarState.selectedIds.size} löschen</button>`
+  }
+
+  function startQueuePolling() {
+    if (queuePollTimer) return
+    queuePollTimer = setInterval(async () => {
+      await fetchQueue()
+      const s = sidebarState.queueData
+      if (!s || (s.pending === 0 && s.running === 0)) {
+        stopQueuePolling()
+        await fetchHistory()
+      }
+    }, 2000)
+  }
+
+  function stopQueuePolling() {
+    clearInterval(queuePollTimer)
+    queuePollTimer = null
+  }
+
+  async function cancelJob(id) {
+    await fetch(`/api/queue/${id}`, { method: 'DELETE' })
+    await fetchQueue()
+  }
+
+  async function deleteSelected() {
+    const ids = [...sidebarState.selectedIds]
+    await fetch('/history', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ids }) })
+    sidebarState.selectedIds.clear()
+    await fetchHistory()
+  }
+
+  function toggleSelect(id) {
+    if (sidebarState.selectedIds.has(id)) sidebarState.selectedIds.delete(id)
+    else sidebarState.selectedIds.add(id)
+    renderHistoryList()
+  }
+
+  function toggleSection(name) {
+    const section = document.getElementById(name + '-section')
+    section.style.display = section.style.display === 'none' ? 'block' : 'none'
+  }
+
+  function toggleGroup(hostname) {
+    if (collapsedGroups.has(hostname)) collapsedGroups.delete(hostname)
+    else collapsedGroups.add(hostname)
+    renderHistoryList()
+  }
+
+  function toggleGrouping() {
+    sidebarState.grouped = !sidebarState.grouped
+    document.getElementById('group-btn').classList.toggle('active', sidebarState.grouped)
+    renderHistoryList()
+  }
+
+  function onSearchInput(val) {
+    sidebarState.search = val
+    renderHistoryList()
+  }
+
+  function setScoreFilter(filter) {
+    sidebarState.scoreFilter = filter
+    document.querySelectorAll('.sp').forEach(b => {
+      const isActive = (filter === 'all' && b.textContent === 'All') || (filter === 'good' && b.textContent === '≥70') || (filter === 'mid' && b.textContent === '40+') || (filter === 'bad' && b.textContent.includes('<'))
+      b.classList.toggle('active', isActive)
+    })
+    renderHistoryList()
+  }
+
+  function setSort(sort) {
+    sidebarState.sort = sort
+    renderHistoryList()
   }
 
   // ── Check starten ────────────────────────────────────
@@ -300,31 +567,30 @@
     const res = await fetch('/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) })
     if (!res.ok) return showError('Server-Fehler beim Starten')
     const { id } = await res.json()
+    startQueuePolling()
     pollStatus(id)
   }
 
   function pollStatus(id) {
-    clearInterval(pollInterval)
-    pollInterval = setInterval(async () => {
+    const check = async () => {
       const res = await fetch(`/status/${id}`)
+      if (!res.ok) return
       const data = await res.json()
       if (data.status === 'running' && data.progress) {
         const pct = Math.round((data.progress.current / data.progress.max) * 100)
         showStatus(`Seite ${data.progress.current}/${data.progress.max}: ${data.progress.url}`, pct)
-      }
-      if (data.status === 'done') {
-        clearInterval(pollInterval)
-        await loadHistory()
+        setTimeout(check, 500)
+      } else if (data.status === 'done') {
+        await fetchHistory()
         await loadReport(id)
         document.getElementById('check-btn').disabled = false
-      }
-      if (data.status === 'error') {
-        clearInterval(pollInterval)
+      } else if (data.status === 'error') {
         hideStatus()
         showError(data.error || 'Unbekannter Fehler')
         document.getElementById('check-btn').disabled = false
       }
-    }, 800)
+    }
+    check()
   }
 
   async function loadReport(id) {
@@ -677,10 +943,11 @@
   fetch('/version').then(r => r.json()).then(({ version }) => {
     document.getElementById('ver').textContent = `v${version}`
     console.log(`%c🩺 Website Doctor v${version}`, 'color:#6c6cff;font-weight:bold;font-size:14px')
-    console.log('%cv2.0.0: Gewichteter SEO-Score · Malus-Score · isIndexablePage · Diff · Export · Worker · Webhook', 'color:#888')
+    console.log('%cv2.1.0: Queue Panel · Filter · Sort · Group · Bulk Delete', 'color:#888')
   })
 
-  loadHistory()
+  fetchHistory()
+  fetchQueue()
 </script>
 </body>
 </html>

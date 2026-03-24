@@ -5,14 +5,17 @@ import { fork } from 'child_process'
 import path from 'path'
 import chalk from 'chalk'
 import { chromium } from 'playwright'
+import QueueManager from './scripts/queue-manager.js'
 
 const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
 
 const app = express()
 const PORT = process.env.PORT || 3001
 const jobs = new Map() // id → { status, report }
+const queue = new QueueManager()
 const HISTORY_FILE = 'data/history.json'
 const WEBHOOKS_FILE = 'data/webhooks.json'
+let processingQueue = false
 
 app.use(express.json())
 app.use(express.static('public'))
@@ -99,12 +102,61 @@ function runCrawlWorker(url, id) {
       if (msg.type === 'progress') {
         const job = jobs.get(id)
         if (job) job.progress = msg.data
+        queue.updateProgress(id, msg.data)
       }
       if (msg.type === 'done')   resolve(msg.data)
       if (msg.type === 'error')  reject(new Error(msg.data))
     })
     child.on('error', reject)
   })
+}
+
+// ── Queue Processing ──────────────────────────────────────────────
+
+async function processQueueLoop() {
+  if (processingQueue) return
+  processingQueue = true
+
+  try {
+    while (queue.canStartNextJob()) {
+      const job = queue.dequeue()
+      if (!job) break
+
+      console.log(chalk.cyan(`[queue] Starte Job: ${job.id} (${job.url})`))
+      queue.startJob(job)
+      jobs.set(job.id, { status: 'running', progress: { current: 0, max: 20, url: job.url } })
+
+      try {
+        const report = await runCrawlWorker(job.url, job.id)
+        const reportPath = report._reportPath
+        delete report._reportPath
+
+        queue.finishJob(job.id, report)
+        jobs.set(job.id, { status: 'done', report })
+
+        await appendHistory({
+          id: job.id, url: report.url, hostname: report.hostname,
+          siteTitle: report.siteTitle, siteDescription: report.siteDescription,
+          date: report.timestamp, score: report.score, pageCount: report.pageCount, reportPath
+        })
+
+        triggerWebhooks(report).catch(() => {})
+        console.log(chalk.green(`[queue] ✓ Job ${job.id} fertig (Score: ${report.score})`))
+      } catch (err) {
+        queue.failJob(job.id, err.message)
+        jobs.set(job.id, { status: 'error', error: err.message })
+        console.error(chalk.red(`[queue] ✗ Job ${job.id} fehlgeschlagen: ${err.message}`))
+      }
+
+      await queue.save()
+    }
+  } finally {
+    processingQueue = false
+    // Schedule next check
+    if (queue.canStartNextJob()) {
+      setImmediate(processQueueLoop)
+    }
+  }
 }
 
 // ── Routes ────────────────────────────────────────────────────────
@@ -115,36 +167,30 @@ app.get('/history', async (req, res) => {
   res.json(await readHistory())
 })
 
+app.delete('/history', async (req, res) => {
+  const { ids } = req.body
+  if (!Array.isArray(ids)) return res.status(400).json({ error: 'ids muss ein Array sein' })
+  const history = await readHistory()
+  const filtered = history.filter(h => !ids.includes(h.id))
+  await writeFile(HISTORY_FILE, JSON.stringify(filtered, null, 2))
+  res.json({ deleted: history.length - filtered.length, remaining: filtered.length })
+})
+
 app.post('/check', async (req, res) => {
   const { url } = req.body
   if (!url || !url.startsWith('http')) {
     return res.status(400).json({ error: 'Ungültige URL' })
   }
 
-  const id = Date.now().toString()
-  jobs.set(id, { status: 'running', progress: { current: 0, max: 20, url: '' } })
-  res.json({ id })
+  // Enqueue the job
+  const id = `q_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`
+  queue.enqueue({ id, url, priority: 5 })
+  await queue.save()
 
-  try {
-    // D1 — Crawl im separaten Child-Process
-    const report = await runCrawlWorker(url, id)
-    const reportPath = report._reportPath
-    delete report._reportPath
+  res.json({ id, queue_position: queue.pending.length })
 
-    jobs.set(id, { status: 'done', report })
-
-    await appendHistory({
-      id, url: report.url, hostname: report.hostname,
-      siteTitle: report.siteTitle, siteDescription: report.siteDescription,
-      date: report.timestamp, score: report.score, pageCount: report.pageCount, reportPath
-    })
-
-    // D2 — Webhooks auslösen wenn Score unter Schwellwert
-    triggerWebhooks(report).catch(() => {})
-  } catch (err) {
-    console.error(chalk.red(`[server] Job ${id} fehlgeschlagen: ${err.message}`))
-    jobs.set(id, { status: 'error', error: err.message })
-  }
+  // Start processing queue
+  setImmediate(processQueueLoop)
 })
 
 app.get('/status/:id', (req, res) => {
@@ -198,6 +244,62 @@ app.get('/diff/:idA/:idB', async (req, res) => {
     removedPages,
     pageChanges
   })
+})
+
+// ── Queue API Routes ──────────────────────────────────────────────
+
+app.get('/api/queue', (req, res) => {
+  res.json(queue.getStatus())
+})
+
+app.post('/api/batch', async (req, res) => {
+  const { urls, priority = 0 } = req.body
+  if (!Array.isArray(urls) || urls.length === 0) {
+    return res.status(400).json({ error: 'Array von URLs erforderlich' })
+  }
+
+  const { batch_id, job_ids } = await queue.batchEnqueue(urls)
+
+  res.json({
+    batch_id,
+    job_ids,
+    total: urls.length,
+    queue_position: queue.pending.length
+  })
+
+  setImmediate(processQueueLoop)
+})
+
+app.get('/api/batch/:batch_id', (req, res) => {
+  const { batch_id } = req.params
+  const jobs = Array.from(queue.completed.values()).filter(j => j.batch_id === batch_id)
+
+  res.json({
+    batch_id,
+    total: jobs.length,
+    completed: jobs.length,
+    jobs: jobs.map(j => ({
+      id: j.id,
+      url: j.url,
+      status: j.status,
+      score: j.report?.score,
+      duration_ms: j.duration_ms
+    }))
+  })
+})
+
+app.delete('/api/queue/:job_id', async (req, res) => {
+  const { job_id } = req.params
+  const idx = queue.pending.findIndex(j => j.id === job_id)
+
+  if (idx === -1) {
+    return res.status(404).json({ error: 'Job nicht in Queue gefunden' })
+  }
+
+  queue.pending.splice(idx, 1)
+  await queue.save()
+
+  res.json({ status: 'cancelled', job_id })
 })
 
 // D2 — Webhook registrieren
@@ -292,6 +394,15 @@ app.get('/export-pdf-diff/:idA/:idB', async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  // Initialize queue
+  await queue.init()
+
   console.log(chalk.green(`[server] Website Doctor v${version} läuft auf http://localhost:${PORT}`))
+  console.log(chalk.cyan(`[queue] MAX_CONCURRENT_CRAWLS: 2`))
+
+  // Start processing pending jobs
+  if (queue.canStartNextJob()) {
+    setImmediate(processQueueLoop)
+  }
 })
