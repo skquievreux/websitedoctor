@@ -194,7 +194,12 @@ app.post('/check', async (req, res) => {
 })
 
 app.get('/status/:id', (req, res) => {
-  const job = jobs.get(req.params.id)
+  const id = req.params.id
+  // Check in-memory jobs first (legacy)
+  let job = jobs.get(id)
+  if (job) return res.json({ status: job.status, progress: job.progress ?? null, error: job.error ?? null })
+  // Check queue manager
+  job = queue.getJob(id)
   if (!job) return res.status(404).json({ error: 'Job nicht gefunden' })
   res.json({ status: job.status, progress: job.progress ?? null, error: job.error ?? null })
 })
