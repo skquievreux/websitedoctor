@@ -142,6 +142,7 @@ export class QueueManager {
 
   getJob(jobId) {
     return (
+      this.pending.find(j => j.id === jobId) ||
       this.running.get(jobId) ||
       this.completed.get(jobId) ||
       this.failed.get(jobId)
