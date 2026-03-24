@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node /tmp/audit-vercel-projects.js)",
+      "Bash(node c:tempaudit-vercel-projects.js)",
+      "Bash(node audit-vercel.js)"
+    ]
+  }
+}

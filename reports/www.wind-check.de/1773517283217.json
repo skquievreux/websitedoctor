@@ -1,0 +1,2518 @@
+{
+  "id": "1773517283217",
+  "url": "https://www.wind-check.de/",
+  "hostname": "www.wind-check.de",
+  "siteTitle": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+  "siteDescription": null,
+  "timestamp": "2026-03-14T19:42:39.692Z",
+  "pageCount": 20,
+  "score": 70,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Kontaktseite vorhanden",
+    "Impressum/Datenschutz vorhanden",
+    "Gute Seitenanzahl (20 Seiten gefunden)"
+  ],
+  "weaknesses": [
+    "Langsame Server-Antwort (TTFB Ø 2254 ms)",
+    "Kein Caching konfiguriert",
+    "HSTS-Header fehlt (Sicherheitsrisiko)",
+    "15 Seite(n) haben JavaScript-Fehler"
+  ],
+  "actions": [
+    "Server-Antwortzeit reduzieren (Hosting verbessern, CDN, Caching)",
+    "Cache-Control-Header konfigurieren (z.B. max-age=3600)",
+    "HSTS-Header hinzufügen: Strict-Transport-Security: max-age=31536000",
+    "JavaScript-Fehler im Browser-Konsolentool analysieren und beheben"
+  ],
+  "seo": {
+    "score": 73,
+    "pages": [
+      {
+        "url": "https://www.wind-check.de/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (76 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+            "suggestion": "Titel 'Startseite - WindcheckWindcheck | Techni…' ist 76 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (7 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "IMG_7040-gespiegelt-960x400-crop.jpg, svg%3E, svg%3E, svg%3E, svg%3E",
+            "suggestion": "7 Bilder ohne alt-Text: IMG_7040-gespiegelt-960x400-crop.jpg, svg%3E, svg%3E. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Leistungen - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (31 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Leistungen - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Leistungen - WindcheckWindcheck",
+            "suggestion": "Titel 'Leistungen - WindcheckWindcheck' ist 31 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Leistungen",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "svg%3E, svg%3E",
+            "suggestion": "2 Bilder ohne alt-Text: svg%3E, svg%3E. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/gutachten-zur-inbetriebnahme/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Gutachten zur Inbetriebnahme - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (49 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Gutachten zur Inbetriebnahme - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Gutachten zur Inbetriebnahme - WindcheckWindcheck",
+            "suggestion": "Titel 'Gutachten zur Inbetriebnahme - WindcheckWindcheck' ist 49 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Gutachten zur Inbetriebnahme",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/gutachten-zur-inbetriebnahme/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/gutachten-zum-ende-der-gewaehrleistungszeit-oder-garantiezeit/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Gutachten zum Ende der Gewährleistungszeit oder Garantiezeit - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (81 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Gutachten zum Ende der Gewährleistungszeit oder Garantiezeit - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Gutachten zum Ende der Gewährleistungszeit oder Garantiezeit - WindcheckWindcheck",
+            "suggestion": "Titel 'Gutachten zum Ende der Gewährleistungsze…' ist 81 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Gutachten zum Ende der Gewährleistungszeit oder Garantiezeit",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/gutachten-zum-ende-der-gewaehrleistungszeit-oder-garantiezeit/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/wiederkehrende-pruefungen-nach-baurecht/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Wiederkehrende Prüfungen nach Baurecht - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (59 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Wiederkehrende Prüfungen nach Baurecht - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Wiederkehrende Prüfungen nach Baurecht - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Wiederkehrende Prüfungen nach Baurecht",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/wiederkehrende-pruefungen-nach-baurecht/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "svg%3E, svg%3E",
+            "suggestion": "2 Bilder ohne alt-Text: svg%3E, svg%3E. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/zustandsorientierte-pruefungen-versicherungsanforderung/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Zustandsorientierte Prüfungen (Versicherungsanforderung) - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (77 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Zustandsorientierte Prüfungen (Versicherungsanforderung) - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Zustandsorientierte Prüfungen (Versicherungsanforderung) - WindcheckWindcheck",
+            "suggestion": "Titel 'Zustandsorientierte Prüfungen (Versicher…' ist 77 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Zustandsorientierte Prüfungen (Versicherungsanforderung)",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/zustandsorientierte-pruefungen-versicherungsanforderung/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/gutachten-fur-den-weiterbetrieb/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Gutachten für den Weiterbetrieb - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (52 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Gutachten für den Weiterbetrieb - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Gutachten für den Weiterbetrieb - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Gutachten für den Weiterbetrieb",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/gutachten-fur-den-weiterbetrieb/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/schadensanalysen-und-gutachten/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Schadensanalysen und -gutachten - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (52 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Schadensanalysen und -gutachten - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Schadensanalysen und -gutachten - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Schadensanalysen und -gutachten",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/schadensanalysen-und-gutachten/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/fullservice-inkl-rotorblaetter-aus-einer-hand/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Rotorblattinspektion inkl. Blitzschutzprüfung - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (66 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Rotorblattinspektion inkl. Blitzschutzprüfung - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Rotorblattinspektion inkl. Blitzschutzprüfung - WindcheckWindcheck",
+            "suggestion": "Titel 'Rotorblattinspektion inkl. Blitzschutzpr…' ist 66 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Rotorblattinspektion inkl. Blitzschutzprüfung",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/fullservice-inkl-rotorblaetter-aus-einer-hand/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/endoskopie-eideoendoskopie-z-b-vom-getriebe/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Videoendoskopie (Getriebe, Hauptlagerung, Generator) - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (73 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Videoendoskopie (Getriebe, Hauptlagerung, Generator) - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Videoendoskopie (Getriebe, Hauptlagerung, Generator) - WindcheckWindcheck",
+            "suggestion": "Titel 'Videoendoskopie (Getriebe, Hauptlagerung…' ist 73 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Videoendoskopie (Getriebe, Hauptlagerung, Generator)",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/endoskopie-eideoendoskopie-z-b-vom-getriebe/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/condition-monitoring/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Condition Monitoring - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (41 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Condition Monitoring - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Condition Monitoring - WindcheckWindcheck",
+            "suggestion": "Titel 'Condition Monitoring - WindcheckWindcheck' ist 41 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Condition Monitoring",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/condition-monitoring/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/thermografie/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Thermografie - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (33 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Thermografie - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Thermografie - WindcheckWindcheck",
+            "suggestion": "Titel 'Thermografie - WindcheckWindcheck' ist 33 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Thermografie",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/thermografie/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/anlagen-und-komponentenauswahl/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Anlagen- und Komponentenauswahl - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (52 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Anlagen- und Komponentenauswahl - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Anlagen- und Komponentenauswahl - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Anlagen- und Komponentenauswahl",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/anlagen-und-komponentenauswahl/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/werksabnahmen/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Werksabnahmen - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (34 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Werksabnahmen - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Werksabnahmen - WindcheckWindcheck",
+            "suggestion": "Titel 'Werksabnahmen - WindcheckWindcheck' ist 34 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Werksabnahmen",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/leistungen/werksabnahmen/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "vdsee_logo.png, unnamed-2.jpg",
+            "suggestion": "2 Bilder ohne alt-Text: vdsee_logo.png, unnamed-2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/referenzen/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Referenzen - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (31 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Referenzen - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Referenzen - WindcheckWindcheck",
+            "suggestion": "Titel 'Referenzen - WindcheckWindcheck' ist 31 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Referenzen",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/referenzen/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (17 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "eno-logo-retina.png, logo_enbw_1421920163197.png, sowiwas-logo.png, logo_windwaerts.png, logo-more-energy.png",
+            "suggestion": "17 Bilder ohne alt-Text: eno-logo-retina.png, logo_enbw_1421920163197.png, sowiwas-logo.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/ueber-uns/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Über uns - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (29 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Über uns - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Über uns - WindcheckWindcheck",
+            "suggestion": "Titel 'Über uns - WindcheckWindcheck' ist 29 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Über uns",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/ueber-uns/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (7 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "home3.jpg, CIMG0536_Priv_Silke-300x225.jpg, Wind-Check_ueber-uns_Joachim_Flecke_web-300x212.jpg, svg%3E, svg%3E",
+            "suggestion": "7 Bilder ohne alt-Text: home3.jpg, CIMG0536_Priv_Silke-300x225.jpg, Wind-Check_ueber-uns_Joachim_Flecke_web-300x212.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/kontakt/",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Kontakt - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (28 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Kontakt - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Kontakt - WindcheckWindcheck",
+            "suggestion": "Titel 'Kontakt - WindcheckWindcheck' ist 28 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Kontakt",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/kontakt/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "svg%3E, svg%3E",
+            "suggestion": "2 Bilder ohne alt-Text: svg%3E, svg%3E. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/Impressum",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Impressum - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (30 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Impressum - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Impressum - WindcheckWindcheck",
+            "suggestion": "Titel 'Impressum - WindcheckWindcheck' ist 30 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Impressum",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/impressum/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "svg%3E",
+            "suggestion": "1 Bilder ohne alt-Text: svg%3E. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/Datenschutz",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Datenschutzerklärung - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (41 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Datenschutzerklärung - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Datenschutzerklärung - WindcheckWindcheck",
+            "suggestion": "Titel 'Datenschutzerklärung - WindcheckWindcheck' ist 41 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Datenschutzerklärung",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/datenschutz/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "svg%3E",
+            "suggestion": "1 Bilder ohne alt-Text: svg%3E. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.wind-check.de/Sitemap",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Sitemap - WindcheckWindcheck",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (28 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Sitemap - WindcheckWindcheck",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Sitemap - WindcheckWindcheck",
+            "suggestion": "Titel 'Sitemap - WindcheckWindcheck' ist 28 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Sitemap",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.wind-check.de/sitemap/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 50,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (13px)",
+        "pass": false
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (3 zu klein von 25)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://www.wind-check.de/",
+        "title": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+        "statusCode": 200,
+        "loadTime": 2410,
+        "screenshotPath": "screenshots/www.wind-check.de/1773517283217/mobile-www-wind-check-de-.png"
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/",
+        "title": "Leistungen - WindcheckWindcheck",
+        "statusCode": 200,
+        "loadTime": 2667,
+        "screenshotPath": "screenshots/www.wind-check.de/1773517283217/mobile-www-wind-check-de-leistungen-.png"
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/gutachten-zur-inbetriebnahme/",
+        "title": "Gutachten zur Inbetriebnahme - WindcheckWindcheck",
+        "statusCode": 200,
+        "loadTime": 2387,
+        "screenshotPath": "screenshots/www.wind-check.de/1773517283217/mobile-www-wind-check-de-leistungen-gutachten-zur-inbetriebnahme-.png"
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/gutachten-zum-ende-der-gewaehrleistungszeit-oder-garantiezeit/",
+        "title": "Gutachten zum Ende der Gewährleistungszeit oder Garantiezeit - WindcheckWindcheck",
+        "statusCode": 200,
+        "loadTime": 2500,
+        "screenshotPath": "screenshots/www.wind-check.de/1773517283217/mobile-www-wind-check-de-leistungen-gutachten-zum-ende-der-gewaehrleistungszeit-oder-ga.png"
+      },
+      {
+        "url": "https://www.wind-check.de/leistungen/wiederkehrende-pruefungen-nach-baurecht/",
+        "title": "Wiederkehrende Prüfungen nach Baurecht - WindcheckWindcheck",
+        "statusCode": 200,
+        "loadTime": 2183,
+        "screenshotPath": "screenshots/www.wind-check.de/1773517283217/mobile-www-wind-check-de-leistungen-wiederkehrende-pruefungen-nach-baurecht-.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://www.wind-check.de/",
+      "type": "home",
+      "statusCode": 200,
+      "title": "Startseite - WindcheckWindcheck | Technische Prüfungen an Windenergieanlagen",
+      "loadTime": 3903,
+      "timing": {
+        "ttfb": 2671,
+        "domReady": 3794,
+        "fullyLoaded": -96,
+        "dnsLookup": 20,
+        "tcpConnect": 40
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Leistungen - WindcheckWindcheck",
+      "loadTime": 2593,
+      "timing": {
+        "ttfb": 2333,
+        "domReady": 2583,
+        "fullyLoaded": -7,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/gutachten-zur-inbetriebnahme/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Gutachten zur Inbetriebnahme - WindcheckWindcheck",
+      "loadTime": 2423,
+      "timing": {
+        "ttfb": 2213,
+        "domReady": 2417,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-gutachten-zur-inbetriebnahme-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/gutachten-zum-ende-der-gewaehrleistungszeit-oder-garantiezeit/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Gutachten zum Ende der Gewährleistungszeit oder Garantiezeit - WindcheckWindcheck",
+      "loadTime": 2151,
+      "timing": {
+        "ttfb": 1916,
+        "domReady": 2146,
+        "fullyLoaded": -2,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-gutachten-zum-ende-der-gewaehrleistungszeit-oder-ga.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/wiederkehrende-pruefungen-nach-baurecht/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Wiederkehrende Prüfungen nach Baurecht - WindcheckWindcheck",
+      "loadTime": 2485,
+      "timing": {
+        "ttfb": 2254,
+        "domReady": 2481,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-wiederkehrende-pruefungen-nach-baurecht-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/zustandsorientierte-pruefungen-versicherungsanforderung/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Zustandsorientierte Prüfungen (Versicherungsanforderung) - WindcheckWindcheck",
+      "loadTime": 2515,
+      "timing": {
+        "ttfb": 2279,
+        "domReady": 2512,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-zustandsorientierte-pruefungen-versicherungsanforde.png"
+    },
+    {
+      "url": "https://www.wind-check.de/gutachten-fur-den-weiterbetrieb/",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Gutachten für den Weiterbetrieb - WindcheckWindcheck",
+      "loadTime": 2433,
+      "timing": {
+        "ttfb": 2192,
+        "domReady": 2430,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-gutachten-fur-den-weiterbetrieb-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/schadensanalysen-und-gutachten/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Schadensanalysen und -gutachten - WindcheckWindcheck",
+      "loadTime": 2668,
+      "timing": {
+        "ttfb": 2378,
+        "domReady": 2663,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-schadensanalysen-und-gutachten-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/fullservice-inkl-rotorblaetter-aus-einer-hand/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Rotorblattinspektion inkl. Blitzschutzprüfung - WindcheckWindcheck",
+      "loadTime": 2686,
+      "timing": {
+        "ttfb": 2426,
+        "domReady": 2682,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-fullservice-inkl-rotorblaetter-aus-einer-hand-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/endoskopie-eideoendoskopie-z-b-vom-getriebe/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Videoendoskopie (Getriebe, Hauptlagerung, Generator) - WindcheckWindcheck",
+      "loadTime": 2546,
+      "timing": {
+        "ttfb": 2264,
+        "domReady": 2541,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-endoskopie-eideoendoskopie-z-b-vom-getriebe-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/condition-monitoring/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Condition Monitoring - WindcheckWindcheck",
+      "loadTime": 2476,
+      "timing": {
+        "ttfb": 2213,
+        "domReady": 2471,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-condition-monitoring-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/thermografie/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Thermografie - WindcheckWindcheck",
+      "loadTime": 2239,
+      "timing": {
+        "ttfb": 1966,
+        "domReady": 2226,
+        "fullyLoaded": -8,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-thermografie-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/anlagen-und-komponentenauswahl/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Anlagen- und Komponentenauswahl - WindcheckWindcheck",
+      "loadTime": 2443,
+      "timing": {
+        "ttfb": 2196,
+        "domReady": 2439,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-anlagen-und-komponentenauswahl-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/leistungen/werksabnahmen/",
+      "type": "product",
+      "statusCode": 200,
+      "title": "Werksabnahmen - WindcheckWindcheck",
+      "loadTime": 2661,
+      "timing": {
+        "ttfb": 2423,
+        "domReady": 2658,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-leistungen-werksabnahmen-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/referenzen/",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Referenzen - WindcheckWindcheck",
+      "loadTime": 2384,
+      "timing": {
+        "ttfb": 2144,
+        "domReady": 2381,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-referenzen-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/ueber-uns/",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Über uns - WindcheckWindcheck",
+      "loadTime": 2283,
+      "timing": {
+        "ttfb": 2022,
+        "domReady": 2279,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-ueber-uns-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/kontakt/",
+      "type": "contact",
+      "statusCode": 200,
+      "title": "Kontakt - WindcheckWindcheck",
+      "loadTime": 2697,
+      "timing": {
+        "ttfb": 2263,
+        "domReady": 2693,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-kontakt-.png"
+    },
+    {
+      "url": "https://www.wind-check.de/Impressum",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Impressum - WindcheckWindcheck",
+      "loadTime": 4249,
+      "timing": {
+        "ttfb": 2226,
+        "domReady": 2609,
+        "fullyLoaded": -1638,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-Impressum.png"
+    },
+    {
+      "url": "https://www.wind-check.de/Datenschutz",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Datenschutzerklärung - WindcheckWindcheck",
+      "loadTime": 4122,
+      "timing": {
+        "ttfb": 2171,
+        "domReady": 2427,
+        "fullyLoaded": -1693,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-Datenschutz.png"
+    },
+    {
+      "url": "https://www.wind-check.de/Sitemap",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Sitemap - WindcheckWindcheck",
+      "loadTime": 4402,
+      "timing": {
+        "ttfb": 2523,
+        "domReady": 2599,
+        "fullyLoaded": -1799,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": null
+      },
+      "jsErrors": [
+        {
+          "message": "google is not defined",
+          "url": "at https://www.wind-check.de/wp-content/cache/autoptimize/js/autoptimize_1df7ab578bfbb525d1f63c5183beb759.js:144:121",
+          "type": "uncaught",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/www.wind-check.de/1773517283217/www-wind-check-de-Sitemap.png"
+    }
+  ]
+}

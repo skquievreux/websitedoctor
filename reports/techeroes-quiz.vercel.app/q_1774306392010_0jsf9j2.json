@@ -1,0 +1,301 @@
+{
+  "id": "q_1774306392010_0jsf9j2",
+  "url": "https://techeroes-quiz.vercel.app",
+  "hostname": "techeroes-quiz.vercel.app",
+  "siteTitle": "Techeroes Robotics & Scratch Quiz",
+  "siteDescription": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+  "timestamp": "2026-03-23T22:54:33.747Z",
+  "pageCount": 2,
+  "score": 80,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 636 ms)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Keine Kontaktseite gefunden",
+    "Kein Impressum/Datenschutz gefunden",
+    "Sehr wenige Unterseiten gefunden"
+  ],
+  "actions": [
+    "Kontaktseite anlegen und im Menü verlinken",
+    "Impressum und Datenschutzerklärung anlegen",
+    "Inhaltsstruktur ausbauen"
+  ],
+  "seo": {
+    "score": 82,
+    "pages": [
+      {
+        "url": "https://techeroes-quiz.vercel.app",
+        "indexable": true,
+        "metaDescription": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+        "pageTitle": "Techeroes Robotics & Scratch Quiz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (33 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Techeroes Robotics & Scratch Quiz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Techeroes Robotics & Scratch Quiz",
+            "suggestion": "Titel 'Techeroes Robotics & Scratch Quiz' ist 33 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (64 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+            "suggestion": "Beschreibung 'Finde heraus, wie viel du über Robotics …' ist 64 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Techeroes Robotics & Scratch Quiz",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://techeroes-quiz.vercel.app'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://techeroes-quiz.vercel.app/select-avatar/",
+        "indexable": true,
+        "metaDescription": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+        "pageTitle": "Techeroes Robotics & Scratch Quiz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (33 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Techeroes Robotics & Scratch Quiz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Techeroes Robotics & Scratch Quiz",
+            "suggestion": "Titel 'Techeroes Robotics & Scratch Quiz' ist 33 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (64 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Finde heraus, wie viel du über Robotics und Programmieren weißt!",
+            "suggestion": "Beschreibung 'Finde heraus, wie viel du über Robotics …' ist 64 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Wähle deinen Avatar",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://techeroes-quiz.vercel.app/select-avatar/'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 75,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (1 zu klein von 2)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://techeroes-quiz.vercel.app",
+        "title": "Techeroes Robotics & Scratch Quiz",
+        "statusCode": 200,
+        "loadTime": 311,
+        "screenshotPath": "screenshots/techeroes-quiz.vercel.app/q_1774306392010_0jsf9j2/mobile-techeroes-quiz-vercel-app.png"
+      },
+      {
+        "url": "https://techeroes-quiz.vercel.app/select-avatar/",
+        "title": "Techeroes Robotics & Scratch Quiz",
+        "statusCode": 200,
+        "loadTime": 71,
+        "screenshotPath": "screenshots/techeroes-quiz.vercel.app/q_1774306392010_0jsf9j2/mobile-techeroes-quiz-vercel-app-select-avatar-.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://techeroes-quiz.vercel.app",
+      "type": "home",
+      "statusCode": 200,
+      "title": "Techeroes Robotics & Scratch Quiz",
+      "loadTime": 1188,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 935,
+        "fullyLoaded": -241,
+        "dnsLookup": 186,
+        "tcpConnect": 31
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000; includeSubDomains; preload"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/techeroes-quiz.vercel.app/q_1774306392010_0jsf9j2/techeroes-quiz-vercel-app.png"
+    },
+    {
+      "url": "https://techeroes-quiz.vercel.app/select-avatar/",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Techeroes Robotics & Scratch Quiz",
+      "loadTime": 84,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 72,
+        "fullyLoaded": 72,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000; includeSubDomains; preload"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/techeroes-quiz.vercel.app/q_1774306392010_0jsf9j2/techeroes-quiz-vercel-app-select-avatar-.png"
+    }
+  ]
+}

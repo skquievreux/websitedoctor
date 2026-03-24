@@ -154,6 +154,16 @@
     .btn-export { padding: 0.4rem 0.9rem; border-radius: 6px; border: 1px solid #333; background: #1a1a1f; color: #aaa; font-size: 0.8rem; cursor: pointer; }
     .btn-export:hover { border-color: #6c6cff; color: #fff; }
 
+    /* ── Live Pages During Crawl ── */
+    #live-pages { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; max-height: 320px; overflow-y: auto; }
+    .live-page-row { display: flex; gap: 0.75rem; align-items: center; background: #111; border-radius: 6px; padding: 0.5rem; border: 1px solid #222; }
+    .live-thumb { width: 72px; height: 48px; object-fit: cover; object-position: top; border-radius: 4px; flex-shrink: 0; border: 1px solid #333; }
+    .live-thumb-placeholder { width: 72px; height: 48px; background: #1a1a1f; border-radius: 4px; flex-shrink: 0; }
+    .live-page-info { flex: 1; min-width: 0; }
+    .live-page-title { font-size: 0.78rem; font-weight: 600; color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .live-page-url { font-size: 0.7rem; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.15rem; }
+    .live-page-badges { display: flex; gap: 0.3rem; margin-top: 0.3rem; }
+
     /* ── Print / PDF ── */
     @media print {
       aside, header .input-row, .export-bar, .tabs { display: none !important; }
@@ -305,6 +315,7 @@
       <div class="label">Crawl läuft…</div>
       <div id="progress-bar-wrap"><div id="progress-bar"></div></div>
       <div id="status-text">Initialisiere Browser…</div>
+      <div id="live-pages"></div>
     </div>
     <div id="error-box"></div>
 
@@ -600,6 +611,7 @@
       if (data.status === 'running' && data.progress) {
         const pct = Math.round((data.progress.current / data.progress.max) * 100)
         showStatus(`Seite ${data.progress.current}/${data.progress.max}: ${data.progress.url}`, pct)
+        if (data.pages?.length) renderLivePages(data.pages)
         setTimeout(check, 500)
       } else if (data.status === 'done') {
         await fetchHistory()
@@ -937,7 +949,33 @@
     document.getElementById('status-text').textContent = text
     document.getElementById('progress-bar').style.width = pct + '%'
   }
-  function hideStatus() { document.getElementById('status-box').style.display = 'none' }
+  function hideStatus() {
+    document.getElementById('status-box').style.display = 'none'
+    document.getElementById('live-pages').innerHTML = ''
+  }
+
+  function renderLivePages(pages) {
+    const el = document.getElementById('live-pages')
+    el.innerHTML = pages.map(p => {
+      const statusBadge = p.statusCode === 200
+        ? `<span class="badge b-ok">${p.statusCode}</span>`
+        : `<span class="badge b-err">${p.statusCode ?? '?'}</span>`
+      const msBadge = p.loadTime ? `<span class="badge b-ms">${p.loadTime}ms</span>` : ''
+      const jsErrBadge = p.jsErrors?.some(e => e.firstParty)
+        ? `<span class="badge b-err">JS ⚠</span>` : ''
+      const thumb = p.screenshotPath
+        ? `<img src="/${p.screenshotPath}" class="live-thumb" loading="lazy">`
+        : `<div class="live-thumb-placeholder"></div>`
+      return `<div class="live-page-row">
+        ${thumb}
+        <div class="live-page-info">
+          <div class="live-page-title">${escHtml(p.title || '(kein Titel)')}</div>
+          <div class="live-page-url">${escHtml(p.url)}</div>
+          <div class="live-page-badges">${statusBadge}${msBadge}${jsErrBadge}</div>
+        </div>
+      </div>`
+    }).join('')
+  }
   function showError(msg) {
     const el = document.getElementById('error-box')
     el.textContent = 'Fehler: ' + msg

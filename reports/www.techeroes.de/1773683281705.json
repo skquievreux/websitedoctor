@@ -1,0 +1,1593 @@
+{
+  "id": "1773683281705",
+  "url": "https://www.techeroes.de/",
+  "hostname": "www.techeroes.de",
+  "siteTitle": "Techeroes | Digitale Bildung",
+  "siteDescription": "Techeroes bietet spannende Coding Workshops für Kinder, Hackathons und MINT-Erlebnisse – für eine kreative, digitale Zukunft. Für Familien, Schulen und Institutionen. Jetzt entdecken und mitmachen!",
+  "timestamp": "2026-03-16T17:48:34.010Z",
+  "pageCount": 13,
+  "score": 100,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 646 ms)",
+    "Kontaktseite vorhanden",
+    "Impressum/Datenschutz vorhanden",
+    "Gute Seitenanzahl (13 Seiten gefunden)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [],
+  "actions": [],
+  "seo": {
+    "score": 73,
+    "pages": [
+      {
+        "url": "https://www.techeroes.de/",
+        "indexable": true,
+        "metaDescription": "Techeroes bietet spannende Coding Workshops für Kinder, Hackathons und MINT-Erlebnisse – für eine kreative, digitale Zukunft. Für Familien, Schulen und Institutionen. Jetzt entdecken und mitmachen!",
+        "pageTitle": "Techeroes | Digitale Bildung",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (28 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Techeroes | Digitale Bildung",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Techeroes | Digitale Bildung",
+            "suggestion": "Titel 'Techeroes | Digitale Bildung' ist 28 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (197 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Techeroes bietet spannende Coding Workshops für Kinder, Hackathons und MINT-Erlebnisse – für eine kreative, digitale Zukunft. Für Familien, Schulen und Institutionen. Jetzt entdecken und mitmachen!",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Techeroes bietet spannende Coding Workshops für Kinder, Hackathons und MINT-Erlebnisse – für eine kreative, digitale Zukunft. Für Familien, Schulen und Institutionen. Jetzt entdecken und mitmachen!",
+            "suggestion": "Beschreibung 'Techeroes bietet spannende Coding Worksh…' ist 197 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Mach dein Kind zum Technik-Helden!",
+            "suggestion": "4 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (7 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "46c041_af590e4e65e44df38f39abde5e4379e0~mv2.jpg, 46c041_207f4fa7b9c14577a24b50fb3b5a5a4e~mv2.jpg, 46c041_fd0d39d8cbfe496ba8be589d1d6a8596~mv2.jpg, 46c041_0dec9d9b7fb84aa284c5951fb6eb731f~mv2.jpg, 46c041_b8f8881711ee47bd869e981065886aa6~mv2.jpg",
+            "suggestion": "7 Bilder ohne alt-Text: 46c041_af590e4e65e44df38f39abde5e4379e0~mv2.jpg, 46c041_207f4fa7b9c14577a24b50fb3b5a5a4e~mv2.jpg, 46c041_fd0d39d8cbfe496ba8be589d1d6a8596~mv2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/smartnatives",
+        "indexable": true,
+        "metaDescription": "Smart Natives bietet kreative Tech-Workshops, Hackathons und Ferienprogramme für Kinder und Jugendliche. Ideal für Familien, Schulen und Institutionen, die digitale Bildung neu denken möchten.",
+        "pageTitle": "Smart Natives | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (25 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Smart Natives | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Smart Natives | Techeroes",
+            "suggestion": "Titel 'Smart Natives | Techeroes' ist 25 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (192 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Smart Natives bietet kreative Tech-Workshops, Hackathons und Ferienprogramme für Kinder und Jugendliche. Ideal für Familien, Schulen und Institutionen, die digitale Bildung neu denken möchten.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Smart Natives bietet kreative Tech-Workshops, Hackathons und Ferienprogramme für Kinder und Jugendliche. Ideal für Familien, Schulen und Institutionen, die digitale Bildung neu denken möchten.",
+            "suggestion": "Beschreibung 'Smart Natives bietet kreative Tech-Works…' ist 192 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Anfragen für Institutionen",
+            "suggestion": "3 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/smartnatives",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (10 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, 11062b_18eaf46a66be49c497c45a3dbc14cf78~mv2.jpg, 46c041_bc376cb4c9d04ef2b1d6fa88b6949846~mv2.jpg, 46c041_eaa7e1adf788444abfc9278eed27affa~mv2.jpg, 46c041_64487fdf3fe5466a81b6dbf0616267e4~mv2.jpg",
+            "suggestion": "10 Bilder ohne alt-Text: DEU.png, 11062b_18eaf46a66be49c497c45a3dbc14cf78~mv2.jpg, 46c041_bc376cb4c9d04ef2b1d6fa88b6949846~mv2.jpg. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/programm",
+        "indexable": true,
+        "metaDescription": "Unser Programm macht digitale Bildung zum Abenteuer – mit coolen Kursen in Robotik, Coding und kreativer Technik.",
+        "pageTitle": "Programm | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (20 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Programm | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Programm | Techeroes",
+            "suggestion": "Titel 'Programm | Techeroes' ist 20 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (113 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Unser Programm macht digitale Bildung zum Abenteuer – mit coolen Kursen in Robotik, Coding und kreativer Technik.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Unser Programm macht digitale Bildung zum Abenteuer – mit coolen Kursen in Robotik, Coding und kreativer Technik.",
+            "suggestion": "Beschreibung 'Unser Programm macht digitale Bildung zu…' ist 113 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Techeroes Programm",
+            "suggestion": "3 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/programm",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, DEU.png",
+            "suggestion": "2 Bilder ohne alt-Text: DEU.png, DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/company",
+        "indexable": true,
+        "metaDescription": "Bei Techeroes machen wir Kinder stark für die digitale Zukunft – mit spannenden Kursen in Coding, Robotik und kreativer Technik.",
+        "pageTitle": "Über Uns | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (20 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Über Uns | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Über Uns | Techeroes",
+            "suggestion": "Titel 'Über Uns | Techeroes' ist 20 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (128 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Bei Techeroes machen wir Kinder stark für die digitale Zukunft – mit spannenden Kursen in Coding, Robotik und kreativer Technik.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Bei Techeroes machen wir Kinder stark für die digitale Zukunft – mit spannenden Kursen in Coding, Robotik und kreativer Technik.",
+            "suggestion": "Beschreibung 'Bei Techeroes machen wir Kinder stark fü…' ist 128 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Anfrage",
+            "suggestion": "2 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/company",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (3 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, DEU.png, DEU.png",
+            "suggestion": "3 Bilder ohne alt-Text: DEU.png, DEU.png, DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/helden",
+        "indexable": true,
+        "metaDescription": "Entdecke die Helden von Techeroes – spannende Charaktere, die dich in die Welt von Robotik, Coding und Technik-Abenteuern begleiten",
+        "pageTitle": "Unsere Helden | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (25 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Unsere Helden | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Unsere Helden | Techeroes",
+            "suggestion": "Titel 'Unsere Helden | Techeroes' ist 25 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (131 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Entdecke die Helden von Techeroes – spannende Charaktere, die dich in die Welt von Robotik, Coding und Technik-Abenteuern begleiten",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Entdecke die Helden von Techeroes – spannende Charaktere, die dich in die Welt von Robotik, Coding und Technik-Abenteuern begleiten",
+            "suggestion": "Beschreibung 'Entdecke die Helden von Techeroes – span…' ist 131 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Unsere Helden & Ihre Gegenspieler",
+            "suggestion": "3 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/helden",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, DEU.png",
+            "suggestion": "2 Bilder ohne alt-Text: DEU.png, DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/kontakt",
+        "indexable": true,
+        "metaDescription": "Kontaktiere Techeroes in Bad Vilbel – digitale Bildung, Robotik & Coding für Kinder und Jugendliche. Jetzt anfragen und Kurs buchen.",
+        "pageTitle": "Kontakt | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (19 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Kontakt | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Kontakt | Techeroes",
+            "suggestion": "Titel 'Kontakt | Techeroes' ist 19 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (132 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Kontaktiere Techeroes in Bad Vilbel – digitale Bildung, Robotik & Coding für Kinder und Jugendliche. Jetzt anfragen und Kurs buchen.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Kontaktiere Techeroes in Bad Vilbel – digitale Bildung, Robotik & Coding für Kinder und Jugendliche. Jetzt anfragen und Kurs buchen.",
+            "suggestion": "Beschreibung 'Kontaktiere Techeroes in Bad Vilbel – di…' ist 132 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Anfragen für Familien & Privat",
+            "suggestion": "3 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/kontakt",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (3 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, DEU.png, DEU.png",
+            "suggestion": "3 Bilder ohne alt-Text: DEU.png, DEU.png, DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/blog",
+        "indexable": true,
+        "metaDescription": "Im Techeroes Blog findest du spannende Artikel zu digitaler Bildung, Coding, Robotik und kreativen Ideen für Kinder und Jugendliche.",
+        "pageTitle": "Blog | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (16 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Blog | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Blog | Techeroes",
+            "suggestion": "Titel 'Blog | Techeroes' ist 16 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (132 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Im Techeroes Blog findest du spannende Artikel zu digitaler Bildung, Coding, Robotik und kreativen Ideen für Kinder und Jugendliche.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Im Techeroes Blog findest du spannende Artikel zu digitaler Bildung, Coding, Robotik und kreativen Ideen für Kinder und Jugendliche.",
+            "suggestion": "Beschreibung 'Im Techeroes Blog findest du spannende A…' ist 132 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "All Posts",
+            "suggestion": "2 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/blog",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png",
+            "suggestion": "1 Bilder ohne alt-Text: DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/lernspiele",
+        "indexable": true,
+        "metaDescription": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+        "pageTitle": "Lernspiele | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (22 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Lernspiele | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Lernspiele | Techeroes",
+            "suggestion": "Titel 'Lernspiele | Techeroes' ist 22 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (165 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+            "suggestion": "Beschreibung 'Lernspiele für Kinder – Techeroes. Entde…' ist 165 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Anfrage",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/lernspiele",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png",
+            "suggestion": "1 Bilder ohne alt-Text: DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/kitools",
+        "indexable": true,
+        "metaDescription": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+        "pageTitle": "KI Tools | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (20 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "KI Tools | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "KI Tools | Techeroes",
+            "suggestion": "Titel 'KI Tools | Techeroes' ist 20 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (165 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+            "suggestion": "Beschreibung 'Lernspiele für Kinder – Techeroes. Entde…' ist 165 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Anfrage",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/kitools",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png",
+            "suggestion": "1 Bilder ohne alt-Text: DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/teachingtools",
+        "indexable": true,
+        "metaDescription": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+        "pageTitle": "Teaching Tools | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (26 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Teaching Tools | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Teaching Tools | Techeroes",
+            "suggestion": "Titel 'Teaching Tools | Techeroes' ist 26 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (165 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Lernspiele für Kinder – Techeroes. Entdecke spannende Lernspiele für Kinder: spielerisch Programmieren, Technik & KI verstehen – mit Spaß, Kreativität und Teamgeist.",
+            "suggestion": "Beschreibung 'Lernspiele für Kinder – Techeroes. Entde…' ist 165 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Anfrage",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/teachingtools",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png",
+            "suggestion": "1 Bilder ohne alt-Text: DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/privacy-policy",
+        "indexable": true,
+        "metaDescription": "Hier finden Sie die Datenschutzhinweise der Techeroes gGmbH – Transparenz und Sicherheit im Umgang mit Ihren persönlichen Daten.",
+        "pageTitle": "Datenschutz | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (23 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Datenschutz | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Datenschutz | Techeroes",
+            "suggestion": "Titel 'Datenschutz | Techeroes' ist 23 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (128 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Hier finden Sie die Datenschutzhinweise der Techeroes gGmbH – Transparenz und Sicherheit im Umgang mit Ihren persönlichen Daten.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Hier finden Sie die Datenschutzhinweise der Techeroes gGmbH – Transparenz und Sicherheit im Umgang mit Ihren persönlichen Daten.",
+            "suggestion": "Beschreibung 'Hier finden Sie die Datenschutzhinweise …' ist 128 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Datenschutz",
+            "suggestion": "3 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/privacy-policy",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, DEU.png",
+            "suggestion": "2 Bilder ohne alt-Text: DEU.png, DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/impressum",
+        "indexable": true,
+        "metaDescription": "Hier finden Sie das Impressum der Techeroes gGmbH mit allen Pflichtangaben, Kontaktdaten und rechtlichen Hinweisen.",
+        "pageTitle": "Impressum | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (21 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Impressum | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Impressum | Techeroes",
+            "suggestion": "Titel 'Impressum | Techeroes' ist 21 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (115 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Hier finden Sie das Impressum der Techeroes gGmbH mit allen Pflichtangaben, Kontaktdaten und rechtlichen Hinweisen.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Hier finden Sie das Impressum der Techeroes gGmbH mit allen Pflichtangaben, Kontaktdaten und rechtlichen Hinweisen.",
+            "suggestion": "Beschreibung 'Hier finden Sie das Impressum der Techer…' ist 115 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Impressum",
+            "suggestion": "3 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/impressum",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (2 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png, DEU.png",
+            "suggestion": "2 Bilder ohne alt-Text: DEU.png, DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://www.techeroes.de/feriencamp",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Feriencamp | Techeroes",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (22 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Feriencamp | Techeroes",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Feriencamp | Techeroes",
+            "suggestion": "Titel 'Feriencamp | Techeroes' ist 22 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Anfrage",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://www.techeroes.de/feriencamp",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (1 ohne)",
+            "pass": false,
+            "weight": 10,
+            "value": "DEU.png",
+            "suggestion": "1 Bilder ohne alt-Text: DEU.png. Beschreibe den Bildinhalt"
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 50,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (10px)",
+        "pass": false
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (47 zu klein von 94)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://www.techeroes.de/",
+        "title": "Techeroes | Digitale Bildung",
+        "statusCode": 200,
+        "loadTime": 707,
+        "screenshotPath": "screenshots/www.techeroes.de/1773683281705/mobile-www-techeroes-de-.png"
+      },
+      {
+        "url": "https://www.techeroes.de/smartnatives",
+        "title": "Smart Natives | Techeroes",
+        "statusCode": 200,
+        "loadTime": 486,
+        "screenshotPath": "screenshots/www.techeroes.de/1773683281705/mobile-www-techeroes-de-smartnatives.png"
+      },
+      {
+        "url": "https://www.techeroes.de/programm",
+        "title": "Programm | Techeroes",
+        "statusCode": 200,
+        "loadTime": 1165,
+        "screenshotPath": "screenshots/www.techeroes.de/1773683281705/mobile-www-techeroes-de-programm.png"
+      },
+      {
+        "url": "https://www.techeroes.de/company",
+        "title": "Über Uns | Techeroes",
+        "statusCode": 200,
+        "loadTime": 692,
+        "screenshotPath": "screenshots/www.techeroes.de/1773683281705/mobile-www-techeroes-de-company.png"
+      },
+      {
+        "url": "https://www.techeroes.de/helden",
+        "title": "Unsere Helden | Techeroes",
+        "statusCode": 200,
+        "loadTime": 664,
+        "screenshotPath": "screenshots/www.techeroes.de/1773683281705/mobile-www-techeroes-de-helden.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://www.techeroes.de/",
+      "type": "home",
+      "statusCode": 200,
+      "title": "Techeroes | Digitale Bildung",
+      "loadTime": 842,
+      "timing": {
+        "ttfb": 223,
+        "domReady": 727,
+        "fullyLoaded": -107,
+        "dnsLookup": 19,
+        "tcpConnect": 44
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-.png"
+    },
+    {
+      "url": "https://www.techeroes.de/smartnatives",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Smart Natives | Techeroes",
+      "loadTime": 481,
+      "timing": {
+        "ttfb": 225,
+        "domReady": 477,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-smartnatives.png"
+    },
+    {
+      "url": "https://www.techeroes.de/programm",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Programm | Techeroes",
+      "loadTime": 769,
+      "timing": {
+        "ttfb": 222,
+        "domReady": 762,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-programm.png"
+    },
+    {
+      "url": "https://www.techeroes.de/company",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Über Uns | Techeroes",
+      "loadTime": 510,
+      "timing": {
+        "ttfb": 224,
+        "domReady": 505,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-company.png"
+    },
+    {
+      "url": "https://www.techeroes.de/helden",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Unsere Helden | Techeroes",
+      "loadTime": 507,
+      "timing": {
+        "ttfb": 221,
+        "domReady": 493,
+        "fullyLoaded": -5,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-helden.png"
+    },
+    {
+      "url": "https://www.techeroes.de/kontakt",
+      "type": "contact",
+      "statusCode": 200,
+      "title": "Kontakt | Techeroes",
+      "loadTime": 424,
+      "timing": {
+        "ttfb": 233,
+        "domReady": 417,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-kontakt.png"
+    },
+    {
+      "url": "https://www.techeroes.de/blog",
+      "type": "blog",
+      "statusCode": 200,
+      "title": "Blog | Techeroes",
+      "loadTime": 399,
+      "timing": {
+        "ttfb": 231,
+        "domReady": 387,
+        "fullyLoaded": -6,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-blog.png"
+    },
+    {
+      "url": "https://www.techeroes.de/lernspiele",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Lernspiele | Techeroes",
+      "loadTime": 452,
+      "timing": {
+        "ttfb": 231,
+        "domReady": 442,
+        "fullyLoaded": -2,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-lernspiele.png"
+    },
+    {
+      "url": "https://www.techeroes.de/kitools",
+      "type": "other",
+      "statusCode": 200,
+      "title": "KI Tools | Techeroes",
+      "loadTime": 417,
+      "timing": {
+        "ttfb": 230,
+        "domReady": 397,
+        "fullyLoaded": -7,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-kitools.png"
+    },
+    {
+      "url": "https://www.techeroes.de/teachingtools",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Teaching Tools | Techeroes",
+      "loadTime": 370,
+      "timing": {
+        "ttfb": 227,
+        "domReady": 365,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-teachingtools.png"
+    },
+    {
+      "url": "https://www.techeroes.de/privacy-policy",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Datenschutz | Techeroes",
+      "loadTime": 2413,
+      "timing": {
+        "ttfb": 2200,
+        "domReady": 2406,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-privacy-policy.png"
+    },
+    {
+      "url": "https://www.techeroes.de/impressum",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Impressum | Techeroes",
+      "loadTime": 398,
+      "timing": {
+        "ttfb": 258,
+        "domReady": 391,
+        "fullyLoaded": -1,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-impressum.png"
+    },
+    {
+      "url": "https://www.techeroes.de/feriencamp",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Feriencamp | Techeroes",
+      "loadTime": 414,
+      "timing": {
+        "ttfb": 220,
+        "domReady": 390,
+        "fullyLoaded": -2,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public,max-age=0,must-revalidate",
+        "hsts": "max-age=31556952"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/www.techeroes.de/1773683281705/www-techeroes-de-feriencamp.png"
+    }
+  ]
+}

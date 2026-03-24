@@ -1,0 +1,1133 @@
+{
+  "id": "1773683761507",
+  "url": "https://freequentz.de/",
+  "hostname": "freequentz.de",
+  "siteTitle": "freequentz – KI-Agentur für Web-Apps, Voicebots & digitale Lösungen",
+  "siteDescription": "Deine KI-Agentur aus dem Norden: Web-App Entwicklung, Voicebots, Landing Pages, KI-Schulungen und kreative Medienproduktion – alles aus einer Hand.",
+  "timestamp": "2026-03-16T17:56:15.044Z",
+  "pageCount": 9,
+  "score": 100,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 529 ms)",
+    "Kontaktseite vorhanden",
+    "Impressum/Datenschutz vorhanden",
+    "Gute Seitenanzahl (9 Seiten gefunden)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Kein Caching konfiguriert"
+  ],
+  "actions": [
+    "Cache-Control-Header konfigurieren (z.B. max-age=3600)"
+  ],
+  "seo": {
+    "score": 95,
+    "pages": [
+      {
+        "url": "https://freequentz.de/",
+        "indexable": true,
+        "metaDescription": "Deine KI-Agentur aus dem Norden: Web-App Entwicklung, Voicebots, Landing Pages, KI-Schulungen und kreative Medienproduktion – alles aus einer Hand.",
+        "pageTitle": "freequentz – KI-Agentur für Web-Apps, Voicebots & digitale Lösungen",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (67 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "freequentz – KI-Agentur für Web-Apps, Voicebots & digitale Lösungen",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "freequentz – KI-Agentur für Web-Apps, Voicebots & digitale Lösungen",
+            "suggestion": "Titel 'freequentz – KI-Agentur für Web-Apps, Vo…' ist 67 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (147 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Deine KI-Agentur aus dem Norden: Web-App Entwicklung, Voicebots, Landing Pages, KI-Schulungen und kreative Medienproduktion – alles aus einer Hand.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Deine KI-Agentur aus dem Norden: Web-App Entwicklung, Voicebots, Landing Pages, KI-Schulungen und kreative Medienproduktion – alles aus einer Hand.",
+            "suggestion": "Beschreibung 'Deine KI-Agentur aus dem Norden: Web-App…' ist 147 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Ein Gespräch. Deine Vision. Dein digitales Business.",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/services",
+        "indexable": true,
+        "metaDescription": "Von Web-App Entwicklung über Voicebots bis KI-Schulungen: Entdecke unsere Services für deinen digitalen Erfolg – alles aus einer Hand.",
+        "pageTitle": "Services – Web-Apps, Voicebots & KI-Lösungen | freequentz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (57 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Services – Web-Apps, Voicebots & KI-Lösungen | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Services – Web-Apps, Voicebots & KI-Lösungen | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (134 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Von Web-App Entwicklung über Voicebots bis KI-Schulungen: Entdecke unsere Services für deinen digitalen Erfolg – alles aus einer Hand.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Von Web-App Entwicklung über Voicebots bis KI-Schulungen: Entdecke unsere Services für deinen digitalen Erfolg – alles aus einer Hand.",
+            "suggestion": "Beschreibung 'Von Web-App Entwicklung über Voicebots b…' ist 134 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Alles aus einer Hand",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/services",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/portfolio",
+        "indexable": true,
+        "metaDescription": "Entdecke unsere realisierten Projekte: Web-Apps, Voicebots, Landing Pages und KI-Lösungen – echte Referenzen von freequentz.",
+        "pageTitle": "Portfolio – Realisierte Web-Apps & KI-Projekte | freequentz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (59 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Portfolio – Realisierte Web-Apps & KI-Projekte | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Portfolio – Realisierte Web-Apps & KI-Projekte | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (124 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Entdecke unsere realisierten Projekte: Web-Apps, Voicebots, Landing Pages und KI-Lösungen – echte Referenzen von freequentz.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Entdecke unsere realisierten Projekte: Web-Apps, Voicebots, Landing Pages und KI-Lösungen – echte Referenzen von freequentz.",
+            "suggestion": "Beschreibung 'Entdecke unsere realisierten Projekte: W…' ist 124 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Echte Projekte",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/portfolio",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/toolbox",
+        "indexable": true,
+        "metaDescription": "Unsere besten KI-Tool-Empfehlungen plus kostenloser Website-Check und Bedarfsanalyse – finde die richtigen Tools für dein Business.",
+        "pageTitle": "KI-Toolbox – Die besten KI-Tools & Website-Check | freequentz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (61 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "KI-Toolbox – Die besten KI-Tools & Website-Check | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "KI-Toolbox – Die besten KI-Tools & Website-Check | freequentz",
+            "suggestion": "Titel 'KI-Toolbox – Die besten KI-Tools & Websi…' ist 61 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (131 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Unsere besten KI-Tool-Empfehlungen plus kostenloser Website-Check und Bedarfsanalyse – finde die richtigen Tools für dein Business.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Unsere besten KI-Tool-Empfehlungen plus kostenloser Website-Check und Bedarfsanalyse – finde die richtigen Tools für dein Business.",
+            "suggestion": "Beschreibung 'Unsere besten KI-Tool-Empfehlungen plus …' ist 131 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Unsere Tool-Empfehlungen",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/toolbox",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/voicebots",
+        "indexable": true,
+        "metaDescription": "Teste unsere KI-Voicebots live: Quatsch mit Steini, GOKI BOT, ChefBuddy und mehr – intelligente Sprachassistenten von freequentz.",
+        "pageTitle": "Voicebots – KI-Sprachassistenten live testen | freequentz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (57 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Voicebots – KI-Sprachassistenten live testen | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Voicebots – KI-Sprachassistenten live testen | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (129 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Teste unsere KI-Voicebots live: Quatsch mit Steini, GOKI BOT, ChefBuddy und mehr – intelligente Sprachassistenten von freequentz.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Teste unsere KI-Voicebots live: Quatsch mit Steini, GOKI BOT, ChefBuddy und mehr – intelligente Sprachassistenten von freequentz.",
+            "suggestion": "Beschreibung 'Teste unsere KI-Voicebots live: Quatsch …' ist 129 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Unsere Voicebots",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/voicebots",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/about",
+        "indexable": true,
+        "metaDescription": "Lerne Frank Bösche kennen: Vom Mobilfunk-Pionier zum KI-Unternehmer – über 40 Jahre Erfahrung in Vertrieb, Technologie und digitaler Innovation.",
+        "pageTitle": "Über Frank Bösche – 40 Jahre Business-Erfahrung | freequentz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (60 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Über Frank Bösche – 40 Jahre Business-Erfahrung | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Über Frank Bösche – 40 Jahre Business-Erfahrung | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (144 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Lerne Frank Bösche kennen: Vom Mobilfunk-Pionier zum KI-Unternehmer – über 40 Jahre Erfahrung in Vertrieb, Technologie und digitaler Innovation.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Lerne Frank Bösche kennen: Vom Mobilfunk-Pionier zum KI-Unternehmer – über 40 Jahre Erfahrung in Vertrieb, Technologie und digitaler Innovation.",
+            "suggestion": "Beschreibung 'Lerne Frank Bösche kennen: Vom Mobilfunk…' ist 144 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "40 Jahre Selbstständigkeit",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/about",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/contact",
+        "indexable": true,
+        "metaDescription": "Starte dein Projekt mit freequentz: Kontaktiere uns für ein kostenloses Erstgespräch zu Web-Apps, Voicebots und KI-Lösungen.",
+        "pageTitle": "Kontakt – Kostenloses Erstgespräch buchen | freequentz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (54 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Kontakt – Kostenloses Erstgespräch buchen | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "Kontakt – Kostenloses Erstgespräch buchen | freequentz",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (124 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Starte dein Projekt mit freequentz: Kontaktiere uns für ein kostenloses Erstgespräch zu Web-Apps, Voicebots und KI-Lösungen.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Starte dein Projekt mit freequentz: Kontaktiere uns für ein kostenloses Erstgespräch zu Web-Apps, Voicebots und KI-Lösungen.",
+            "suggestion": "Beschreibung 'Starte dein Projekt mit freequentz: Kont…' ist 124 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Lass uns sprechen",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/contact",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/impressum",
+        "indexable": true,
+        "metaDescription": "Impressum der freequentz KI-Agentur: Angaben gemäß § 5 TMG, Kontaktdaten und verantwortliche Stelle.",
+        "pageTitle": "Impressum – freequentz KI-Agentur",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (33 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Impressum – freequentz KI-Agentur",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Impressum – freequentz KI-Agentur",
+            "suggestion": "Titel 'Impressum – freequentz KI-Agentur' ist 33 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (100 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Impressum der freequentz KI-Agentur: Angaben gemäß § 5 TMG, Kontaktdaten und verantwortliche Stelle.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Impressum der freequentz KI-Agentur: Angaben gemäß § 5 TMG, Kontaktdaten und verantwortliche Stelle.",
+            "suggestion": "Beschreibung 'Impressum der freequentz KI-Agentur: Ang…' ist 100 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Impressum",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/impressum",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://freequentz.de/datenschutz",
+        "indexable": true,
+        "metaDescription": "Datenschutzerklärung der freequentz KI-Agentur: Informationen zur Erhebung, Verarbeitung und Nutzung personenbezogener Daten.",
+        "pageTitle": "Datenschutzerklärung – freequentz KI-Agentur",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (44 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Datenschutzerklärung – freequentz KI-Agentur",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Datenschutzerklärung – freequentz KI-Agentur",
+            "suggestion": "Titel 'Datenschutzerklärung – freequentz KI-Agentur' ist 44 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (125 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Datenschutzerklärung der freequentz KI-Agentur: Informationen zur Erhebung, Verarbeitung und Nutzung personenbezogener Daten.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Datenschutzerklärung der freequentz KI-Agentur: Informationen zur Erhebung, Verarbeitung und Nutzung personenbezogener Daten.",
+            "suggestion": "Beschreibung 'Datenschutzerklärung der freequentz KI-A…' ist 125 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Datenschutzerklärung",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://freequentz.lovable.app/datenschutz",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 75,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (10 zu klein von 23)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://freequentz.de/",
+        "title": "freequentz – KI-Agentur für Web-Apps, Voicebots & digitale Lösungen",
+        "statusCode": 200,
+        "loadTime": 419,
+        "screenshotPath": "screenshots/freequentz.de/1773683761507/mobile-freequentz-de-.png"
+      },
+      {
+        "url": "https://freequentz.de/services",
+        "title": "Services – Web-Apps, Voicebots & KI-Lösungen | freequentz",
+        "statusCode": 200,
+        "loadTime": 406,
+        "screenshotPath": "screenshots/freequentz.de/1773683761507/mobile-freequentz-de-services.png"
+      },
+      {
+        "url": "https://freequentz.de/portfolio",
+        "title": "Portfolio – Realisierte Web-Apps & KI-Projekte | freequentz",
+        "statusCode": 200,
+        "loadTime": 349,
+        "screenshotPath": "screenshots/freequentz.de/1773683761507/mobile-freequentz-de-portfolio.png"
+      },
+      {
+        "url": "https://freequentz.de/toolbox",
+        "title": "KI-Toolbox – Die besten KI-Tools & Website-Check | freequentz",
+        "statusCode": 200,
+        "loadTime": 336,
+        "screenshotPath": "screenshots/freequentz.de/1773683761507/mobile-freequentz-de-toolbox.png"
+      },
+      {
+        "url": "https://freequentz.de/voicebots",
+        "title": "Voicebots – KI-Sprachassistenten live testen | freequentz",
+        "statusCode": 200,
+        "loadTime": 362,
+        "screenshotPath": "screenshots/freequentz.de/1773683761507/mobile-freequentz-de-voicebots.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://freequentz.de/",
+      "type": "home",
+      "statusCode": 200,
+      "title": "freequentz – KI-Agentur für Web-Apps, Voicebots & digitale Lösungen",
+      "loadTime": 1436,
+      "timing": {
+        "ttfb": 236,
+        "domReady": 1316,
+        "fullyLoaded": 1316,
+        "dnsLookup": 8,
+        "tcpConnect": 49
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-.png"
+    },
+    {
+      "url": "https://freequentz.de/services",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Services – Web-Apps, Voicebots & KI-Lösungen | freequentz",
+      "loadTime": 371,
+      "timing": {
+        "ttfb": 126,
+        "domReady": 363,
+        "fullyLoaded": 364,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-services.png"
+    },
+    {
+      "url": "https://freequentz.de/portfolio",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Portfolio – Realisierte Web-Apps & KI-Projekte | freequentz",
+      "loadTime": 363,
+      "timing": {
+        "ttfb": 111,
+        "domReady": 359,
+        "fullyLoaded": 359,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-portfolio.png"
+    },
+    {
+      "url": "https://freequentz.de/toolbox",
+      "type": "other",
+      "statusCode": 200,
+      "title": "KI-Toolbox – Die besten KI-Tools & Website-Check | freequentz",
+      "loadTime": 364,
+      "timing": {
+        "ttfb": 126,
+        "domReady": 361,
+        "fullyLoaded": 361,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-toolbox.png"
+    },
+    {
+      "url": "https://freequentz.de/voicebots",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Voicebots – KI-Sprachassistenten live testen | freequentz",
+      "loadTime": 417,
+      "timing": {
+        "ttfb": 146,
+        "domReady": 412,
+        "fullyLoaded": 412,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-voicebots.png"
+    },
+    {
+      "url": "https://freequentz.de/about",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Über Frank Bösche – 40 Jahre Business-Erfahrung | freequentz",
+      "loadTime": 523,
+      "timing": {
+        "ttfb": 246,
+        "domReady": 519,
+        "fullyLoaded": 519,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-about.png"
+    },
+    {
+      "url": "https://freequentz.de/contact",
+      "type": "contact",
+      "statusCode": 200,
+      "title": "Kontakt – Kostenloses Erstgespräch buchen | freequentz",
+      "loadTime": 436,
+      "timing": {
+        "ttfb": 149,
+        "domReady": 432,
+        "fullyLoaded": 432,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-contact.png"
+    },
+    {
+      "url": "https://freequentz.de/impressum",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Impressum – freequentz KI-Agentur",
+      "loadTime": 495,
+      "timing": {
+        "ttfb": 112,
+        "domReady": 491,
+        "fullyLoaded": 491,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-impressum.png"
+    },
+    {
+      "url": "https://freequentz.de/datenschutz",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Datenschutzerklärung – freequentz KI-Agentur",
+      "loadTime": 357,
+      "timing": {
+        "ttfb": 108,
+        "domReady": 352,
+        "fullyLoaded": 352,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": null,
+        "hsts": "max-age=31536000; includeSubDomains"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/freequentz.de/1773683761507/freequentz-de-datenschutz.png"
+    }
+  ]
+}

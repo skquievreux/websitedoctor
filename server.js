@@ -104,6 +104,10 @@ function runCrawlWorker(url, id) {
         if (job) job.progress = msg.data
         queue.updateProgress(id, msg.data)
       }
+      if (msg.type === 'page') {
+        const job = jobs.get(id)
+        if (job) job.pages.push(msg.data)
+      }
       if (msg.type === 'done')   resolve(msg.data)
       if (msg.type === 'error')  reject(new Error(msg.data))
     })
@@ -124,7 +128,7 @@ async function processQueueLoop() {
 
       console.log(chalk.cyan(`[queue] Starte Job: ${job.id} (${job.url})`))
       queue.startJob(job)
-      jobs.set(job.id, { status: 'running', progress: { current: 0, max: 20, url: job.url } })
+      jobs.set(job.id, { status: 'running', progress: { current: 0, max: 20, url: job.url }, pages: [] })
 
       try {
         const report = await runCrawlWorker(job.url, job.id)
@@ -197,11 +201,11 @@ app.get('/status/:id', (req, res) => {
   const id = req.params.id
   // Check in-memory jobs first (legacy)
   let job = jobs.get(id)
-  if (job) return res.json({ status: job.status, progress: job.progress ?? null, error: job.error ?? null })
+  if (job) return res.json({ status: job.status, progress: job.progress ?? null, pages: job.pages ?? [], error: job.error ?? null })
   // Check queue manager
   job = queue.getJob(id)
   if (!job) return res.status(404).json({ error: 'Job nicht gefunden' })
-  res.json({ status: job.status, progress: job.progress ?? null, error: job.error ?? null })
+  res.json({ status: job.status, progress: job.progress ?? null, pages: [], error: job.error ?? null })
 })
 
 app.get('/report/:id', async (req, res) => {

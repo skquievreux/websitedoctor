@@ -1,0 +1,173 @@
+{
+  "id": "1774290389210",
+  "url": "https://leadmagnet-question-nmzt.vercel.app",
+  "hostname": "leadmagnet-question-nmzt.vercel.app",
+  "siteTitle": "Führungskräfte-Assessment",
+  "siteDescription": null,
+  "timestamp": "2026-03-23T18:31:27.098Z",
+  "pageCount": 1,
+  "score": 70,
+  "strengths": [
+    "Schnelle Ladezeiten (Ø 0 ms)"
+  ],
+  "weaknesses": [
+    "1 Seite(n) nicht erreichbar",
+    "Keine Kontaktseite gefunden",
+    "Kein Impressum/Datenschutz gefunden",
+    "Sehr wenige Unterseiten gefunden",
+    "Kein Caching konfiguriert",
+    "HSTS-Header fehlt (Sicherheitsrisiko)"
+  ],
+  "actions": [
+    "Broken Links und 404-Seiten reparieren",
+    "Kontaktseite anlegen und im Menü verlinken",
+    "Impressum und Datenschutzerklärung anlegen",
+    "Inhaltsstruktur ausbauen",
+    "Cache-Control-Header konfigurieren (z.B. max-age=3600)",
+    "HSTS-Header hinzufügen: Strict-Transport-Security: max-age=31536000"
+  ],
+  "seo": {
+    "score": 72,
+    "pages": [
+      {
+        "url": "https://leadmagnet-question-nmzt.vercel.app",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Führungskräfte-Assessment",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (25 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Führungskräfte-Assessment",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Führungskräfte-Assessment",
+            "suggestion": "Titel 'Führungskräfte-Assessment' ist 25 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Führungskräfte-Assessment",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://leadmagnet-question-nmzt.vercel.app'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 100,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (0 zu klein von 3)",
+        "pass": true
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://leadmagnet-question-nmzt.vercel.app",
+        "title": "Führungskräfte-Assessment",
+        "statusCode": 200,
+        "loadTime": 698,
+        "screenshotPath": "screenshots/leadmagnet-question-nmzt.vercel.app/1774290389210/mobile-leadmagnet-question-nmzt-vercel-app.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://leadmagnet-question-nmzt.vercel.app",
+      "type": "home",
+      "statusCode": null,
+      "title": "",
+      "loadTime": null,
+      "timing": null,
+      "responseHeaders": {},
+      "jsErrors": [],
+      "screenshotPath": "screenshots/leadmagnet-question-nmzt.vercel.app/1774290389210/leadmagnet-question-nmzt-vercel-app.png"
+    }
+  ]
+}

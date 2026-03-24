@@ -1,0 +1,178 @@
+{
+  "id": "q_1774306392010_v7lwqzu",
+  "url": "https://heldenquiz.runitfast.xyz",
+  "hostname": "heldenquiz.runitfast.xyz",
+  "siteTitle": "...Steffen T-Fox' Techero-Quiz",
+  "siteDescription": null,
+  "timestamp": "2026-03-23T23:00:13.155Z",
+  "pageCount": 1,
+  "score": 80,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 290 ms)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Keine Kontaktseite gefunden",
+    "Kein Impressum/Datenschutz gefunden",
+    "Sehr wenige Unterseiten gefunden"
+  ],
+  "actions": [
+    "Kontaktseite anlegen und im Menü verlinken",
+    "Impressum und Datenschutzerklärung anlegen",
+    "Inhaltsstruktur ausbauen"
+  ],
+  "seo": {
+    "score": 72,
+    "pages": [
+      {
+        "url": "https://heldenquiz.runitfast.xyz",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "...Steffen T-Fox' Techero-Quiz",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (30 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "...Steffen T-Fox' Techero-Quiz",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "...Steffen T-Fox' Techero-Quiz",
+            "suggestion": "Titel '...Steffen T-Fox' Techero-Quiz' ist 30 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "...Steffen T-Fox' Techero-Quiz",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://heldenquiz.runitfast.xyz'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 75,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (1 zu klein von 10)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://heldenquiz.runitfast.xyz",
+        "title": "...Steffen T-Fox' Techero-Quiz",
+        "statusCode": 200,
+        "loadTime": 253,
+        "screenshotPath": "screenshots/heldenquiz.runitfast.xyz/q_1774306392010_v7lwqzu/mobile-heldenquiz-runitfast-xyz.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://heldenquiz.runitfast.xyz",
+      "type": "home",
+      "statusCode": 200,
+      "title": "...Steffen T-Fox' Techero-Quiz",
+      "loadTime": 290,
+      "timing": {
+        "ttfb": 14,
+        "domReady": 150,
+        "fullyLoaded": -120,
+        "dnsLookup": 37,
+        "tcpConnect": 53
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/heldenquiz.runitfast.xyz/q_1774306392010_v7lwqzu/heldenquiz-runitfast-xyz.png"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "id": "q_1774306392010_8kqpoqa",
+  "url": "https://epdf.runitfast.xyz",
+  "hostname": "epdf.runitfast.xyz",
+  "siteTitle": "Designtrends 2025 v1.5.2 - Interaktives ePDF",
+  "siteDescription": null,
+  "timestamp": "2026-03-23T22:56:00.435Z",
+  "pageCount": 1,
+  "score": 80,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 505 ms)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Keine Kontaktseite gefunden",
+    "Kein Impressum/Datenschutz gefunden",
+    "Sehr wenige Unterseiten gefunden"
+  ],
+  "actions": [
+    "Kontaktseite anlegen und im Menü verlinken",
+    "Impressum und Datenschutzerklärung anlegen",
+    "Inhaltsstruktur ausbauen"
+  ],
+  "seo": {
+    "score": 60,
+    "pages": [
+      {
+        "url": "https://epdf.runitfast.xyz",
+        "indexable": true,
+        "metaDescription": null,
+        "pageTitle": "Designtrends 2025 v1.5.2 - Interaktives ePDF",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (44 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Designtrends 2025 v1.5.2 - Interaktives ePDF",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Designtrends 2025 v1.5.2 - Interaktives ePDF",
+            "suggestion": "Titel 'Designtrends 2025 v1.5.2 - Interaktives ePDF' ist 44 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (0 Zeichen)",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <meta name='description' content='...'> hinzu (150–160 Zeichen)"
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "Designtrends 2025",
+            "suggestion": "6 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://epdf.runitfast.xyz'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1.0",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 50,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": false
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (11 zu klein von 53)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://epdf.runitfast.xyz",
+        "title": "Designtrends 2025 v1.5.2 - Interaktives ePDF",
+        "statusCode": 200,
+        "loadTime": 978,
+        "screenshotPath": "screenshots/epdf.runitfast.xyz/q_1774306392010_8kqpoqa/mobile-epdf-runitfast-xyz.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://epdf.runitfast.xyz",
+      "type": "home",
+      "statusCode": 200,
+      "title": "Designtrends 2025 v1.5.2 - Interaktives ePDF",
+      "loadTime": 505,
+      "timing": {
+        "ttfb": 7,
+        "domReady": 461,
+        "fullyLoaded": -33,
+        "dnsLookup": 3,
+        "tcpConnect": 22
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/epdf.runitfast.xyz/q_1774306392010_8kqpoqa/epdf-runitfast-xyz.png"
+    }
+  ]
+}

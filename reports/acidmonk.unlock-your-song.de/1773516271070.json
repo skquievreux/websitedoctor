@@ -1,0 +1,2409 @@
+{
+  "id": "1773516271070",
+  "url": "https://acidmonk.unlock-your-song.de/",
+  "hostname": "acidmonk.unlock-your-song.de",
+  "siteTitle": "ACID MONK Hook Generator",
+  "siteDescription": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+  "timestamp": "2026-03-14T19:25:18.279Z",
+  "pageCount": 20,
+  "score": 80,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 942 ms)",
+    "Gute Seitenanzahl (20 Seiten gefunden)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Keine Kontaktseite gefunden",
+    "Kein Impressum/Datenschutz gefunden"
+  ],
+  "actions": [
+    "Kontaktseite anlegen und im Menü verlinken",
+    "Impressum und Datenschutzerklärung anlegen"
+  ],
+  "seo": {
+    "score": 77,
+    "pages": [
+      {
+        "url": "https://acidmonk.unlock-your-song.de/",
+        "indexable": true,
+        "metaDescription": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+        "pageTitle": "ACID MONK Hook Generator",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (24 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "ACID MONK Hook Generator",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "ACID MONK Hook Generator",
+            "suggestion": "Titel 'ACID MONK Hook Generator' ist 24 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (53 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Erstelle professionelle Voice Hooks und Texte mit KI.",
+            "suggestion": "Beschreibung 'Erstelle professionelle Voice Hooks und …' ist 53 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "👁️ THE GAP",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/unlock-your-song",
+        "indexable": true,
+        "metaDescription": "Melody erstellt persönliche Songs & Covers in Minuten – als MP3 oder exklusive Sliderbox.",
+        "pageTitle": "🎁 Unlock Your Song Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (41 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎁 Unlock Your Song Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎁 Unlock Your Song Generator | ACID MONK",
+            "suggestion": "Titel '🎁 Unlock Your Song Generator | ACID MONK' ist 41 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (89 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Melody erstellt persönliche Songs & Covers in Minuten – als MP3 oder exklusive Sliderbox.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Melody erstellt persönliche Songs & Covers in Minuten – als MP3 oder exklusive Sliderbox.",
+            "suggestion": "Beschreibung 'Melody erstellt persönliche Songs & Cove…' ist 89 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🎁 Unlock Your Song",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/unlock-your-song'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/music-hooks",
+        "indexable": true,
+        "metaDescription": "Professionelle emotionale Voice Hooks für deine Musikproduktion",
+        "pageTitle": "🎵 ACID MONK Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (34 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎵 ACID MONK Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎵 ACID MONK Generator | ACID MONK",
+            "suggestion": "Titel '🎵 ACID MONK Generator | ACID MONK' ist 34 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (63 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Professionelle emotionale Voice Hooks für deine Musikproduktion",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Professionelle emotionale Voice Hooks für deine Musikproduktion",
+            "suggestion": "Beschreibung 'Professionelle emotionale Voice Hooks fü…' ist 63 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🎵 ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/music-hooks'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/story-spark",
+        "indexable": true,
+        "metaDescription": "Verzaubere Kinder mit personalisierten Hörgeschichten. Von Fantasie bis Lernen.",
+        "pageTitle": "✨ STORY SPARK Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (35 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "✨ STORY SPARK Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "✨ STORY SPARK Generator | ACID MONK",
+            "suggestion": "Titel '✨ STORY SPARK Generator | ACID MONK' ist 35 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (79 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Verzaubere Kinder mit personalisierten Hörgeschichten. Von Fantasie bis Lernen.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Verzaubere Kinder mit personalisierten Hörgeschichten. Von Fantasie bis Lernen.",
+            "suggestion": "Beschreibung 'Verzaubere Kinder mit personalisierten H…' ist 79 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "✨ STORY SPARK",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/story-spark'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/racket-voice",
+        "indexable": true,
+        "metaDescription": "Professionelle Kommentare für Tennis, Badminton, Tischtennis, Padel und mehr.",
+        "pageTitle": "🎾 RACKET VOICE Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (37 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎾 RACKET VOICE Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎾 RACKET VOICE Generator | ACID MONK",
+            "suggestion": "Titel '🎾 RACKET VOICE Generator | ACID MONK' ist 37 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (77 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Professionelle Kommentare für Tennis, Badminton, Tischtennis, Padel und mehr.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Professionelle Kommentare für Tennis, Badminton, Tischtennis, Padel und mehr.",
+            "suggestion": "Beschreibung 'Professionelle Kommentare für Tennis, Ba…' ist 77 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🎾 RACKET VOICE",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/racket-voice'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/wave-guide",
+        "indexable": true,
+        "metaDescription": "Entspannte, naturverbundene Voice-Overs für deine SUP-Touren, Kurse und Events",
+        "pageTitle": "🌊 WAVE GUIDE Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (35 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🌊 WAVE GUIDE Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🌊 WAVE GUIDE Generator | ACID MONK",
+            "suggestion": "Titel '🌊 WAVE GUIDE Generator | ACID MONK' ist 35 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (78 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Entspannte, naturverbundene Voice-Overs für deine SUP-Touren, Kurse und Events",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Entspannte, naturverbundene Voice-Overs für deine SUP-Touren, Kurse und Events",
+            "suggestion": "Beschreibung 'Entspannte, naturverbundene Voice-Overs …' ist 78 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🌊 WAVE GUIDE",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/wave-guide'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/iron-voice",
+        "indexable": true,
+        "metaDescription": "Motivierend, energetisch, kein Bullshit. Dein Coach für den Extra-Push.",
+        "pageTitle": "💪 IRON VOICE Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (35 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "💪 IRON VOICE Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "💪 IRON VOICE Generator | ACID MONK",
+            "suggestion": "Titel '💪 IRON VOICE Generator | ACID MONK' ist 35 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (71 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Motivierend, energetisch, kein Bullshit. Dein Coach für den Extra-Push.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Motivierend, energetisch, kein Bullshit. Dein Coach für den Extra-Push.",
+            "suggestion": "Beschreibung 'Motivierend, energetisch, kein Bullshit.…' ist 71 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "💪 IRON VOICE",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/iron-voice'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/the-gap",
+        "indexable": true,
+        "metaDescription": "Erzeugt Hooks, die zum Weiterlesen zwingen. Personifizierte Neugier.",
+        "pageTitle": "👁️ THE GAP Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (33 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "👁️ THE GAP Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "👁️ THE GAP Generator | ACID MONK",
+            "suggestion": "Titel '👁️ THE GAP Generator | ACID MONK' ist 33 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (68 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Erzeugt Hooks, die zum Weiterlesen zwingen. Personifizierte Neugier.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Erzeugt Hooks, die zum Weiterlesen zwingen. Personifizierte Neugier.",
+            "suggestion": "Beschreibung 'Erzeugt Hooks, die zum Weiterlesen zwing…' ist 68 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "👁️ THE GAP",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/the-gap'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/flavor-drop",
+        "indexable": true,
+        "metaDescription": "Sinnlich, einladend, appetitanregend. Mach aus Gästen Stammkunden.",
+        "pageTitle": "🍽️ FLAVOR DROP Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (37 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🍽️ FLAVOR DROP Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🍽️ FLAVOR DROP Generator | ACID MONK",
+            "suggestion": "Titel '🍽️ FLAVOR DROP Generator | ACID MONK' ist 37 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (66 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Sinnlich, einladend, appetitanregend. Mach aus Gästen Stammkunden.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Sinnlich, einladend, appetitanregend. Mach aus Gästen Stammkunden.",
+            "suggestion": "Beschreibung 'Sinnlich, einladend, appetitanregend. Ma…' ist 66 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🍽️ FLAVOR DROP",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/flavor-drop'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/don-key",
+        "indexable": true,
+        "metaDescription": "Dein rebellischer Esel für satirische One-Liner und System-Kritik.",
+        "pageTitle": "🐴 DON KEY Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (32 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🐴 DON KEY Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🐴 DON KEY Generator | ACID MONK",
+            "suggestion": "Titel '🐴 DON KEY Generator | ACID MONK' ist 32 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (66 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Dein rebellischer Esel für satirische One-Liner und System-Kritik.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Dein rebellischer Esel für satirische One-Liner und System-Kritik.",
+            "suggestion": "Beschreibung 'Dein rebellischer Esel für satirische On…' ist 66 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🐴 DON KEY",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/don-key'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/bike-park",
+        "indexable": true,
+        "metaDescription": "Dynamische Ansagen und Voice-Overs für deine Strecken und Events",
+        "pageTitle": "🚲 BIKE PARK Generator | ACID MONK",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (34 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🚲 BIKE PARK Generator | ACID MONK",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🚲 BIKE PARK Generator | ACID MONK",
+            "suggestion": "Titel '🚲 BIKE PARK Generator | ACID MONK' ist 34 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (64 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Dynamische Ansagen und Voice-Overs für deine Strecken und Events",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Dynamische Ansagen und Voice-Overs für deine Strecken und Events",
+            "suggestion": "Beschreibung 'Dynamische Ansagen und Voice-Overs für d…' ist 64 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "🚲 BIKE PARK",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/bike-park'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/hns72j8q",
+        "indexable": true,
+        "metaDescription": "Ex-Partner verstehen dich nicht, weil sie deine Persönlichkeit nie wirklich kannten. Die Wahrheit dahinter verändert alles, mit freundlicher Unterstüt... \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (169 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Ex-Partner verstehen dich nicht, weil sie deine Persönlichkeit nie wirklich kannten. Die Wahrheit dahinter verändert alles, mit freundlicher Unterstüt... \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Ex-Partner verstehen dich nicht, weil sie deine Persönlichkeit nie wirklich kannten. Die Wahrheit dahinter verändert alles, mit freundlicher Unterstüt... \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Ex-Partner verstehen dich nicht, weil si…' ist 169 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/hns72j8q'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/p2az1xke",
+        "indexable": true,
+        "metaDescription": "Was wenn dein Charakter nur eine Rolle im Theater der Welt ist und das verändert alles mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (145 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Was wenn dein Charakter nur eine Rolle im Theater der Welt ist und das verändert alles mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Was wenn dein Charakter nur eine Rolle im Theater der Welt ist und das verändert alles mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Was wenn dein Charakter nur eine Rolle i…' ist 145 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/p2az1xke'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/80jwx43d",
+        "indexable": true,
+        "metaDescription": "Tu chasses les followers sur Instagram et TikTok. Eux te trouvent. La différence est brutale et tu te sentiras pris sur le fait \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (143 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Tu chasses les followers sur Instagram et TikTok. Eux te trouvent. La différence est brutale et tu te sentiras pris sur le fait \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Tu chasses les followers sur Instagram et TikTok. Eux te trouvent. La différence est brutale et tu te sentiras pris sur le fait \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Tu chasses les followers sur Instagram e…' ist 143 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/80jwx43d'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/t1p5trkp",
+        "indexable": true,
+        "metaDescription": "Dein Charakter ist nicht das, was du über dich denkst, mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (113 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Dein Charakter ist nicht das, was du über dich denkst, mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Dein Charakter ist nicht das, was du über dich denkst, mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Dein Charakter ist nicht das, was du übe…' ist 113 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/t1p5trkp'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/hs7sq1id",
+        "indexable": true,
+        "metaDescription": "Reiche sparen nicht dein Geld. Sie investieren es anders. Und du wirst merken wo (Powered by THE GAP) \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (117 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Reiche sparen nicht dein Geld. Sie investieren es anders. Und du wirst merken wo (Powered by THE GAP) \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Reiche sparen nicht dein Geld. Sie investieren es anders. Und du wirst merken wo (Powered by THE GAP) \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Reiche sparen nicht dein Geld. Sie inves…' ist 117 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/hs7sq1id'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/xrqq72p7",
+        "indexable": true,
+        "metaDescription": "Vier Töpfe Prinzip: Giro, Tagesgeld, Depot, ETF - decke alle Zeiträume ab mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (132 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Vier Töpfe Prinzip: Giro, Tagesgeld, Depot, ETF - decke alle Zeiträume ab mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Vier Töpfe Prinzip: Giro, Tagesgeld, Depot, ETF - decke alle Zeiträume ab mit freundlicher Unterstützung von THE GAP \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Vier Töpfe Prinzip: Giro, Tagesgeld, Dep…' ist 132 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/xrqq72p7'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/c31itrz5",
+        "indexable": true,
+        "metaDescription": "Deine Weihnachtsgeschenke sind ein Fehler, der dich jedes Jahr teuer zu stehen kommt – und du fühlst dich ertappt. \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (130 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Deine Weihnachtsgeschenke sind ein Fehler, der dich jedes Jahr teuer zu stehen kommt – und du fühlst dich ertappt. \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Deine Weihnachtsgeschenke sind ein Fehler, der dich jedes Jahr teuer zu stehen kommt – und du fühlst dich ertappt. \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Deine Weihnachtsgeschenke sind ein Fehle…' ist 130 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/c31itrz5'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/6p96ur45",
+        "indexable": true,
+        "metaDescription": "In Bewerbungen ehrlich und greifbar sein statt schwammig, warnt Bernd Slaghuis, denn wer Ecken zeigt, riskiert Provokation, gewinnt aber echte Chancen... \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (169 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "In Bewerbungen ehrlich und greifbar sein statt schwammig, warnt Bernd Slaghuis, denn wer Ecken zeigt, riskiert Provokation, gewinnt aber echte Chancen... \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "In Bewerbungen ehrlich und greifbar sein statt schwammig, warnt Bernd Slaghuis, denn wer Ecken zeigt, riskiert Provokation, gewinnt aber echte Chancen... \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'In Bewerbungen ehrlich und greifbar sein…' ist 169 Zeichen. Kürze auf max. 160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/6p96ur45'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/listen/h4vhet24",
+        "indexable": true,
+        "metaDescription": "Reiche haben Charakter. Du? Und du wirst merken wo (Powered by THE GAP) \n👆 TAP TO PLAY",
+        "pageTitle": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (39 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+            "suggestion": "Titel '🎧 Hör dir das an! | 👁️ THE GAP (FOMO)' ist 39 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (87 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Reiche haben Charakter. Du? Und du wirst merken wo (Powered by THE GAP) \n👆 TAP TO PLAY",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Reiche haben Charakter. Du? Und du wirst merken wo (Powered by THE GAP) \n👆 TAP TO PLAY",
+            "suggestion": "Beschreibung 'Reiche haben Charakter. Du? Und du wirst…' ist 87 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": null,
+            "suggestion": "Kein <h1> gefunden. Füge eine Hauptüberschrift hinzu"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": false,
+            "weight": 10,
+            "value": null,
+            "suggestion": "Füge <link rel='canonical' href='https://acidmonk.unlock-your-song.de/listen/h4vhet24'> zum <head> hinzu"
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 75,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (0 zu klein von 0)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://acidmonk.unlock-your-song.de/",
+        "title": "ACID MONK Hook Generator",
+        "statusCode": 200,
+        "loadTime": 762,
+        "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/mobile-acidmonk-unlock-your-song-de-.png"
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/unlock-your-song",
+        "title": "🎁 Unlock Your Song Generator | ACID MONK",
+        "statusCode": 200,
+        "loadTime": 697,
+        "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/mobile-acidmonk-unlock-your-song-de-unlock-your-song.png"
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/music-hooks",
+        "title": "🎵 ACID MONK Generator | ACID MONK",
+        "statusCode": 200,
+        "loadTime": 629,
+        "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/mobile-acidmonk-unlock-your-song-de-music-hooks.png"
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/story-spark",
+        "title": "✨ STORY SPARK Generator | ACID MONK",
+        "statusCode": 200,
+        "loadTime": 673,
+        "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/mobile-acidmonk-unlock-your-song-de-story-spark.png"
+      },
+      {
+        "url": "https://acidmonk.unlock-your-song.de/racket-voice",
+        "title": "🎾 RACKET VOICE Generator | ACID MONK",
+        "statusCode": 200,
+        "loadTime": 719,
+        "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/mobile-acidmonk-unlock-your-song-de-racket-voice.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://acidmonk.unlock-your-song.de/",
+      "type": "home",
+      "statusCode": 200,
+      "title": "ACID MONK Hook Generator",
+      "loadTime": 1965,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 1820,
+        "fullyLoaded": -132,
+        "dnsLookup": 54,
+        "tcpConnect": 34
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/unlock-your-song",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎁 Unlock Your Song Generator | ACID MONK",
+      "loadTime": 1088,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 1084,
+        "fullyLoaded": 1115,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-unlock-your-song.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/music-hooks",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎵 ACID MONK Generator | ACID MONK",
+      "loadTime": 665,
+      "timing": {
+        "ttfb": 42,
+        "domReady": 661,
+        "fullyLoaded": 675,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-music-hooks.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/story-spark",
+      "type": "other",
+      "statusCode": 200,
+      "title": "✨ STORY SPARK Generator | ACID MONK",
+      "loadTime": 670,
+      "timing": {
+        "ttfb": 448,
+        "domReady": 665,
+        "fullyLoaded": 681,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-story-spark.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/racket-voice",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎾 RACKET VOICE Generator | ACID MONK",
+      "loadTime": 688,
+      "timing": {
+        "ttfb": 342,
+        "domReady": 684,
+        "fullyLoaded": 704,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-racket-voice.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/wave-guide",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🌊 WAVE GUIDE Generator | ACID MONK",
+      "loadTime": 705,
+      "timing": {
+        "ttfb": 379,
+        "domReady": 692,
+        "fullyLoaded": 716,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-wave-guide.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/iron-voice",
+      "type": "other",
+      "statusCode": 200,
+      "title": "💪 IRON VOICE Generator | ACID MONK",
+      "loadTime": 766,
+      "timing": {
+        "ttfb": 311,
+        "domReady": 763,
+        "fullyLoaded": 763,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-iron-voice.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/the-gap",
+      "type": "other",
+      "statusCode": 200,
+      "title": "👁️ THE GAP Generator | ACID MONK",
+      "loadTime": 665,
+      "timing": {
+        "ttfb": 77,
+        "domReady": 661,
+        "fullyLoaded": 661,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-the-gap.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/flavor-drop",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🍽️ FLAVOR DROP Generator | ACID MONK",
+      "loadTime": 765,
+      "timing": {
+        "ttfb": 110,
+        "domReady": 761,
+        "fullyLoaded": 761,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-flavor-drop.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/don-key",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🐴 DON KEY Generator | ACID MONK",
+      "loadTime": 685,
+      "timing": {
+        "ttfb": 7,
+        "domReady": 679,
+        "fullyLoaded": 679,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-don-key.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/bike-park",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🚲 BIKE PARK Generator | ACID MONK",
+      "loadTime": 790,
+      "timing": {
+        "ttfb": 89,
+        "domReady": 779,
+        "fullyLoaded": 817,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-bike-park.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/hns72j8q",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 2202,
+      "timing": {
+        "ttfb": 121,
+        "domReady": 2184,
+        "fullyLoaded": -14,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-hns72j8q.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/p2az1xke",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 1991,
+      "timing": {
+        "ttfb": 1857,
+        "domReady": 1937,
+        "fullyLoaded": -44,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-p2az1xke.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/80jwx43d",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 817,
+      "timing": {
+        "ttfb": 708,
+        "domReady": 775,
+        "fullyLoaded": -34,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-80jwx43d.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/t1p5trkp",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 680,
+      "timing": {
+        "ttfb": 7,
+        "domReady": 674,
+        "fullyLoaded": -2,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-t1p5trkp.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/hs7sq1id",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 728,
+      "timing": {
+        "ttfb": 11,
+        "domReady": 720,
+        "fullyLoaded": -2,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-hs7sq1id.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/xrqq72p7",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 779,
+      "timing": {
+        "ttfb": 40,
+        "domReady": 715,
+        "fullyLoaded": -48,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-xrqq72p7.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/c31itrz5",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 740,
+      "timing": {
+        "ttfb": 100,
+        "domReady": 731,
+        "fullyLoaded": -2,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-c31itrz5.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/6p96ur45",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 692,
+      "timing": {
+        "ttfb": 15,
+        "domReady": 670,
+        "fullyLoaded": -5,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-6p96ur45.png"
+    },
+    {
+      "url": "https://acidmonk.unlock-your-song.de/listen/h4vhet24",
+      "type": "other",
+      "statusCode": 200,
+      "title": "🎧 Hör dir das an! | 👁️ THE GAP (FOMO)",
+      "loadTime": 762,
+      "timing": {
+        "ttfb": 9,
+        "domReady": 695,
+        "fullyLoaded": -64,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/acidmonk.unlock-your-song.de/1773516271070/acidmonk-unlock-your-song-de-listen-h4vhet24.png"
+    }
+  ]
+}

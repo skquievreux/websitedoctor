@@ -1,0 +1,554 @@
+{
+  "id": "q_1774306392010_werjhd3",
+  "url": "https://osteoconnect.runitfast.xyz",
+  "hostname": "osteoconnect.runitfast.xyz",
+  "siteTitle": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+  "siteDescription": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+  "timestamp": "2026-03-23T22:54:41.861Z",
+  "pageCount": 4,
+  "score": 85,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 125 ms)",
+    "Impressum/Datenschutz vorhanden",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Keine Kontaktseite gefunden",
+    "HSTS-Header fehlt (Sicherheitsrisiko)",
+    "1 Seite(n) haben JavaScript-Fehler"
+  ],
+  "actions": [
+    "Kontaktseite anlegen und im Menü verlinken",
+    "HSTS-Header hinzufügen: Strict-Transport-Security: max-age=31536000",
+    "JavaScript-Fehler im Browser-Konsolentool analysieren und beheben"
+  ],
+  "seo": {
+    "score": 95,
+    "pages": [
+      {
+        "url": "https://osteoconnect.runitfast.xyz",
+        "indexable": true,
+        "metaDescription": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+        "pageTitle": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (58 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (131 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+            "suggestion": "Beschreibung 'Moderne Plattform für digitale Anamnese-…' ist 131 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "OsteoConnect",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://osteoconnect.runitfast.xyz/de",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://osteoconnect.runitfast.xyz/praxen",
+        "indexable": true,
+        "metaDescription": "Übersicht aller verfügbaren Osteopathie-Praxen in unserer Datenbank",
+        "pageTitle": "Osteopathie-Praxen - OsteoConnect",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (33 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Osteopathie-Praxen - OsteoConnect",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Osteopathie-Praxen - OsteoConnect",
+            "suggestion": "Titel 'Osteopathie-Praxen - OsteoConnect' ist 33 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (67 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Übersicht aller verfügbaren Osteopathie-Praxen in unserer Datenbank",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Übersicht aller verfügbaren Osteopathie-Praxen in unserer Datenbank",
+            "suggestion": "Beschreibung 'Übersicht aller verfügbaren Osteopathie-…' ist 67 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Osteopathie-Praxen",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://osteoconnect.runitfast.xyz/de",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://osteoconnect.runitfast.xyz/impressum",
+        "indexable": true,
+        "metaDescription": "Impressum und rechtliche Informationen",
+        "pageTitle": "Impressum - OsteoConnect",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (24 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Impressum - OsteoConnect",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Impressum - OsteoConnect",
+            "suggestion": "Titel 'Impressum - OsteoConnect' ist 24 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (38 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Impressum und rechtliche Informationen",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Impressum und rechtliche Informationen",
+            "suggestion": "Beschreibung 'Impressum und rechtliche Informationen…' ist 38 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Impressum",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://osteoconnect.runitfast.xyz/de",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://osteoconnect.runitfast.xyz/",
+        "indexable": true,
+        "metaDescription": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+        "pageTitle": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (58 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": true,
+            "weight": 5,
+            "value": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (131 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Moderne Plattform für digitale Anamnese-Vorbereitung. KI-gestützte Befragung in über 30 Sprachen mit automatischer Spracherkennung.",
+            "suggestion": "Beschreibung 'Moderne Plattform für digitale Anamnese-…' ist 131 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "OsteoConnect",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://osteoconnect.runitfast.xyz/de",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "de",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width, initial-scale=1",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 75,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (16px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (3 zu klein von 5)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://osteoconnect.runitfast.xyz",
+        "title": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+        "statusCode": 200,
+        "loadTime": 203,
+        "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/mobile-osteoconnect-runitfast-xyz.png"
+      },
+      {
+        "url": "https://osteoconnect.runitfast.xyz/praxen",
+        "title": "Osteopathie-Praxen - OsteoConnect",
+        "statusCode": 200,
+        "loadTime": 80,
+        "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/mobile-osteoconnect-runitfast-xyz-praxen.png"
+      },
+      {
+        "url": "https://osteoconnect.runitfast.xyz/impressum",
+        "title": "Impressum - OsteoConnect",
+        "statusCode": 200,
+        "loadTime": 79,
+        "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/mobile-osteoconnect-runitfast-xyz-impressum.png"
+      },
+      {
+        "url": "https://osteoconnect.runitfast.xyz/",
+        "title": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+        "statusCode": 200,
+        "loadTime": 59,
+        "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/mobile-osteoconnect-runitfast-xyz-.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://osteoconnect.runitfast.xyz",
+      "type": "home",
+      "statusCode": 200,
+      "title": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+      "loadTime": 237,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 178,
+        "fullyLoaded": -51,
+        "dnsLookup": 11,
+        "tcpConnect": 31
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/osteoconnect-runitfast-xyz.png"
+    },
+    {
+      "url": "https://osteoconnect.runitfast.xyz/praxen",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Osteopathie-Praxen - OsteoConnect",
+      "loadTime": 124,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 119,
+        "fullyLoaded": 133,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/osteoconnect-runitfast-xyz-praxen.png"
+    },
+    {
+      "url": "https://osteoconnect.runitfast.xyz/impressum",
+      "type": "legal",
+      "statusCode": 200,
+      "title": "Impressum - OsteoConnect",
+      "loadTime": 69,
+      "timing": {
+        "ttfb": 9,
+        "domReady": 65,
+        "fullyLoaded": 66,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [
+        {
+          "message": "Error fetching praxen: TypeError: Failed to fetch\n    at https://osteoconnect.runitfast.xyz/_next/static/chunks/app/%5Blocale%5D/praxen/page-0ccf42a2a6ff0a43.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:375\n    at https://osteoconnect.runitfast.xyz/_next/static/chunks/app/%5Blocale%5D/praxen/page-0ccf42a2a6ff0a43.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:548\n    at iy (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:92270)\n    at e (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:117243)\n    at um (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:117514)\n    at up (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:115782)\n    at um (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:116165)\n    at up (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:115782)\n    at um (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:116165)\n    at up (https://osteoconnect.runitfast.xyz/_next/static/chunks/4bd1b696-67e30520d621c4dd.js?dpl=dpl_3mBnFEb2pcsTxWbMSg9DSR2LbRu8:1:115782)",
+          "type": "console-error",
+          "firstParty": true
+        }
+      ],
+      "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/osteoconnect-runitfast-xyz-impressum.png"
+    },
+    {
+      "url": "https://osteoconnect.runitfast.xyz/",
+      "type": "home",
+      "statusCode": 200,
+      "title": "OsteoConnect - Digitale Anamnese-Plattform für Osteopathen",
+      "loadTime": 69,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 64,
+        "fullyLoaded": 89,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/osteoconnect.runitfast.xyz/q_1774306392010_werjhd3/osteoconnect-runitfast-xyz-.png"
+    }
+  ]
+}

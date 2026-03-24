@@ -1,0 +1,547 @@
+{
+  "id": "q_1774291167837_1uasylb",
+  "url": "https://ki-vergleich.org",
+  "hostname": "ki-vergleich.org",
+  "siteTitle": "KI-Modell Vergleichsportal",
+  "siteDescription": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+  "timestamp": "2026-03-23T18:39:46.912Z",
+  "pageCount": 4,
+  "score": 80,
+  "strengths": [
+    "Alle Seiten sind erreichbar (HTTP 200)",
+    "Schnelle Ladezeiten (Ø 393 ms)",
+    "HSTS-Header gesetzt (sichere Verbindung)"
+  ],
+  "weaknesses": [
+    "Keine Kontaktseite gefunden",
+    "Kein Impressum/Datenschutz gefunden",
+    "HSTS-Header fehlt (Sicherheitsrisiko)"
+  ],
+  "actions": [
+    "Kontaktseite anlegen und im Menü verlinken",
+    "Impressum und Datenschutzerklärung anlegen",
+    "HSTS-Header hinzufügen: Strict-Transport-Security: max-age=31536000"
+  ],
+  "seo": {
+    "score": 89,
+    "pages": [
+      {
+        "url": "https://ki-vergleich.org",
+        "indexable": true,
+        "metaDescription": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+        "pageTitle": "KI-Modell Vergleichsportal",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (26 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "KI-Modell Vergleichsportal",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "KI-Modell Vergleichsportal",
+            "suggestion": "Titel 'KI-Modell Vergleichsportal' ist 26 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (124 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+            "suggestion": "Beschreibung 'KI-Modelle Vergleich 2026: Finde das per…' ist 124 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "KI-Modelle Vergleich: Das beste Portal 2026",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://ki-vergleich.org/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "en",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1,shrink-to-fit=no",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://ki-vergleich.org/",
+        "indexable": true,
+        "metaDescription": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+        "pageTitle": "KI-Modell Vergleichsportal",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (26 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "KI-Modell Vergleichsportal",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "KI-Modell Vergleichsportal",
+            "suggestion": "Titel 'KI-Modell Vergleichsportal' ist 26 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (124 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "KI-Modelle Vergleich 2026: Finde das perfekte Tool. Vergleiche Gemini, Grok, ChatGPT & Claude im unabhängigen Experten-Test.",
+            "suggestion": "Beschreibung 'KI-Modelle Vergleich 2026: Finde das per…' ist 124 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "KI-Modelle Vergleich: Das beste Portal 2026",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://ki-vergleich.org/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "en",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1,shrink-to-fit=no",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://ki-vergleich.org/vergleichen-ki-modelle/",
+        "indexable": true,
+        "metaDescription": "Detaillierter KI-Modelle Vergleich 2025: Finde das beste Language Model für deine Zwecke. News zu Grok, GPT-5, Claude 3.7 und Gemini.",
+        "pageTitle": "KI-Modelle Vergleich: Den besten AI-Bot finden (2025) | KI-Modell Vergleichsportal",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (82 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "KI-Modelle Vergleich: Den besten AI-Bot finden (2025) | KI-Modell Vergleichsportal",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "KI-Modelle Vergleich: Den besten AI-Bot finden (2025) | KI-Modell Vergleichsportal",
+            "suggestion": "Titel 'KI-Modelle Vergleich: Den besten AI-Bot …' ist 82 Zeichen. Kürze auf max. 60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (133 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Detaillierter KI-Modelle Vergleich 2025: Finde das beste Language Model für deine Zwecke. News zu Grok, GPT-5, Claude 3.7 und Gemini.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Detaillierter KI-Modelle Vergleich 2025: Finde das beste Language Model für deine Zwecke. News zu Grok, GPT-5, Claude 3.7 und Gemini.",
+            "suggestion": "Beschreibung 'Detaillierter KI-Modelle Vergleich 2025:…' ist 133 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": false,
+            "weight": 12,
+            "value": "KI-Modelle Vergleich: Den besten AI-Bot finden (2025)",
+            "suggestion": "2 <h1>-Tags gefunden. Behalte nur einen"
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://ki-vergleich.org/vergleichen-ki-modelle/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "en",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1,shrink-to-fit=no",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      },
+      {
+        "url": "https://ki-vergleich.org/modelle/",
+        "indexable": true,
+        "metaDescription": "Detaillierte Übersicht für alle KI-Modelle im Vergleich. Finden Sie das beste Modell für Ihre Anforderungen.",
+        "pageTitle": "Alle KI-Modelle | KI-Modell Vergleichsportal",
+        "issues": [
+          {
+            "id": "title-present",
+            "label": "Title vorhanden (44 Zeichen)",
+            "pass": true,
+            "weight": 15,
+            "value": "Alle KI-Modelle | KI-Modell Vergleichsportal",
+            "suggestion": null
+          },
+          {
+            "id": "title-length",
+            "label": "Title-Länge 50–60 Zeichen",
+            "pass": false,
+            "weight": 5,
+            "value": "Alle KI-Modelle | KI-Modell Vergleichsportal",
+            "suggestion": "Titel 'Alle KI-Modelle | KI-Modell Vergleichsportal' ist 44 Zeichen kurz. Füge Keywords hinzu bis 50–60 Zeichen"
+          },
+          {
+            "id": "meta-desc-present",
+            "label": "Meta-Description vorhanden (108 Zeichen)",
+            "pass": true,
+            "weight": 10,
+            "value": "Detaillierte Übersicht für alle KI-Modelle im Vergleich. Finden Sie das beste Modell für Ihre Anforderungen.",
+            "suggestion": null
+          },
+          {
+            "id": "meta-desc-length",
+            "label": "Meta-Description 150–160 Zeichen",
+            "pass": false,
+            "weight": 3,
+            "value": "Detaillierte Übersicht für alle KI-Modelle im Vergleich. Finden Sie das beste Modell für Ihre Anforderungen.",
+            "suggestion": "Beschreibung 'Detaillierte Übersicht für alle KI-Model…' ist 108 Zeichen. Ergänze auf 150–160 Zeichen"
+          },
+          {
+            "id": "h1-count",
+            "label": "Genau ein H1",
+            "pass": true,
+            "weight": 12,
+            "value": "Alle KI-Modelle",
+            "suggestion": null
+          },
+          {
+            "id": "canonical",
+            "label": "Canonical-Tag vorhanden",
+            "pass": true,
+            "weight": 10,
+            "value": "https://ki-vergleich.org/modelle/",
+            "suggestion": null
+          },
+          {
+            "id": "robots",
+            "label": "Robots nicht noindex",
+            "pass": true,
+            "weight": 15,
+            "value": "index, follow",
+            "suggestion": null
+          },
+          {
+            "id": "lang",
+            "label": "lang-Attribut gesetzt",
+            "pass": true,
+            "weight": 5,
+            "value": "en",
+            "suggestion": null
+          },
+          {
+            "id": "viewport",
+            "label": "Viewport-Meta vorhanden",
+            "pass": true,
+            "weight": 8,
+            "value": "width=device-width,initial-scale=1,shrink-to-fit=no",
+            "suggestion": null
+          },
+          {
+            "id": "img-alt",
+            "label": "Alle Bilder haben Alt-Text (0 ohne)",
+            "pass": true,
+            "weight": 10,
+            "value": null,
+            "suggestion": null
+          },
+          {
+            "id": "https",
+            "label": "HTTPS",
+            "pass": true,
+            "weight": 7,
+            "value": "https",
+            "suggestion": null
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "score": 75,
+    "checks": [
+      {
+        "label": "Viewport-Meta korrekt (width=device-width)",
+        "pass": true
+      },
+      {
+        "label": "Kein horizontales Scrollen",
+        "pass": true
+      },
+      {
+        "label": "Schriftgröße ≥ 14px (18px)",
+        "pass": true
+      },
+      {
+        "label": "Tap-Targets ausreichend groß (8 zu klein von 11)",
+        "pass": false
+      }
+    ],
+    "pages": [
+      {
+        "url": "https://ki-vergleich.org",
+        "title": "KI-Modell Vergleichsportal",
+        "statusCode": 200,
+        "loadTime": 427,
+        "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/mobile-ki-vergleich-org.png"
+      },
+      {
+        "url": "https://ki-vergleich.org/",
+        "title": "KI-Modell Vergleichsportal",
+        "statusCode": 200,
+        "loadTime": 275,
+        "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/mobile-ki-vergleich-org-.png"
+      },
+      {
+        "url": "https://ki-vergleich.org/vergleichen-ki-modelle/",
+        "title": "KI-Modelle Vergleich: Den besten AI-Bot finden (2025) | KI-Modell Vergleichsportal",
+        "statusCode": 200,
+        "loadTime": 311,
+        "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/mobile-ki-vergleich-org-vergleichen-ki-modelle-.png"
+      },
+      {
+        "url": "https://ki-vergleich.org/modelle/",
+        "title": "Alle KI-Modelle | KI-Modell Vergleichsportal",
+        "statusCode": 200,
+        "loadTime": 222,
+        "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/mobile-ki-vergleich-org-modelle-.png"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "url": "https://ki-vergleich.org",
+      "type": "home",
+      "statusCode": 200,
+      "title": "KI-Modell Vergleichsportal",
+      "loadTime": 416,
+      "timing": {
+        "ttfb": 8,
+        "domReady": 281,
+        "fullyLoaded": 281,
+        "dnsLookup": 17,
+        "tcpConnect": 30
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/ki-vergleich-org.png"
+    },
+    {
+      "url": "https://ki-vergleich.org/",
+      "type": "home",
+      "statusCode": 200,
+      "title": "KI-Modell Vergleichsportal",
+      "loadTime": 339,
+      "timing": {
+        "ttfb": 85,
+        "domReady": 234,
+        "fullyLoaded": 235,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": null
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/ki-vergleich-org-.png"
+    },
+    {
+      "url": "https://ki-vergleich.org/vergleichen-ki-modelle/",
+      "type": "other",
+      "statusCode": 200,
+      "title": "KI-Modelle Vergleich: Den besten AI-Bot finden (2025) | KI-Modell Vergleichsportal",
+      "loadTime": 505,
+      "timing": {
+        "ttfb": 10,
+        "domReady": 375,
+        "fullyLoaded": 375,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/ki-vergleich-org-vergleichen-ki-modelle-.png"
+    },
+    {
+      "url": "https://ki-vergleich.org/modelle/",
+      "type": "other",
+      "statusCode": 200,
+      "title": "Alle KI-Modelle | KI-Modell Vergleichsportal",
+      "loadTime": 311,
+      "timing": {
+        "ttfb": 13,
+        "domReady": 253,
+        "fullyLoaded": 253,
+        "dnsLookup": 0,
+        "tcpConnect": 0
+      },
+      "responseHeaders": {
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "hsts": "max-age=63072000"
+      },
+      "jsErrors": [],
+      "screenshotPath": "screenshots/ki-vergleich.org/q_1774291167837_1uasylb/ki-vergleich-org-modelle-.png"
+    }
+  ]
+}
