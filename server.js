@@ -122,6 +122,7 @@ async function processQueueLoop() {
   processingQueue = true
 
   try {
+    // Start all jobs up to MAX_CONCURRENT_CRAWLS
     while (queue.canStartNextJob()) {
       const job = queue.dequeue()
       if (!job) break
@@ -130,36 +131,37 @@ async function processQueueLoop() {
       queue.startJob(job)
       jobs.set(job.id, { status: 'running', progress: { current: 0, max: 20, url: job.url }, pages: [] })
 
-      try {
-        const report = await runCrawlWorker(job.url, job.id)
-        const reportPath = report._reportPath
-        delete report._reportPath
-
-        queue.finishJob(job.id, report)
-        jobs.set(job.id, { status: 'done', report })
-
-        await appendHistory({
-          id: job.id, url: report.url, hostname: report.hostname,
-          siteTitle: report.siteTitle, siteDescription: report.siteDescription,
-          date: report.timestamp, score: report.score, pageCount: report.pageCount, reportPath
+      // Don't await here – start the crawl and let it run in parallel
+      runCrawlWorker(job.url, job.id)
+        .then(report => {
+          const reportPath = report._reportPath
+          delete report._reportPath
+          queue.finishJob(job.id, report)
+          jobs.set(job.id, { status: 'done', report })
+          appendHistory({
+            id: job.id, url: report.url, hostname: report.hostname,
+            siteTitle: report.siteTitle, siteDescription: report.siteDescription,
+            date: report.timestamp, score: report.score, pageCount: report.pageCount, reportPath
+          }).catch(() => {})
+          triggerWebhooks(report).catch(() => {})
+          console.log(chalk.green(`[queue] ✓ Job ${job.id} fertig (Score: ${report.score})`))
+          queue.save().catch(() => {})
+          // Try to start next job when one finishes
+          setImmediate(processQueueLoop)
         })
-
-        triggerWebhooks(report).catch(() => {})
-        console.log(chalk.green(`[queue] ✓ Job ${job.id} fertig (Score: ${report.score})`))
-      } catch (err) {
-        queue.failJob(job.id, err.message)
-        jobs.set(job.id, { status: 'error', error: err.message })
-        console.error(chalk.red(`[queue] ✗ Job ${job.id} fehlgeschlagen: ${err.message}`))
-      }
+        .catch(err => {
+          queue.failJob(job.id, err.message)
+          jobs.set(job.id, { status: 'error', error: err.message })
+          console.error(chalk.red(`[queue] ✗ Job ${job.id} fehlgeschlagen: ${err.message}`))
+          queue.save().catch(() => {})
+          // Try to start next job when one fails
+          setImmediate(processQueueLoop)
+        })
 
       await queue.save()
     }
   } finally {
     processingQueue = false
-    // Schedule next check
-    if (queue.canStartNextJob()) {
-      setImmediate(processQueueLoop)
-    }
   }
 }
 
@@ -262,7 +264,7 @@ app.get('/api/queue', (req, res) => {
 })
 
 app.post('/api/batch', async (req, res) => {
-  const { urls, priority = 0 } = req.body
+  const { urls } = req.body
   if (!Array.isArray(urls) || urls.length === 0) {
     return res.status(400).json({ error: 'Array von URLs erforderlich' })
   }
