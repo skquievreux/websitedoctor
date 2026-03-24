@@ -30,12 +30,14 @@
     .history-item.active { background: #1e1e2e; border-left: 2px solid #6c6cff; }
     .history-item .h-url { font-size: 0.8rem; font-weight: 600; color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .history-item .h-date { font-size: 0.7rem; color: #666; margin-top: 0.2rem; }
-    .history-item .h-badges { display: flex; gap: 0.35rem; margin-top: 0.35rem; }
+    .history-item .h-badges { display: flex; gap: 0.35rem; margin-top: 0.35rem; align-items: center; }
     .h-score { font-size: 0.68rem; padding: 0.15rem 0.4rem; border-radius: 3px; font-weight: 700; }
     .h-score.good { background: #14532d; color: #4ade80; }
     .h-score.mid  { background: #422006; color: #fb923c; }
     .h-score.bad  { background: #450a0a; color: #f87171; }
     .h-pages { font-size: 0.68rem; padding: 0.15rem 0.4rem; border-radius: 3px; background: #1e1b4b; color: #a5b4fc; }
+    .h-rerun { margin-left: auto; padding: 0.1rem 0.35rem; background: none; border: 1px solid #2a2a2f; border-radius: 3px; color: #555; font-size: 0.75rem; cursor: pointer; line-height: 1; transition: all 0.15s; flex-shrink: 0; }
+    .h-rerun:hover { border-color: #6c6cff; color: #a5b4fc; }
     aside .empty { padding: 1rem; font-size: 0.8rem; color: #555; text-align: center; }
 
     /* ── Main ── */
@@ -344,6 +346,7 @@
   let activeHistoryId = null
   let currentReport = null
   let historyList = []
+  let pendingDiffFromId = null
 
   // ── Lightbox ─────────────────────────────────────────
   function openLightbox(src) {
@@ -446,6 +449,7 @@
       <div class="h-badges">
         <span class="h-score ${scoreClass}">${h.score}</span>
         <span class="h-pages">${h.pageCount} Seiten</span>
+        <button class="h-rerun" onclick="event.stopPropagation(); reRunAndDiff('${h.id}', '${escHtml(h.url)}')" title="Neu prüfen und vergleichen">↺</button>
       </div>
     </div>`
   }
@@ -571,6 +575,23 @@
     pollStatus(id)
   }
 
+  async function reRunAndDiff(oldId, url) {
+    pendingDiffFromId = oldId
+    document.getElementById('url-input').value = url
+    document.getElementById('check-btn').disabled = true
+    document.getElementById('report').style.display = 'none'
+    document.getElementById('welcome').style.display = 'none'
+    document.getElementById('error-box').style.display = 'none'
+    showStatus('Re-Run startet…', 0)
+    activeHistoryId = null
+
+    const res = await fetch('/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) })
+    if (!res.ok) { pendingDiffFromId = null; return showError('Server-Fehler beim Starten') }
+    const { id } = await res.json()
+    startQueuePolling()
+    pollStatus(id)
+  }
+
   function pollStatus(id) {
     const check = async () => {
       const res = await fetch(`/status/${id}`)
@@ -584,6 +605,12 @@
         await fetchHistory()
         await loadReport(id)
         document.getElementById('check-btn').disabled = false
+        if (pendingDiffFromId && pendingDiffFromId !== id) {
+          const diffFrom = pendingDiffFromId
+          pendingDiffFromId = null
+          goToCompareTab()
+          await runDiff(diffFrom, id)
+        }
       } else if (data.status === 'error') {
         hideStatus()
         showError(data.error || 'Unbekannter Fehler')
