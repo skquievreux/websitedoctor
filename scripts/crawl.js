@@ -7,6 +7,7 @@ import chalk from 'chalk'
 import { extractLinks, filterLinks, guessPageType } from './links.js'
 import { analyzeSeoV2 } from './seo-v2.js'
 import { crawlMobile } from './mobile.js'
+import { analyzeGeoPage, analyzeGeoSite, fetchSiteFiles } from './geo.js'
 
 const MAX_PAGES = 20
 const TIMEOUT = 10000
@@ -66,10 +67,11 @@ async function visitPage(page, url) {
     const timing = await page.evaluate(() => {
       const nav = performance.getEntriesByType('navigation')[0]
       if (!nav) return null
+      const fullyLoaded = Math.round(nav.loadEventEnd - nav.requestStart)
       return {
         ttfb:        Math.round(nav.responseStart - nav.requestStart),
         domReady:    Math.round(nav.domContentLoadedEventEnd - nav.requestStart),
-        fullyLoaded: Math.round(nav.loadEventEnd - nav.requestStart),
+        fullyLoaded: fullyLoaded > 0 ? fullyLoaded : null,
         dnsLookup:   Math.round(nav.domainLookupEnd - nav.domainLookupStart),
         tcpConnect:  Math.round(nav.connectEnd - nav.connectStart),
       }
@@ -77,8 +79,13 @@ async function visitPage(page, url) {
 
     const headers = response?.headers() ?? {}
     const responseHeaders = {
-      cacheControl: headers['cache-control'] || null,
-      hsts: headers['strict-transport-security'] || null
+      cacheControl:        headers['cache-control'] || null,
+      hsts:                headers['strict-transport-security'] || null,
+      xFrameOptions:       headers['x-frame-options'] || null,
+      xContentTypeOptions: headers['x-content-type-options'] || null,
+      csp:                 headers['content-security-policy'] || null,
+      referrerPolicy:      headers['referrer-policy'] || null,
+      server:              headers['server'] || null,
     }
 
     return { statusCode, title, loadTime, timing, responseHeaders, jsErrors }
@@ -105,8 +112,12 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
   const queue = [startUrl]
   const pages = []
   const seoPages = []
+  const geoPages = []
 
   console.log(chalk.blue(`[crawl] Start: ${startUrl}`))
+
+  // GEO: robots.txt, ai.txt, llms.txt parallel zum Crawl holen
+  const siteFilesPromise = fetchSiteFiles(startUrl)
 
   while (queue.length > 0 && visited.size < MAX_PAGES) {
     const url = queue.shift()
@@ -118,7 +129,10 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
 
     const { statusCode, title, loadTime, timing, responseHeaders, jsErrors } = await visitPage(page, url)
     const screenshotPath = await takeScreenshot(page, url, screenshotDir)
-    const seoResult = await analyzeSeoV2(page, url)
+    const [seoResult, geoResult] = await Promise.all([
+      analyzeSeoV2(page, url),
+      analyzeGeoPage(page, url),
+    ])
     const rawLinks = await extractLinks(page)
     const links = filterLinks(rawLinks, startUrl)
     const type = guessPageType(url)
@@ -131,6 +145,7 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
 
     pages.push({ url, statusCode, title, type, screenshotPath, links, loadTime, timing, responseHeaders, jsErrors })
     seoPages.push(seoResult)
+    geoPages.push(geoResult)
     onPageDone?.({ url, statusCode, title, type, loadTime, screenshotPath, jsErrors: jsErrors ?? [] })
 
     if (visited.size < 2) {
@@ -141,13 +156,22 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
   await browser.close()
 
   const topUrls = pages.slice(0, 5).map(p => p.url)
-  const mobileData = await crawlMobile(startUrl, topUrls, screenshotDir).catch(err => {
-    console.error(chalk.red(`[crawl] Mobile-Crawl fehlgeschlagen: ${err.message}`))
+  const [mobileData, siteFiles] = await Promise.all([
+    crawlMobile(startUrl, topUrls, screenshotDir).catch(err => {
+      console.error(chalk.red(`[crawl] Mobile-Crawl fehlgeschlagen: ${err.message}`))
+      return null
+    }),
+    siteFilesPromise,
+  ])
+
+  const geoData = await analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles).catch(err => {
+    console.error(chalk.red(`[crawl] GEO-Analyse fehlgeschlagen: ${err.message}`))
     return null
   })
+  console.log(chalk.green(`[crawl] GEO-Score: ${geoData?.score ?? '–'}/100`))
 
-  const manifest = { startUrl, crawledAt: new Date().toISOString(), hostname, reportId, pages, seoPages, mobileData }
-  await writeFile('crawl_manifest.json', JSON.stringify(manifest, null, 2))
+  const manifest = { startUrl, crawledAt: new Date().toISOString(), hostname, reportId, pages, seoPages, geoData, mobileData }
+  await writeFile('data/crawl_manifest.json', JSON.stringify(manifest, null, 2))
   console.log(chalk.green(`[crawl] Fertig. ${pages.length} Seiten gecrawlt.`))
   return manifest
 }

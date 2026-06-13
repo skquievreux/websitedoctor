@@ -24,8 +24,8 @@ A self-hosted website auditing tool — crawls your site and generates a compreh
 
 ## Requirements
 
-- Node.js >= 18
-- npm >= 9
+- Node.js >= 22
+- pnpm >= 10
 
 ---
 
@@ -34,11 +34,11 @@ A self-hosted website auditing tool — crawls your site and generates a compreh
 ```bash
 git clone https://github.com/skquievreux/websitedoctor.git
 cd websitedoctor
-npm install
-npx playwright install chromium
+pnpm install
+pnpm exec playwright install chromium
 ```
 
-The `npm install` step also configures the Git hooks automatically (via the `prepare` script).
+The `pnpm install` step also configures the Git hooks automatically (via the `prepare` script).
 
 ---
 
@@ -46,17 +46,17 @@ The `npm install` step also configures the Git hooks automatically (via the `pre
 
 ```bash
 # Start the server
-npm start
+pnpm start
 
 # Development mode (auto-reload)
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3001](http://localhost:3001), enter a URL and click **Prüfen**.
 
 To use a different port:
 ```bash
-PORT=3002 npm start
+PORT=3002 pnpm start
 ```
 
 ---
@@ -153,11 +153,11 @@ git push origin feature/my-feature
 
 ## Security
 
-Dependencies are audited automatically on every push and pull request via GitHub Actions (`npm audit --audit-level=high`).
+Dependencies are audited automatically on every push and pull request via GitHub Actions (`pnpm audit --audit-level=high`).
 
 To run locally:
 ```bash
-npm audit
+pnpm audit
 ```
 
 ---

@@ -2,7 +2,7 @@
 import { writeFile, mkdir } from 'fs/promises'
 import path from 'path'
 import chalk from 'chalk'
-import { calcSeoScore } from './seo.js'
+import { calcSeoScore } from './seo-v2.js'
 
 // B3 — Malus-basierter Score (Basis 100, Abzüge)
 function calcScore(pages) {
@@ -80,8 +80,8 @@ function buildWeaknesses(pages) {
   return weaknesses
 }
 
-function buildActions(weaknesses) {
-  return weaknesses.map(w => {
+function buildActions(weaknesses, geoData) {
+  const actions = weaknesses.map(w => {
     if (w.includes('nicht erreichbar')) return 'Broken Links und 404-Seiten reparieren'
     if (w.includes('Ladezeiten')) return 'Performance optimieren (Bilder komprimieren, Caching)'
     if (w.includes('Kontaktseite')) return 'Kontaktseite anlegen und im Menü verlinken'
@@ -93,21 +93,185 @@ function buildActions(weaknesses) {
     if (w.includes('JavaScript-Fehler')) return 'JavaScript-Fehler im Browser-Konsolentool analysieren und beheben'
     return w
   })
+
+  if (geoData?.checks) {
+    for (const c of geoData.checks.filter(c => c.weight > 0 && !c.pass)) {
+      const action = c.suggestion || c.label
+      if (action && !actions.includes(action)) actions.push(action)
+    }
+  }
+
+  return actions
+}
+
+function calcSecurityScore(pages) {
+  const h = pages[0]?.responseHeaders ?? {}
+  const checks = [
+    { label: 'HTTPS / HSTS',               pass: !!h.hsts,                key: 'hsts' },
+    { label: 'X-Frame-Options',            pass: !!h.xFrameOptions,       key: 'xFrameOptions' },
+    { label: 'X-Content-Type-Options',     pass: !!h.xContentTypeOptions, key: 'xContentTypeOptions' },
+    { label: 'Content-Security-Policy',    pass: !!h.csp,                 key: 'csp' },
+    { label: 'Referrer-Policy',            pass: !!h.referrerPolicy,      key: 'referrerPolicy' },
+    { label: 'Cache-Control konfiguriert', pass: !!h.cacheControl,        key: 'cacheControl' },
+  ]
+  const score = Math.round((checks.filter(c => c.pass).length / checks.length) * 100)
+  return { score, checks }
+}
+
+function calcPerformanceSummary(pages) {
+  const withTiming = pages.filter(p => p.timing?.ttfb != null)
+  if (!withTiming.length) return null
+  const avg = key => {
+    const valid = withTiming.filter(p => p.timing[key] != null && p.timing[key] >= 0)
+    if (!valid.length) return null
+    return Math.round(valid.reduce((s, p) => s + p.timing[key], 0) / valid.length)
+  }
+  const p75 = (key) => {
+    const valid = withTiming.filter(p => p.timing[key] != null && p.timing[key] >= 0)
+    if (!valid.length) return null
+    const s = [...valid].sort((a, b) => a.timing[key] - b.timing[key])
+    return s[Math.floor(s.length * 0.75)]?.timing[key] ?? null
+  }
+  const allLoad = pages.filter(p => p.loadTime).map(p => p.loadTime).sort((a,b)=>a-b)
+  return {
+    avgTtfb:        avg('ttfb'),
+    avgDomReady:    avg('domReady'),
+    avgFullyLoaded: avg('fullyLoaded'),
+    p75Ttfb:        p75('ttfb'),
+    p75FullyLoaded: p75('fullyLoaded'),
+    p50Load:        allLoad[Math.floor(allLoad.length * 0.5)] ?? 0,
+    p75Load:        allLoad[Math.floor(allLoad.length * 0.75)] ?? 0,
+    slowPages:      pages.filter(p => p.loadTime > 3000).length,
+  }
+}
+
+function detectTech(pages, seoPages) {
+  const hints = []
+  const firstPage = seoPages?.[0]
+  if (firstPage) {
+    const hasReact = pages.some(p => p.jsErrors?.some(e => /react/i.test(e.message)))
+    const isVite = pages.some(p => p.title && pages.filter(q => q.title === p.title).length > pages.length * 0.8)
+    if (isVite || hasReact) hints.push({ label: 'React / SPA erkannt', severity: 'info', note: 'Meta-Tags werden evtl. per JavaScript gesetzt – für SEO-Crawler evtl. nicht sichtbar.' })
+    if (!firstPage.checks?.find(c => c.id === 'structured-data')?.pass) hints.push({ label: 'Kein Structured Data (JSON-LD)', severity: 'warning', note: 'Schema.org-Markup fehlt. Verhindert Rich Snippets in Google.' })
+    if (!firstPage.checks?.find(c => c.id === 'og-tags')?.pass) hints.push({ label: 'OpenGraph unvollständig', severity: 'warning', note: 'Social Sharing zeigt keinen richtigen Vorschau-Link.' })
+    if (!firstPage.checks?.find(c => c.id === 'canonical')?.pass) hints.push({ label: 'Kein Canonical-Tag', severity: 'critical', note: 'Duplicate-Content-Risiko – Google könnte falsche URL indexieren.' })
+  }
+  return hints
+}
+
+function buildPriorityIssues(pages, seoPages, weaknesses, geoData) {
+  const issues = []
+
+  // From weaknesses
+  const weaknessSeverity = (w) => {
+    if (w.includes('nicht erreichbar') || w.includes('JavaScript-Fehler')) return 'critical'
+    if (w.includes('Ladezeiten') || w.includes('Server-Antwort') || w.includes('HSTS')) return 'warning'
+    return 'info'
+  }
+  weaknesses.forEach(w => issues.push({ label: w, severity: weaknessSeverity(w), source: 'general' }))
+
+  // Critical SEO fails across pages
+  const criticalSeoIds = ['robots', 'canonical', 'title-present', 'h1-count']
+  const seoFailCounts = {}
+  for (const p of (seoPages ?? [])) {
+    for (const c of (p.checks ?? [])) {
+      if (!c.pass && !c.skipped && criticalSeoIds.includes(c.id)) {
+        seoFailCounts[c.id] = (seoFailCounts[c.id] ?? 0) + 1
+      }
+    }
+  }
+  for (const [id, count] of Object.entries(seoFailCounts)) {
+    const label = { robots: 'Seiten auf noindex', canonical: 'Canonical-Tag fehlt', 'title-present': 'Seiten ohne Title', 'h1-count': 'H1 fehlt oder mehrfach' }[id]
+    issues.push({ label: `${label} (${count} Seiten)`, severity: id === 'robots' ? 'critical' : 'warning', source: 'seo' })
+  }
+
+  // GEO-Kritische Checks (blockierte AI-Bots → immer critical, andere je nach Pass)
+  if (geoData?.checks) {
+    for (const c of geoData.checks.filter(c => c.weight > 0 && !c.pass)) {
+      const isAiBot = c.id === 'ai-bots-allowed'
+      issues.push({
+        label: c.label,
+        severity: isAiBot ? 'critical' : 'warning',
+        source: 'geo',
+        note: c.suggestion || null,
+      })
+    }
+  }
+
+  // Sort: critical first
+  const order = { critical: 0, warning: 1, info: 2 }
+  issues.sort((a, b) => order[a.severity] - order[b.severity])
+  return issues
+}
+
+function buildTopDeviations(pages, seoPages, mobileData) {
+  const avgLoad = pages.reduce((s, p) => s + (p.loadTime ?? 0), 0) / (pages.length || 1)
+
+  const scored = pages.map(p => {
+    const seo = seoPages?.find(s => s.url === p.url)
+    const mobile = mobileData?.pages?.find(m => m.url === p.url)
+
+    let penalty = 0
+    const reasons = []
+
+    // SEO-Fails: jeder fehlgeschlagene gewichtete Check zählt
+    if (seo) {
+      const failedWeight = seo.checks.filter(c => !c.pass && !c.skipped && c.weight > 0)
+                                     .reduce((s, c) => s + c.weight, 0)
+      penalty += failedWeight
+      if (failedWeight > 0) reasons.push(`SEO: ${seo.score}/100`)
+    }
+
+    // Ladezeit-Abweichung über Durchschnitt
+    const loadDelta = (p.loadTime ?? 0) - avgLoad
+    if (loadDelta > 1000) {
+      penalty += Math.min(Math.round(loadDelta / 500), 20)
+      reasons.push(`${p.loadTime} ms Ladezeit`)
+    }
+
+    // JS-Fehler
+    const jsErrCount = p.jsErrors?.filter(e => e.firstParty).length ?? 0
+    if (jsErrCount > 0) {
+      penalty += jsErrCount * 5
+      reasons.push(`${jsErrCount} JS-Fehler`)
+    }
+
+    // HTTP-Fehler
+    if (p.statusCode !== 200) {
+      penalty += 50
+      reasons.push(`HTTP ${p.statusCode}`)
+    }
+
+    const screenshotPath = mobile?.screenshotPath || p.screenshotPath || null
+
+    return { url: p.url, title: p.title, penalty, reasons, screenshotPath, seoScore: seo?.score ?? null, loadTime: p.loadTime ?? null }
+  })
+
+  return scored
+    .filter(p => p.penalty > 0 && p.screenshotPath)
+    .sort((a, b) => b.penalty - a.penalty)
+    .slice(0, 3)
 }
 
 export async function generateReport(manifest, reportId) {
-  const { startUrl, crawledAt, hostname, pages, seoPages, mobileData } = manifest
+  const { startUrl, crawledAt, hostname, pages, seoPages, geoData, mobileData } = manifest
 
   const score = calcScore(pages)
   const strengths = buildStrengths(pages)
   const weaknesses = buildWeaknesses(pages)
-  const actions = buildActions(weaknesses)
+  const actions = buildActions(weaknesses, geoData)
   const seo = seoPages?.length ? calcSeoScore(seoPages) : null
 
   // Beschreibung der Startseite aus SEO-Daten
   const homeSeo = seoPages?.[0]
   const siteDescription = homeSeo?.metaDescription || null
   const siteTitle = homeSeo?.pageTitle || null
+
+  const security = calcSecurityScore(pages)
+  const performanceSummary = calcPerformanceSummary(pages)
+  const techHints = detectTech(pages, seoPages)
+  const priorityIssues = buildPriorityIssues(pages, seoPages, weaknesses, geoData)
+  const topDeviations = buildTopDeviations(pages, seoPages, mobileData)
 
   const report = {
     id: reportId,
@@ -121,7 +285,13 @@ export async function generateReport(manifest, reportId) {
     strengths,
     weaknesses,
     actions,
+    priorityIssues,
+    security,
+    performanceSummary,
+    techHints,
+    topDeviations,
     seo,
+    geo: geoData ?? null,
     mobile: mobileData ?? null,
     pages: pages.map(p => ({
       url: p.url,
@@ -142,7 +312,7 @@ export async function generateReport(manifest, reportId) {
   const reportPath = path.join(dir, `${reportId}.json`).replace(/\\/g, '/')
   await writeFile(reportPath, JSON.stringify(report, null, 2))
 
-  console.log(chalk.green(`[report] ${reportPath} erstellt. Score: ${score}/100  SEO: ${seo?.score ?? '–'}`))
+  console.log(chalk.green(`[report] ${reportPath} erstellt. Score: ${score}/100  SEO: ${seo?.score ?? '–'}  GEO: ${geoData?.score ?? '–'}`))
 
   // _reportPath für server.js, wird dort entfernt bevor es in den Job-Cache kommt
   report._reportPath = reportPath

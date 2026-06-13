@@ -6,6 +6,7 @@ node_modules/
 /test-results/
 
 # Generierte Artefakte (werden zur Laufzeit erzeugt)
+data/build.json
 screenshots/
 crawl_manifest.json
 report_*.json

@@ -328,13 +328,16 @@ export async function analyzeSeoV2(page, url) {
     },
     {
       id: 'core-web-vitals',
-      label: `Core Web Vitals: LCP ${data.lcp}ms`,
-      pass: data.lcp > 0 && data.lcp < 2500, // Google: < 2.5s ist gut
-      weight: WEIGHTS['core-web-vitals'],
-      value: `${data.lcp}ms LCP`,
-      suggestion: data.lcp >= 2500
-        ? `Largest Contentful Paint ist ${data.lcp}ms. Ideal: < 2500ms. Optimiere Bilder und Server-Antwortzeit`
-        : null
+      label: data.lcp > 0 ? `Core Web Vitals: LCP ${data.lcp}ms` : 'Core Web Vitals: LCP nicht messbar',
+      pass: data.lcp > 0 && data.lcp < 2500,
+      skipped: data.lcp === 0,
+      weight: data.lcp === 0 ? 0 : WEIGHTS['core-web-vitals'],
+      value: data.lcp > 0 ? `${data.lcp}ms LCP` : 'N/A',
+      suggestion: data.lcp === 0
+        ? 'LCP konnte nicht gemessen werden (SPA oder sehr schnelles Rendering). Manuell via Lighthouse prüfen.'
+        : data.lcp >= 2500
+          ? `Largest Contentful Paint ist ${data.lcp}ms. Ideal: < 2500ms. Optimiere Bilder und Server-Antwortzeit`
+          : null
     }
   ]
 
@@ -367,4 +370,20 @@ export async function analyzeSeoV2(page, url) {
   }
 }
 
-export { analyzeSeoV2 as analyzeSeo }
+function calcSeoScore(seoPages) {
+  if (!seoPages.length) return { score: 0, pages: [] }
+  let totalWeight = 0
+  let earnedWeight = 0
+  for (const p of seoPages) {
+    if (!p.checks) continue
+    for (const check of p.checks) {
+      if (check.skipped) continue
+      totalWeight += check.weight ?? 1
+      if (check.pass) earnedWeight += check.weight ?? 1
+    }
+  }
+  const score = totalWeight > 0 ? Math.round((earnedWeight / totalWeight) * 100) : 0
+  return { score, pages: seoPages }
+}
+
+export { analyzeSeoV2 as analyzeSeo, calcSeoScore }

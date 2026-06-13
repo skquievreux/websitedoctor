@@ -8,6 +8,9 @@ import { chromium } from 'playwright'
 import QueueManager from './scripts/queue-manager.js'
 
 const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
+const buildDate = existsSync('./data/build.json')
+  ? JSON.parse(readFileSync('./data/build.json', 'utf-8')).buildDate
+  : null
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -167,7 +170,7 @@ async function processQueueLoop() {
 
 // ── Routes ────────────────────────────────────────────────────────
 
-app.get('/version', (req, res) => res.json({ version }))
+app.get('/version', (req, res) => res.json({ version, buildDate }))
 
 app.get('/history', async (req, res) => {
   res.json(await readHistory())
@@ -301,16 +304,14 @@ app.get('/api/batch/:batch_id', (req, res) => {
 
 app.delete('/api/queue/:job_id', async (req, res) => {
   const { job_id } = req.params
-  const idx = queue.pending.findIndex(j => j.id === job_id)
+  const deleted = queue.deleteJob(job_id)
 
-  if (idx === -1) {
-    return res.status(404).json({ error: 'Job nicht in Queue gefunden' })
+  if (!deleted) {
+    return res.status(404).json({ error: 'Job nicht gefunden' })
   }
 
-  queue.pending.splice(idx, 1)
   await queue.save()
-
-  res.json({ status: 'cancelled', job_id })
+  res.json({ status: 'deleted', job_id })
 })
 
 // D2 — Webhook registrieren
@@ -408,6 +409,15 @@ app.get('/export-pdf-diff/:idA/:idB', async (req, res) => {
 app.listen(PORT, async () => {
   // Initialize queue
   await queue.init()
+
+  // Recover stuck-running jobs: after a restart, no worker exists for them anymore
+  if (queue.running.size > 0) {
+    for (const [id, job] of queue.running) {
+      queue.failJob(id, 'Server wurde neu gestartet – Job abgebrochen')
+      console.log(chalk.yellow(`[queue] ⚠ Stuck-Job ${id} (${job.url}) zu 'failed' markiert`))
+    }
+    await queue.save()
+  }
 
   console.log(chalk.green(`[server] Website Doctor v${version} läuft auf http://localhost:${PORT}`))
   console.log(chalk.cyan(`[queue] MAX_CONCURRENT_CRAWLS: 2`))
