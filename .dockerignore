@@ -1,0 +1,10 @@
+node_modules
+.git
+.githooks
+.github
+data
+reports
+screenshots
+*.log
+.env
+.env.local
