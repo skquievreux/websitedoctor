@@ -25,6 +25,27 @@ app.use(express.static('public'))
 app.use('/screenshots', express.static('screenshots'))
 app.use('/reports', express.static('reports'))
 
+// ── API-Key-Auth ──────────────────────────────────────────────────
+// Health check stays open, everything else requires x-api-key when
+// BACKEND_API_KEY is configured (unset = auth disabled, e.g. local dev).
+const BACKEND_API_KEY = process.env.BACKEND_API_KEY
+if (BACKEND_API_KEY) {
+  app.use((req, res, next) => {
+    if (req.path === '/version') return next()
+    // Playwright's PDF export navigates to /print/:id via http://localhost,
+    // and print.html itself then fetches /report/:id client-side from that
+    // same loopback connection — neither carries x-api-key, so any request
+    // that can only originate from inside this container bypasses auth.
+    // An external client can't spoof the loopback source address through Caddy.
+    const isLoopback = req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.0.1'
+    if (isLoopback) return next()
+    if (req.get('x-api-key') !== BACKEND_API_KEY) {
+      return res.status(401).json({ error: 'Unauthorized' })
+    }
+    next()
+  })
+}
+
 // ── History ───────────────────────────────────────────────────────
 
 async function readHistory() {
