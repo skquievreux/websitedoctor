@@ -37,6 +37,9 @@ async function checkMobilePage(page, url, screenshotDir) {
   return { url, title, statusCode, loadTime, screenshotPath }
 }
 
+// Strips dynamic parts like "(44px)" from a label to get the canonical check key
+function checkKey(label) { return label.replace(/\(.*?\)/g, '').trim() }
+
 async function runMobileChecks(page) {
   const results = await page.evaluate(() => {
     const viewport = document.querySelector('meta[name="viewport"]')?.content || ''
@@ -81,8 +84,9 @@ export async function crawlMobile(startUrl, urlsToCrawl, screenshotDir = 'screen
     console.log(chalk.gray(`[mobile] Prüfe: ${url}`))
     const pageData = await checkMobilePage(page, url, screenshotDir)
     const checks = await runMobileChecks(page).catch(() => [])
+    // Attach originating URL to each check for per-page failure tracking
     pages.push(pageData)
-    allChecks.push(...checks)
+    allChecks.push(...checks.map(c => ({ ...c, url })))
   }
 
   await browser.close()
@@ -98,9 +102,16 @@ export async function crawlMobile(startUrl, urlsToCrawl, screenshotDir = 'screen
 function aggregateChecks(checks) {
   const map = new Map()
   for (const c of checks) {
-    const key = c.label.replace(/\(.*\)/, '').trim()
-    if (!map.has(key)) map.set(key, { ...c })
-    else if (!c.pass) map.get(key).pass = false
+    const key = checkKey(c.label)
+    if (!map.has(key)) {
+      map.set(key, { ...c, failedUrls: c.pass ? [] : [c.url] })
+    } else {
+      const entry = map.get(key)
+      if (!c.pass) {
+        entry.pass = false
+        if (c.url && !entry.failedUrls.includes(c.url)) entry.failedUrls.push(c.url)
+      }
+    }
   }
   return Array.from(map.values())
 }

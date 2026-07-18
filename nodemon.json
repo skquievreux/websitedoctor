@@ -1,0 +1,12 @@
+{
+  "verbose": true,
+  "ignore": [
+    "data/*.json",
+    "screenshots/**/*",
+    "reports/**/*",
+    "crawl_manifest.json",
+    "server.log",
+    "node_modules"
+  ],
+  "ext": "js,mjs,cjs,html"
+}

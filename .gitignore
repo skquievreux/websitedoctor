@@ -7,12 +7,17 @@ node_modules/
 
 # Generierte Artefakte (werden zur Laufzeit erzeugt)
 data/build.json
+data/history.json
+data/queue.json
+data/audit-queue.json
+data/vercel-projects-audit.json
 screenshots/
+reports/
 crawl_manifest.json
 report_*.json
 
-# History bleibt erhalten (Nutzer-Daten)
-# data/history.json  ← bewusst NICHT ignoriert
+# npm-Lockfile (Projekt nutzt pnpm, siehe pnpm-lock.yaml)
+package-lock.json
 
 # Logs
 *.log
@@ -30,3 +35,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Lokale Claude-Settings (personenbezogen, nicht teilen)
+.claude/settings.local.json

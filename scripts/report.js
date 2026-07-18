@@ -9,12 +9,16 @@ function calcScore(pages) {
   let score = 100
   const types = new Set(pages.map(p => p.type))
   const brokenPages = pages.filter(p => p.statusCode !== 200)
-  const avgLoad = pages.reduce((s, p) => s + (p.loadTime ?? 0), 0) / (pages.length || 1)
+
+  // Für Ladezeit-Scoring: domReady bevorzugen (SPA-neutral), sonst loadTime
+  // loadTime = Vollladezeit inkl. JS-Hydration, kann bei SPAs stark aufgebläht sein
+  const effectiveLoad = p => p.timing?.domReady ?? p.loadTime ?? 0
+  const avgLoad = pages.reduce((s, p) => s + effectiveLoad(p), 0) / (pages.length || 1)
 
   // Pro Broken Page: -10 (max -40)
   score -= Math.min(brokenPages.length * 10, 40)
 
-  // Ladezeit
+  // Ladezeit (domReady-basiert)
   if (avgLoad > 4000) score -= 20
   else if (avgLoad > 2000) score -= 10
 
@@ -77,6 +81,9 @@ function buildWeaknesses(pages) {
   const pagesWithJsErrors = pages.filter(p => p.jsErrors?.some(e => e.firstParty))
   if (pagesWithJsErrors.length > 0) weaknesses.push(`${pagesWithJsErrors.length} Seite(n) haben JavaScript-Fehler`)
 
+  const redirectChainPages = pages.filter(p => (p.redirectCount ?? 0) > 1)
+  if (redirectChainPages.length > 0) weaknesses.push(`${redirectChainPages.length} Seite(n) mit Redirect-Ketten (${redirectChainPages.length > 1 ? redirectChainPages.length + ' URLs' : redirectChainPages[0].url})`)
+
   return weaknesses
 }
 
@@ -91,6 +98,7 @@ function buildActions(weaknesses, geoData) {
     if (w.includes('Caching')) return 'Cache-Control-Header konfigurieren (z.B. max-age=3600)'
     if (w.includes('HSTS')) return 'HSTS-Header hinzufügen: Strict-Transport-Security: max-age=31536000'
     if (w.includes('JavaScript-Fehler')) return 'JavaScript-Fehler im Browser-Konsolentool analysieren und beheben'
+    if (w.includes('Redirect-Ketten')) return 'Redirect-Ketten auf direkte 301-Weiterleitungen reduzieren — jeder zusätzliche Hop kostet Ladezeit und Link-Equity'
     return w
   })
 
@@ -107,15 +115,26 @@ function buildActions(weaknesses, geoData) {
 function calcSecurityScore(pages) {
   const h = pages[0]?.responseHeaders ?? {}
   const checks = [
-    { label: 'HTTPS / HSTS',               pass: !!h.hsts,                key: 'hsts' },
-    { label: 'X-Frame-Options',            pass: !!h.xFrameOptions,       key: 'xFrameOptions' },
-    { label: 'X-Content-Type-Options',     pass: !!h.xContentTypeOptions, key: 'xContentTypeOptions' },
-    { label: 'Content-Security-Policy',    pass: !!h.csp,                 key: 'csp' },
-    { label: 'Referrer-Policy',            pass: !!h.referrerPolicy,      key: 'referrerPolicy' },
-    { label: 'Cache-Control konfiguriert', pass: !!h.cacheControl,        key: 'cacheControl' },
+    { label: 'HTTPS / HSTS',               pass: !!h.hsts,                key: 'hsts',                controllable: false, hint: 'Hosting-/Serverseitig — bei Managed-Hosting oft nicht direkt setzbar' },
+    { label: 'X-Frame-Options',            pass: !!h.xFrameOptions,       key: 'xFrameOptions',       controllable: false, hint: 'Server-/CDN-Header (Nginx, Apache, Cloudflare)' },
+    { label: 'X-Content-Type-Options',     pass: !!h.xContentTypeOptions, key: 'xContentTypeOptions', controllable: false, hint: 'Server-/CDN-Header' },
+    { label: 'Content-Security-Policy',    pass: !!h.csp,                 key: 'csp',                 controllable: false, hint: 'Server-/CDN-Header — komplex, erfordert Whitelist aller Ressourcen' },
+    { label: 'Referrer-Policy',            pass: !!h.referrerPolicy,      key: 'referrerPolicy',      controllable: false, hint: 'Server-/CDN-Header' },
+    { label: 'Cache-Control konfiguriert', pass: !!h.cacheControl,        key: 'cacheControl',        controllable: true,  hint: 'In Hosting-Konfig oder <meta http-equiv="Cache-Control"> setzbar' },
   ]
   const score = Math.round((checks.filter(c => c.pass).length / checks.length) * 100)
   return { score, checks }
+}
+
+function calcOverallScore(generalScore, seoScore, mobileScore, securityScore, geoScore) {
+  const weights = { seo: 0.30, geo: 0.25, mobile: 0.20, security: 0.15, general: 0.10 }
+  return Math.round(
+    (seoScore      ?? 0) * weights.seo +
+    (geoScore      ?? 0) * weights.geo +
+    (mobileScore   ?? 0) * weights.mobile +
+    (securityScore ?? 0) * weights.security +
+    (generalScore  ?? 0) * weights.general
+  )
 }
 
 function calcPerformanceSummary(pages) {
@@ -268,6 +287,7 @@ export async function generateReport(manifest, reportId) {
   const siteTitle = homeSeo?.pageTitle || null
 
   const security = calcSecurityScore(pages)
+  const finalOverallScore = calcOverallScore(score, seo?.score, mobileData?.score, security.score, geoData?.score)
   const performanceSummary = calcPerformanceSummary(pages)
   const techHints = detectTech(pages, seoPages)
   const priorityIssues = buildPriorityIssues(pages, seoPages, weaknesses, geoData)
@@ -282,6 +302,7 @@ export async function generateReport(manifest, reportId) {
     timestamp: crawledAt,
     pageCount: pages.length,
     score,
+    overallScore: finalOverallScore,
     strengths,
     weaknesses,
     actions,
@@ -302,7 +323,8 @@ export async function generateReport(manifest, reportId) {
       timing: p.timing ?? null,
       responseHeaders: p.responseHeaders ?? {},
       jsErrors: p.jsErrors ?? [],
-      screenshotPath: p.screenshotPath
+      screenshotPath: p.screenshotPath,
+      redirectCount: p.redirectCount ?? 0,
     }))
   }
 

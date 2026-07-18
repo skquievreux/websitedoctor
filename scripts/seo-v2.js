@@ -1,6 +1,19 @@
 // seo-v2.js – Erweiterte SEO-Checks (21 statt 11)
 // Phase 2: Structured Data, OpenGraph, Twitter Cards, Lighthouse
 
+// Detects unresloved i18n translation keys (e.g. "seo.homeTitle", "metaDescription")
+const I18N_KEY_PATTERNS = [
+  /^[a-z][a-zA-Z0-9]*(\.[a-zA-Z][a-zA-Z0-9]*)+$/,  // dot.notation.key
+  /^[a-z][a-zA-Z]{2,}[A-Z][a-zA-Z0-9]+$/,            // camelCaseKey (no spaces)
+]
+
+function looksLikeI18nKey(str) {
+  if (!str || str.length > 80) return false
+  const trimmed = str.trim()
+  if (trimmed.includes(' ')) return false  // real text has spaces
+  return I18N_KEY_PATTERNS.some(p => p.test(trimmed))
+}
+
 const WEIGHTS = {
   // Original Checks (11)
   'title-present':           8,
@@ -25,7 +38,9 @@ const WEIGHTS = {
   'internal-links':          5,    // Link Structure
   'images-optimized':        4,    // Image Quality
   'mobile-friendly':         6,    // Responsive
-  'core-web-vitals':         7,    // Performance
+  'core-web-vitals':         7,    // LCP Performance
+  'core-web-vitals-cls':     5,    // CLS (Cumulative Layout Shift)
+  'content-ratio':           3,    // Content-to-HTML Ratio
 }
 
 const NON_INDEX_PATTERNS = [
@@ -91,6 +106,17 @@ export async function analyzeSeoV2(page, url) {
     const perfObserver = window.performance?.getEntriesByType?.('largest-contentful-paint') || []
     const lcp = perfObserver.length > 0 ? perfObserver[perfObserver.length - 1]?.renderTime || 0 : 0
 
+    // Core Web Vitals (Cumulative Layout Shift - CLS)
+    const clsEntries = window.performance?.getEntriesByType?.('layout-shift') || []
+    const cls = Math.round(
+      clsEntries.reduce((s, e) => s + (e.hadRecentInput ? 0 : e.value), 0) * 1000
+    ) / 1000
+
+    // Content-to-HTML Ratio (Textanteil vs. gesamtes HTML)
+    const htmlSize = document.documentElement?.outerHTML?.length || 0
+    const textSize = document.body?.innerText?.length || 0
+    const contentRatio = htmlSize > 0 ? Math.round((textSize / htmlSize) * 100) : 0
+
     // Mobile-Friendly Meta
     const mobileOptimized = viewport.includes('width=device-width')
 
@@ -113,7 +139,9 @@ export async function analyzeSeoV2(page, url) {
       internalLinks,
       h2Count, h3Count,
       mobileOptimized,
-      lcp: Math.round(lcp)
+      lcp: Math.round(lcp),
+      cls,
+      contentRatio,
     }
   }).catch(err => {
     console.error(`[seo-v2] page.evaluate failed for ${url}: ${err.message}`)
@@ -124,25 +152,47 @@ export async function analyzeSeoV2(page, url) {
       hasJsonLd: false, jsonLdCount: 0, ogTagCount: 0, ogTags: [],
       twitterTagCount: 0, hasHreflang: false, hreflangs: [],
       linksWithGenericText: 0, linkCount: 0, internalLinks: 0,
-      h2Count: 0, h3Count: 0, mobileOptimized: false, lcp: 0
+      h2Count: 0, h3Count: 0, mobileOptimized: false, lcp: 0, cls: 0, contentRatio: 0,
     }
   })
 
   const tLen = data.titleText.length
   const mLen = data.metaDescText.length
+  const titleIsI18nKey = looksLikeI18nKey(data.titleText)
+  const metaIsI18nKey  = looksLikeI18nKey(data.metaDescText)
 
   // Gewichtete Checks
   const allIssues = [
+    // i18n-Key-Check: muss vor title-present / meta-desc-present stehen
+    ...(titleIsI18nKey ? [{
+      id: 'i18n-title',
+      label: `⚠ Title ist unaufgelöster i18n-Key: "${data.titleText}"`,
+      pass: false,
+      critical: true,
+      weight: WEIGHTS['title-present'] + WEIGHTS['title-length'],
+      value: data.titleText,
+      suggestion: `Der Title "${data.titleText}" sieht aus wie ein nicht aufgelöster Übersetzungsschlüssel. Das eigentliche Problem ist eine kaputte i18n-/Internationalisierungs-Konfiguration — nicht eine zu kurze Zeichenlänge. Prüfe das i18n-Setup (z.B. react-i18next, vue-i18n, next-intl).`
+    }] : []),
+    ...(metaIsI18nKey ? [{
+      id: 'i18n-meta-desc',
+      label: `⚠ Meta-Description ist unaufgelöster i18n-Key: "${data.metaDescText}"`,
+      pass: false,
+      critical: true,
+      weight: WEIGHTS['meta-desc-present'] + WEIGHTS['meta-desc-length'],
+      value: data.metaDescText,
+      suggestion: `Die Meta-Description "${data.metaDescText}" ist ein nicht aufgelöster Übersetzungsschlüssel. Prüfe das i18n-Setup.`
+    }] : []),
+
     // ORIGINAL CHECKS (11)
-    {
+    ...(!titleIsI18nKey ? [{
       id: 'title-present',
       label: `Title vorhanden (${tLen} Zeichen)`,
       pass: tLen > 0,
       weight: WEIGHTS['title-present'],
       value: data.titleText || null,
       suggestion: tLen === 0 ? 'Füge einen aussagekräftigen <title>-Tag hinzu' : null
-    },
-    {
+    }] : []),
+    ...(!titleIsI18nKey ? [{
       id: 'title-length',
       label: 'Title-Länge 50–60 Zeichen',
       pass: tLen >= 50 && tLen <= 60,
@@ -151,16 +201,16 @@ export async function analyzeSeoV2(page, url) {
       suggestion: tLen > 0 && (tLen < 50 || tLen > 60)
         ? `Titel ist ${tLen} Zeichen. Ideal: 50–60 Zeichen`
         : null
-    },
-    {
+    }] : []),
+    ...(!metaIsI18nKey ? [{
       id: 'meta-desc-present',
       label: `Meta-Description vorhanden (${mLen} Zeichen)`,
       pass: mLen > 0,
       weight: WEIGHTS['meta-desc-present'],
       value: data.metaDescText || null,
       suggestion: mLen === 0 ? "Füge <meta name='description' content='...'> hinzu (120–160 Zeichen)" : null
-    },
-    {
+    }] : []),
+    ...(!metaIsI18nKey ? [{
       id: 'meta-desc-length',
       label: 'Meta-Description 120–160 Zeichen',
       pass: mLen >= 120 && mLen <= 160,
@@ -169,7 +219,7 @@ export async function analyzeSeoV2(page, url) {
       suggestion: mLen > 0 && (mLen < 120 || mLen > 160)
         ? `Beschreibung ist ${mLen} Zeichen. Ideal: 120–160 Zeichen`
         : null
-    },
+    }] : []),
     {
       id: 'h1-count',
       label: 'Genau ein H1',
@@ -338,11 +388,37 @@ export async function analyzeSeoV2(page, url) {
         : data.lcp >= 2500
           ? `Largest Contentful Paint ist ${data.lcp}ms. Ideal: < 2500ms. Optimiere Bilder und Server-Antwortzeit`
           : null
-    }
+    },
+    {
+      id: 'core-web-vitals-cls',
+      label: `Core Web Vitals: CLS ${data.cls}`,
+      pass: data.cls < 0.1,
+      skipped: data.cls === 0 && data.lcp === 0,
+      weight: (data.cls === 0 && data.lcp === 0) ? 0 : WEIGHTS['core-web-vitals-cls'],
+      value: data.cls,
+      suggestion: data.cls >= 0.1
+        ? `Cumulative Layout Shift ist ${data.cls} (Ziel: < 0.1). Reserviere Platz für Bilder und Ads mit width/height-Attributen oder aspect-ratio, um Layoutverschiebungen zu vermeiden.`
+        : null
+    },
+    {
+      id: 'content-ratio',
+      label: `Content-to-HTML-Ratio: ${data.contentRatio}%`,
+      pass: data.contentRatio >= 10,
+      skipped: data.contentRatio === 0,
+      weight: data.contentRatio === 0 ? 0 : WEIGHTS['content-ratio'],
+      value: `${data.contentRatio}%`,
+      suggestion: data.contentRatio > 0 && data.contentRatio < 10
+        ? `Nur ${data.contentRatio}% der Seite sind echter Text. Der Rest ist HTML-Markup, Skripte oder Boilerplate. Prüfe ob Inhalte clientseitig gerendert werden oder zu viel Code inline ist.`
+        : null
+    },
   ]
 
   // Filter basierend auf Seiten-Typ
-  const skipForNonIndex = new Set(['canonical', 'h1-count', 'meta-desc-present', 'meta-desc-length'])
+  // Auth- und Utility-Seiten brauchen keine H2-Hierarchie oder Social-Tags
+  const skipForNonIndex = new Set([
+    'canonical', 'h1-count', 'meta-desc-present', 'meta-desc-length',
+    'h2-hierarchy', 'og-tags', 'twitter-card', 'hreflang', 'anchor-text',
+  ])
   const issues = indexable
     ? allIssues
     : allIssues.filter(i => !skipForNonIndex.has(i.id))
@@ -365,7 +441,9 @@ export async function analyzeSeoV2(page, url) {
       imageCount: data.imgCount,
       linkCount: data.linkCount,
       internalLinks: data.internalLinks,
-      lcpMs: data.lcp
+      lcpMs: data.lcp,
+      cls: data.cls,
+      contentRatio: data.contentRatio,
     }
   }
 }

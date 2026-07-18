@@ -4,43 +4,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Doctor – Vergleich</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --ink:        #0d1a2e;
+      --ink-2:      #2d4060;
+      --ink-3:      #5a7a9e;
+      --ink-4:      #8faec8;
+      --rule:       #ccdbe8;
+      --rule-light: #e4eef6;
+      --surface:    #f4f8fc;
+      --accent:     #059669;
+      --accent-dim: #d1fae5;
+      --green:      #059669;
+      --green-bg:   #ecfdf5;
+      --green-bd:   #a7f3d0;
+      --orange:     #c2410c;
+      --orange-bg:  #fff7ed;
+      --orange-bd:  #fed7aa;
+      --red:        #b91c1c;
+      --red-bg:     #fef2f2;
+      --red-bd:     #fecaca;
+      --r:          8px;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #111; font-size: 11pt; line-height: 1.5; }
 
-    .report-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #111; }
-    .report-header h1 { font-size: 1.4rem; font-weight: 800; }
-    .report-header .meta { font-size: 0.8rem; color: #555; margin-top: 0.2rem; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #fff;
+      color: var(--ink);
+      font-size: 11pt;
+      line-height: 1.55;
+      font-feature-settings: 'cv02','cv03','cv04','cv11';
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
 
-    .scores-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-    .score-tile { flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 0.8rem 1rem; text-align: center; }
-    .score-tile .val { font-size: 2rem; font-weight: 800; }
-    .score-tile .lbl { font-size: 0.72rem; color: #777; margin-top: 0.15rem; }
-    .score-pos { color: #166534; }
-    .score-neg { color: #991b1b; }
-    .score-zero { color: #555; }
+    /* ── Cover stripe ── */
+    .cover-stripe {
+      background: linear-gradient(135deg, #080f1e 0%, #0e2040 60%, #0a2e20 100%);
+      color: #fff;
+      padding: 2cm 2.5cm 1.75cm;
+    }
+    .cover-brand {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .cover-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.35rem;
+    }
+    .cover-sub {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 0.2rem;
+    }
 
+    /* ── Inner wrapper ── */
+    .inner { padding: 1.75cm 2.5cm; }
+
+    /* ── Page header ── */
+    .page-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #0d1a2e;
+    }
+    .page-hd-left { font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; }
+    .page-hd-right { font-size: 0.68rem; color: var(--ink-3); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ── Score tiles ── */
+    .scores-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .score-tile {
+      flex: 1;
+      min-width: 110px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      padding: 0.85rem 1rem;
+      text-align: center;
+      background: var(--surface);
+    }
+    .score-tile .val { font-size: 2rem; font-weight: 900; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+    .score-tile .lbl { font-size: 0.65rem; color: var(--ink-3); margin-top: 0.15rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+    .score-pos  { color: var(--green); }
+    .score-neg  { color: var(--red); }
+    .score-zero { color: var(--ink-3); }
+
+    /* ── Section ── */
     .section { margin-bottom: 1.5rem; break-inside: avoid; }
-    .section h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #777; margin-bottom: 0.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .two-col h3 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #777; margin-bottom: 0.4rem; }
+    .section h2 {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+      margin-bottom: 0.65rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.3rem;
+      font-weight: 700;
+    }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .two-col h3 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); margin-bottom: 0.4rem; font-weight: 700; }
 
     ul { list-style: none; }
-    ul li { padding: 0.2rem 0; font-size: 0.88rem; display: flex; gap: 0.4rem; }
-    .dot-green { color: #166534; }
-    .dot-red { color: #991b1b; }
+    ul li { padding: 0.2rem 0; font-size: 0.875rem; display: flex; gap: 0.4rem; color: var(--ink-2); }
+    .dot-green { color: var(--green); font-weight: 700; }
+    .dot-red   { color: var(--red); font-weight: 700; }
 
     table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-    th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #777; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
-    td { padding: 0.3rem 0.5rem; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    th {
+      text-align: left;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-3);
+      padding: 0.3rem 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 700;
+    }
+    td { padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--rule-light); vertical-align: top; color: var(--ink-2); }
     tr:last-child td { border-bottom: none; }
-    .change-pos { color: #166534; font-weight: 700; }
-    .change-neg { color: #991b1b; font-weight: 700; }
-    .change-zero { color: #555; }
+    .change-pos  { color: var(--green); font-weight: 700; }
+    .change-neg  { color: var(--red); font-weight: 700; }
+    .change-zero { color: var(--ink-3); }
 
-    .report-footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 1px solid #ddd; font-size: 0.72rem; color: #999; text-align: center; }
+    .empty-note { font-size: 0.84rem; color: var(--ink-4); font-style: italic; }
 
-    .empty-note { font-size: 0.85rem; color: #999; font-style: italic; }
+    .report-footer {
+      margin-top: 2rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.68rem;
+      color: var(--ink-4);
+      text-align: center;
+    }
 
     @media print {
       body { font-size: 10pt; }
@@ -50,7 +164,7 @@
 </head>
 <body>
   <div id="content">
-    <p style="color:#999;padding:2rem">Lade Vergleich…</p>
+    <p style="color:var(--ink-4);padding:3rem;font-family:'Inter',system-ui">Lade Vergleich…</p>
   </div>
 
 <script>
@@ -78,34 +192,40 @@
     const dateA = new Date(repA.timestamp).toLocaleDateString('de-DE')
     const dateB = new Date(repB.timestamp).toLocaleDateString('de-DE')
 
-    const header = `<div class="report-header">
-      <div>
-        <h1>Vergleich: ${esc(repA.siteTitle || repA.hostname || repA.url)}</h1>
-        <div class="meta">A: ${esc(d.urlA)} (${dateA}) &nbsp;→&nbsp; B: ${esc(d.urlB)} (${dateB})</div>
-        <div class="meta">Erstellt: ${now}</div>
+    const scoreA = repA.overallScore ?? repA.score
+    const scoreB = repB.overallScore ?? repB.score
+    const diff   = d.scoreChange
+    const seoDiff = d.seoScoreChange
+
+    const cover = `
+      <div class="cover-stripe">
+        <div class="cover-brand">🩺 Website Doctor – Vergleichsreport</div>
+        <div class="cover-title">${esc(repA.siteTitle || repA.hostname || repA.url)}</div>
+        <div class="cover-sub">A: ${esc(d.urlA)} (${dateA}) &nbsp;→&nbsp; B: ${esc(d.urlB)} (${dateB})</div>
+        <div class="cover-sub" style="margin-top:0.2rem;opacity:.4">Erstellt: ${now}</div>
       </div>
-    </div>`
+      <div class="inner">`
 
     const scoreSection = `<div class="scores-row">
       <div class="score-tile">
-        <div class="val ${changeCls(d.scoreChange)}">${sign(d.scoreChange)}</div>
-        <div class="lbl">Gesamt-Score</div>
+        <div class="val ${diff > 0 ? 'score-pos' : diff < 0 ? 'score-neg' : 'score-zero'}">${sign(diff)}</div>
+        <div class="lbl">Gesamt-Score Δ</div>
       </div>
       <div class="score-tile">
-        <div class="val ${changeCls(d.seoScoreChange)}">${sign(d.seoScoreChange)}</div>
-        <div class="lbl">SEO-Score</div>
+        <div class="val ${seoDiff > 0 ? 'score-pos' : seoDiff < 0 ? 'score-neg' : 'score-zero'}">${sign(seoDiff)}</div>
+        <div class="lbl">SEO-Score Δ</div>
       </div>
       <div class="score-tile">
-        <div class="val">${repA.score}</div>
+        <div class="val">${scoreA}</div>
         <div class="lbl">Score A (${dateA})</div>
       </div>
       <div class="score-tile">
-        <div class="val">${repB.score}</div>
+        <div class="val">${scoreB}</div>
         <div class="lbl">Score B (${dateB})</div>
       </div>
     </div>`
 
-    const weakSection = `<div class="section"><h2>Schwächen</h2>
+    const weakSection = `<div class="section"><h2>Schwächen-Vergleich</h2>
       <div class="two-col">
         <div>
           <h3>Neue Schwächen</h3>
@@ -122,7 +242,7 @@
       </div>
     </div>`
 
-    const pagesSection = `<div class="section"><h2>Seiten</h2>
+    const pagesSection = `<div class="section"><h2>Seiten-Vergleich</h2>
       <div class="two-col">
         <div>
           <h3>Neue Seiten (${d.newPages.length})</h3>
@@ -141,7 +261,7 @@
 
     const changesSection = d.pageChanges.length ? `<div class="section"><h2>Seiten-Änderungen</h2>
       <table>
-        <thead><tr><th>URL</th><th>Ladezeit</th><th>JS-Fehler</th></tr></thead>
+        <thead><tr><th>URL</th><th>Ladezeit Δ</th><th>JS-Fehler Δ</th></tr></thead>
         <tbody>${d.pageChanges.map(c => `<tr>
           <td>${esc(c.url)}</td>
           <td class="${changeCls(c.loadTimeChange)}">${sign(c.loadTimeChange)} ms</td>
@@ -150,9 +270,9 @@
       </table>
     </div>` : ''
 
-    const footer = `<div class="report-footer">Erstellt mit Website Doctor &nbsp;·&nbsp; ${now}</div>`
+    const footer = `<div class="report-footer">Website Doctor &nbsp;·&nbsp; ${now}</div>`
 
-    document.getElementById('content').innerHTML = header + scoreSection + weakSection + pagesSection + changesSection + footer
+    document.getElementById('content').innerHTML = cover + scoreSection + weakSection + pagesSection + changesSection + footer + `</div>`
     document.title = `Website Doctor – Vergleich ${repA.siteTitle || repA.hostname || ''}`
   }
 

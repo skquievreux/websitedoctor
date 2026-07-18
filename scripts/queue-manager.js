@@ -109,12 +109,19 @@ export class QueueManager {
   }
 
   getStatus() {
+    // Sort failed jobs newest-first, show last 10
+    const failedJobs = Array.from(this.failed.values())
+      .sort((a, b) => new Date(b.failed) - new Date(a.failed))
+      .slice(0, 10)
+      .map(j => ({ id: j.id, url: j.url, error: j.error, failed: j.failed, _type: 'failed' }))
+
     return {
       pending: this.pending.length,
       running: this.running.size,
       completed: this.completed.size,
       failed: this.failed.size,
       max_concurrent: MAX_CONCURRENT_CRAWLS,
+      failedJobs,
       queue: [
         ...Array.from(this.running.values()).map(j => ({
           id: j.id,
@@ -130,6 +137,17 @@ export class QueueManager {
         }))
       ]
     }
+  }
+
+  deleteJob(id) {
+    // Remove from pending
+    const pidx = this.pending.findIndex(j => j.id === id)
+    if (pidx !== -1) { this.pending.splice(pidx, 1); return true }
+    // Remove from failed
+    if (this.failed.has(id)) { this.failed.delete(id); return true }
+    // Remove stale running job (no active worker)
+    if (this.running.has(id)) { this.running.delete(id); return true }
+    return false
   }
 
   canStartNextJob() {

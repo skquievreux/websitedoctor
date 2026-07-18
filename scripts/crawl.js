@@ -42,6 +42,7 @@ async function takeScreenshot(page, url, screenshotDir) {
 async function visitPage(page, url) {
   const start = Date.now()
   const jsErrors = []
+  let redirectCount = 0
 
   // A2 — benannte Listener für sauberes off() im finally
   const handleConsole = msg => {
@@ -53,12 +54,19 @@ async function visitPage(page, url) {
     const message = err.message
     jsErrors.push({ message, url: err.stack?.split('\n')[1]?.trim(), type: 'uncaught', firstParty: isFirstPartyError(message) })
   }
+  const handleResponse = response => {
+    if ([301, 302, 307, 308].includes(response.status())) redirectCount++
+  }
 
   page.on('console', handleConsole)
   page.on('pageerror', handlePageError)
+  page.on('response', handleResponse)
 
   try {
     const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT })
+    // Wait briefly for JS-injected meta tags (React Helmet, Next.js Head, etc.)
+    // This fixes false negatives where JSON-LD / title are set after domcontentloaded
+    await page.waitForSelector('script[type="application/ld+json"], title', { timeout: 2000 }).catch(() => {})
     const loadTime = Date.now() - start
     const statusCode = response?.status() ?? null
     const title = await page.title().catch(() => '')
@@ -88,14 +96,15 @@ async function visitPage(page, url) {
       server:              headers['server'] || null,
     }
 
-    return { statusCode, title, loadTime, timing, responseHeaders, jsErrors }
+    return { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount }
   } catch (err) {
     console.error(chalk.red(`[crawl] Fehler bei ${url}: ${err.message}`))
-    return { statusCode: null, title: '', loadTime: null, timing: null, responseHeaders: {}, jsErrors }
+    return { statusCode: null, title: '', loadTime: null, timing: null, responseHeaders: {}, jsErrors, redirectCount }
   } finally {
     // A2 — immer aufräumen
     page.off('console', handleConsole)
     page.off('pageerror', handlePageError)
+    page.off('response', handleResponse)
   }
 }
 
@@ -127,7 +136,7 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
     console.log(chalk.gray(`[crawl] Besuche (${visited.size}/${MAX_PAGES}): ${url}`))
     onProgress?.({ current: visited.size, max: MAX_PAGES, url })
 
-    const { statusCode, title, loadTime, timing, responseHeaders, jsErrors } = await visitPage(page, url)
+    const { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount } = await visitPage(page, url)
     const screenshotPath = await takeScreenshot(page, url, screenshotDir)
     const [seoResult, geoResult] = await Promise.all([
       analyzeSeoV2(page, url),
@@ -143,7 +152,7 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
       console.log(chalk.yellow(`[crawl] JS-Fehler auf ${url}: ${fp} first-party, ${tp} third-party (ignoriert)`))
     }
 
-    pages.push({ url, statusCode, title, type, screenshotPath, links, loadTime, timing, responseHeaders, jsErrors })
+    pages.push({ url, statusCode, title, type, screenshotPath, links, loadTime, timing, responseHeaders, jsErrors, redirectCount })
     seoPages.push(seoResult)
     geoPages.push(geoResult)
     onPageDone?.({ url, statusCode, title, type, loadTime, screenshotPath, jsErrors: jsErrors ?? [] })

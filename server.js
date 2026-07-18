@@ -5,6 +5,7 @@ import { fork } from 'child_process'
 import path from 'path'
 import chalk from 'chalk'
 import { chromium } from 'playwright'
+import client from 'prom-client'
 import QueueManager from './scripts/queue-manager.js'
 
 const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
@@ -24,6 +25,35 @@ app.use(express.json())
 app.use(express.static('public'))
 app.use('/screenshots', express.static('screenshots'))
 app.use('/reports', express.static('reports'))
+
+// ── Prometheus Metrics ─────────────────────────────────────────────
+const metricsRegistry = new client.Registry()
+client.collectDefaultMetrics({ register: metricsRegistry, prefix: 'sitechecker_' })
+
+const crawlsTotal = new client.Counter({
+  name: 'sitechecker_crawls_total',
+  help: 'Total finished crawl jobs by outcome',
+  labelNames: ['status'],
+  registers: [metricsRegistry],
+})
+const crawlDurationSeconds = new client.Histogram({
+  name: 'sitechecker_crawl_duration_seconds',
+  help: 'Crawl job duration in seconds',
+  buckets: [5, 15, 30, 60, 120, 300, 600],
+  registers: [metricsRegistry],
+})
+const crawlsActiveGauge = new client.Gauge({
+  name: 'sitechecker_crawls_active',
+  help: 'Currently running crawl jobs',
+  registers: [metricsRegistry],
+})
+const crawlStartedAt = new Map() // jobId → Date.now()
+
+app.get('/metrics', async (req, res) => {
+  crawlsActiveGauge.set(queue.getStatus?.().running ?? 0)
+  res.setHeader('Content-Type', metricsRegistry.contentType)
+  res.send(await metricsRegistry.metrics())
+})
 
 // ── API-Key-Auth ──────────────────────────────────────────────────
 // Health check stays open, everything else requires x-api-key when
@@ -97,19 +127,23 @@ async function readWebhooks() {
 }
 
 async function triggerWebhooks(report) {
+  // overallScore is the weighted SEO/GEO/Mobile/Security composite — report.score
+  // alone only tracks broken links/pages/JS errors and stays near 100 even when
+  // SEO or Security are bad, so it would almost never breach a quality threshold.
+  const score = report.overallScore ?? report.score
   const webhooks = await readWebhooks()
   for (const wh of webhooks) {
-    if (report.score <= (wh.threshold ?? 70)) {
+    if (score <= (wh.threshold ?? 70)) {
       try {
         await fetch(wh.url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            id: report.id, url: report.url, score: report.score,
+            id: report.id, url: report.url, score,
             pageCount: report.pageCount, timestamp: report.timestamp
           })
         })
-        console.log(chalk.blue(`[webhook] Ausgelöst für ${wh.url} (Score ${report.score} ≤ ${wh.threshold})`))
+        console.log(chalk.blue(`[webhook] Ausgelöst für ${wh.url} (Score ${score} ≤ ${wh.threshold})`))
       } catch (err) {
         console.error(chalk.red(`[webhook] Fehler: ${err.message}`))
       }
@@ -154,6 +188,7 @@ async function processQueueLoop() {
       console.log(chalk.cyan(`[queue] Starte Job: ${job.id} (${job.url})`))
       queue.startJob(job)
       jobs.set(job.id, { status: 'running', progress: { current: 0, max: 20, url: job.url }, pages: [] })
+      crawlStartedAt.set(job.id, Date.now())
 
       // Don't await here – start the crawl and let it run in parallel
       runCrawlWorker(job.url, job.id)
@@ -165,11 +200,16 @@ async function processQueueLoop() {
           appendHistory({
             id: job.id, url: report.url, hostname: report.hostname,
             siteTitle: report.siteTitle, siteDescription: report.siteDescription,
-            date: report.timestamp, score: report.score, pageCount: report.pageCount, reportPath
+            date: report.timestamp, score: report.score, overallScore: report.overallScore,
+            pageCount: report.pageCount, reportPath
           }).catch(() => {})
           triggerWebhooks(report).catch(() => {})
           console.log(chalk.green(`[queue] ✓ Job ${job.id} fertig (Score: ${report.score})`))
           queue.save().catch(() => {})
+          crawlsTotal.inc({ status: 'done' })
+          const startedAt = crawlStartedAt.get(job.id)
+          if (startedAt) crawlDurationSeconds.observe((Date.now() - startedAt) / 1000)
+          crawlStartedAt.delete(job.id)
           // Try to start next job when one finishes
           setImmediate(processQueueLoop)
         })
@@ -178,6 +218,10 @@ async function processQueueLoop() {
           jobs.set(job.id, { status: 'error', error: err.message })
           console.error(chalk.red(`[queue] ✗ Job ${job.id} fehlgeschlagen: ${err.message}`))
           queue.save().catch(() => {})
+          crawlsTotal.inc({ status: 'error' })
+          const startedAt = crawlStartedAt.get(job.id)
+          if (startedAt) crawlDurationSeconds.observe((Date.now() - startedAt) / 1000)
+          crawlStartedAt.delete(job.id)
           // Try to start next job when one fails
           setImmediate(processQueueLoop)
         })
@@ -271,10 +315,14 @@ app.get('/diff/:idA/:idB', async (req, res) => {
   res.json({
     idA: a.id, idB: b.id,
     urlA: a.url, urlB: b.url,
-    scoreChange: b.score - a.score,
-    seoScoreChange: (b.seo?.score ?? 0) - (a.seo?.score ?? 0),
-    newWeaknesses:      [...weakB].filter(w => !weakA.has(w)),
-    resolvedWeaknesses: [...weakA].filter(w => !weakB.has(w)),
+    scoreChange:          (b.overallScore ?? b.score) - (a.overallScore ?? a.score),
+    generalScoreChange:   b.score - a.score,
+    seoScoreChange:       (b.seo?.score ?? 0) - (a.seo?.score ?? 0),
+    geoScoreChange:       (b.geo?.score ?? 0) - (a.geo?.score ?? 0),
+    mobileScoreChange:    (b.mobile?.score ?? 0) - (a.mobile?.score ?? 0),
+    securityScoreChange:  (b.security?.score ?? 0) - (a.security?.score ?? 0),
+    newWeaknesses:        [...weakB].filter(w => !weakA.has(w)),
+    resolvedWeaknesses:   [...weakA].filter(w => !weakB.has(w)),
     newPages,
     removedPages,
     pageChanges

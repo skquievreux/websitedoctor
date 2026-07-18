@@ -4,121 +4,297 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Doctor – Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --ink:        #0d1a2e;
+      --ink-2:      #2d4060;
+      --ink-3:      #5a7a9e;
+      --ink-4:      #8faec8;
+      --rule:       #ccdbe8;
+      --rule-light: #e4eef6;
+      --surface:    #f4f8fc;
+      --accent:     #059669;
+      --accent-dim: #d1fae5;
+      --green:      #15803d;
+      --green-bg:   #f0fdf4;
+      --green-bd:   #86efac;
+      --orange:     #c2410c;
+      --orange-bg:  #fff7ed;
+      --orange-bd:  #fed7aa;
+      --red:        #b91c1c;
+      --red-bg:     #fef2f2;
+      --red-bd:     #fecaca;
+      --r:          8px;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: #fff; color: #111; font-size: 10.5pt; line-height: 1.5; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #fff;
+      color: var(--ink);
+      font-size: 10.5pt;
+      line-height: 1.55;
+      font-feature-settings: 'cv02','cv03','cv04','cv11';
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
 
     /* ── Page breaks ── */
     .page-break { break-before: page; }
     .no-break   { break-inside: avoid; }
 
     /* ── Cover ── */
-    .cover { display: flex; flex-direction: column; min-height: 100vh; padding: 3cm 2.5cm; }
-    .cover-logo { font-size: 0.8rem; color: #aaa; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: auto; }
-    .cover-title { font-size: 2.8rem; font-weight: 900; color: #111; line-height: 1.1; margin-bottom: 0.5rem; }
-    .cover-host  { font-size: 1.1rem; color: #2563eb; margin-bottom: 0.3rem; }
-    .cover-desc  { font-size: 0.9rem; color: #666; max-width: 480px; margin-bottom: 2rem; }
-    .cover-meta  { font-size: 0.8rem; color: #999; margin-top: auto; }
+    .cover {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 0;
+      page-break-after: always;
+    }
+    .cover-stripe {
+      background: linear-gradient(135deg, #080f1e 0%, #0e2040 60%, #0a2e20 100%);
+      color: #fff;
+      padding: 2.5cm 2.5cm 2cm;
+      flex-shrink: 0;
+    }
+    .cover-brand {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+    }
+    .cover-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .cover-host {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 0.2rem;
+    }
+    .cover-host a { color: rgba(255,255,255,.7); text-decoration: none; }
+    .cover-desc { font-size: 0.85rem; color: rgba(255,255,255,.45); margin-top: 0.6rem; max-width: 500px; line-height: 1.6; }
+
+    .cover-body {
+      padding: 2cm 2.5cm;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
     /* ── Gauge row on cover ── */
-    .cover-gauges { display: flex; gap: 2.5rem; margin: 2rem 0; flex-wrap: wrap; }
+    .cover-gauges {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
     .cg-item { text-align: center; }
-    .cg-label { font-size: 0.72rem; color: #777; margin-top: 0.4rem; }
+    .cg-label {
+      font-size: 0.65rem;
+      color: var(--ink-3);
+      margin-top: 0.4rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .cover-meta {
+      font-size: 0.72rem;
+      color: var(--ink-4);
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── Page header (inner pages) ── */
+    .page-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #0d1a2e;
+    }
+    .page-hd-left { font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; }
+    .page-hd-right { font-size: 0.68rem; color: var(--ink-3); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ── Inner page wrapper ── */
+    .inner { padding: 2cm 2.5cm; }
 
     /* ── Section ── */
-    .section { margin-bottom: 1.8rem; }
-    .section-title { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: #999;
-      border-bottom: 1px solid #e5e5e5; padding-bottom: 0.3rem; margin-bottom: 0.9rem; font-weight: 600; }
+    .section { margin-bottom: 1.75rem; }
+    .section-title {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.9rem;
+      font-weight: 700;
+    }
 
-    /* ── Two-col grid ── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; }
+    /* ── Two / three col grid ── */
+    .two-col   { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
 
     /* ── Cards ── */
-    .card { border: 1px solid #e5e5e5; border-radius: 8px; padding: 0.9rem 1.1rem; }
-    .card-title { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: #999; margin-bottom: 0.6rem; font-weight: 600; }
+    .card {
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      padding: 0.9rem 1.1rem;
+      background: var(--surface);
+    }
+    .card-title {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--ink-3);
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
 
     /* ── Score Tiles ── */
-    .score-tiles { display: flex; gap: 0.9rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-    .score-tile  { flex: 1; min-width: 110px; border: 1px solid #e5e5e5; border-radius: 8px; padding: 0.75rem 1rem; text-align: center; }
-    .score-tile .val { font-size: 2rem; font-weight: 900; }
-    .score-tile .lbl { font-size: 0.68rem; color: #888; margin-top: 0.1rem; }
-    .sg { color: #166534; } .sm { color: #92400e; } .sb { color: #991b1b; }
+    .stats-strip {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      flex: 1;
+      min-width: 100px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+    }
+    .stat-pill .sv { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+    .stat-pill .sl { font-size: 0.6rem; color: var(--ink-3); margin-top: 0.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sg { color: var(--green); }
+    .sm { color: var(--orange); }
+    .sb { color: var(--red); }
 
     /* ── Priority Issues ── */
-    .pi-row { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.45rem 0;
-      border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; }
+    .pi-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--rule-light);
+      font-size: 0.84rem;
+    }
     .pi-row:last-child { border-bottom: none; }
-    .pi-badge { font-size: 0.58rem; font-weight: 700; padding: 0.12rem 0.4rem; border-radius: 3px;
-      text-transform: uppercase; flex-shrink: 0; margin-top: 0.15rem; white-space: nowrap; }
-    .pi-badge.critical { background: #fee2e2; color: #991b1b; }
-    .pi-badge.warning  { background: #fef3c7; color: #92400e; }
-    .pi-badge.info     { background: #eff6ff; color: #1e40af; }
-    .pi-text { flex: 1; color: #222; }
-    .pi-note { font-size: 0.72rem; color: #888; margin-top: 0.15rem; }
+    .pi-badge {
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 0.12rem 0.45rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .pi-badge.critical { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-bd); }
+    .pi-badge.warning  { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-bd); }
+    .pi-badge.info     { background: var(--accent-dim); color: var(--accent); border: 1px solid #c4b5fd; }
+    .pi-text { flex: 1; color: var(--ink-2); line-height: 1.5; }
+    .pi-note { font-size: 0.71rem; color: var(--ink-3); margin-top: 0.15rem; }
 
     /* ── Security ── */
-    .sec-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0;
-      border-bottom: 1px solid #f5f5f5; font-size: 0.82rem; }
+    .sec-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.28rem 0;
+      border-bottom: 1px solid var(--rule-light);
+      font-size: 0.82rem;
+      color: var(--ink-2);
+    }
     .sec-row:last-child { border-bottom: none; }
-    .sec-val { margin-left: auto; font-size: 0.68rem; color: #888; max-width: 160px;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .sec-val { margin-left: auto; font-size: 0.67rem; color: var(--ink-4); max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     /* ── Performance ── */
-    .perf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
-    .perf-cell { border: 1px solid #e5e5e5; border-radius: 6px; padding: 0.5rem 0.6rem; text-align: center; }
-    .perf-cell .pv { font-size: 1.1rem; font-weight: 800; }
-    .perf-cell .pl { font-size: 0.62rem; color: #999; margin-top: 0.1rem; }
-    .perf-good { color: #166534; } .perf-mid { color: #92400e; } .perf-bad { color: #991b1b; }
-
-    /* ── Stats strip ── */
-    .stats-strip { display: flex; gap: 0.9rem; margin-bottom: 1.5rem; }
-    .stat-pill { flex: 1; border: 1px solid #e5e5e5; border-radius: 8px; padding: 0.6rem 0.8rem; text-align: center; }
-    .stat-pill .sv { font-size: 1.4rem; font-weight: 800; }
-    .stat-pill .sl { font-size: 0.65rem; color: #999; margin-top: 0.1rem; }
+    .perf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.55rem; }
+    .perf-cell {
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      padding: 0.55rem 0.65rem;
+      text-align: center;
+      background: var(--surface);
+    }
+    .perf-cell .pv { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    .perf-cell .pl { font-size: 0.58rem; color: var(--ink-3); margin-top: 0.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+    .perf-good { color: var(--green); }
+    .perf-mid  { color: var(--orange); }
+    .perf-bad  { color: var(--red); }
 
     /* ── SEO Coverage ── */
-    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
-    th { text-align: left; font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.05em;
-      color: #999; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
-    td { padding: 0.28rem 0.5rem; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
+    th {
+      text-align: left;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-3);
+      padding: 0.3rem 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      font-weight: 700;
+    }
+    td { padding: 0.28rem 0.5rem; border-bottom: 1px solid var(--rule-light); vertical-align: middle; color: var(--ink-2); }
     tr:last-child td { border-bottom: none; }
-    .bar-wrap { height: 5px; background: #f0f0f0; border-radius: 3px; min-width: 60px; }
+    .bar-wrap { height: 5px; background: var(--rule); border-radius: 3px; min-width: 60px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 3px; }
     .bar-cell { display: flex; align-items: center; gap: 0.4rem; }
-    .pct-text { font-size: 0.68rem; color: #999; width: 30px; text-align: right; flex-shrink: 0; }
-    .cnt-badge { font-size: 0.65rem; padding: 0.1rem 0.3rem; border-radius: 3px; }
-    .w-badge { font-size: 0.6rem; padding: 0.1rem 0.25rem; border-radius: 3px;
-      background: #eff6ff; color: #1e40af; }
+    .pct-text { font-size: 0.67rem; color: var(--ink-3); width: 30px; text-align: right; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+    .cnt-badge { font-size: 0.62rem; padding: 0.1rem 0.3rem; border-radius: 3px; font-variant-numeric: tabular-nums; }
+    .w-badge { font-size: 0.58rem; padding: 0.1rem 0.28rem; border-radius: 3px; background: var(--accent-dim); color: var(--accent); }
 
     /* ── Pages table ── */
-    .pages-table td:nth-child(2) { color: #166534; font-weight: 600; }
-    .pages-table td.err { color: #991b1b !important; }
-    .pages-table .type-badge { font-size: 0.62rem; padding: 0.1rem 0.3rem; border-radius: 3px;
-      background: #f5f5f5; color: #666; }
-    .pages-table td { font-size: 0.78rem; }
+    .pages-table td:nth-child(2) { color: var(--green); font-weight: 600; }
+    .pages-table td.err { color: var(--red) !important; font-weight: 600; }
+    .pages-table .type-badge { font-size: 0.6rem; padding: 0.1rem 0.3rem; border-radius: 3px; background: var(--rule-light); color: var(--ink-3); }
+    .pages-table td { font-size: 0.77rem; }
 
     /* ── SEO details ── */
-    .seo-page-block { margin-bottom: 0.9rem; padding-bottom: 0.9rem; border-bottom: 1px solid #f0f0f0; }
+    .seo-page-block { margin-bottom: 0.9rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--rule-light); }
     .seo-page-block:last-child { border-bottom: none; }
-    .seo-page-url { font-size: 0.78rem; color: #2563eb; margin-bottom: 0.4rem; font-weight: 600; }
-    .seo-check { display: flex; align-items: flex-start; gap: 0.4rem; font-size: 0.8rem; padding: 0.15rem 0; }
-    .seo-hint { font-size: 0.72rem; color: #999; margin-left: 1.2rem; font-style: italic; }
-    .seo-suggestion { font-size: 0.72rem; color: #92400e; margin-left: 1.2rem; }
-    .seo-skip { font-size: 0.76rem; color: #bbb; }
+    .seo-page-url { font-size: 0.78rem; color: var(--accent); margin-bottom: 0.4rem; font-weight: 600; }
+    .seo-check { display: flex; align-items: flex-start; gap: 0.4rem; font-size: 0.8rem; padding: 0.15rem 0; color: var(--ink-2); }
+    .seo-hint { font-size: 0.71rem; color: var(--ink-3); margin-left: 1.2rem; font-style: italic; }
+    .seo-suggestion { font-size: 0.71rem; color: var(--orange); margin-left: 1.2rem; font-weight: 600; }
+    .seo-skip { font-size: 0.76rem; color: var(--ink-4); }
 
     /* ── Strengths / Weaknesses ── */
     .sw-list { list-style: none; }
-    .sw-list li { display: flex; gap: 0.4rem; padding: 0.2rem 0; font-size: 0.85rem; }
-    .dot-g { color: #166534; } .dot-r { color: #991b1b; } .dot-b { color: #2563eb; }
+    .sw-list li { display: flex; gap: 0.4rem; padding: 0.2rem 0; font-size: 0.84rem; color: var(--ink-2); }
+    .dot-g { color: var(--green); } .dot-r { color: var(--red); } .dot-b { color: var(--accent); }
 
     /* ── Actions ── */
     .action-list { padding-left: 1.2rem; }
-    .action-list li { padding: 0.2rem 0; font-size: 0.85rem; }
+    .action-list li { padding: 0.22rem 0; font-size: 0.84rem; color: var(--ink-2); }
 
     /* ── Footer ── */
-    .report-footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 1px solid #eee;
-      font-size: 0.68rem; color: #bbb; display: flex; justify-content: space-between; }
+    .report-footer {
+      margin-top: 2rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.67rem;
+      color: var(--ink-4);
+      display: flex;
+      justify-content: space-between;
+    }
 
     @media print {
       body { font-size: 10pt; }
@@ -127,7 +303,7 @@
   </style>
 </head>
 <body>
-  <div id="content"><p style="color:#aaa;padding:3rem">Lade Report…</p></div>
+  <div id="content"><p style="color:var(--ink-4);padding:3rem;font-family:'Inter',system-ui">Lade Report…</p></div>
 
 <script>
   function sc(n) { return n >= 70 ? 'sg' : n >= 40 ? 'sm' : 'sb' }
@@ -138,27 +314,28 @@
     if (score == null || score === '–') {
       return `<div class="cg-item">
         <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-          <circle cx="${size/2}" cy="${size/2}" r="${size/2-6}" fill="none" stroke="#e5e5e5" stroke-width="7"/>
-          <text x="${size/2}" y="${size/2+5}" text-anchor="middle" fill="#ccc" font-size="14" font-weight="800">–</text>
+          <circle cx="${size/2}" cy="${size/2}" r="${size/2-6}" fill="none" stroke="#e4e4ec" stroke-width="7"/>
+          <text x="${size/2}" y="${size/2+5}" text-anchor="middle" fill="#b0b0c0" font-size="14" font-weight="800" font-family="Inter,system-ui">–</text>
         </svg>
         <div class="cg-label">${label}</div>
       </div>`
     }
     const n = Number(score)
-    const color = n >= 70 ? '#166534' : n >= 40 ? '#92400e' : '#991b1b'
-    const bgColor = n >= 70 ? '#dcfce7' : n >= 40 ? '#fef3c7' : '#fee2e2'
-    const rad = size / 2 - 6
+    const color  = n >= 70 ? '#059669' : n >= 40 ? '#c2410c' : '#b91c1c'
+    const bgFill = n >= 70 ? '#ecfdf5' : n >= 40 ? '#fff7ed' : '#fef2f2'
+    const rad  = size / 2 - 6
     const circ = (2 * Math.PI * rad).toFixed(1)
     const offset = (circ * (1 - n / 100)).toFixed(1)
+    const fs = size > 75 ? '1.3rem' : '1.05rem'
     return `<div class="cg-item">
       <div style="position:relative;width:${size}px;height:${size}px">
         <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="transform:rotate(-90deg)">
-          <circle cx="${size/2}" cy="${size/2}" r="${rad}" fill="${bgColor}" stroke="#e5e5e5" stroke-width="7"/>
+          <circle cx="${size/2}" cy="${size/2}" r="${rad}" fill="${bgFill}" stroke="#ccdbe8" stroke-width="7"/>
           <circle cx="${size/2}" cy="${size/2}" r="${rad}" fill="none" stroke="${color}" stroke-width="7"
             stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round"/>
         </svg>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-          <span style="font-size:1.25rem;font-weight:900;color:${color}">${n}</span>
+          <span style="font-size:${fs};font-weight:900;color:${color};font-family:'Inter',system-ui;letter-spacing:-0.04em">${n}</span>
         </div>
       </div>
       <div class="cg-label">${label}</div>
@@ -185,18 +362,19 @@
 
     // ── Cover ──────────────────────────────────────────────────────────
     const cover = `<div class="cover">
-      <div class="cover-logo">🩺 Website Doctor</div>
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div class="cover-stripe">
+        <div class="cover-brand">🩺 Website Doctor</div>
         <div class="cover-title">${esc(r.siteTitle || r.hostname)}</div>
         <div class="cover-host"><a href="${esc(r.url)}">${esc(r.url)}</a></div>
         ${r.siteDescription ? `<div class="cover-desc">${esc(r.siteDescription)}</div>` : ''}
-
+      </div>
+      <div class="cover-body">
         <div class="cover-gauges">
-          ${svgGauge(r.score,       'Gesamt-Score',   90)}
-          ${svgGauge(seoScore,      'SEO-Score',      90)}
-          ${svgGauge(r.geo?.score ?? '–', 'GEO / AI', 90)}
-          ${svgGauge(mobileScore,   'Mobile-Score',   90)}
-          ${svgGauge(secScore,      'Security-Score', 90)}
+          ${svgGauge(r.overallScore ?? r.score, 'Gesamt', 88)}
+          ${svgGauge(seoScore,           'SEO',       88)}
+          ${svgGauge(r.geo?.score ?? '–','GEO / AI',  88)}
+          ${svgGauge(mobileScore,        'Mobile',    88)}
+          ${svgGauge(secScore,           'Security',  88)}
         </div>
 
         <div class="stats-strip">
@@ -207,14 +385,15 @@
             const ok     = r.pages.filter(p => p.statusCode === 200).length
             return `
               <div class="stat-pill"><div class="sv ${broken>0?'sb':'sg'}">${broken}</div><div class="sl">Broken Pages</div></div>
-              <div class="stat-pill"><div class="sv ${jsErr>0?'sb':'sg'}">${jsErr}</div><div class="sl">JS-Fehler-Seiten</div></div>
+              <div class="stat-pill"><div class="sv ${jsErr>0?'sb':'sg'}">${jsErr}</div><div class="sl">JS-Fehler</div></div>
               <div class="stat-pill"><div class="sv ${avgL>3000?'sb':avgL>1500?'sm':'sg'}">${avgL}ms</div><div class="sl">Ø Ladezeit</div></div>
               <div class="stat-pill"><div class="sv">${ok}</div><div class="sl">OK-Seiten</div></div>
               <div class="stat-pill"><div class="sv">${r.pageCount}</div><div class="sl">Gecrawlt</div></div>`
           })()}
         </div>
+
+        <div class="cover-meta">Erstellt: ${date} &nbsp;·&nbsp; Website Doctor v2</div>
       </div>
-      <div class="cover-meta">Erstellt: ${date} &nbsp;·&nbsp; Website Doctor v2</div>
     </div>`
 
     // ── Seite 2: Prioritäts-Probleme + Security + Performance ─────────
@@ -226,10 +405,9 @@
             <div class="pi-text">${esc(i.label)}${i.note ? `<div class="pi-note">${esc(i.note)}</div>` : ''}</div>
           </div>`
         }).join('')
-      : '<p style="color:#aaa;font-size:0.85rem">Keine kritischen Probleme gefunden.</p>'
+      : '<p style="color:#b0b0c0;font-size:0.84rem">Keine kritischen Probleme gefunden.</p>'
 
     const secChecks = (r.security?.checks ?? []).map(c => {
-      const keyMap = { hsts:'hsts', xFrameOptions:'xFrameOptions', xContentTypeOptions:'xContentTypeOptions', csp:'csp', referrerPolicy:'referrerPolicy', cacheControl:'cacheControl' }
       const val = r.pages[0]?.responseHeaders?.[c.key]
       return `<div class="sec-row">
         <span>${c.pass ? '✅' : '❌'}</span>
@@ -238,13 +416,13 @@
       </div>`
     }).join('')
 
-    let perfHtml = '<p style="color:#aaa;font-size:0.82rem">Keine Timing-Daten.</p>'
+    let perfHtml = '<p style="color:#b0b0c0;font-size:0.82rem">Keine Timing-Daten.</p>'
     if (r.performanceSummary) {
       const ps = r.performanceSummary
       perfHtml = `<div class="perf-grid">
         <div class="perf-cell"><div class="pv ${ms2cls(ps.avgTtfb)}">${ps.avgTtfb}ms</div><div class="pl">Ø TTFB</div></div>
-        <div class="perf-cell"><div class="pv ${ms2cls(ps.avgDomReady)}">${ps.avgDomReady}ms</div><div class="pl">Ø DOM ready</div></div>
-        <div class="perf-cell"><div class="pv ${ms2cls(ps.avgFullyLoaded)}">${ps.avgFullyLoaded}ms</div><div class="pl">Ø Fully Loaded</div></div>
+        <div class="perf-cell"><div class="pv ${ms2cls(ps.avgDomReady)}">${ps.avgDomReady}ms</div><div class="pl">Ø DOM</div></div>
+        <div class="perf-cell"><div class="pv ${ms2cls(ps.avgFullyLoaded)}">${ps.avgFullyLoaded}ms</div><div class="pl">Ø Loaded</div></div>
         <div class="perf-cell"><div class="pv ${ms2cls(ps.p75Ttfb)}">${ps.p75Ttfb}ms</div><div class="pl">P75 TTFB</div></div>
         <div class="perf-cell"><div class="pv ${ms2cls(ps.p75FullyLoaded)}">${ps.p75FullyLoaded}ms</div><div class="pl">P75 Loaded</div></div>
         <div class="perf-cell"><div class="pv ${ps.slowPages>0?'perf-bad':'perf-good'}">${ps.slowPages}</div><div class="pl">Seiten &gt;3s</div></div>
@@ -253,18 +431,20 @@
 
     const techHints = r.techHints?.length
       ? r.techHints.map(t => {
-          const col = t.severity === 'critical' ? '#991b1b' : t.severity === 'warning' ? '#92400e' : '#1e40af'
-          return `<div style="padding:0.35rem 0;border-bottom:1px solid #f5f5f5;font-size:0.83rem">
-            <span style="color:${col};font-weight:600">${esc(t.label)}</span>
-            <div style="font-size:0.72rem;color:#888;margin-top:0.1rem">${esc(t.note)}</div>
+          const col = t.severity === 'critical' ? 'var(--red)' : t.severity === 'warning' ? 'var(--orange)' : 'var(--accent)'
+          const bg  = t.severity === 'critical' ? 'var(--red-bg)' : t.severity === 'warning' ? 'var(--orange-bg)' : 'var(--accent-dim)'
+          const bd  = t.severity === 'critical' ? 'var(--red-bd)' : t.severity === 'warning' ? 'var(--orange-bd)' : '#c4b5fd'
+          return `<div style="padding:0.45rem 0.65rem;border:1px solid ${bd};border-left:3px solid ${col};border-radius:6px;background:${bg};margin-bottom:0.4rem">
+            <div style="font-weight:600;color:${col};font-size:0.82rem">${esc(t.label)}</div>
+            <div style="font-size:0.71rem;color:var(--ink-3);margin-top:0.1rem">${esc(t.note)}</div>
           </div>`
         }).join('')
       : ''
 
-    const page2 = `<div class="page-break" style="padding:2cm 2.5cm">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #111">
-        <div style="font-weight:900;font-size:1rem">${esc(r.siteTitle || r.hostname)}</div>
-        <div style="font-size:0.72rem;color:#aaa">${date}</div>
+    const page2 = `<div class="page-break inner">
+      <div class="page-hd">
+        <div class="page-hd-left">${esc(r.siteTitle || r.hostname)}</div>
+        <div class="page-hd-right">${date}</div>
       </div>
 
       <div class="section no-break">
@@ -273,14 +453,14 @@
       </div>
 
       ${r.topDeviations?.length ? `<div class="section no-break">
-        <div class="section-title">Auffälligste Seiten (Screenshots)</div>
-        <div style="display:grid;grid-template-columns:repeat(${Math.min(r.topDeviations.length, 3)},1fr);gap:0.8rem;margin-top:0.5rem">
-          ${r.topDeviations.map(d => `<div style="border:1px solid #e5e7eb;border-radius:6px;overflow:hidden">
+        <div class="section-title">Auffälligste Seiten</div>
+        <div style="display:grid;grid-template-columns:repeat(${Math.min(r.topDeviations.length, 3)},1fr);gap:0.75rem;margin-top:0.5rem">
+          ${r.topDeviations.map(d => `<div style="border:1px solid var(--rule);border-radius:var(--r);overflow:hidden">
             <img src="/${d.screenshotPath}" style="width:100%;height:140px;object-fit:cover;object-position:top;display:block" alt="">
-            <div style="padding:0.4rem 0.5rem;font-size:0.72rem">
-              <div style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.title || d.url)}</div>
-              <div style="color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(d.url)}</div>
-              <div style="margin-top:0.2rem;color:#991b1b;font-size:0.68rem">${d.reasons.join(' · ')}</div>
+            <div style="padding:0.45rem 0.6rem;font-size:0.71rem;background:var(--surface)">
+              <div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)">${esc(d.title || d.url)}</div>
+              <div style="color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:0.1rem">${esc(d.url)}</div>
+              <div style="margin-top:0.2rem;color:var(--red);font-weight:600">${d.reasons.join(' · ')}</div>
             </div>
           </div>`).join('')}
         </div>
@@ -289,7 +469,7 @@
       <div class="two-col" style="margin-bottom:1.5rem">
         <div class="section no-break">
           <div class="section-title">Security-Header</div>
-          ${secChecks || '<p style="color:#aaa">Keine Daten.</p>'}
+          ${secChecks || '<p style="color:var(--ink-4)">Keine Daten.</p>'}
         </div>
         <div class="section no-break">
           <div class="section-title">Performance-Metriken</div>
@@ -303,19 +483,19 @@
         <div class="section-title">Stärken &amp; Schwächen</div>
         <div class="two-col">
           <div>
-            <div style="font-size:0.72rem;color:#166534;font-weight:600;margin-bottom:0.4rem">✓ Stärken</div>
-            <ul class="sw-list">${r.strengths.map(s=>`<li><span class="dot-g">✓</span>${esc(s)}</li>`).join('')||'<li style="color:#aaa">–</li>'}</ul>
+            <div style="font-size:0.68rem;color:var(--green);font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.07em">✓ Stärken</div>
+            <ul class="sw-list">${r.strengths.map(s=>`<li><span class="dot-g">✓</span>${esc(s)}</li>`).join('')||'<li style="color:var(--ink-4)">–</li>'}</ul>
           </div>
           <div>
-            <div style="font-size:0.72rem;color:#991b1b;font-weight:600;margin-bottom:0.4rem">✗ Schwächen</div>
-            <ul class="sw-list">${r.weaknesses.map(w=>`<li><span class="dot-r">✗</span>${esc(w)}</li>`).join('')||'<li style="color:#aaa">–</li>'}</ul>
+            <div style="font-size:0.68rem;color:var(--red);font-weight:700;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.07em">✗ Schwächen</div>
+            <ul class="sw-list">${r.weaknesses.map(w=>`<li><span class="dot-r">✗</span>${esc(w)}</li>`).join('')||'<li style="color:var(--ink-4)">–</li>'}</ul>
           </div>
         </div>
       </div>
 
       <div class="section no-break">
         <div class="section-title">Empfohlene Maßnahmen</div>
-        <ol class="action-list">${r.actions.map(a=>`<li>${esc(a)}</li>`).join('')||'<li style="color:#aaa">Keine Maßnahmen</li>'}</ol>
+        <ol class="action-list">${r.actions.map(a=>`<li>${esc(a)}</li>`).join('')||'<li style="color:var(--ink-4)">Keine Maßnahmen</li>'}</ol>
       </div>
     </div>`
 
@@ -329,23 +509,23 @@
         if (!all.length) return ''
         const pass = all.filter(c => c.pass).length
         const pct = Math.round((pass / all.length) * 100)
-        const fillColor = pct === 100 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b'
+        const fillColor = pct === 100 ? '#15803d' : pct >= 60 ? '#c2410c' : '#b91c1c'
         const label = all[0].label.replace(/\(.*?\)/g, '').trim()
         const weight = all[0].weight ?? ''
-        const cntColor = pass < all.length ? '#fee2e2' : '#dcfce7'
-        const cntTxt   = pass < all.length ? '#991b1b' : '#166534'
+        const cntColor = pass < all.length ? 'var(--red-bg)' : 'var(--green-bg)'
+        const cntTxt   = pass < all.length ? 'var(--red)' : 'var(--green)'
+        const cntBd    = pass < all.length ? 'var(--red-bd)' : 'var(--green-bd)'
         return `<tr>
           <td>${esc(label)}</td>
           <td><div class="bar-cell">
             <div class="bar-wrap" style="min-width:80px"><div class="bar-fill" style="width:${pct}%;background:${fillColor}"></div></div>
             <span class="pct-text">${pct}%</span>
           </div></td>
-          <td style="text-align:center"><span class="cnt-badge" style="background:${cntColor};color:${cntTxt}">${pass}/${all.length}</span></td>
+          <td style="text-align:center"><span class="cnt-badge" style="background:${cntColor};color:${cntTxt};border:1px solid ${cntBd}">${pass}/${all.length}</span></td>
           <td style="text-align:right"><span class="w-badge">[${weight}]</span></td>
         </tr>`
       }).join('')
 
-      // SEO details (only failed checks shown)
       const seoDetails = allPages.map(p => {
         const checks = getChecks(p)
         const failed = checks.filter(c => !c.pass && !c.skipped)
@@ -369,14 +549,26 @@
       const passTotal = allPages.flatMap(p => getChecks(p).filter(c=>c.pass&&!c.skipped)).length
       const failTotal = allPages.flatMap(p => getChecks(p).filter(c=>!c.pass&&!c.skipped)).length
 
-      seoPage = `<div class="page-break" style="padding:2cm 2.5cm">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #111">
-          <div style="font-weight:900;font-size:1rem">${esc(r.siteTitle || r.hostname)}</div>
-          <div style="font-size:0.72rem;color:#aaa">SEO-Analyse</div>
+      seoPage = `<div class="page-break inner">
+        <div class="page-hd">
+          <div class="page-hd-left">${esc(r.siteTitle || r.hostname)}</div>
+          <div class="page-hd-right">SEO-Analyse</div>
+        </div>
+
+        <div style="display:flex;gap:1.5rem;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap">
+          ${svgGauge(r.seo.score, 'SEO-Score', 80)}
+          <div>
+            <div style="font-size:0.8rem;color:var(--ink-3);margin-bottom:0.3rem">${allPages.length} Seiten &nbsp;·&nbsp; ${checkIds.length} Check-Kategorien</div>
+            <div style="font-size:0.84rem">
+              <span style="color:var(--green);font-weight:600">${passTotal} bestanden</span>
+              &nbsp;/&nbsp;
+              <span style="color:var(--red);font-weight:600">${failTotal} fehlgeschlagen</span>
+            </div>
+          </div>
         </div>
 
         <div class="section no-break">
-          <div class="section-title">SEO-Score ${r.seo.score}/100 &nbsp;·&nbsp; ${allPages.length} Seiten &nbsp;·&nbsp; ${passTotal} bestanden &nbsp;·&nbsp; ${failTotal} fehlgeschlagen</div>
+          <div class="section-title">SEO-Coverage aller Checks</div>
           <table>
             <thead><tr><th>Check</th><th>Bestanden</th><th>Seiten</th><th>Gew.</th></tr></thead>
             <tbody>${coverageRows}</tbody>
@@ -387,124 +579,115 @@
       </div>`
     }
 
-    // ── Seite GEO: GEO / AI-Readiness ────────────────────────────────────
+    // ── Seite GEO ────────────────────────────────────────────────────────
     let geoPage = ''
     if (r.geo) {
       const g = r.geo
       const scored     = (g.checks || []).filter(c => c.weight > 0)
       const infoChecks = (g.checks || []).filter(c => c.informational)
 
-      // Kern-Checks Tabelle
       const coreRows = scored.map(c => {
         const catColor = { A:'#3730a3', B:'#065f46', C:'#92400e', D:'#1e3a8a', E:'#4c1d95' }[c.category] || '#666'
         const catBg    = { A:'#eff6ff', B:'#ecfdf5', C:'#fef3c7', D:'#dbeafe', E:'#ede9fe' }[c.category] || '#f5f5f5'
         return `<tr class="no-break">
-          <td><span style="font-size:0.58rem;font-weight:700;padding:0.1rem 0.3rem;border-radius:3px;background:${catBg};color:${catColor}">${c.category}</span></td>
-          <td style="font-size:0.8rem">${esc(c.label)}</td>
-          <td style="text-align:center;font-weight:700;color:${c.pass?'#166534':'#991b1b'}">${c.pass?'✓':'✗'}</td>
+          <td><span style="font-size:0.56rem;font-weight:700;padding:0.1rem 0.3rem;border-radius:3px;background:${catBg};color:${catColor}">${c.category}</span></td>
+          <td style="font-size:0.79rem">${esc(c.label)}</td>
+          <td style="text-align:center;font-weight:700;color:${c.pass?'var(--green)':'var(--red)'}">${c.pass?'✓':'✗'}</td>
           <td style="text-align:right"><span class="w-badge">[${c.weight}]</span></td>
-          <td style="font-size:0.7rem;color:#92400e;max-width:180px">${c.pass ? '' : esc((c.suggestion||'').slice(0,100))}</td>
+          <td style="font-size:0.69rem;color:var(--orange);max-width:180px">${c.pass ? '' : esc((c.suggestion||'').slice(0,100))}</td>
         </tr>`
       }).join('')
 
-      // AI-Bot Details
-      const botCheck  = (g.checks || []).find(c => c.id === 'ai-bots-allowed')
+      const botCheck = (g.checks || []).find(c => c.id === 'ai-bots-allowed')
       const botRows = (botCheck?.detail || []).map(b =>
         `<tr>
-          <td style="font-weight:600;font-size:0.8rem">${esc(b.name)}</td>
-          <td style="font-size:0.75rem;color:#777">${esc(b.owner)}</td>
-          <td style="font-size:0.72rem;font-weight:600;color:${b.pass?'#166534':'#991b1b'}">${esc(b.status)}</td>
+          <td style="font-weight:600;font-size:0.79rem">${esc(b.name)}</td>
+          <td style="font-size:0.74rem;color:var(--ink-3)">${esc(b.owner)}</td>
+          <td style="font-size:0.71rem;font-weight:600;color:${b.pass?'var(--green)':'var(--red)'}">${esc(b.status)}</td>
         </tr>`
       ).join('')
 
-      // Informelle Checks
       const infoRows = infoChecks.filter(c => c.id !== 'schema-classification').map(c =>
-        `<div style="display:flex;gap:0.5rem;padding:0.25rem 0;border-bottom:1px solid #f5f5f5;font-size:0.8rem">
-          <span style="color:${c.pass?'#166534':'#92400e'}">${c.pass?'✓':'!'}</span>
+        `<div style="display:flex;gap:0.5rem;padding:0.28rem 0;border-bottom:1px solid var(--rule-light);font-size:0.8rem;color:var(--ink-2)">
+          <span style="color:${c.pass?'var(--green)':'var(--orange)'}">${c.pass?'✓':'!'}</span>
           <div>
             <span>${esc(c.label)}</span>
-            ${c.suggestion ? `<div style="font-size:0.7rem;color:#aaa;margin-top:0.1rem">${esc(c.suggestion.slice(0,120))}</div>` : ''}
+            ${c.suggestion ? `<div style="font-size:0.69rem;color:var(--ink-4);margin-top:0.1rem">${esc(c.suggestion.slice(0,120))}</div>` : ''}
           </div>
         </div>`
       ).join('')
 
-      // AI-Dateien
       const aiFiles = [
         { label: '/ai.txt',   obj: g.aiTxt   },
         { label: '/llms.txt', obj: g.llmsTxt },
-      ].map(f => `<div style="display:flex;align-items:center;gap:0.5rem;padding:0.2rem 0;font-size:0.8rem">
-        <span style="color:${f.obj?.exists?'#166534':'#999'}">${f.obj?.exists?'✓':'✗'}</span>
+      ].map(f => `<div style="display:flex;align-items:center;gap:0.5rem;padding:0.22rem 0;font-size:0.8rem;color:var(--ink-2)">
+        <span style="color:${f.obj?.exists?'var(--green)':'var(--ink-4)'}">${f.obj?.exists?'✓':'✗'}</span>
         <span style="font-weight:600">${f.label}</span>
-        <span style="color:#aaa;font-size:0.72rem">${f.obj?.exists?'vorhanden':'fehlt'}</span>
+        <span style="color:var(--ink-4);font-size:0.71rem">${f.obj?.exists?'vorhanden':'fehlt'}</span>
       </div>`).join('')
 
-      // Schema-Klassifizierung
       const schemaCl = (g.checks||[]).find(c=>c.id==='schema-classification')
       const schemaSection = schemaCl ? `
         <div class="section no-break">
           <div class="section-title">Schema-Typ-Klassifizierung (E-4)</div>
-          ${schemaCl.detail?.specific?.length ? `<div style="font-size:0.8rem;color:#166534;margin-bottom:0.3rem">✓ Spezifisch: ${schemaCl.detail.specific.join(', ')}</div>` : ''}
-          ${schemaCl.detail?.generic?.length  ? `<div style="font-size:0.8rem;color:#92400e">⚠ Generisch: ${schemaCl.detail.generic.join(', ')}</div>` : ''}
-          ${!schemaCl.pass && schemaCl.suggestion ? `<div style="font-size:0.75rem;color:#aaa;margin-top:0.3rem">→ ${esc(schemaCl.suggestion)}</div>` : ''}
+          ${schemaCl.detail?.specific?.length ? `<div style="font-size:0.8rem;color:var(--green);font-weight:600;margin-bottom:0.3rem">✓ Spezifisch: ${schemaCl.detail.specific.join(', ')}</div>` : ''}
+          ${schemaCl.detail?.generic?.length  ? `<div style="font-size:0.8rem;color:var(--orange)">⚠ Generisch: ${schemaCl.detail.generic.join(', ')}</div>` : ''}
+          ${!schemaCl.pass && schemaCl.suggestion ? `<div style="font-size:0.74rem;color:var(--ink-3);margin-top:0.3rem">→ ${esc(schemaCl.suggestion)}</div>` : ''}
         </div>` : ''
 
-      // LLM Snippet-Previews
       const snippetSection = g.snippetPreviews?.length ? `
         <div class="section no-break">
           <div class="section-title">LLM Snippet-Previews</div>
           ${g.snippetPreviews.map(s=>`
-            <div style="margin-bottom:0.6rem;padding:0.5rem 0.7rem;border:1px solid #e5e5e5;border-left:3px solid #2563eb;border-radius:5px">
-              <div style="font-size:0.65rem;color:#aaa;margin-bottom:0.2rem">${esc(s.url)}</div>
-              <div style="font-size:0.8rem;color:#333;line-height:1.5">${esc(s.snippet)}</div>
+            <div style="margin-bottom:0.6rem;padding:0.5rem 0.7rem;border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:6px;background:var(--accent-dim)">
+              <div style="font-size:0.63rem;color:var(--ink-3);margin-bottom:0.2rem">${esc(s.url)}</div>
+              <div style="font-size:0.8rem;color:var(--ink-2);line-height:1.5">${esc(s.snippet)}</div>
             </div>`).join('')}
         </div>` : ''
 
-      // GEO score interpretation
       const geoInterpretation = g.score >= 80
-        ? { color: '#166534', bg: '#f0fdf4', border: '#bbf7d0', icon: '✅', title: 'Sehr gut – KI-Sichtbarkeit optimiert', text: 'Die Website ist gut auf KI-Suchmaschinen wie ChatGPT Search, Perplexity und Claude vorbereitet. Strukturierte Daten, Entity-Links und AI-Bot-Zugang sind vorhanden.' }
+        ? { color: 'var(--green)', bg: 'var(--green-bg)', border: 'var(--green-bd)', icon: '✅', title: 'Sehr gut – KI-Sichtbarkeit optimiert', text: 'Die Website ist gut auf KI-Suchmaschinen wie ChatGPT Search, Perplexity und Claude vorbereitet.' }
         : g.score >= 60
-        ? { color: '#92400e', bg: '#fffbeb', border: '#fde68a', icon: '⚠', title: 'Ausbaufähig – einzelne Lücken vorhanden', text: 'Grundlegende GEO-Faktoren sind erfüllt, aber es fehlen wichtige Elemente für maximale KI-Sichtbarkeit. Fehlende Schema-Typen oder nicht eindeutige Entitätsverlinkungen reduzieren die Chance, in AI-generierten Antworten zitiert zu werden.' }
+        ? { color: 'var(--orange)', bg: 'var(--orange-bg)', border: 'var(--orange-bd)', icon: '⚠', title: 'Ausbaufähig – einzelne Lücken vorhanden', text: 'Grundlegende GEO-Faktoren sind erfüllt, aber es fehlen wichtige Elemente für maximale KI-Sichtbarkeit.' }
         : g.score >= 40
-        ? { color: '#9a3412', bg: '#fff7ed', border: '#fed7aa', icon: '⚠', title: 'Schwach – erheblicher Nachholbedarf', text: 'Die Website wird von KI-Modellen nur eingeschränkt verstanden. Fehlende strukturierte Daten, keine Entitäts-Verlinkungen und möglicherweise blockierte AI-Bots führen dazu, dass die Site in AI-Antworten kaum oder gar nicht auftaucht.' }
-        : { color: '#991b1b', bg: '#fef2f2', border: '#fecaca', icon: '🚫', title: 'Kritisch – kaum KI-Sichtbarkeit', text: 'Die Website ist für KI-Suchmaschinen weitgehend unsichtbar. Ohne strukturierte Daten, eindeutige Entitätsverweise und freigeschaltete AI-Bots wird die Site bei ChatGPT Search, Perplexity und ähnlichen Diensten nicht als relevante Quelle erkannt.' }
+        ? { color: 'var(--orange)', bg: 'var(--orange-bg)', border: 'var(--orange-bd)', icon: '⚠', title: 'Schwach – erheblicher Nachholbedarf', text: 'Die Website wird von KI-Modellen nur eingeschränkt verstanden.' }
+        : { color: 'var(--red)', bg: 'var(--red-bg)', border: 'var(--red-bd)', icon: '🚫', title: 'Kritisch – kaum KI-Sichtbarkeit', text: 'Die Website ist für KI-Suchmaschinen weitgehend unsichtbar.' }
 
-      // Priorisierte GEO-Maßnahmen aus fehlgeschlagenen Checks
       const geoActions = scored
         .filter(c => !c.pass && c.suggestion)
         .sort((a, b) => b.weight - a.weight)
-        .map((c, i) => `<div style="display:flex;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid #f0f0f0;font-size:0.8rem">
-          <div style="min-width:20px;font-weight:700;color:#991b1b">${i + 1}.</div>
+        .map((c, i) => `<div style="display:flex;gap:0.6rem;padding:0.4rem 0;border-bottom:1px solid var(--rule-light);font-size:0.8rem">
+          <div style="min-width:20px;font-weight:800;color:var(--red)">${i + 1}.</div>
           <div>
-            <div style="font-weight:600">${esc(c.label)}</div>
-            <div style="color:#555;margin-top:0.15rem">${esc(c.suggestion)}</div>
-            <div style="font-size:0.68rem;color:#aaa;margin-top:0.1rem">Gewicht: ${c.weight} Punkte</div>
+            <div style="font-weight:600;color:var(--ink)">${esc(c.label)}</div>
+            <div style="color:var(--ink-2);margin-top:0.12rem">${esc(c.suggestion)}</div>
+            <div style="font-size:0.66rem;color:var(--ink-4);margin-top:0.1rem">Gewicht: ${c.weight} Punkte</div>
           </div>
         </div>`).join('')
 
-      geoPage = `<div class="page-break" style="padding:2cm 2.5cm">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #111">
-          <div style="font-weight:900;font-size:1rem">${esc(r.siteTitle || r.hostname)}</div>
-          <div style="font-size:0.72rem;color:#aaa">GEO / AI-Readiness</div>
+      geoPage = `<div class="page-break inner">
+        <div class="page-hd">
+          <div class="page-hd-left">${esc(r.siteTitle || r.hostname)}</div>
+          <div class="page-hd-right">GEO / AI-Readiness</div>
         </div>
 
-        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem;flex-wrap:wrap">
+        <div style="display:flex;gap:1.5rem;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap">
           <div style="display:flex;flex-direction:column;align-items:center">
             ${svgGauge(g.score, 'GEO-Score', 80)}
-            ${g.score < 50 ? `<div style="margin-top:4px;padding:2px 6px;background:#fee2e2;color:#991b1b;border-radius:3px;font-size:0.65rem;font-weight:700">⚠ Kritisch</div>` : ''}
+            ${g.score < 50 ? `<div style="margin-top:4px;padding:2px 8px;background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);border-radius:3px;font-size:0.63rem;font-weight:700">⚠ Kritisch</div>` : ''}
           </div>
           <div>
-            <div style="font-size:0.8rem;color:#777;margin-bottom:0.25rem">Generative Engine Optimization – Sichtbarkeit in ChatGPT, Perplexity, Claude</div>
-            <div style="font-size:0.82rem">
-              <span style="color:#166534">${scored.filter(c=>c.pass).length} bestanden</span> /
-              <span style="color:#991b1b">${scored.filter(c=>!c.pass).length} fehlgeschlagen</span>
-              &nbsp;·&nbsp; ${scored.length} Kern-Checks &nbsp;·&nbsp; ${infoChecks.length} informell
+            <div style="font-size:0.8rem;color:var(--ink-3);margin-bottom:0.3rem">Generative Engine Optimization – Sichtbarkeit in ChatGPT, Perplexity, Claude</div>
+            <div style="font-size:0.84rem">
+              <span style="color:var(--green);font-weight:600">${scored.filter(c=>c.pass).length} bestanden</span> /
+              <span style="color:var(--red);font-weight:600">${scored.filter(c=>!c.pass).length} fehlgeschlagen</span>
             </div>
           </div>
         </div>
 
-        <div style="padding:0.8rem 1rem;background:${geoInterpretation.bg};border:1px solid ${geoInterpretation.border};border-left:4px solid ${geoInterpretation.color};border-radius:6px;margin-bottom:1.2rem">
-          <div style="font-weight:700;color:${geoInterpretation.color};font-size:0.85rem;margin-bottom:0.3rem">${geoInterpretation.icon} ${geoInterpretation.title}</div>
-          <div style="font-size:0.78rem;color:#444;line-height:1.5">${geoInterpretation.text}</div>
+        <div style="padding:0.75rem 1rem;background:${geoInterpretation.bg};border:1px solid ${geoInterpretation.border};border-left:4px solid ${geoInterpretation.color};border-radius:var(--r);margin-bottom:1.25rem">
+          <div style="font-weight:700;color:${geoInterpretation.color};font-size:0.84rem;margin-bottom:0.25rem">${geoInterpretation.icon} ${geoInterpretation.title}</div>
+          <div style="font-size:0.77rem;color:var(--ink-2);line-height:1.55">${geoInterpretation.text}</div>
         </div>
 
         <div class="section no-break">
@@ -528,7 +711,7 @@
           </div>
           <div class="section no-break">
             <div class="section-title">Informelle Checks</div>
-            ${infoRows || '<p style="font-size:0.8rem;color:#aaa">–</p>'}
+            ${infoRows || '<p style="font-size:0.8rem;color:var(--ink-4)">–</p>'}
           </div>
         </div>
 
@@ -538,7 +721,7 @@
         ${geoActions ? `<div class="section no-break">
           <div class="section-title">Empfohlene GEO-Maßnahmen (nach Priorität)</div>
           ${geoActions}
-        </div>` : '<div class="section no-break"><div class="section-title">Empfohlene GEO-Maßnahmen</div><p style="font-size:0.82rem;color:#166534">✓ Alle Score-relevanten GEO-Checks bestanden – keine Maßnahmen erforderlich.</p></div>'}
+        </div>` : '<div class="section no-break"><div class="section-title">Empfohlene GEO-Maßnahmen</div><p style="font-size:0.82rem;color:var(--green);font-weight:600">✓ Alle Score-relevanten GEO-Checks bestanden.</p></div>'}
       </div>`
     }
 
@@ -548,34 +731,34 @@
       const jsCount = p.jsErrors?.filter(e => e.firstParty).length ?? 0
       const loadCls = p.loadTime > 3000 ? 'perf-bad' : p.loadTime > 1500 ? 'perf-mid' : 'perf-good'
       const timing = p.timing
-        ? `TTFB: ${p.timing.ttfb}ms / DOM: ${p.timing.domReady}ms / Load: ${p.timing.fullyLoaded}ms`
+        ? `${p.timing.ttfb}ms / ${p.timing.domReady}ms / ${p.timing.fullyLoaded}ms`
         : ''
       return `<tr class="pages-table">
-        <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.75rem">
-          <a href="${esc(p.url)}" style="color:#2563eb">${esc(p.url)}</a>
+        <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+          <a href="${esc(p.url)}" style="color:var(--accent)">${esc(p.url)}</a>
         </td>
         <td class="${ok ? '' : 'err'}">${p.statusCode ?? '?'}</td>
         <td><span class="type-badge">${esc(p.type ?? '–')}</span></td>
         <td class="${loadCls}" style="white-space:nowrap">${p.loadTime ? p.loadTime+'ms' : '–'}</td>
-        <td style="${jsCount>0?'color:#991b1b;font-weight:600':''}">${jsCount > 0 ? jsCount+' ⚠' : '–'}</td>
-        <td style="font-size:0.68rem;color:#aaa;white-space:nowrap">${timing}</td>
+        <td style="${jsCount>0?'color:var(--red);font-weight:600':''}">${jsCount > 0 ? jsCount+' ⚠' : '–'}</td>
+        <td style="font-size:0.67rem;color:var(--ink-4);white-space:nowrap">${timing}</td>
       </tr>`
     }).join('')
 
-    const pagesPage = `<div class="page-break" style="padding:2cm 2.5cm">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #111">
-        <div style="font-weight:900;font-size:1rem">${esc(r.siteTitle || r.hostname)}</div>
-        <div style="font-size:0.72rem;color:#aaa">Gecrawlte Seiten</div>
+    const pagesPage = `<div class="page-break inner">
+      <div class="page-hd">
+        <div class="page-hd-left">${esc(r.siteTitle || r.hostname)}</div>
+        <div class="page-hd-right">Gecrawlte Seiten</div>
       </div>
       <div class="section">
         <div class="section-title">${r.pageCount} Seiten gecrawlt</div>
         <table class="pages-table">
-          <thead><tr><th>URL</th><th>Status</th><th>Typ</th><th>Ladezeit</th><th>JS-Fehler</th><th>Timing</th></tr></thead>
+          <thead><tr><th>URL</th><th>Status</th><th>Typ</th><th>Ladezeit</th><th>JS-Fehler</th><th>TTFB/DOM/Load</th></tr></thead>
           <tbody>${pageRows}</tbody>
         </table>
       </div>
       <div class="report-footer">
-        <span>🩺 Website Doctor &nbsp;·&nbsp; ${esc(r.url)}</span>
+        <span>Website Doctor &nbsp;·&nbsp; ${esc(r.url)}</span>
         <span>${date}</span>
       </div>
     </div>`

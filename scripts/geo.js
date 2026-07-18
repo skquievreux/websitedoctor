@@ -1,8 +1,9 @@
 // geo.js – GEO (Generative Engine Optimization) Checks
 // Bewertet wie gut eine Website von LLMs (ChatGPT, Perplexity, Claude) gelesen werden kann
 
-// Score-Gewichte (Summe = 100)
+// Score-Gewichte (normalisiert, Summe irrelevant)
 const WEIGHTS = {
+  'sitemap-exists':      10,
   'json-ld-specific':    20,
   'entity-links':        15,
   'qa-structure':        15,
@@ -105,11 +106,15 @@ export async function analyzeGeoPage(page, url) {
     const tableCount = document.querySelectorAll('table').length
     const listCount  = document.querySelectorAll('ul, ol').length
 
-    // Faktendichte
+    // Faktendichte — erweitertes Muster: Einheiten, Preise, Jahreszahlen, Mengenangaben
     const factMatches = bodyText.match(
-      /\b\d+([.,]\d+)?\s*(%|Prozent|kg|km|ms|MB|GB|TB|USD|EUR|€|\$|mph|km\/h)|\b(19|20)\d{2}\b|\b\d{4,}\b/g
+      /\b\d+([.,]\d+)?\s*(%|Prozent|kg|km|ms|MB|GB|TB|USD|EUR|€|\$|mph|km\/h|Mio\.|Tsd\.)|[€$]\s*\d+([.,]\d+)?|\b(19|20)\d{2}\b|\b\d{4,}\b|\b\d+([.,]\d+)?\s*(Minuten|Stunden|Tage|Jahre|Sekunden|Wochen|Monate|Nutzer|Kunden|Seiten|Klicks)/g
     ) || []
-    const factDensity = wordCount > 0 ? Math.round((factMatches.length / wordCount) * 1000) : 0
+    const factCount = factMatches.length
+    // null = nicht messbar (kein Inhalt oder rein JS-gerendert)
+    const factDensity = wordCount > 200
+      ? (factCount > 0 ? Math.round((factCount / wordCount) * 1000) : null)
+      : (wordCount > 0 ? Math.round((factCount / wordCount) * 1000) : null)
 
     // Ankertexte
     const links = Array.from(document.querySelectorAll('a[href]'))
@@ -138,7 +143,7 @@ export async function analyzeGeoPage(page, url) {
       listCount,
       structuredCount: tableCount + listCount,
       factDensity,
-      factCount: factMatches.length,
+      factCount,
       totalLinks: links.length,
       genericLinks: genericCount,
       genericRatio,
@@ -158,7 +163,7 @@ export async function analyzeGeoPage(page, url) {
 
 // ── Site-Level Analyse (nach dem Crawl-Loop) ─────────────────────────────────
 export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
-  const { robotsTxt, aiTxt, llmsTxt } = siteFiles
+  const { robotsTxt, aiTxt, llmsTxt, sitemap } = siteFiles
 
   // A-1: JSON-LD Tiefengrad
   const pagesWithSpecific = geoPages.filter(p =>
@@ -182,10 +187,11 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
   const unstructuredPages = geoPages.filter(p => p.wordCount > 400 && p.structuredCount === 0)
   const structuredPass = unstructuredPages.length === 0
 
-  // B-5: Faktendichte (informell)
-  const avgFactDensity = Math.round(
-    geoPages.reduce((s, p) => s + p.factDensity, 0) / (geoPages.length || 1)
-  )
+  // B-5: Faktendichte (informell) — null-Werte ausschließen
+  const measurablePages = geoPages.filter(p => p.factDensity !== null && p.factDensity !== undefined)
+  const avgFactDensity = measurablePages.length > 0
+    ? Math.round(measurablePages.reduce((s, p) => s + p.factDensity, 0) / measurablePages.length)
+    : null
 
   // C-6: AI-Bots in robots.txt
   const robotsResult = analyzeRobotsTxt(robotsTxt)
@@ -260,6 +266,17 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
       detail: unstructuredPages.map(p => p.url).slice(0, 3),
     },
     {
+      id: 'sitemap-exists', category: 'C',
+      label: sitemap?.exists
+        ? `Sitemap vorhanden (${sitemap.urlCount} URLs: ${sitemap.url})`
+        : 'Sitemap fehlt (/sitemap.xml nicht gefunden)',
+      pass: !!sitemap?.exists, weight: WEIGHTS['sitemap-exists'],
+      value: sitemap?.url || null,
+      suggestion: !sitemap?.exists
+        ? 'Erstelle /sitemap.xml und melde sie in der Google Search Console an. Eine Sitemap hilft Suchmaschinen und LLMs, alle Seiten zu entdecken.'
+        : null,
+    },
+    {
       id: 'ai-bots-allowed', category: 'C',
       label: robotsResult.label,
       pass: robotsResult.pass, weight: WEIGHTS['ai-bots-allowed'],
@@ -288,12 +305,17 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
     // ── Informelle Checks (weight 0, beeinflussen Score nicht) ──────────────
     {
       id: 'fact-density', category: 'B', informational: true,
-      label: `Faktendichte: Ø ${avgFactDensity} Datenpunkte / 1.000 Wörter`,
-      pass: avgFactDensity >= 5, weight: 0,
+      label: avgFactDensity !== null
+        ? `Faktendichte: Ø ${avgFactDensity} Datenpunkte / 1.000 Wörter`
+        : 'Faktendichte: nicht messbar (JS-gerenderter Inhalt?)',
+      pass: avgFactDensity !== null ? avgFactDensity >= 5 : true,
+      weight: 0,
       value: avgFactDensity,
-      suggestion: avgFactDensity < 5
-        ? 'Geringe Faktendichte. Perplexity und ChatGPT Search ranken Inhalte mit Zahlen, Statistiken und konkreten Daten höher als reine Fließtexte.'
-        : null,
+      suggestion: avgFactDensity === null
+        ? 'Faktendichte konnte nicht ermittelt werden. Mögliche Ursache: Inhalte werden per JavaScript nachgeladen und waren zum Messzeitpunkt nicht sichtbar.'
+        : avgFactDensity < 5
+          ? 'Geringe Faktendichte. Perplexity und ChatGPT Search ranken Inhalte mit Zahlen, Statistiken und konkreten Daten höher als reine Fließtexte.'
+          : null,
     },
     {
       id: 'ai-txt', category: 'C', informational: true,
@@ -345,6 +367,7 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
     robotsTxtRaw: robotsTxt ? robotsTxt.slice(0, 2000) : null,
     aiTxt:   { exists: !!aiTxt?.exists,  content: aiTxt?.content?.slice(0, 500) || null },
     llmsTxt: { exists: !!llmsTxt?.exists, content: llmsTxt?.content?.slice(0, 500) || null },
+    sitemap:  sitemap ?? { exists: false, url: null, urlCount: 0 },
     snippetPreviews,
     schemaClassification,
   }
@@ -492,15 +515,23 @@ export async function fetchSiteFiles(startUrl) {
     return null
   }
 
-  const [robots, aiTxt, llmsTxt] = await Promise.all([
+  const [robots, aiTxt, llmsTxt, sitemapXml, sitemapIndex] = await Promise.all([
     tryFetch('/robots.txt'),
     tryFetch('/ai.txt'),
     tryFetch('/llms.txt'),
+    tryFetch('/sitemap.xml'),
+    tryFetch('/sitemap_index.xml'),
   ])
 
+  const sitemapContent = sitemapXml || sitemapIndex
   result.robotsTxt = robots
   result.aiTxt   = { exists: !!aiTxt,   content: aiTxt }
   result.llmsTxt = { exists: !!llmsTxt, content: llmsTxt }
+  result.sitemap = {
+    exists: !!sitemapContent,
+    url: sitemapXml ? `${base}/sitemap.xml` : sitemapIndex ? `${base}/sitemap_index.xml` : null,
+    urlCount: sitemapContent ? (sitemapContent.match(/<loc>/g) || []).length : 0,
+  }
 
   return result
 }
