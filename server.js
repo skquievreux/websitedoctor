@@ -6,6 +6,7 @@ import path from 'path'
 import chalk from 'chalk'
 import { chromium } from 'playwright'
 import client from 'prom-client'
+import { randomBytes } from 'crypto'
 import QueueManager from './scripts/queue-manager.js'
 
 const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
@@ -17,6 +18,8 @@ const app = express()
 const PORT = process.env.PORT || 3001
 const jobs = new Map() // id → { status, report }
 const queue = new QueueManager()
+const pdfDownloadTokens = new Map() // token → { id, expiresAt }
+const PDF_TOKEN_TTL_MS = 10 * 60 * 1000 // 10 minutes, single-use
 const HISTORY_FILE = 'data/history.json'
 const WEBHOOKS_FILE = 'data/webhooks.json'
 let processingQueue = false
@@ -69,10 +72,23 @@ if (BACKEND_API_KEY) {
     // An external client can't spoof the loopback source address through Caddy.
     const isLoopback = req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.0.1'
     if (isLoopback) return next()
-    if (req.get('x-api-key') !== BACKEND_API_KEY) {
-      return res.status(401).json({ error: 'Unauthorized' })
+    if (req.get('x-api-key') === BACKEND_API_KEY) return next()
+
+    // Browser-openable PDF downloads without exposing BACKEND_API_KEY in a URL:
+    // a short-lived, single-use token minted by POST /export-pdf/:id/token
+    // (itself behind the normal x-api-key check above) substitutes for the
+    // header on this one GET route only.
+    if (req.method === 'GET' && /^\/export-pdf\/[^/]+$/.test(req.path)) {
+      const id = req.path.split('/')[2]
+      const token = req.query.token
+      const entry = token && pdfDownloadTokens.get(token)
+      if (entry && entry.id === id && entry.expiresAt > Date.now()) {
+        pdfDownloadTokens.delete(token) // single-use
+        return next()
+      }
     }
-    next()
+
+    return res.status(401).json({ error: 'Unauthorized' })
   })
 }
 
@@ -418,6 +434,27 @@ app.get('/print-diff/:idA/:idB', async (req, res) => {
   const [a, b] = await Promise.all([loadReport(req.params.idA), loadReport(req.params.idB)])
   if (!a || !b) return res.status(404).json({ error: 'Ein oder beide Reports nicht gefunden' })
   res.sendFile(path.resolve('public/print-diff.html'))
+})
+
+// Mint a short-lived, single-use token for the PDF download link below - lets
+// us hand out a browser-openable URL without putting BACKEND_API_KEY in it.
+app.post('/export-pdf/:id/token', async (req, res) => {
+  const report = await loadReport(req.params.id)
+  if (!report) return res.status(404).json({ error: 'Report nicht gefunden' })
+
+  // Opportunistic cleanup of expired entries so the map doesn't grow unbounded.
+  const now = Date.now()
+  for (const [t, e] of pdfDownloadTokens) {
+    if (e.expiresAt <= now) pdfDownloadTokens.delete(t)
+  }
+
+  const token = randomBytes(24).toString('base64url')
+  pdfDownloadTokens.set(token, { id: req.params.id, expiresAt: now + PDF_TOKEN_TTL_MS })
+  res.json({
+    token,
+    expiresAt: now + PDF_TOKEN_TTL_MS,
+    url: `${req.protocol}://${req.get('host')}/export-pdf/${encodeURIComponent(req.params.id)}?token=${token}`,
+  })
 })
 
 // E1 — PDF-Export via Playwright
