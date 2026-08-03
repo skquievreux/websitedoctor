@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "beeper": { "disabled": true },
+    "figma": { "disabled": true },
+    "replicate": { "disabled": true },
+    "windsor_ai": { "disabled": true },
+    "trigger": { "disabled": true },
+    "vercel": { "disabled": true }
+  }
+}

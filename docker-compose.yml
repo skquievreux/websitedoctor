@@ -1,0 +1,24 @@
+services:
+  sitechecker-api:
+    build: .
+    container_name: sitechecker-api
+    restart: unless-stopped
+    environment:
+      - PORT=3001
+      - BACKEND_API_KEY=${BACKEND_API_KEY}
+    volumes:
+      - sitechecker-data:/app/data
+      - sitechecker-reports:/app/reports
+      - sitechecker-screenshots:/app/screenshots
+    networks:
+      - remotion-network
+
+volumes:
+  sitechecker-data:
+  sitechecker-reports:
+  sitechecker-screenshots:
+
+networks:
+  remotion-network:
+    external: true
+    name: remotion-network
