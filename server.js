@@ -453,7 +453,10 @@ app.post('/export-pdf/:id/token', async (req, res) => {
   res.json({
     token,
     expiresAt: now + PDF_TOKEN_TTL_MS,
-    url: `${req.protocol}://${req.get('host')}/export-pdf/${encodeURIComponent(req.params.id)}?token=${token}`,
+    // req.protocol is 'http' here even for external https:// requests - Caddy
+    // terminates TLS and forwards plain HTTP internally. Trust x-forwarded-proto
+    // (set by Caddy, not client-controllable at that hop) instead.
+    url: `${req.get('x-forwarded-proto') || req.protocol}://${req.get('host')}/export-pdf/${encodeURIComponent(req.params.id)}?token=${token}`,
   })
 })
 
