@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/skquievreux/websitedoctor/compare/v1.0.1...v1.0.2) (2026-03-14)
+
+
+### Bug Fixes
+
+* **ci:** force Node.js 24 runtime for actions in release workflow ([7ca615c](https://github.com/skquievreux/websitedoctor/commit/7ca615c3dc716c9366385159ed5ab3fab7e6b9b8))
+* replace diff modal with inline tab selectors and add diff PDF export ([b9ebb95](https://github.com/skquievreux/websitedoctor/commit/b9ebb95f7878d4b8b1cbb268aa2a3830d3ccee76))
+
 ## [1.0.1](https://github.com/skquievreux/websitedoctor/compare/v1.0.0...v1.0.1) (2026-03-14)
 
 
