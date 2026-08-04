@@ -1,6 +1,7 @@
 services:
   sitechecker-api:
-    build: .
+    image: registry.runitfast.xyz/sitechecker-api:latest
+    pull_policy: always
     container_name: sitechecker-api
     restart: unless-stopped
     environment:
