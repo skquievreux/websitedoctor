@@ -1,0 +1,14 @@
+name: Deploy (Portainer)
+
+# Triggers the Portainer stack's Git webhook - Portainer pulls the new
+# commit and redeploys itself, this workflow doesn't build or push anything.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Portainer redeploy
+        run: curl -sf -X POST "${{ secrets.PORTAINER_WEBHOOK }}"
