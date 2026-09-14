@@ -52,6 +52,22 @@ export const SEO_EVAL_JS = `(() => {
 
   const mobileOptimized = viewport.includes('width=device-width')
 
+  // Mixed Content: http:// resources loaded on an https:// page (browsers
+  // block/warn on these, and it defeats the point of HTTPS).
+  const isHttps = window.location.protocol === 'https:'
+  const mixedContentUrls = isHttps
+    ? Array.from(document.querySelectorAll('img[src], script[src], link[href], iframe[src]'))
+        .map(el => el.src || el.href || '')
+        .filter(src => src.startsWith('http://'))
+    : []
+
+  // Total Blocking Time approximation (synthetic proxy for INP, which needs
+  // real user interaction we don't have in an automated crawl). Chrome
+  // buffers 'longtask' entries the same way it buffers LCP/CLS above, so
+  // this is retrievable after load, not just via a live PerformanceObserver.
+  const longTasks = window.performance?.getEntriesByType?.('longtask') || []
+  const tbt = Math.round(longTasks.reduce((sum, t) => sum + Math.max(0, t.duration - 50), 0))
+
   return {
     titleText, metaDescText, canonical, robots, lang, viewport,
     h1Count: h1Els.length, h1Text: h1Els[0]?.textContent?.trim() || '',
@@ -71,5 +87,8 @@ export const SEO_EVAL_JS = `(() => {
     lcp: Math.round(lcp),
     cls,
     contentRatio,
+    mixedContentCount: mixedContentUrls.length,
+    mixedContentUrls: mixedContentUrls.slice(0, 5),
+    tbt,
   }
 })()`

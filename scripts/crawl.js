@@ -18,6 +18,8 @@ import { extractLinks, filterLinks, guessPageType } from './links.js'
 import { analyzeSeoV2, computeSeoFromData } from './seo-v2.js'
 import { crawlMobile } from './mobile.js'
 import { analyzeGeoPage, analyzeGeoSite, fetchSiteFiles } from './geo.js'
+import { withStealthPage } from './stealth-node.js'
+import { findBrokenLinks } from './link-checker.js'
 
 const execFileAsync = promisify(execFile)
 
@@ -314,7 +316,21 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
   })
   console.log(chalk.green(`[crawl] GEO-Score: ${geoData?.score ?? '–'}/100`))
 
-  const manifest = { startUrl, crawledAt: new Date().toISOString(), hostname, reportId, pages, seoPages, geoData, mobileData }
+  // Alle entdeckten internen Links prüfen, nicht nur die tatsächlich
+  // gecrawlten (der BFS-Loop oben crawlt nur MAX_PAGES=20 Seiten und
+  // erweitert die Queue nur von der Startseite aus) — reine HEAD-Requests,
+  // kein voller Playwright-Visit pro Link.
+  const allDiscoveredLinks = [...new Set(pages.flatMap(p => p.links ?? []))]
+    .filter(l => !pages.some(p => p.url === l)) // schon per echtem Crawl geprüft
+  const brokenLinks = await findBrokenLinks(allDiscoveredLinks).catch(err => {
+    console.error(chalk.red(`[crawl] Broken-Link-Check fehlgeschlagen: ${err.message}`))
+    return []
+  })
+  if (brokenLinks.length > 0) {
+    console.log(chalk.yellow(`[crawl] ${brokenLinks.length} kaputte interne Links gefunden`))
+  }
+
+  const manifest = { startUrl, crawledAt: new Date().toISOString(), hostname, reportId, pages, seoPages, geoData, mobileData, brokenLinks }
   await writeFile('data/crawl_manifest.json', JSON.stringify(manifest, null, 2))
   console.log(chalk.green(`[crawl] Fertig. ${pages.length} Seiten gecrawlt.`))
   return manifest
