@@ -1,5 +1,6 @@
 // seo-v2.js – Erweiterte SEO-Checks (21 statt 11)
 // Phase 2: Structured Data, OpenGraph, Twitter Cards, Lighthouse
+import { SEO_EVAL_JS } from './browser/seo-eval.js'
 
 // Detects unresloved i18n translation keys (e.g. "seo.homeTitle", "metaDescription")
 const I18N_KEY_PATTERNS = [
@@ -41,6 +42,12 @@ const WEIGHTS = {
   'core-web-vitals':         7,    // LCP Performance
   'core-web-vitals-cls':     5,    // CLS (Cumulative Layout Shift)
   'content-ratio':           3,    // Content-to-HTML Ratio
+
+  // Gap-Analyse-Checks (seo-audit-Skill-Abgleich, 2026-09)
+  'mixed-content':           6,    // http:// Ressourcen auf https-Seite
+  'total-blocking-time':     6,    // TBT als INP-Proxy (INP braucht echte Interaktion)
+  'canonical-self-ref':      4,    // Canonical zeigt auf falsche URL
+  'soft-404':                8,    // 200 OK, aber Inhalt sagt "nicht gefunden"
 }
 
 const NON_INDEX_PATTERNS = [
@@ -53,97 +60,34 @@ function isIndexablePage(url) {
   return !NON_INDEX_PATTERNS.some(p => p.test(url))
 }
 
+// Seite antwortet mit 200, aber Titel/H1 sagen "nicht gefunden" — Google
+// stuft solche Seiten trotzdem oft korrekt als Soft-404 ein, aber es ist
+// ein Bug, den der Betreiber selbst beheben soll (echten 404-Status senden).
+const SOFT_404_PATTERNS = [
+  /\b404\b/, /not found/i, /nicht gefunden/i, /seite existiert nicht/i,
+  /page.{0,3}doesn.?t exist/i, /diese seite (gibt es|existiert) nicht/i,
+]
+
+function looksLikeSoft404(titleText, h1Text) {
+  return SOFT_404_PATTERNS.some(p => p.test(titleText) || p.test(h1Text))
+}
+
+function normalizeUrl(u) {
+  try {
+    const url = new URL(u)
+    url.hash = ''
+    if (url.pathname !== '/' && url.pathname.endsWith('/')) url.pathname = url.pathname.slice(0, -1)
+    return url.toString()
+  } catch {
+    return u
+  }
+}
+
 /**
- * Erweiterte SEO-Analyse mit 21 Checks
+ * Erweiterte SEO-Analyse mit 21 Checks (live Playwright page)
  */
 export async function analyzeSeoV2(page, url) {
-  const indexable = isIndexablePage(url)
-
-  const data = await page.evaluate(() => {
-    // Original Data Collection
-    const titleText = document.title || ''
-    const metaDescText = document.querySelector('meta[name="description"]')?.content || ''
-    const canonical = document.querySelector('link[rel="canonical"]')?.href || ''
-    const robots = document.querySelector('meta[name="robots"]')?.content || ''
-    const lang = document.documentElement.lang || ''
-    const viewport = document.querySelector('meta[name="viewport"]')?.content || ''
-    const h1Els = Array.from(document.querySelectorAll('h1'))
-    const h2Els = Array.from(document.querySelectorAll('h2'))
-    const h3Els = Array.from(document.querySelectorAll('h3'))
-    const imgs = Array.from(document.querySelectorAll('img'))
-    const links = Array.from(document.querySelectorAll('a[href]'))
-
-    // Neue Data Collection
-    const jsonLds = document.querySelectorAll('script[type="application/ld+json"]')
-    const ogTags = Array.from(document.querySelectorAll('meta[property^="og:"]'))
-    const twitterTags = Array.from(document.querySelectorAll('meta[name^="twitter:"]'))
-    const hreflangs = Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]'))
-
-    // Image Optimization Check
-    const imgsWithoutAltSrcs = imgs
-      .filter(i => !i.alt || i.alt.trim() === '')
-      .map(i => { try { return new URL(i.src).pathname.split('/').pop() || i.src } catch { return i.src } })
-
-    // Anchor Text Quality (zu viele "click here", "mehr", etc.)
-    const genericAnchorTexts = ['click here', 'mehr', 'read more', 'learn more', 'hier', 'link']
-    const linksWithGenericText = links.filter(l =>
-      genericAnchorTexts.some(gt => (l.textContent?.toLowerCase() || '').includes(gt))
-    ).length
-
-    // Internal vs External Links
-    const currentDomain = new URL(window.location.href).hostname
-    const internalLinks = links.filter(l => {
-      try {
-        return new URL(l.href).hostname === currentDomain
-      } catch { return false }
-    }).length
-
-    // H2/H3 Hierarchy Check
-    const h2Count = h2Els.length
-    const h3Count = h3Els.length
-
-    // Core Web Vitals (Largest Contentful Paint - LCP)
-    const perfObserver = window.performance?.getEntriesByType?.('largest-contentful-paint') || []
-    const lcp = perfObserver.length > 0 ? perfObserver[perfObserver.length - 1]?.renderTime || 0 : 0
-
-    // Core Web Vitals (Cumulative Layout Shift - CLS)
-    const clsEntries = window.performance?.getEntriesByType?.('layout-shift') || []
-    const cls = Math.round(
-      clsEntries.reduce((s, e) => s + (e.hadRecentInput ? 0 : e.value), 0) * 1000
-    ) / 1000
-
-    // Content-to-HTML Ratio (Textanteil vs. gesamtes HTML)
-    const htmlSize = document.documentElement?.outerHTML?.length || 0
-    const textSize = document.body?.innerText?.length || 0
-    const contentRatio = htmlSize > 0 ? Math.round((textSize / htmlSize) * 100) : 0
-
-    // Mobile-Friendly Meta
-    const mobileOptimized = viewport.includes('width=device-width')
-
-    return {
-      // Original
-      titleText, metaDescText, canonical, robots, lang, viewport,
-      h1Count: h1Els.length, h1Text: h1Els[0]?.textContent?.trim() || '',
-      imgsWithoutAltSrcs, imgCount: imgs.length,
-
-      // Neue Metriken
-      hasJsonLd: jsonLds.length > 0,
-      jsonLdCount: jsonLds.length,
-      ogTagCount: ogTags.length,
-      ogTags: ogTags.map(t => ({ property: t.getAttribute('property'), content: t.getAttribute('content') })),
-      twitterTagCount: twitterTags.length,
-      hasHreflang: hreflangs.length > 0,
-      hreflangs: hreflangs.map(h => ({ rel: h.getAttribute('hreflang'), href: h.getAttribute('href') })),
-      linksWithGenericText,
-      linkCount: links.length,
-      internalLinks,
-      h2Count, h3Count,
-      mobileOptimized,
-      lcp: Math.round(lcp),
-      cls,
-      contentRatio,
-    }
-  }).catch(err => {
+  const data = await page.evaluate(SEO_EVAL_JS).catch(err => {
     console.error(`[seo-v2] page.evaluate failed for ${url}: ${err.message}`)
     // Return minimal data on error
     return {
@@ -153,9 +97,19 @@ export async function analyzeSeoV2(page, url) {
       twitterTagCount: 0, hasHreflang: false, hreflangs: [],
       linksWithGenericText: 0, linkCount: 0, internalLinks: 0,
       h2Count: 0, h3Count: 0, mobileOptimized: false, lcp: 0, cls: 0, contentRatio: 0,
+      mixedContentCount: 0, mixedContentUrls: [], tbt: 0,
     }
   })
+  return computeSeoFromData(data, url)
+}
 
+/**
+ * Same 21-check scoring, but from already-collected data (SEO_EVAL_JS
+ * shape) instead of a live page — lets the Scrapling/Camoufox bot-block
+ * fallback (scripts/stealth_fetch.py) reuse the exact same scoring.
+ */
+export function computeSeoFromData(data, url) {
+  const indexable = isIndexablePage(url)
   const tLen = data.titleText.length
   const mLen = data.metaDescText.length
   const titleIsI18nKey = looksLikeI18nKey(data.titleText)
@@ -409,6 +363,51 @@ export async function analyzeSeoV2(page, url) {
       value: `${data.contentRatio}%`,
       suggestion: data.contentRatio > 0 && data.contentRatio < 10
         ? `Nur ${data.contentRatio}% der Seite sind echter Text. Der Rest ist HTML-Markup, Skripte oder Boilerplate. Prüfe ob Inhalte clientseitig gerendert werden oder zu viel Code inline ist.`
+        : null
+    },
+
+    // GAP-ANALYSE-CHECKS (seo-audit-Skill-Abgleich, 2026-09)
+    {
+      id: 'mixed-content',
+      label: data.mixedContentCount > 0
+        ? `Mixed Content: ${data.mixedContentCount} http://-Ressourcen auf https-Seite`
+        : 'Kein Mixed Content',
+      pass: data.mixedContentCount === 0,
+      weight: WEIGHTS['mixed-content'],
+      value: data.mixedContentCount,
+      suggestion: data.mixedContentCount > 0
+        ? `${data.mixedContentCount} Ressource(n) laden über http:// statt https:// (z.B. ${data.mixedContentUrls?.[0] ?? ''}) — Browser blockieren/warnen davor, und es untergräbt den HTTPS-Schutz der Seite.`
+        : null
+    },
+    {
+      id: 'total-blocking-time',
+      label: data.tbt > 0 ? `Total Blocking Time: ${data.tbt}ms` : 'Total Blocking Time: 0ms',
+      pass: data.tbt < 200,
+      weight: WEIGHTS['total-blocking-time'],
+      value: `${data.tbt}ms`,
+      suggestion: data.tbt >= 200
+        ? `Der Haupt-Thread war ${data.tbt}ms durch lange JS-Tasks blockiert (Ziel: < 200ms). Das korreliert mit schlechtem INP — große Skripte aufteilen oder verzögert laden.`
+        : null
+    },
+    {
+      id: 'canonical-self-ref',
+      label: 'Canonical zeigt auf diese Seite',
+      pass: !data.canonical || normalizeUrl(data.canonical) === normalizeUrl(url),
+      weight: data.canonical ? WEIGHTS['canonical-self-ref'] : 0,
+      skipped: !data.canonical,
+      value: data.canonical || null,
+      suggestion: data.canonical && normalizeUrl(data.canonical) !== normalizeUrl(url)
+        ? `Canonical zeigt auf "${data.canonical}", nicht auf die aktuelle URL. Wenn das beabsichtigt ist (z.B. Duplicate-Content-Steuerung), ignorieren — sonst korrigieren, sonst indexiert Google evtl. die falsche URL.`
+        : null
+    },
+    {
+      id: 'soft-404',
+      label: looksLikeSoft404(data.titleText, data.h1Text) ? 'Soft-404 vermutet (200 OK, aber "nicht gefunden")' : 'Kein Soft-404',
+      pass: !looksLikeSoft404(data.titleText, data.h1Text),
+      weight: WEIGHTS['soft-404'],
+      value: looksLikeSoft404(data.titleText, data.h1Text),
+      suggestion: looksLikeSoft404(data.titleText, data.h1Text)
+        ? 'Titel/H1 deuten auf eine Fehlerseite hin, aber der Server antwortet mit 200 OK. Fehlerseiten sollten echten Status 404 (oder 410) senden, sonst landen sie fälschlich im Google-Index.'
         : null
     },
   ]

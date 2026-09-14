@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import { calcSeoScore } from './seo-v2.js'
 
 // B3 — Malus-basierter Score (Basis 100, Abzüge)
-function calcScore(pages) {
+function calcScore(pages, externalBrokenLinks = []) {
   let score = 100
   const types = new Set(pages.map(p => p.type))
   const brokenPages = pages.filter(p => p.statusCode !== 200)
@@ -26,11 +26,16 @@ function calcScore(pages) {
   if (!types.has('contact')) score -= 10
   if (!types.has('legal'))   score -= 10
 
-  // Broken Links: -5 pro Link (max -15)
-  const brokenLinks = pages.flatMap(p => p.links ?? []).filter(l =>
+  // Broken Links: -5 pro Link (max -15). Zwei Quellen: Links, die zufällig
+  // auch selbst gecrawlt wurden (statusCode direkt bekannt), plus der
+  // dedizierte HEAD-Sweep (scripts/link-checker.js) über alle sonst nie
+  // besuchten Links — sonst blieben >90% der entdeckten Links ungeprüft
+  // (der Crawl-Loop erweitert die Queue nur von der Startseite aus).
+  const crawledBrokenLinks = pages.flatMap(p => p.links ?? []).filter(l =>
     pages.some(pg => pg.url === l && pg.statusCode !== 200)
   )
-  score -= Math.min(brokenLinks.length * 5, 15)
+  const totalBrokenLinks = crawledBrokenLinks.length + externalBrokenLinks.length
+  score -= Math.min(totalBrokenLinks * 5, 15)
 
   // First-Party-JS-Fehler: -5 pro Seite (max -20)
   const pagesWithJsErrors = pages.filter(p => p.jsErrors?.some(e => e.firstParty))
@@ -53,13 +58,14 @@ function buildStrengths(pages) {
   return strengths
 }
 
-function buildWeaknesses(pages) {
+function buildWeaknesses(pages, externalBrokenLinks = []) {
   const weaknesses = []
   const types = new Set(pages.map(p => p.type))
   const avgLoad = pages.reduce((s, p) => s + (p.loadTime ?? 0), 0) / (pages.length || 1)
   const broken = pages.filter(p => p.statusCode !== 200)
 
   if (broken.length > 0) weaknesses.push(`${broken.length} Seite(n) nicht erreichbar`)
+  if (externalBrokenLinks.length > 0) weaknesses.push(`${externalBrokenLinks.length} kaputte(r) interne(r) Link(s) gefunden`)
   if (avgLoad >= 4000) weaknesses.push(`Langsame Ladezeiten (Ø ${Math.round(avgLoad)} ms)`)
   if (!types.has('contact')) weaknesses.push('Keine Kontaktseite gefunden')
   if (!types.has('legal')) weaknesses.push('Kein Impressum/Datenschutz gefunden')
@@ -90,6 +96,7 @@ function buildWeaknesses(pages) {
 function buildActions(weaknesses, geoData) {
   const actions = weaknesses.map(w => {
     if (w.includes('nicht erreichbar')) return 'Broken Links und 404-Seiten reparieren'
+    if (w.includes('kaputte(r) interne(r) Link')) return 'Interne Links korrigieren oder entfernen, die auf 404/Fehlerseiten zeigen'
     if (w.includes('Ladezeiten')) return 'Performance optimieren (Bilder komprimieren, Caching)'
     if (w.includes('Kontaktseite')) return 'Kontaktseite anlegen und im Menü verlinken'
     if (w.includes('Impressum')) return 'Impressum und Datenschutzerklärung anlegen'
@@ -184,13 +191,13 @@ function buildPriorityIssues(pages, seoPages, weaknesses, geoData) {
   // From weaknesses
   const weaknessSeverity = (w) => {
     if (w.includes('nicht erreichbar') || w.includes('JavaScript-Fehler')) return 'critical'
-    if (w.includes('Ladezeiten') || w.includes('Server-Antwort') || w.includes('HSTS')) return 'warning'
+    if (w.includes('Ladezeiten') || w.includes('Server-Antwort') || w.includes('HSTS') || w.includes('kaputte(r) interne(r) Link')) return 'warning'
     return 'info'
   }
   weaknesses.forEach(w => issues.push({ label: w, severity: weaknessSeverity(w), source: 'general' }))
 
   // Critical SEO fails across pages
-  const criticalSeoIds = ['robots', 'canonical', 'title-present', 'h1-count']
+  const criticalSeoIds = ['robots', 'canonical', 'title-present', 'h1-count', 'soft-404', 'mixed-content']
   const seoFailCounts = {}
   for (const p of (seoPages ?? [])) {
     for (const c of (p.checks ?? [])) {
@@ -199,9 +206,13 @@ function buildPriorityIssues(pages, seoPages, weaknesses, geoData) {
       }
     }
   }
+  const seoIssueLabels = {
+    robots: 'Seiten auf noindex', canonical: 'Canonical-Tag fehlt',
+    'title-present': 'Seiten ohne Title', 'h1-count': 'H1 fehlt oder mehrfach',
+    'soft-404': 'Soft-404 vermutet', 'mixed-content': 'Mixed Content (http:// auf https-Seite)',
+  }
   for (const [id, count] of Object.entries(seoFailCounts)) {
-    const label = { robots: 'Seiten auf noindex', canonical: 'Canonical-Tag fehlt', 'title-present': 'Seiten ohne Title', 'h1-count': 'H1 fehlt oder mehrfach' }[id]
-    issues.push({ label: `${label} (${count} Seiten)`, severity: id === 'robots' ? 'critical' : 'warning', source: 'seo' })
+    issues.push({ label: `${seoIssueLabels[id]} (${count} Seiten)`, severity: id === 'robots' || id === 'soft-404' ? 'critical' : 'warning', source: 'seo' })
   }
 
   // GEO-Kritische Checks (blockierte AI-Bots → immer critical, andere je nach Pass)
@@ -273,11 +284,12 @@ function buildTopDeviations(pages, seoPages, mobileData) {
 }
 
 export async function generateReport(manifest, reportId) {
-  const { startUrl, crawledAt, hostname, pages, seoPages, geoData, mobileData } = manifest
+  const { startUrl, crawledAt, hostname, pages, seoPages, geoData, mobileData, brokenLinks } = manifest
+  const externalBrokenLinks = brokenLinks ?? []
 
-  const score = calcScore(pages)
+  const score = calcScore(pages, externalBrokenLinks)
   const strengths = buildStrengths(pages)
-  const weaknesses = buildWeaknesses(pages)
+  const weaknesses = buildWeaknesses(pages, externalBrokenLinks)
   const actions = buildActions(weaknesses, geoData)
   const seo = seoPages?.length ? calcSeoScore(seoPages) : null
 
@@ -311,6 +323,7 @@ export async function generateReport(manifest, reportId) {
     performanceSummary,
     techHints,
     topDeviations,
+    brokenLinks: externalBrokenLinks,
     seo,
     geo: geoData ?? null,
     mobile: mobileData ?? null,

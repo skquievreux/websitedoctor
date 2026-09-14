@@ -11,6 +11,10 @@ const WEIGHTS = {
   'ai-bots-allowed':     15,
   'unique-meta':         15,
   'anchor-text-quality': 10,
+  'unique-titles':       15,
+  'robots-not-blocking-all': 20,
+  'robots-references-sitemap': 8,
+  'json-ld-valid':       12,
 }
 
 const SPECIFIC_SCHEMA_TYPES = [
@@ -36,6 +40,25 @@ const GENERIC_ANCHORS = [
   'details', 'info', 'klicken', 'öffnen',
 ]
 
+// Minimal Pflichtfelder pro Schema.org-Typ laut Google Rich-Results-
+// Requirements — nicht vollständig, deckt aber die häufigsten Typen ab,
+// die diese Checks überhaupt sehen (Organization/LocalBusiness/Product/
+// Article-Familie). Absichtlich knapp: falsch-positive "fehlt"-Meldungen
+// bei exotischen, seltener genutzten Feldern sind schlimmer als Lücken.
+const JSON_LD_REQUIRED_FIELDS = {
+  Organization:    ['name', 'url'],
+  LocalBusiness:   ['name', 'address'],
+  Product:         ['name'],
+  Article:         ['headline', 'author'],
+  NewsArticle:     ['headline', 'author'],
+  BlogPosting:     ['headline', 'author'],
+  Event:           ['name', 'startDate', 'location'],
+  Recipe:          ['name', 'recipeIngredient'],
+  JobPosting:      ['title', 'datePosted', 'hiringOrganization'],
+  FAQPage:         ['mainEntity'],
+  Review:          ['itemReviewed', 'reviewRating'],
+}
+
 const QUESTION_WORDS = [
   'was', 'wie', 'warum', 'wann', 'wer', 'wo', 'welche', 'welcher', 'welches',
   'what', 'how', 'why', 'when', 'who', 'where', 'which',
@@ -43,12 +66,31 @@ const QUESTION_WORDS = [
 
 // ── Per-Page Analyse ──────────────────────────────────────────────────────────
 export async function analyzeGeoPage(page, url) {
-  const data = await page.evaluate((qWords, genericTexts) => {
+  const data = await page.evaluate((qWords, genericTexts, requiredFieldsByType) => {
     // JSON-LD parsen
     const parsedLds = []
+    let invalidJsonLdCount = 0
     document.querySelectorAll('script[type="application/ld+json"]').forEach(el => {
-      try { parsedLds.push(JSON.parse(el.textContent)) } catch { /* invalid JSON-LD – skip */ }
+      try { parsedLds.push(JSON.parse(el.textContent)) } catch { invalidJsonLdCount++ }
     })
+
+    // Pflichtfeld-Validierung pro @type (seo-audit-Skill-Abgleich, 2026-09):
+    // "vorhanden" (schemaTypes unten) sagt nichts über Korrektheit — ein
+    // LocalBusiness ohne address ist technisch vorhanden, aber für Google
+    // nutzlos. Läuft über dieselben geparsten Objekte, inkl. @graph.
+    const schemaValidationIssues = []
+    const validate = (obj) => {
+      if (!obj || typeof obj !== 'object') return
+      const types = obj['@type'] ? (Array.isArray(obj['@type']) ? obj['@type'] : [obj['@type']]) : []
+      for (const type of types) {
+        const required = requiredFieldsByType[type]
+        if (!required) continue
+        const missing = required.filter(f => obj[f] === undefined || obj[f] === null || obj[f] === '')
+        if (missing.length > 0) schemaValidationIssues.push({ type, missing })
+      }
+      if (Array.isArray(obj['@graph'])) obj['@graph'].forEach(validate)
+    }
+    parsedLds.forEach(validate)
 
     // Schema-Typen extrahieren (inkl. @graph)
     const schemaTypes = parsedLds.flatMap(ld => {
@@ -150,12 +192,14 @@ export async function analyzeGeoPage(page, url) {
       snippetPreview,
       hasJsonLd: parsedLds.length > 0,
       jsonLdCount: parsedLds.length,
+      invalidJsonLdCount,
+      schemaValidationIssues,
     }
-  }, QUESTION_WORDS, GENERIC_ANCHORS).catch(() => ({
+  }, QUESTION_WORDS, GENERIC_ANCHORS, JSON_LD_REQUIRED_FIELDS).catch(() => ({
     schemaTypes: [], entityLinks: [], qaCount: 0, qaExamples: [], wordCount: 0,
     tableCount: 0, listCount: 0, structuredCount: 0, factDensity: 0, factCount: 0,
     totalLinks: 0, genericLinks: 0, genericRatio: 0, snippetPreview: '',
-    hasJsonLd: false, jsonLdCount: 0,
+    hasJsonLd: false, jsonLdCount: 0, invalidJsonLdCount: 0, schemaValidationIssues: [],
   }))
 
   return { url, ...data }
@@ -178,6 +222,13 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
   const allEntityLinks = geoPages.flatMap(p => p.entityLinks)
   const entityPass = allEntityLinks.length > 0
 
+  // A-3: JSON-LD-Validität (seo-audit-Skill-Abgleich, 2026-09) — "vorhanden"
+  // (A-1 oben) sagt nichts über Korrektheit; hier zählen kaputtes JSON und
+  // fehlende Pflichtfelder pro @type (siehe JSON_LD_REQUIRED_FIELDS).
+  const totalInvalidJsonLd = geoPages.reduce((s, p) => s + (p.invalidJsonLdCount ?? 0), 0)
+  const allValidationIssues = geoPages.flatMap(p => (p.schemaValidationIssues ?? []).map(i => ({ url: p.url, ...i })))
+  const jsonLdValidPass = totalInvalidJsonLd === 0 && allValidationIssues.length === 0
+
   // B-3: Q&A-Struktur
   const totalQa = geoPages.reduce((s, p) => s + p.qaCount, 0)
   const allQaExamples = geoPages.flatMap(p => p.qaExamples).slice(0, 5)
@@ -195,6 +246,7 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
 
   // C-6: AI-Bots in robots.txt
   const robotsResult = analyzeRobotsTxt(robotsTxt)
+  const robotsGeneral = analyzeRobotsGeneral(robotsTxt)
 
   // C-7: ai.txt
   // E-2: llms.txt
@@ -205,6 +257,16 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
     .filter(Boolean)
   const dupeMetaSet = metaDescs.filter((v, i, a) => a.indexOf(v) !== i)
   const uniqueMetaPass = dupeMetaSet.length === 0
+
+  // D-8b: Exakt doppelte Titles (seo-audit-Skill-Abgleich, 2026-09) — anders
+  // als E-3 unten (fuzzy >70%-Ähnlichkeit, nur informativ), zählt hier nur
+  // Wort-für-Wort-Gleichheit und fließt echt in den Score ein: zwei Seiten
+  // mit demselben Title sind ein klassischer, eindeutig behebbarer SEO-Bug.
+  const exactTitles = (seoPages || [])
+    .map(p => (p.title || '').trim().toLowerCase())
+    .filter(Boolean)
+  const dupeExactTitleSet = exactTitles.filter((v, i, a) => a.indexOf(v) !== i)
+  const uniqueTitlePass = dupeExactTitleSet.length === 0
 
   // D-9: Generische Ankertexte (Durchschnitt über alle Seiten)
   const avgGenericRatio = geoPages.reduce((s, p) => s + p.genericRatio, 0) / (geoPages.length || 1)
@@ -234,6 +296,24 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
       suggestion: !jsonLdPass
         ? `Kein spezifisches Schema gefunden (${genericFound.length > 0 ? `nur: ${genericFound.join(', ')}` : 'gar keins'}). Nutze: Product, Service, FAQPage, TechArticle, LocalBusiness etc.`
         : null,
+    },
+    {
+      id: 'json-ld-valid', category: 'A',
+      label: jsonLdValidPass
+        ? 'JSON-LD ist valide'
+        : `JSON-LD-Probleme: ${totalInvalidJsonLd > 0 ? totalInvalidJsonLd + ' kaputt' : ''}${totalInvalidJsonLd > 0 && allValidationIssues.length > 0 ? ', ' : ''}${allValidationIssues.length > 0 ? allValidationIssues.length + ' mit fehlenden Pflichtfeldern' : ''}`,
+      pass: jsonLdValidPass, weight: (totalInvalidJsonLd + allValidationIssues.length) > 0 || geoPages.some(p => p.hasJsonLd) ? WEIGHTS['json-ld-valid'] : 0,
+      skipped: totalInvalidJsonLd === 0 && allValidationIssues.length === 0 && !geoPages.some(p => p.hasJsonLd),
+      value: totalInvalidJsonLd + allValidationIssues.length,
+      suggestion: !jsonLdValidPass
+        ? [
+            totalInvalidJsonLd > 0 ? `${totalInvalidJsonLd} JSON-LD-Block(s) sind kein valides JSON (Syntaxfehler).` : null,
+            allValidationIssues.length > 0
+              ? `Fehlende Pflichtfelder: ${allValidationIssues.slice(0, 3).map(i => `${i.type} braucht "${i.missing.join('", "')}"`).join('; ')}${allValidationIssues.length > 3 ? ` (+${allValidationIssues.length - 3} weitere)` : ''}.`
+              : null,
+          ].filter(Boolean).join(' ')
+        : null,
+      detail: allValidationIssues.slice(0, 5),
     },
     {
       id: 'entity-links', category: 'A',
@@ -285,12 +365,40 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
       detail: robotsResult.botDetails,
     },
     {
+      id: 'robots-not-blocking-all', category: 'C',
+      label: robotsGeneral.blocksAll ? 'robots.txt blockiert ALLE Crawler (Disallow: /)' : 'robots.txt blockiert keine regulären Crawler',
+      pass: !robotsGeneral.blocksAll, weight: WEIGHTS['robots-not-blocking-all'],
+      value: robotsGeneral.blocksAll,
+      suggestion: robotsGeneral.blocksAll
+        ? 'robots.txt hat "User-agent: *" mit "Disallow: /" — das blockiert Google, Bing & alle anderen Suchmaschinen komplett. Das ist fast immer ein versehentlich stehen gebliebener Staging-Eintrag.'
+        : null,
+    },
+    {
+      id: 'robots-references-sitemap', category: 'C',
+      label: robotsGeneral.referencesSitemap ? 'robots.txt verweist auf Sitemap' : 'robots.txt verweist nicht auf Sitemap',
+      pass: robotsGeneral.referencesSitemap, weight: sitemap?.exists ? WEIGHTS['robots-references-sitemap'] : 0,
+      skipped: !sitemap?.exists,
+      value: robotsGeneral.referencesSitemap,
+      suggestion: !robotsGeneral.referencesSitemap && sitemap?.exists
+        ? `Füge "Sitemap: ${sitemap.url}" zur robots.txt hinzu — das ist der Standardweg, Crawlern die Sitemap-URL mitzuteilen.`
+        : null,
+    },
+    {
       id: 'unique-meta', category: 'D',
       label: `Unique Meta-Descriptions: ${dupeMetaSet.length > 0 ? dupeMetaSet.length + ' Duplikate' : 'alle eindeutig'}`,
       pass: uniqueMetaPass, weight: WEIGHTS['unique-meta'],
       value: dupeMetaSet.length,
       suggestion: !uniqueMetaPass
         ? `${dupeMetaSet.length} identische Meta-Descriptions. Jede Seite braucht eine einzigartige Beschreibung – doppelte verwirren LLMs beim Seiten-Mapping.`
+        : null,
+    },
+    {
+      id: 'unique-titles', category: 'D',
+      label: `Eindeutige Titles: ${dupeExactTitleSet.length > 0 ? dupeExactTitleSet.length + ' exakte Duplikate' : 'alle eindeutig'}`,
+      pass: uniqueTitlePass, weight: WEIGHTS['unique-titles'],
+      value: dupeExactTitleSet.length,
+      suggestion: !uniqueTitlePass
+        ? `${dupeExactTitleSet.length} Seite(n) haben exakt denselben <title>. Google zeigt bei identischen Titles oft die falsche URL im Suchergebnis — jede Seite braucht einen eigenen, beschreibenden Title.`
         : null,
     },
     {
@@ -371,6 +479,34 @@ export async function analyzeGeoSite(startUrl, geoPages, seoPages, siteFiles) {
     snippetPreviews,
     schemaClassification,
   }
+}
+
+// General (non-AI-specific) robots.txt sanity checks (seo-audit-Skill-
+// Abgleich, 2026-09): does it block regular search-engine crawling
+// entirely, and does it point at the sitemap? Separate from
+// analyzeRobotsTxt() above, which is scoped to the AI-bot list only.
+function analyzeRobotsGeneral(content) {
+  if (!content) {
+    return {
+      blocksAll: false,
+      referencesSitemap: false,
+      suggestion: null,
+    }
+  }
+  const lines = content.split('\n').map(l => l.trim())
+  let currentAgent = null
+  let blocksAll = false
+  for (const line of lines) {
+    const lc = line.toLowerCase()
+    if (lc.startsWith('user-agent:')) {
+      currentAgent = lc.replace('user-agent:', '').trim()
+    } else if (lc.startsWith('disallow:') && currentAgent === '*') {
+      const path = line.split(':').slice(1).join(':').trim()
+      if (path === '/') blocksAll = true
+    }
+  }
+  const referencesSitemap = lines.some(l => l.toLowerCase().startsWith('sitemap:'))
+  return { blocksAll, referencesSitemap }
 }
 
 // ── robots.txt Parser ─────────────────────────────────────────────────────────
