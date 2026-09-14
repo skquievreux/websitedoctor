@@ -27,7 +27,11 @@ RUN npx playwright install chrome \
 RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-pip \
     && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt ./
-RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt \
+# No --break-system-packages: that flag needs pip 23.0.1+ (PEP 668), but
+# this base image's apt-installed python3-pip on Ubuntu 22.04/jammy is
+# 22.0.2 and doesn't have the "externally managed environment" guard the
+# flag opts out of in the first place — passing it is just a hard error here.
+RUN pip3 install --no-cache-dir -r requirements.txt \
     && python3 -m playwright install-deps firefox \
     && python3 -m camoufox fetch
 
