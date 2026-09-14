@@ -1,6 +1,13 @@
 // crawl.js – Playwright Loop · Seiten besuchen · Screenshots · SEO
 // v1.1.0: Navigation Timing v2, finally-Listener-Cleanup, Third-Party-Filter
-// v1.2.0: Scrapling/Camoufox-Fallback für Bot-geblockte Seiten (D2)
+// v1.2.0: zweistufiger Bot-Block-Fallback (D2/D3):
+//   Stufe 1 – rebrowser-playwright + headed Chrome (scripts/stealth-node.js):
+//     bleibt in Node, reusest visitPage/analyzeSeoV2/extractLinks 1:1, löst
+//     Fingerprint-/Automation-Erkennung, aber KEINE Cloudflare-Turnstile-
+//     artigen Verhaltens-Challenges.
+//   Stufe 2 – Scrapling/Camoufox (scripts/stealth_fetch.py, Python-Subprozess):
+//     nur wenn Stufe 1 ebenfalls geblockt bleibt; solve_cloudflare=True
+//     simuliert die Turnstile-Checkbox-Interaktion.
 import { chromium } from 'playwright'
 import { writeFile, mkdir } from 'fs/promises'
 import { execFile } from 'child_process'
@@ -27,7 +34,7 @@ const NEUTRAL_GEO_RESULT = {
   schemaTypes: [], entityLinks: [], qaCount: 0, qaExamples: [], wordCount: 0,
   tableCount: 0, listCount: 0, structuredCount: 0, factDensity: 0, factCount: 0,
   totalLinks: 0, genericLinks: 0, genericRatio: 0, snippetPreview: '',
-  hasJsonLd: false, jsonLdCount: 0,
+  hasJsonLd: false, jsonLdCount: 0, invalidJsonLdCount: 0, schemaValidationIssues: [],
 }
 
 // A3-artige Erkennung: typische Bot-Block-Signale, bei denen ein normaler
@@ -39,16 +46,18 @@ const BOT_BLOCK_TITLE_PATTERNS = [
   /verify you are human/i, /checking your browser/i, /ddos protection by/i,
 ]
 
-function looksBotBlocked({ statusCode, title }) {
+function looksBotBlocked({ statusCode, title, hasTurnstileWidget }) {
   if (statusCode !== null && BOT_BLOCK_STATUS.has(statusCode)) return true
+  if (hasTurnstileWidget) return true
   return BOT_BLOCK_TITLE_PATTERNS.some(p => p.test(title || ''))
 }
 
-// ponytail: shellt auf einen einzelnen Python-Prozess pro URL statt einen
-// persistenten Sidecar-Service zu bauen — Scrapling/Camoufox-Fallback ist
-// die Ausnahme (wenige URLs pro Crawl), kein Hot Path. Wenn das häufiger
-// als vereinzelt greift, lohnt sich ein warmer Worker-Pool.
-async function runStealthFallback(url, screenshotPath) {
+// Stufe 2 (letzter Ausweg): Scrapling/Camoufox über einen Python-Subprozess.
+// ponytail: ein Python-Prozess pro URL statt eines persistenten Sidecars —
+// das ist die Ausnahme (wenige URLs pro Crawl erreichen überhaupt Stufe 2),
+// kein Hot Path. Wenn das häufiger als vereinzelt greift, lohnt sich ein
+// warmer Worker-Pool.
+async function runPythonStealthFallback(url, screenshotPath) {
   try {
     const { stdout } = await execFileAsync(
       PYTHON_BIN,
@@ -59,7 +68,33 @@ async function runStealthFallback(url, screenshotPath) {
     if (result.error) throw new Error(result.error)
     return result
   } catch (err) {
-    console.error(chalk.red(`[crawl] Stealth-Fallback fehlgeschlagen für ${url}: ${err.message}`))
+    console.error(chalk.red(`[crawl] Stufe 2 (Scrapling) fehlgeschlagen für ${url}: ${err.message}`))
+    return null
+  }
+}
+
+// Stufe 1: rebrowser-playwright + headed Chrome, im selben Node-Prozess.
+// Reusest die normalen visitPage/analyzeSeoV2/analyzeGeoPage/extractLinks-
+// Funktionen unverändert, weil rebrowser's Page dieselbe API wie Playwright
+// hat — nur der Browser-Start unterscheidet sich (siehe stealth-node.js).
+// Gibt null zurück, wenn Stufe 1 selbst noch geblockt aussieht (Aufrufer
+// eskaliert dann zu Stufe 2) oder technisch fehlschlägt.
+async function runNodeStealthFallback(url, startUrl, screenshotDir) {
+  try {
+    return await withStealthPage(async page => {
+      const visit = await visitPage(page, url)
+      if (looksBotBlocked(visit)) return null
+      const screenshotPath = await takeScreenshot(page, url, screenshotDir)
+      const [seoResult, geoResult] = await Promise.all([
+        analyzeSeoV2(page, url),
+        analyzeGeoPage(page, url),
+      ])
+      const rawLinks = await extractLinks(page)
+      const links = filterLinks(rawLinks, startUrl)
+      return { visit, screenshotPath, seoResult, geoResult, links }
+    })
+  } catch (err) {
+    console.error(chalk.red(`[crawl] Stufe 1 (rebrowser) fehlgeschlagen für ${url}: ${err.message}`))
     return null
   }
 }
@@ -148,10 +183,20 @@ async function visitPage(page, url) {
       server:              headers['server'] || null,
     }
 
-    return { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount }
+    // Turnstile zeigt sich oft NICHT als eigene Interstitial-Seite (die
+    // BOT_BLOCK_STATUS/-TITLE-Checks würden greifen), sondern als Widget
+    // auf einer sonst normal ladenden 200-Seite (z.B. nowsecure.nl:
+    // status 200, Titel "nowsecure.nl") — ohne diesen Check bliebe das
+    // unentdeckt, obwohl der eigentliche Seiteninhalt hinter dem Widget
+    // versteckt ist.
+    const hasTurnstileWidget = await page.evaluate(() =>
+      !!document.querySelector('.cf-turnstile, [data-sitekey], script[src*="challenges.cloudflare.com"]')
+    ).catch(() => false)
+
+    return { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount, hasTurnstileWidget }
   } catch (err) {
     console.error(chalk.red(`[crawl] Fehler bei ${url}: ${err.message}`))
-    return { statusCode: null, title: '', loadTime: null, timing: null, responseHeaders: {}, jsErrors, redirectCount }
+    return { statusCode: null, title: '', loadTime: null, timing: null, responseHeaders: {}, jsErrors, redirectCount, hasTurnstileWidget: false }
   } finally {
     // A2 — immer aufräumen
     page.off('console', handleConsole)
@@ -188,24 +233,41 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
     console.log(chalk.gray(`[crawl] Besuche (${visited.size}/${MAX_PAGES}): ${url}`))
     onProgress?.({ current: visited.size, max: MAX_PAGES, url })
 
-    let { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount } = await visitPage(page, url)
+    let { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount, hasTurnstileWidget } = await visitPage(page, url)
     let screenshotPath = await takeScreenshot(page, url, screenshotDir)
     let seoResult, geoResult, links
 
-    if (looksBotBlocked({ statusCode, title })) {
-      console.log(chalk.yellow(`[crawl] Bot-Block erkannt (${statusCode ?? 'kein Status'}) bei ${url} – versuche Scrapling-Fallback`))
-      const fallbackScreenshotPath = path.join(screenshotDir, `${slugify(url)}.png`)
-      const fallback = await runStealthFallback(url, fallbackScreenshotPath)
-      if (fallback) {
-        statusCode = fallback.statusCode
-        title = fallback.title
-        loadTime = fallback.loadTime
-        screenshotPath = fallback.screenshotPath
-        seoResult = computeSeoFromData(fallback.seo, url)
-        geoResult = { url, ...NEUTRAL_GEO_RESULT }
-        links = filterLinks(fallback.links, startUrl)
-        jsErrors = []
-        redirectCount = 0
+    if (looksBotBlocked({ statusCode, title, hasTurnstileWidget })) {
+      console.log(chalk.yellow(`[crawl] Bot-Block erkannt (${statusCode ?? 'kein Status'}) bei ${url} – Stufe 1: rebrowser-playwright`))
+      const stage1 = await runNodeStealthFallback(url, startUrl, screenshotDir)
+
+      if (stage1) {
+        ;({ statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount } = stage1.visit)
+        screenshotPath = stage1.screenshotPath
+        seoResult = stage1.seoResult
+        geoResult = stage1.geoResult
+        links = stage1.links
+      } else {
+        console.log(chalk.yellow(`[crawl] Stufe 1 ebenfalls geblockt/fehlgeschlagen bei ${url} – Stufe 2: Scrapling/Camoufox`))
+        const fallbackScreenshotPath = path.join(screenshotDir, `${slugify(url)}.png`)
+        const stage2 = await runPythonStealthFallback(url, fallbackScreenshotPath)
+        if (stage2) {
+          statusCode = stage2.statusCode
+          title = stage2.title
+          loadTime = stage2.loadTime
+          screenshotPath = stage2.screenshotPath
+          seoResult = computeSeoFromData(stage2.seo, url)
+          geoResult = { url, ...NEUTRAL_GEO_RESULT }
+          links = filterLinks(stage2.links, startUrl)
+          jsErrors = []
+          redirectCount = 0
+          // Reset statt vom ursprünglich geblockten Aufruf übernehmen —
+          // sonst landen Navigation-Timing/Header von der Challenge-Seite
+          // (falscher Fetch) im Report der tatsächlich erfolgreichen
+          // Stufe-2-Ladung. Python liefert diese Daten nicht.
+          timing = null
+          responseHeaders = {}
+        }
       }
     }
 
