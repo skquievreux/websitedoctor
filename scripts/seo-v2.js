@@ -1,5 +1,6 @@
 // seo-v2.js – Erweiterte SEO-Checks (21 statt 11)
 // Phase 2: Structured Data, OpenGraph, Twitter Cards, Lighthouse
+import { SEO_EVAL_JS } from './browser/seo-eval.js'
 
 // Detects unresloved i18n translation keys (e.g. "seo.homeTitle", "metaDescription")
 const I18N_KEY_PATTERNS = [
@@ -54,96 +55,10 @@ function isIndexablePage(url) {
 }
 
 /**
- * Erweiterte SEO-Analyse mit 21 Checks
+ * Erweiterte SEO-Analyse mit 21 Checks (live Playwright page)
  */
 export async function analyzeSeoV2(page, url) {
-  const indexable = isIndexablePage(url)
-
-  const data = await page.evaluate(() => {
-    // Original Data Collection
-    const titleText = document.title || ''
-    const metaDescText = document.querySelector('meta[name="description"]')?.content || ''
-    const canonical = document.querySelector('link[rel="canonical"]')?.href || ''
-    const robots = document.querySelector('meta[name="robots"]')?.content || ''
-    const lang = document.documentElement.lang || ''
-    const viewport = document.querySelector('meta[name="viewport"]')?.content || ''
-    const h1Els = Array.from(document.querySelectorAll('h1'))
-    const h2Els = Array.from(document.querySelectorAll('h2'))
-    const h3Els = Array.from(document.querySelectorAll('h3'))
-    const imgs = Array.from(document.querySelectorAll('img'))
-    const links = Array.from(document.querySelectorAll('a[href]'))
-
-    // Neue Data Collection
-    const jsonLds = document.querySelectorAll('script[type="application/ld+json"]')
-    const ogTags = Array.from(document.querySelectorAll('meta[property^="og:"]'))
-    const twitterTags = Array.from(document.querySelectorAll('meta[name^="twitter:"]'))
-    const hreflangs = Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]'))
-
-    // Image Optimization Check
-    const imgsWithoutAltSrcs = imgs
-      .filter(i => !i.alt || i.alt.trim() === '')
-      .map(i => { try { return new URL(i.src).pathname.split('/').pop() || i.src } catch { return i.src } })
-
-    // Anchor Text Quality (zu viele "click here", "mehr", etc.)
-    const genericAnchorTexts = ['click here', 'mehr', 'read more', 'learn more', 'hier', 'link']
-    const linksWithGenericText = links.filter(l =>
-      genericAnchorTexts.some(gt => (l.textContent?.toLowerCase() || '').includes(gt))
-    ).length
-
-    // Internal vs External Links
-    const currentDomain = new URL(window.location.href).hostname
-    const internalLinks = links.filter(l => {
-      try {
-        return new URL(l.href).hostname === currentDomain
-      } catch { return false }
-    }).length
-
-    // H2/H3 Hierarchy Check
-    const h2Count = h2Els.length
-    const h3Count = h3Els.length
-
-    // Core Web Vitals (Largest Contentful Paint - LCP)
-    const perfObserver = window.performance?.getEntriesByType?.('largest-contentful-paint') || []
-    const lcp = perfObserver.length > 0 ? perfObserver[perfObserver.length - 1]?.renderTime || 0 : 0
-
-    // Core Web Vitals (Cumulative Layout Shift - CLS)
-    const clsEntries = window.performance?.getEntriesByType?.('layout-shift') || []
-    const cls = Math.round(
-      clsEntries.reduce((s, e) => s + (e.hadRecentInput ? 0 : e.value), 0) * 1000
-    ) / 1000
-
-    // Content-to-HTML Ratio (Textanteil vs. gesamtes HTML)
-    const htmlSize = document.documentElement?.outerHTML?.length || 0
-    const textSize = document.body?.innerText?.length || 0
-    const contentRatio = htmlSize > 0 ? Math.round((textSize / htmlSize) * 100) : 0
-
-    // Mobile-Friendly Meta
-    const mobileOptimized = viewport.includes('width=device-width')
-
-    return {
-      // Original
-      titleText, metaDescText, canonical, robots, lang, viewport,
-      h1Count: h1Els.length, h1Text: h1Els[0]?.textContent?.trim() || '',
-      imgsWithoutAltSrcs, imgCount: imgs.length,
-
-      // Neue Metriken
-      hasJsonLd: jsonLds.length > 0,
-      jsonLdCount: jsonLds.length,
-      ogTagCount: ogTags.length,
-      ogTags: ogTags.map(t => ({ property: t.getAttribute('property'), content: t.getAttribute('content') })),
-      twitterTagCount: twitterTags.length,
-      hasHreflang: hreflangs.length > 0,
-      hreflangs: hreflangs.map(h => ({ rel: h.getAttribute('hreflang'), href: h.getAttribute('href') })),
-      linksWithGenericText,
-      linkCount: links.length,
-      internalLinks,
-      h2Count, h3Count,
-      mobileOptimized,
-      lcp: Math.round(lcp),
-      cls,
-      contentRatio,
-    }
-  }).catch(err => {
+  const data = await page.evaluate(SEO_EVAL_JS).catch(err => {
     console.error(`[seo-v2] page.evaluate failed for ${url}: ${err.message}`)
     // Return minimal data on error
     return {
@@ -155,7 +70,16 @@ export async function analyzeSeoV2(page, url) {
       h2Count: 0, h3Count: 0, mobileOptimized: false, lcp: 0, cls: 0, contentRatio: 0,
     }
   })
+  return computeSeoFromData(data, url)
+}
 
+/**
+ * Same 21-check scoring, but from already-collected data (SEO_EVAL_JS
+ * shape) instead of a live page — lets the Scrapling/Camoufox bot-block
+ * fallback (scripts/stealth_fetch.py) reuse the exact same scoring.
+ */
+export function computeSeoFromData(data, url) {
+  const indexable = isIndexablePage(url)
   const tLen = data.titleText.length
   const mLen = data.metaDescText.length
   const titleIsI18nKey = looksLikeI18nKey(data.titleText)

@@ -1,4 +1,5 @@
 // links.js – extractLinks · filterLinks · guessPageType
+import { LINKS_EVAL_JS } from './browser/links-eval.js'
 
 /**
  * Extrahiert alle href-Links aus der aktuellen Seite via page.evaluate().
@@ -7,11 +8,7 @@
  */
 export async function extractLinks(page) {
   try {
-    return await page.evaluate(() =>
-      Array.from(document.querySelectorAll('a[href]'))
-        .map(a => a.href)
-        .filter(href => href.startsWith('http'))
-    )
+    return await page.evaluate(LINKS_EVAL_JS)
   } catch {
     return []
   }

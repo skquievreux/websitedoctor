@@ -1,0 +1,4 @@
+# Scrapling/Camoufox bot-block fallback (scripts/stealth_fetch.py) — see
+# scripts/crawl.js's looksBotBlocked(). Pinned loosely; bump deliberately,
+# Camoufox ships its own patched Firefox build via `camoufox fetch`.
+scrapling[fetchers]>=0.4.15
