@@ -26,10 +26,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      # No `version:` input — see npm-audit.yml for why (packageManager in
+      # package.json already pins it; specifying both makes the action
+      # refuse to run entirely).
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
