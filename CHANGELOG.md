@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/skquievreux/websitedoctor/compare/v1.1.0...v1.1.1) (2026-09-15)
+
+
+### Bug Fixes
+
+* **docker:** xvfb-run hung in production, start Xvfb directly instead ([#13](https://github.com/skquievreux/websitedoctor/issues/13)) ([2402a1d](https://github.com/skquievreux/websitedoctor/commit/2402a1dfa384da555e63dd98333715a6647f8997)), closes [#12](https://github.com/skquievreux/websitedoctor/issues/12)
+
 # [1.1.0](https://github.com/skquievreux/websitedoctor/compare/v1.0.2...v1.1.0) (2026-09-15)
 
 
