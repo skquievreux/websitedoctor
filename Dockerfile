@@ -47,7 +47,22 @@ COPY . .
 ENV NODE_ENV=production
 EXPOSE 3001
 
-# xvfb-run gives stage-1's headed Chrome a virtual display; server.js itself
+# Catches exactly the failure this stack just had in production: container
+# shows "Up" and passes no other check, but the actual node process never
+# started (an xvfb-run hang). --start-period gives the one-time playwright
+# chrome/Xvfb startup room without flapping healthy containers under load.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD node -e "fetch('http://localhost:3001/version').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+
+# Xvfb gives stage-1's headed Chrome a virtual display; server.js itself
 # and the plain headless crawl are unaffected — Xvfb just sits there idle
 # until stealth-node.js actually launches a headed browser.
-CMD ["xvfb-run", "--auto-servernum", "node", "server.js"]
+#
+# Not `xvfb-run`: its readiness check waits on a SIGUSR1 from Xvfb before
+# exec'ing the wrapped command, and that signal-based handshake is
+# unreliable in containers — it hung indefinitely in production (Xvfb
+# and the xvfb-run shell both alive per `docker top`, but node never
+# started, so the container looked "Up" while serving nothing but 502s).
+# Starting Xvfb directly in the background and setting DISPLAY ourselves
+# has no such handshake to get stuck on.
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1280x1024x24 -nolisten tcp & export DISPLAY=:99; exec node server.js"]
