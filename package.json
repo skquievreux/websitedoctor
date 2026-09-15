@@ -34,5 +34,13 @@
     "globals": "^17.4.0",
     "nodemon": "^3.1.0",
     "semantic-release": "^25.0.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@semantic-release/github>undici": ">=7.29.0",
+      "@actions/http-client>undici": ">=7.29.0",
+      "minimatch>brace-expansion": ">=5.0.9",
+      "cosmiconfig>js-yaml": ">=4.3.2"
+    }
   }
 }

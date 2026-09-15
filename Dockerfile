@@ -21,7 +21,7 @@ RUN npx playwright install chrome \
     && rm -rf /var/lib/apt/lists/*
 
 # ── Python/Scrapling layer for the stage-2 bot-block fallback (scripts/stealth_fetch.py) ─
-# Camoufox is a separate patched-Firefox build fetched by `camoufox fetch`,
+# Camoufox is a separate patched-Firefox build fetched by `scrapling install`,
 # not something pip/apt ships — that's why it's its own step, and why this
 # image is noticeably bigger than the plain Playwright-Chromium one.
 RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-pip \
@@ -31,9 +31,15 @@ COPY requirements.txt ./
 # this base image's apt-installed python3-pip on Ubuntu 22.04/jammy is
 # 22.0.2 and doesn't have the "externally managed environment" guard the
 # flag opts out of in the first place — passing it is just a hard error here.
+#
+# `scrapling install` (not a raw `camoufox fetch`) — scrapling[fetchers]
+# doesn't pull in a standalone `camoufox` pip package, so `python3 -m
+# camoufox fetch` fails with "No module named camoufox". Scrapling's own
+# installer fetches the Camoufox browser binary through its internal API
+# instead, which is what was actually verified working locally.
 RUN pip3 install --no-cache-dir -r requirements.txt \
     && python3 -m playwright install-deps firefox \
-    && python3 -m camoufox fetch
+    && scrapling install
 
 # ── Source layer (changes every deploy, cheap on top of cached deps) ─
 COPY . .
