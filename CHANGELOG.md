@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/skquievreux/websitedoctor/compare/v1.1.2...v1.1.3) (2026-11-14)
+
+
+### Bug Fixes
+
+* **crawl:** Link-Erkennung nach Redirects, sitemap.xml als Discover-Quelle ([#17](https://github.com/skquievreux/websitedoctor/issues/17)) ([a357509](https://github.com/skquievreux/websitedoctor/commit/a3575097ea562ac7b930eafd2e2e7d502608b5e1))
+
 ## [1.1.2](https://github.com/skquievreux/websitedoctor/compare/v1.1.1...v1.1.2) (2026-11-14)
 
 
