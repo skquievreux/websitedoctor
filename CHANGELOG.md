@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/skquievreux/websitedoctor/compare/v1.1.1...v1.1.2) (2026-11-14)
+
+
+### Bug Fixes
+
+* **deps:** Laufzeit-Kette gepatcht, Security-Audit nur auf Prod-Deps ([#15](https://github.com/skquievreux/websitedoctor/issues/15)) ([dbfdf16](https://github.com/skquievreux/websitedoctor/commit/dbfdf16cdffdd4d8d7cd49e29120babc824bbe5e))
+
 ## [1.1.1](https://github.com/skquievreux/websitedoctor/compare/v1.1.0...v1.1.1) (2026-09-15)
 
 
