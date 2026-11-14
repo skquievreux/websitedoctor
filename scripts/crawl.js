@@ -14,7 +14,7 @@ import { execFile } from 'child_process'
 import { promisify } from 'util'
 import path from 'path'
 import chalk from 'chalk'
-import { extractLinks, filterLinks, guessPageType } from './links.js'
+import { extractLinks, filterLinks, guessPageType, fetchSitemapUrls } from './links.js'
 import { analyzeSeoV2, computeSeoFromData } from './seo-v2.js'
 import { crawlMobile } from './mobile.js'
 import { analyzeGeoPage, analyzeGeoSite, fetchSiteFiles } from './geo.js'
@@ -92,7 +92,10 @@ async function runNodeStealthFallback(url, startUrl, screenshotDir) {
         analyzeGeoPage(page, url),
       ])
       const rawLinks = await extractLinks(page)
-      const links = filterLinks(rawLinks, startUrl)
+      // page.url() statt startUrl: nach einer Weiterleitung (www -> non-www,
+      // Preview-Alias -> Custom Domain) liegt die Seite auf einem anderen Host,
+      // und alle relativen Links werden gegen den *finalen* Host aufgelöst.
+      const links = filterLinks(rawLinks, page.url() || startUrl)
       return { visit, screenshotPath, seoResult, geoResult, links }
     })
   } catch (err) {
@@ -195,10 +198,10 @@ async function visitPage(page, url) {
       !!document.querySelector('.cf-turnstile, [data-sitekey], script[src*="challenges.cloudflare.com"]')
     ).catch(() => false)
 
-    return { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount, hasTurnstileWidget }
+    return { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount, hasTurnstileWidget, finalUrl: page.url() || null }
   } catch (err) {
     console.error(chalk.red(`[crawl] Fehler bei ${url}: ${err.message}`))
-    return { statusCode: null, title: '', loadTime: null, timing: null, responseHeaders: {}, jsErrors, redirectCount, hasTurnstileWidget: false }
+    return { statusCode: null, title: '', loadTime: null, timing: null, responseHeaders: {}, jsErrors, redirectCount, hasTurnstileWidget: false, finalUrl: null }
   } finally {
     // A2 — immer aufräumen
     page.off('console', handleConsole)
@@ -221,6 +224,7 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
   const pages = []
   const seoPages = []
   const geoPages = []
+  let isFirstPage = true
 
   console.log(chalk.blue(`[crawl] Start: ${startUrl}`))
 
@@ -232,12 +236,24 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
     if (visited.has(url)) continue
     visited.add(url)
 
-    console.log(chalk.gray(`[crawl] Besuche (${visited.size}/${MAX_PAGES}): ${url}`))
-    onProgress?.({ current: visited.size, max: MAX_PAGES, url })
+    console.log(chalk.gray(`[crawl] Besuche (${pages.length + 1}/${MAX_PAGES}): ${url}`))
+    onProgress?.({ current: pages.length + 1, max: MAX_PAGES, url })
 
-    let { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount, hasTurnstileWidget } = await visitPage(page, url)
+    let { statusCode, title, loadTime, timing, responseHeaders, jsErrors, redirectCount, hasTurnstileWidget, finalUrl } = await visitPage(page, url)
     let screenshotPath = await takeScreenshot(page, url, screenshotDir)
     let seoResult, geoResult, links
+
+    // Basis für die Link-Filterung: die tatsächlich geladene URL. Weicht sie
+    // von der aufgerufenen ab (Redirect auf anderen Host oder Pfad), würden
+    // sonst alle relativen Links als "fremde Domain" verworfen - die Website
+    // landete dann mit genau einer Seite im Report.
+    const linkBase = finalUrl && finalUrl.startsWith('http') ? finalUrl : url
+    if (finalUrl && finalUrl !== url) {
+      console.log(chalk.gray(`[crawl] Redirect: ${url} -> ${finalUrl}`))
+      // Das Redirect-Ziel gilt als besucht, sonst landet dieselbe Seite ein
+      // zweites Mal im Report (einmal als Start-URL, einmal als Linkziel).
+      visited.add(linkBase)
+    }
 
     if (looksBotBlocked({ statusCode, title, hasTurnstileWidget })) {
       console.log(chalk.yellow(`[crawl] Bot-Block erkannt (${statusCode ?? 'kein Status'}) bei ${url} – Stufe 1: rebrowser-playwright`))
@@ -260,7 +276,7 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
           screenshotPath = stage2.screenshotPath
           seoResult = computeSeoFromData(stage2.seo, url)
           geoResult = { url, ...NEUTRAL_GEO_RESULT }
-          links = filterLinks(stage2.links, startUrl)
+          links = filterLinks(stage2.links, linkBase)
           jsErrors = []
           redirectCount = 0
           // Reset statt vom ursprünglich geblockten Aufruf übernehmen —
@@ -279,7 +295,7 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
         analyzeGeoPage(page, url),
       ])
       const rawLinks = await extractLinks(page)
-      links = filterLinks(rawLinks, startUrl)
+      links = filterLinks(rawLinks, linkBase)
     }
     const type = guessPageType(url)
 
@@ -294,8 +310,18 @@ export async function crawl(startUrl, onProgress, reportId = Date.now().toString
     geoPages.push(geoResult)
     onPageDone?.({ url, statusCode, title, type, loadTime, screenshotPath, jsErrors: jsErrors ?? [] })
 
-    if (visited.size < 2) {
+    // BFS-Tiefe 1: die Queue wird nur aus der ersten Seite gefüllt, damit der
+    // Report bei grossen Websites nicht in beliebigen Unterseiten versinkt.
+    // Zusätzlich (einmalig) die sitemap.xml als zweite Discover-Quelle - die
+    // findet auch Seiten, die von der Startseite aus nicht verlinkt sind.
+    if (isFirstPage) {
+      isFirstPage = false
       links.forEach(link => { if (!visited.has(link)) queue.push(link) })
+      const sitemapUrls = await fetchSitemapUrls(linkBase, MAX_PAGES).catch(() => [])
+      if (sitemapUrls.length > 0) {
+        console.log(chalk.gray(`[crawl] sitemap.xml: ${sitemapUrls.length} URLs als Startpunkte`))
+        sitemapUrls.forEach(u => { if (!visited.has(u) && !queue.includes(u)) queue.push(u) })
+      }
     }
   }
 
@@ -354,5 +380,16 @@ if (process.argv[2] === '--self-test') {
   assert(looksBotBlocked({ statusCode: 200, title: 'Just a moment...' }) === true, 'Cloudflare-Titel sollte als Block gelten')
   assert(looksBotBlocked({ statusCode: 200, title: 'Willkommen' }) === false, 'normale Seite sollte nicht blockiert sein')
   assert(looksBotBlocked({ statusCode: null, title: '' }) === false, 'Netzwerkfehler ohne Status ist kein Bot-Block')
-  console.log(chalk.green('[crawl] Self-Test OK: looksBotBlocked()'))
+
+  // filterLinks: www-Toleranz + Dedupe + Anker/Query
+  const fromWww = filterLinks(
+    ['https://example.com/a', 'https://www.example.com/b', 'https://example.com/a#x', 'https://other.com/c'],
+    'https://example.com/'
+  )
+  assert(fromWww.length === 2, `www-Variante muss toleriert werden (war ${fromWww.length})`)
+  const fromNonWww = filterLinks(['https://example.com/a', 'https://WWW.Example.com/b'], 'https://www.example.com/')
+  assert(fromNonWww.length === 2, `Redirect www->non-www darf keine Links verlieren (war ${fromNonWww.length})`)
+  const deduped = filterLinks(['https://example.com/a?x=1', 'https://example.com/a?x=2'], 'https://example.com/')
+  assert(deduped.length === 1, 'Query-Strings müssen dedupliziert werden')
+  console.log(chalk.green('[crawl] Self-Test OK: looksBotBlocked(), filterLinks()'))
 }
