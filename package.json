@@ -37,10 +37,14 @@
   },
   "pnpm": {
     "overrides": {
-      "@semantic-release/github>undici": ">=7.29.0",
+      "@semantic-release/github>undici": ">=8.12.2",
       "@actions/http-client>undici": ">=7.29.0",
       "minimatch>brace-expansion": ">=5.0.9",
-      "cosmiconfig>js-yaml": ">=4.3.2"
+      "cosmiconfig>js-yaml": ">=4.3.2",
+      "body-parser": "^1.20.9",
+      "proxy-addr": "^2.0.8",
+      "qs": "^6.16.1",
+      "handlebars": "^4.7.10"
     }
   }
 }
