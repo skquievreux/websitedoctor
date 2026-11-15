@@ -26,8 +26,24 @@ export async function extractLinks(page) {
   }
 }
 
+// Datei-Endungen, die keine HTML-Seite sind: die werden beim Link-Crawl
+// uebersprungen (sonst landen sitemap.xml, PDFs oder Bilder als "Seite" im
+// Report und verbrauchen einen der MAX_PAGES-Plaetze).
+const NON_PAGE_EXTENSION = /\.(?:xml|rss|atom|json|txt|csv|pdf|zip|gz|tar|rar|7z|jpe?g|png|gif|svg|webp|avif|ico|bmp|tiff?|css|js|mjs|map|woff2?|ttf|otf|eot|mp4|webm|mp3|wav|ogg|mov|xlsx?|docx?|pptx?|dmg|exe)$/i
+
 /**
- * Filtert Links auf dieselbe Domain (www-tolerant), entfernt Duplikate und Anker.
+ * @param {URL} url
+ * @returns {boolean} true, wenn die URL vermutlich eine HTML-Seite ist
+ */
+export function isCrawlableUrl(url) {
+  return !NON_PAGE_EXTENSION.test(url.pathname)
+}
+
+/**
+ * Filtert Links auf dieselbe Domain (www-tolerant), entfernt Duplikate, Anker
+ * und Nicht-HTML-Ressourcen. Alle Treffer werden auf den Host der Basis-URL
+ * umgeschrieben, damit eine Startseite nicht zusaetzlich unter der
+ * www-Variante gecrawlt wird (kostet nur MAX_PAGES-Plaetze, doppelter Inhalt).
  * @param {string[]} links
  * @param {string} baseUrl URL, gegen die gefiltert wird - idealerweise die
  *   finale URL nach Redirects (page.url()), nicht die Start-URL.
@@ -42,13 +58,16 @@ export function filterLinks(links, baseUrl) {
       .filter(href => {
         try {
           const url = new URL(href)
-          return normalizeHost(url.hostname) === baseHost && !href.includes('#')
+          if (normalizeHost(url.hostname) !== baseHost) return false
+          if (!isCrawlableUrl(url)) return false
+          return !href.includes('#')
         } catch {
           return false
         }
       })
       .map(href => {
         const url = new URL(href)
+        url.host = base.host
         url.hash = ''
         url.search = ''
         return url.toString()
@@ -146,8 +165,11 @@ export async function fetchSitemapUrls(baseUrl, limit = 20) {
         return null
       }
     })
-    .filter(url => url && normalizeHost(url.hostname) === baseHost)
-    .map(url => url.toString())
+    .filter(url => url && normalizeHost(url.hostname) === baseHost && isCrawlableUrl(url))
+    .map(url => {
+      url.host = base.host
+      return url.toString()
+    })
     .filter(url => !seen.has(url) && seen.add(url))
     .slice(0, limit)
 }
