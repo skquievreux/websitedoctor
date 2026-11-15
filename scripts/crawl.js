@@ -381,15 +381,22 @@ if (process.argv[2] === '--self-test') {
   assert(looksBotBlocked({ statusCode: 200, title: 'Willkommen' }) === false, 'normale Seite sollte nicht blockiert sein')
   assert(looksBotBlocked({ statusCode: null, title: '' }) === false, 'Netzwerkfehler ohne Status ist kein Bot-Block')
 
-  // filterLinks: www-Toleranz + Dedupe + Anker/Query
+  // filterLinks: www-Toleranz + Kanonisierung + Dedupe + Nicht-HTML
   const fromWww = filterLinks(
     ['https://example.com/a', 'https://www.example.com/b', 'https://example.com/a#x', 'https://other.com/c'],
     'https://example.com/'
   )
   assert(fromWww.length === 2, `www-Variante muss toleriert werden (war ${fromWww.length})`)
+  assert(fromWww.includes('https://example.com/b'), `www-Link muss auf Basis-Host umgeschrieben werden (${fromWww.join(', ')})`)
   const fromNonWww = filterLinks(['https://example.com/a', 'https://WWW.Example.com/b'], 'https://www.example.com/')
   assert(fromNonWww.length === 2, `Redirect www->non-www darf keine Links verlieren (war ${fromNonWww.length})`)
+  assert(fromNonWww.includes('https://www.example.com/a'), `non-www-Link muss auf Basis-Host umgeschrieben werden (${fromNonWww.join(', ')})`)
   const deduped = filterLinks(['https://example.com/a?x=1', 'https://example.com/a?x=2'], 'https://example.com/')
   assert(deduped.length === 1, 'Query-Strings müssen dedupliziert werden')
+  const assets = filterLinks(
+    ['https://example.com/sitemap.xml', 'https://example.com/logo.png', 'https://example.com/app.js', 'https://example.com/kontakt'],
+    'https://example.com/'
+  )
+  assert(assets.length === 1 && assets[0] === 'https://example.com/kontakt', `Nicht-HTML-Ressourcen müssen rausfallen (${assets.join(', ')})`)
   console.log(chalk.green('[crawl] Self-Test OK: looksBotBlocked(), filterLinks()'))
 }
