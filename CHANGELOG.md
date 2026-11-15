@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/skquievreux/websitedoctor/compare/v1.1.3...v1.1.4) (2026-11-15)
+
+
+### Bug Fixes
+
+* **crawl:** Links auf Basis-Host kanonisieren, Nicht-HTML-Ressourcen ueberspringen ([#18](https://github.com/skquievreux/websitedoctor/issues/18)) ([3c7b050](https://github.com/skquievreux/websitedoctor/commit/3c7b0506114cce73245d84441af8da2e8db675f2)), closes [#17](https://github.com/skquievreux/websitedoctor/issues/17)
+
 ## [1.1.3](https://github.com/skquievreux/websitedoctor/compare/v1.1.2...v1.1.3) (2026-11-14)
 
 
